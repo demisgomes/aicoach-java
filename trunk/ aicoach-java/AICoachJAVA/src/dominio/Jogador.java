@@ -8,7 +8,7 @@ public class Jogador {
 	private Time time;
 	private int idade;
 	private float peso, altura;
-	private boolean temCondicao;
+	private boolean temCondicao, ehDestro;
 	private ArrayList<Posicao> posicoes;
 	private EstatisticasJogador estatisticas;
 	private CaracteristicasJogadores caracteristicas;
@@ -29,6 +29,16 @@ public class Jogador {
 	
 	public Jogador(){
 		
+	}
+	
+	
+
+	public boolean isEhDestro() {
+		return ehDestro;
+	}
+
+	public void setEhDestro(boolean ehDestro) {
+		this.ehDestro = ehDestro;
 	}
 
 	public String getNome() {

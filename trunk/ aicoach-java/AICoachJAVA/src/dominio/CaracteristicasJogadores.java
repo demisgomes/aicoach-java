@@ -2,24 +2,27 @@ package dominio;
 
 public class CaracteristicasJogadores {
 	
-	private int resistente;
+	private int resistencia;
 	private int qualidadePasse;
-	private int velocista;
-	private int cabeceador;
-	private int finalizador;
-	private int batedorDeFaltas;
-	private int controladorBola;
+	private int velocidade;
+	private int cabeceio;
+	private int finalizacao;
+	private int bolaParada;
+	private int controleBola;
+	private int drible;
+	private int desarme;
+	private int defesas;
 
 	public CaracteristicasJogadores(){
 		
 	}
 
-	public int getResistente() {
-		return resistente;
+	public int getResistencia() {
+		return resistencia;
 	}
 
-	public void setResistente(int resistente) {
-		this.resistente = resistente;
+	public void setResistencia(int resistencia) {
+		this.resistencia = resistencia;
 	}
 
 	public int getQualidadePasse() {
@@ -30,45 +33,73 @@ public class CaracteristicasJogadores {
 		this.qualidadePasse = qualidadePasse;
 	}
 
-	public int getVelocista() {
-		return velocista;
+	public int getVelocidade() {
+		return velocidade;
 	}
 
-	public void setVelocista(int velocista) {
-		this.velocista = velocista;
+	public void setVelocidade(int velocidade) {
+		this.velocidade = velocidade;
 	}
 
-	public int getCabeceador() {
-		return cabeceador;
+	public int getCabeceio() {
+		return cabeceio;
 	}
 
-	public void setCabeceador(int cabeceador) {
-		this.cabeceador = cabeceador;
+	public void setCabeceio(int cabeceio) {
+		this.cabeceio = cabeceio;
 	}
 
-	public int getFinalizador() {
-		return finalizador;
+	public int getFinalizacao() {
+		return finalizacao;
 	}
 
-	public void setFinalizador(int finalizador) {
-		this.finalizador = finalizador;
+	public void setFinalizacao(int finalizacao) {
+		this.finalizacao = finalizacao;
 	}
 
-	public int getBatedorDeFaltas() {
-		return batedorDeFaltas;
+	public int getBolaParada() {
+		return bolaParada;
 	}
 
-	public void setBatedorDeFaltas(int batedorDeFaltas) {
-		this.batedorDeFaltas = batedorDeFaltas;
+	public void setBolaParada(int bolaParada) {
+		this.bolaParada = bolaParada;
 	}
 
-	public int getControladorBola() {
-		return controladorBola;
+	public int getControleBola() {
+		return controleBola;
 	}
 
-	public void setControladorBola(int controladorBola) {
-		this.controladorBola = controladorBola;
+	public void setControleBola(int controleBola) {
+		this.controleBola = controleBola;
 	}
+
+	public int getDrible() {
+		return drible;
+	}
+
+	public void setDrible(int drible) {
+		this.drible = drible;
+	}
+
+	public int getDesarme() {
+		return desarme;
+	}
+
+	public void setDesarme(int desarme) {
+		this.desarme = desarme;
+	}
+
+	public int getDefesas() {
+		return defesas;
+	}
+
+	public void setDefesas(int defesas) {
+		this.defesas = defesas;
+	}
+	
+	
+
+	
 	
 	
 
