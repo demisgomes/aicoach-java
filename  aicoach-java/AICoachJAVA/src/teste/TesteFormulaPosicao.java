@@ -31,14 +31,15 @@ public class TesteFormulaPosicao {
 	ArrayList<Posicao> posicoes = new ArrayList<Posicao>();	
 	Posicao goleiro = new Posicao("goleiro", jogador, formula, 0, true);
 	Posicao posicao = new Posicao("", jogador, formula, 0, false);
-	posicoes.add(goleiro);
 	posicoes.add(posicao);
+	posicoes.add(goleiro);
+	
 	
 	jogador.setCaracteristicas(caracteristicas);
 	jogador.setPosicoes(posicoes);
 
 	
-	goleiro.setPontuacao(formula.calcularZG(jogador));
+	goleiro.setPontuacao(formula.calcularGL(jogador));
 	
 	System.out.println(goleiro.getPontuacao());
 

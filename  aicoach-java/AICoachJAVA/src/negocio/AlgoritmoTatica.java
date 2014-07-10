@@ -11,10 +11,7 @@ public class AlgoritmoTatica {
 	
 	
 	public ArrayList<Jogador> SugerirJogadores(Tatica tatica, Time time){
-		ArrayList<Posicao> posicoes = tatica.getPosicoes();
-		for (int i = 0; i < posicoes.size(); i++) {
-			//todo
-		}
+		//todo
 		return null;	
 	}
 	
