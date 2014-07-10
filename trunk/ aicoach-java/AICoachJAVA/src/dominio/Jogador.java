@@ -8,7 +8,7 @@ public class Jogador {
 	private Time time;
 	private int idade;
 	private float peso, altura;
-	private boolean temCondicao, ehDestro;
+	private boolean temCondicao, ehDestro, escolhido;
 	private ArrayList<Posicao> posicoes;
 	private EstatisticasJogador estatisticas;
 	private CaracteristicasJogadores caracteristicas;
@@ -32,6 +32,14 @@ public class Jogador {
 	}
 	
 	
+	
+	public boolean isEscolhido() {
+		return escolhido;
+	}
+
+	public void setEscolhido(boolean escolhido) {
+		this.escolhido = escolhido;
+	}
 
 	public boolean isEhDestro() {
 		return ehDestro;

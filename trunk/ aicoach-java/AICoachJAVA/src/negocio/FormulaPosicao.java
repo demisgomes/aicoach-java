@@ -32,7 +32,9 @@ public class FormulaPosicao {
 		for (int i = 0; i < posicoes.size(); i++) {
 			if(posicoes.get(i).getNome().toLowerCase() == "goleiro" && posicoes.get(i).isPosicaoDeOrigem()){
 				pontuacaoFinal =  (pontuacaoFinal * 1.1f);
-				
+				break;
+			}else if(posicoes.size()-1 == i){
+				pontuacaoFinal = (pontuacaoFinal *0.5f);
 			}
 		}
 		return (int) pontuacaoFinal;
@@ -60,7 +62,9 @@ public class FormulaPosicao {
 		for (int i = 0; i < posicoes.size(); i++) {
 			if(posicoes.get(i).getNome().toLowerCase() == "zagueiro" && posicoes.get(i).isPosicaoDeOrigem()){
 				pontuacaoFinal =  (pontuacaoFinal * 1.1f);
-				
+				break;
+			}else if(posicoes.size()-1 == i){
+				pontuacaoFinal = (pontuacaoFinal * 0.8f);
 			}
 		}
 		return (int) pontuacaoFinal;
@@ -88,7 +92,9 @@ public class FormulaPosicao {
 		for (int i = 0; i < posicoes.size(); i++) {
 			if(posicoes.get(i).getNome().toLowerCase() == "lateral" && posicoes.get(i).isPosicaoDeOrigem()){
 				pontuacaoFinal =  (pontuacaoFinal * 1.1f);
-				
+				break;
+			}else if(posicoes.size()-1 == i){
+				pontuacaoFinal = (pontuacaoFinal*0.8f);
 			}
 		}
 		return (int) pontuacaoFinal;
@@ -115,7 +121,9 @@ public class FormulaPosicao {
 		for (int i = 0; i < posicoes.size(); i++) {
 			if(posicoes.get(i).getNome().toLowerCase() == "meia atacante" && posicoes.get(i).isPosicaoDeOrigem()){
 				pontuacaoFinal =  (pontuacaoFinal * 1.1f);
-				
+				break;
+			}else if(posicoes.size()-1 == i){
+				pontuacaoFinal = (pontuacaoFinal*0.8f);
 			}
 		}
 		return (int) pontuacaoFinal;
@@ -142,7 +150,9 @@ public class FormulaPosicao {
 		for (int i = 0; i < posicoes.size(); i++) {
 			if(posicoes.get(i).getNome().toLowerCase() == "meia central" && posicoes.get(i).isPosicaoDeOrigem()){
 				pontuacaoFinal =  (pontuacaoFinal * 1.1f);
-				
+				break;
+			}else if(posicoes.size()-1 == i){
+				pontuacaoFinal = (pontuacaoFinal*0.8f);
 			}
 		}
 		return (int) pontuacaoFinal;
@@ -169,7 +179,9 @@ public class FormulaPosicao {
 		for (int i = 0; i < posicoes.size(); i++) {
 			if(posicoes.get(i).getNome().toLowerCase() == "meia lateral" && posicoes.get(i).isPosicaoDeOrigem()){
 				pontuacaoFinal =  (pontuacaoFinal * 1.1f);
-				
+				break;
+			}else if(posicoes.size()-1 == i){
+				pontuacaoFinal = (pontuacaoFinal*0.8f);
 			}
 		}
 		return (int) pontuacaoFinal;
@@ -196,7 +208,9 @@ public class FormulaPosicao {
 		for (int i = 0; i < posicoes.size(); i++) {
 			if(posicoes.get(i).getNome().toLowerCase() == "segundo atacante" && posicoes.get(i).isPosicaoDeOrigem()){
 				pontuacaoFinal =  (pontuacaoFinal * 1.1f);
-				
+				break;
+			}else if(posicoes.size()-1 == i){
+				pontuacaoFinal = (pontuacaoFinal*0.8f);
 			}
 		}
 		return (int) pontuacaoFinal;
@@ -223,7 +237,9 @@ public class FormulaPosicao {
 		for (int i = 0; i < posicoes.size(); i++) {
 			if(posicoes.get(i).getNome().toLowerCase() == "centro avante" && posicoes.get(i).isPosicaoDeOrigem()){
 				pontuacaoFinal =  (pontuacaoFinal * 1.1f);
-				
+				break;
+			}else if(posicoes.size()-1 == i){
+				pontuacaoFinal = (pontuacaoFinal*0.8f);
 			}
 		}
 		return (int) pontuacaoFinal;
