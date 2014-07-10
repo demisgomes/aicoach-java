@@ -7,12 +7,39 @@ public class Time {
 	
 	private String nome;
 	private ArrayList<Jogador> jogadores;
+	private Tatica tatica;
 	
 	public Time(String nome, ArrayList<Jogador> jogadores){
 		setNome(nome);
 		setJogadores(jogadores);
 		
 	}
+	
+	
+
+
+	
+
+
+	public Tatica getTatica() {
+		return tatica;
+	}
+
+
+
+
+
+
+
+	public void setTatica(Tatica tatica) {
+		this.tatica = tatica;
+	}
+
+
+
+
+
+
 
 	public String getNome() {
 		return nome;
