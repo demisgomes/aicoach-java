@@ -6,6 +6,7 @@ public class Tatica {
 	
 	private String nome;
 	private ArrayList<Posicao> posicoes;
+	private Time time;
 	
 	public Tatica(String nome, ArrayList<Posicao> posicoes){
 		setNome(nome);
@@ -14,6 +15,16 @@ public class Tatica {
 	
 	public Tatica(){
 		
+	}
+	
+	
+	
+	public Time getTime() {
+		return time;
+	}
+
+	public void setTime(Time time) {
+		this.time = time;
 	}
 
 	public String getNome() {
