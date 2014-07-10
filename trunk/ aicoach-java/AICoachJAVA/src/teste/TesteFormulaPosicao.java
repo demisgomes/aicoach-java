@@ -16,15 +16,15 @@ public class TesteFormulaPosicao {
 	public static void main(String[] args) {
 		Jogador jogador = new Jogador();
 		CaracteristicasJogadores caracteristicas = new CaracteristicasJogadores();
-		caracteristicas.setResistencia(6);
+		caracteristicas.setResistencia(1);
 		caracteristicas.setDefesas(10);
-		caracteristicas.setBolaParada(2);
-		caracteristicas.setDrible(3);
-		caracteristicas.setVelocidade(8);
-		caracteristicas.setCabeceio(1);
-		caracteristicas.setControleBola(9);
+		caracteristicas.setBolaParada(9);
+		caracteristicas.setDrible(2);
+		caracteristicas.setVelocidade(3);
+		caracteristicas.setCabeceio(8);
+		caracteristicas.setControleBola(5);
 		caracteristicas.setDesarme(4);
-		caracteristicas.setFinalizacao(5);
+		caracteristicas.setFinalizacao(6);
 		caracteristicas.setQualidadePasse(7);
 			
 	FormulaPosicao formula = new FormulaPosicao();
@@ -38,7 +38,7 @@ public class TesteFormulaPosicao {
 	jogador.setPosicoes(posicoes);
 
 	
-	goleiro.setPontuacao(formula.calcularGL(jogador));
+	goleiro.setPontuacao(formula.calcularZG(jogador));
 	
 	System.out.println(goleiro.getPontuacao());
 
