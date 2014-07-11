@@ -187,6 +187,65 @@ public class FormulaPosicao {
 		return (int) pontuacaoFinal;
 	}
 	
+	public int calcularVol(Jogador jogador){
+		int ressistencia = jogador.getCaracteristicas().getResistencia();
+		int cabeceio = jogador.getCaracteristicas().getCabeceio();
+		int finalizacao = jogador.getCaracteristicas().getFinalizacao();
+		int velocidade = jogador.getCaracteristicas().getVelocidade();
+		int bolaParada = jogador.getCaracteristicas().getBolaParada();
+		int qualidadePasse = jogador.getCaracteristicas().getQualidadePasse();
+		int controleBola = jogador.getCaracteristicas().getControleBola();
+		int drible = jogador.getCaracteristicas().getDrible();
+		int desarme = jogador.getCaracteristicas().getDesarme();
+		int defesa = jogador.getCaracteristicas().getDefesas();
+		
+		float somaCaracteristicas = (ressistencia * 6) + (cabeceio*7) + (finalizacao*2) + (velocidade*5) +
+				(bolaParada*4) + (qualidadePasse*9) + (controleBola*8) + (drible*3) + (desarme*10) + (defesa*1);
+		
+		float resultadoJogador = somaCaracteristicas/somaPesos;
+		float pontuacaoFinal = (resultadoJogador/jogadorIdeal)*100;
+		ArrayList<Posicao> posicoes = jogador.getPosicoes();
+		for (int i = 0; i < posicoes.size(); i++) {
+			if(posicoes.get(i).getNome().toLowerCase() == "volante" && posicoes.get(i).isPosicaoDeOrigem()){
+				pontuacaoFinal =  (pontuacaoFinal * 1.1f);
+				break;
+			}else if(posicoes.size()-1 == i){
+				pontuacaoFinal = (pontuacaoFinal*0.8f);
+			}
+		}
+		return (int) pontuacaoFinal;
+		
+	}
+	
+	public int calcularPT(Jogador jogador){
+		int ressistencia = jogador.getCaracteristicas().getResistencia();
+		int cabeceio = jogador.getCaracteristicas().getCabeceio();
+		int finalizacao = jogador.getCaracteristicas().getFinalizacao();
+		int velocidade = jogador.getCaracteristicas().getVelocidade();
+		int bolaParada = jogador.getCaracteristicas().getBolaParada();
+		int qualidadePasse = jogador.getCaracteristicas().getQualidadePasse();
+		int controleBola = jogador.getCaracteristicas().getControleBola();
+		int drible = jogador.getCaracteristicas().getDrible();
+		int desarme = jogador.getCaracteristicas().getDesarme();
+		int defesa = jogador.getCaracteristicas().getDefesas();
+		
+		float somaCaracteristicas = (ressistencia * 5) + (cabeceio*2) + (finalizacao*9) + (velocidade*10) +
+				(bolaParada*4) + (qualidadePasse*8) + (controleBola*7) + (drible*6) + (desarme*3) + (defesa*1);
+		
+		float resultadoJogador = somaCaracteristicas/somaPesos;
+		float pontuacaoFinal = (resultadoJogador/jogadorIdeal)*100;
+		ArrayList<Posicao> posicoes = jogador.getPosicoes();
+		for (int i = 0; i < posicoes.size(); i++) {
+			if(posicoes.get(i).getNome().toLowerCase() == "ponta" && posicoes.get(i).isPosicaoDeOrigem()){
+				pontuacaoFinal =  (pontuacaoFinal * 1.1f);
+				break;
+			}else if(posicoes.size()-1 == i){
+				pontuacaoFinal = (pontuacaoFinal*0.8f);
+			}
+		}
+		return (int) pontuacaoFinal;
+	}
+	
 	public int calcularSA(Jogador jogador){
 		int ressistencia = jogador.getCaracteristicas().getResistencia();
 		int cabeceio = jogador.getCaracteristicas().getCabeceio();
