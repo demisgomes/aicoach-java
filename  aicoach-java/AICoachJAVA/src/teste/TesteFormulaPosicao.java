@@ -359,7 +359,7 @@ ArrayList<Posicao> posicoesLeoGamalho=new ArrayList<Posicao>();
 	ArrayList<Posicao> listaGerada=tatica.SugerirJogadores(taticaNow, SantaCruz);
 	
 	for (Posicao xxx: listaGerada ){
-		System.out.println(xxx.getJogador()+" joga de "+ xxx.getNome());
+		System.out.println(xxx.getJogador().getNome()+" joga de "+ xxx.getNome());
 	}
 	}
 

@@ -13,16 +13,17 @@ public class AlgoritmoTatica {
 		
 		ArrayList<Posicao> posicoes = tatica.getPosicoes();
 		ArrayList<Jogador> jogadoresClone = new ArrayList<Jogador>();
+		ArrayList<Posicao> posicoesRetorno = new ArrayList<Posicao>();
 		
 		
 		
 		for (Posicao posicao : posicoes) {
 			int ptMaior=0;
 			Posicao posicaoX = null;
-			for(Jogador jogador : jogadoresClone){
+			for(Jogador jogador : time.getJogadores()){
 				
 				for(Posicao posicaoComparada: jogador.getPosicoes()){
-					if(posicao.getNome().equals(posicaoComparada.getNome()) && posicaoComparada.isPosicaoDeOrigem()){
+					if(posicao.getNome().equals(posicaoComparada.getNome()) && posicaoComparada.isPosicaoDeOrigem() && !jogadoresClone.contains(jogador)){
 						System.out.println("Entrei No mFI");
 						System.out.println(jogador.getNome()+ " Joga de "+posicaoComparada.getNome()+" pontuacao de "+ posicaoComparada.getPontuacao());
 						System.out.println(ptMaior+" "+posicaoComparada.getPontuacao());
@@ -31,15 +32,19 @@ public class AlgoritmoTatica {
 							ptMaior=posicaoComparada.getPontuacao();
 							
 							posicaoX=posicaoComparada;
-							jogadoresClone.remove(jogador);
+							jogadoresClone.add(jogador);
+							
 							System.out.println(posicaoX.getNome()+" "+posicaoX.getJogador().getNome());
 							
 						}
+						posicoesRetorno.add(posicaoX);
 						
 					}
+					
 				}
+				
 			}
-			posicao=posicaoX;
+			
 				
 			
 		}
@@ -47,7 +52,7 @@ public class AlgoritmoTatica {
 		
 		
 		
-		return posicoes;	
+		return posicoesRetorno;	
 	}
 	
 	public Tatica SugerirTatica(){
