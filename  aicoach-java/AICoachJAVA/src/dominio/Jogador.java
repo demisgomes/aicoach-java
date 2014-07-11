@@ -12,6 +12,8 @@ public class Jogador {
 	private ArrayList<Posicao> posicoes;
 	private EstatisticasJogador estatisticas;
 	private CaracteristicasJogadores caracteristicas;
+	private int[] pontuacaoPosicoes=new int[10];
+	
 	
 	public Jogador(String nome, Time time, float peso, float altura,  boolean temCondicao, 
 			ArrayList<Posicao> posicoes, EstatisticasJogador estatisticas, CaracteristicasJogadores caracteristicas){
@@ -123,7 +125,16 @@ public class Jogador {
 	public void setCaracteristicas(CaracteristicasJogadores caracteristicas) {
 		this.caracteristicas = caracteristicas;
 	}
-	
+
+	public int[] getPontuacaoPosicoes() {
+		return pontuacaoPosicoes;
+	}
+
+	public void setPontuacaoPosicoes(int[] pontuacaoPosicoes) {
+		this.pontuacaoPosicoes = pontuacaoPosicoes;
+	}
+
+
 	
 
 }

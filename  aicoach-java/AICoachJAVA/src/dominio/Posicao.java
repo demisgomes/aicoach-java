@@ -20,7 +20,16 @@ public class Posicao {
 		
 	}
 	
+	//inicializar sem jogador e pontuacao
+	public Posicao(String nome, FormulaPosicao formula){
+		setNome(nome);
+		setFormula(formula);
+		
+	}
 	
+	public Posicao(String nome){
+			setNome(nome);
+	}
 
 	public boolean isPosicaoDeOrigem() {
 		return posicaoDeOrigem;
