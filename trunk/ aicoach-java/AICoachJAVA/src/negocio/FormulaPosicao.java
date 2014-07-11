@@ -2,7 +2,6 @@ package negocio;
 
 import java.util.ArrayList;
 
-import dominio.CaracteristicasJogadores;
 import dominio.Jogador;
 import dominio.Posicao;
 
@@ -37,6 +36,11 @@ public class FormulaPosicao {
 				pontuacaoFinal = (pontuacaoFinal *0.5f);
 			}
 		}
+		
+		
+		//add no array da pontuacao de posicoes
+		
+		jogador.getPontuacaoPosicoes()[0]=(int)pontuacaoFinal;
 		return (int) pontuacaoFinal;
 	}
 	
@@ -67,6 +71,10 @@ public class FormulaPosicao {
 				pontuacaoFinal = (pontuacaoFinal * 0.8f);
 			}
 		}
+		//add no array da pontuacao de posicoes
+		
+		jogador.getPontuacaoPosicoes()[2]=(int)pontuacaoFinal;
+		
 		return (int) pontuacaoFinal;
 		
 	}
@@ -97,6 +105,10 @@ public class FormulaPosicao {
 				pontuacaoFinal = (pontuacaoFinal*0.8f);
 			}
 		}
+		//add no array da pontuacao de posicoes
+		
+				jogador.getPontuacaoPosicoes()[1]=(int)pontuacaoFinal;
+		
 		return (int) pontuacaoFinal;
 	}
 	
@@ -126,6 +138,10 @@ public class FormulaPosicao {
 				pontuacaoFinal = (pontuacaoFinal*0.8f);
 			}
 		}
+		
+		//add no array da pontuacao de posicoes
+		
+				jogador.getPontuacaoPosicoes()[6]=(int)pontuacaoFinal;
 		return (int) pontuacaoFinal;
 	}
 	
@@ -155,6 +171,10 @@ public class FormulaPosicao {
 				pontuacaoFinal = (pontuacaoFinal*0.8f);
 			}
 		}
+		//add no array da pontuacao de posicoes
+		
+				jogador.getPontuacaoPosicoes()[4]=(int)pontuacaoFinal;
+		
 		return (int) pontuacaoFinal;
 	}
 	
@@ -184,6 +204,11 @@ public class FormulaPosicao {
 				pontuacaoFinal = (pontuacaoFinal*0.8f);
 			}
 		}
+		
+		//add no array da pontuacao de posicoes
+		
+				jogador.getPontuacaoPosicoes()[5]=(int)pontuacaoFinal;
+		
 		return (int) pontuacaoFinal;
 	}
 	
@@ -272,6 +297,9 @@ public class FormulaPosicao {
 				pontuacaoFinal = (pontuacaoFinal*0.8f);
 			}
 		}
+		//add no array da pontuacao de posicoes
+		
+				jogador.getPontuacaoPosicoes()[8]=(int)pontuacaoFinal;
 		return (int) pontuacaoFinal;
 	}
 	
@@ -297,11 +325,21 @@ public class FormulaPosicao {
 			if(posicoes.get(i).getNome().toLowerCase() == "centro avante" && posicoes.get(i).isPosicaoDeOrigem()){
 				pontuacaoFinal =  (pontuacaoFinal * 1.1f);
 				break;
+				
+				
 			}else if(posicoes.size()-1 == i){
 				pontuacaoFinal = (pontuacaoFinal*0.8f);
 			}
 		}
+		
+		//add no array da pontuacao de posicoes
+		
+				jogador.getPontuacaoPosicoes()[9]=(int)pontuacaoFinal;
 		return (int) pontuacaoFinal;
+	}
+	
+	public void calculeTodasPosicoes(Jogador jogador){
+		
 	}
 	
 	
