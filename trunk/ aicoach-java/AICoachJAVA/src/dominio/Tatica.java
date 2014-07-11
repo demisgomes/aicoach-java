@@ -5,10 +5,10 @@ import java.util.ArrayList;
 public class Tatica {
 	
 
-	private final Tatica QuatroQuatroDois=new Tatica("4-4-2", null);
+	//private Tatica QuatroQuatroDois=new Tatica("4-4-2", null);
 	ArrayList<Posicao> posicoesTatica=new ArrayList<Posicao>();
 	
-	public Tatica getQuatroQuatroDois() {
+	/*public Tatica getQuatroQuatroDois() {
 		posicoesTatica.clear();
 		Posicao goleiro=new Posicao("Goleiro");
 		Posicao lateralDireito=new Posicao("Lateral");
@@ -34,7 +34,7 @@ public class Tatica {
 		posicoesTatica.add(segundoAtacante);
 		posicoesTatica.add(centroAvante);
 		
-		QuatroQuatroDois.setPosicoes(posicoesTatica);
+		//QuatroQuatroDois.setPosicoes(posicoesTatica);
 		return QuatroQuatroDois;
 	}
 
@@ -197,7 +197,7 @@ public class Tatica {
 
 	private final Tatica TresCincoDois=new Tatica("3-5-2", null);
 
-	private final Tatica TresSeisUm=new Tatica("3-6-1", null);
+	private final Tatica TresSeisUm=new Tatica("3-6-1", null);*/
 	private String nome;
 	private ArrayList<Posicao> posicoes;
 	private Time time;
