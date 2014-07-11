@@ -1,5 +1,8 @@
 package teste;
 
+import gui.TelaInicial;
+import gui.TelaTatica;
+
 import java.util.ArrayList;
 
 import negocio.FormulaPosicao;
@@ -39,9 +42,11 @@ public class TesteFormulaPosicao {
 	jogador.setPosicoes(posicoes);
 
 	
-	goleiro.setPontuacao(formula.calcularGL(jogador));
+	goleiro.setPontuacao(formula.calcularPT(jogador));
 	
 	System.out.println(goleiro.getPontuacao());
+	
+	//TelaInicial tela = new TelaInicial("tela tatica", 600, 300);
 
 
 	}
