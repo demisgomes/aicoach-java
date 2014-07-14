@@ -12,7 +12,8 @@ public class Jogador {
 	private ArrayList<Posicao> posicoes;
 	private EstatisticasJogador estatisticas;
 	private CaracteristicasJogadores caracteristicas;
-	private int[] pontuacaoPosicoes=new int[10];
+	private Posicao posicaoAtual;
+	
 	
 	
 	public Jogador(String nome, Time time, float peso, float altura,  boolean temCondicao, 
@@ -28,6 +29,20 @@ public class Jogador {
 		setCaracteristicas(caracteristicas);
 		
 	}
+	public Jogador(String nome, Time time, float peso, float altura,  boolean temCondicao, 
+			ArrayList<Posicao> posicoes, EstatisticasJogador estatisticas, CaracteristicasJogadores caracteristicas, Posicao posicaoAtual){
+		setNome(nome);
+		setTime(time);
+		setIdade(idade);
+		setPeso(peso);
+		setAltura(altura);
+		setTemCondicao(temCondicao);
+		setPosicoes(posicoes);
+		setEstatisticas(estatisticas);
+		setCaracteristicas(caracteristicas);
+		setPosicaoAtual(posicaoAtual);
+		
+	}
 	
 	public Jogador(){
 		
@@ -35,6 +50,13 @@ public class Jogador {
 	
 	
 	
+	
+	public Posicao getPosicaoAtual() {
+		return posicaoAtual;
+	}
+	public void setPosicaoAtual(Posicao posicaoAtual) {
+		this.posicaoAtual = posicaoAtual;
+	}
 	public boolean isEscolhido() {
 		return escolhido;
 	}
@@ -126,13 +148,7 @@ public class Jogador {
 		this.caracteristicas = caracteristicas;
 	}
 
-	public int[] getPontuacaoPosicoes() {
-		return pontuacaoPosicoes;
-	}
 
-	public void setPontuacaoPosicoes(int[] pontuacaoPosicoes) {
-		this.pontuacaoPosicoes = pontuacaoPosicoes;
-	}
 
 
 	
