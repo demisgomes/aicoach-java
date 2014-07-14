@@ -55,9 +55,9 @@ package bd;
 			this.nome = nome;
 		}
 		
-		public void criarBd(){
+		/*public void criarBd(){
 			String sql = "CREATE DATABASE IF NOT EXISTS '"+getNome()+"'";
-		}
+		}*/
 		
 		public Connection iniciaBanco(){
 			try {
