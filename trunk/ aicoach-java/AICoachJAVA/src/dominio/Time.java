@@ -9,6 +9,7 @@ public class Time {
 	private ArrayList<Jogador> jogadores;
 	private Tatica tatica;
 	
+	
 	public Time(String nome, ArrayList<Jogador> jogadores){
 		setNome(nome);
 		setJogadores(jogadores);

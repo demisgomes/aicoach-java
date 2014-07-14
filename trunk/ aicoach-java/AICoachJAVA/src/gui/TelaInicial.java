@@ -42,7 +42,10 @@ public class TelaInicial extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		if(e.getSource() == btnTime){
+			TelaTime tela = new TelaTime("Tela time", 600, 300);
+			this.dispose();
+		}
 		
 	}
 

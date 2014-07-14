@@ -39,8 +39,6 @@ public class FormulaPosicao {
 		
 		
 		//add no array da pontuacao de posicoes
-		
-		jogador.getPontuacaoPosicoes()[0]=(int)pontuacaoFinal;
 		return (int) pontuacaoFinal;
 	}
 	
@@ -72,8 +70,6 @@ public class FormulaPosicao {
 			}
 		}
 		//add no array da pontuacao de posicoes
-		
-		jogador.getPontuacaoPosicoes()[2]=(int)pontuacaoFinal;
 		
 		return (int) pontuacaoFinal;
 		
@@ -107,8 +103,6 @@ public class FormulaPosicao {
 		}
 		//add no array da pontuacao de posicoes
 		
-				jogador.getPontuacaoPosicoes()[1]=(int)pontuacaoFinal;
-		
 		return (int) pontuacaoFinal;
 	}
 	
@@ -140,8 +134,6 @@ public class FormulaPosicao {
 		}
 		
 		//add no array da pontuacao de posicoes
-		
-				jogador.getPontuacaoPosicoes()[6]=(int)pontuacaoFinal;
 		return (int) pontuacaoFinal;
 	}
 	
@@ -173,7 +165,6 @@ public class FormulaPosicao {
 		}
 		//add no array da pontuacao de posicoes
 		
-				jogador.getPontuacaoPosicoes()[4]=(int)pontuacaoFinal;
 		
 		return (int) pontuacaoFinal;
 	}
@@ -206,9 +197,6 @@ public class FormulaPosicao {
 		}
 		
 		//add no array da pontuacao de posicoes
-		
-				jogador.getPontuacaoPosicoes()[5]=(int)pontuacaoFinal;
-		
 		return (int) pontuacaoFinal;
 	}
 	
@@ -299,7 +287,6 @@ public class FormulaPosicao {
 		}
 		//add no array da pontuacao de posicoes
 		
-				jogador.getPontuacaoPosicoes()[8]=(int)pontuacaoFinal;
 		return (int) pontuacaoFinal;
 	}
 	
@@ -332,9 +319,6 @@ public class FormulaPosicao {
 			}
 		}
 		
-		//add no array da pontuacao de posicoes
-		
-				jogador.getPontuacaoPosicoes()[9]=(int)pontuacaoFinal;
 		return (int) pontuacaoFinal;
 	}
 	

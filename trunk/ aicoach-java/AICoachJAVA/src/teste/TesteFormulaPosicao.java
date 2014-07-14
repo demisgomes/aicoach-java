@@ -44,7 +44,7 @@ public class TesteFormulaPosicao {
 	jogador.setPosicoes(posicoes);
 
 	
-	goleiro.setPontuacao(formula.calcularPT(jogador));
+	goleiro.setPontuacao(formula.calcularGL(jogador));
 	
 	System.out.println(goleiro.getPontuacao());
 	
@@ -70,17 +70,17 @@ public class TesteFormulaPosicao {
 	caracteristicasThiago.setQualidadePasse(6);
 	
 	
-	goleiro = new Posicao("Goleiro", jogador, formula, 0, true);
-	jogador.getPosicoes().add(goleiro);
 	
 	
 	
 	Jogador jogadorThiagoCardoso = new Jogador("Thiago Cardoso",SantaCruz, 90, (float)1.86, true, posicoesThiago, null, caracteristicasThiago);
 	jogadorThiagoCardoso.setCaracteristicas(caracteristicasThiago);
-	jogadorThiagoCardoso.getPosicoes().add(goleiro);
-	jogadorThiagoCardoso.getPosicoes().get(0).setPontuacao(formula.calcularGL(jogadorThiagoCardoso));
 	
 
+	goleiro = new Posicao("Goleiro", jogadorThiagoCardoso, formula, 0, true);
+	jogador.getPosicoes().add(goleiro);
+	jogadorThiagoCardoso.getPosicoes().add(goleiro);
+	jogadorThiagoCardoso.getPosicoes().get(0).setPontuacao(formula.calcularGL(jogadorThiagoCardoso));
 	
 	System.out.println(jogadorThiagoCardoso.getPosicoes().get(0).getPontuacao()+" de thiago");
 	
@@ -307,6 +307,28 @@ ArrayList<Posicao> posicoesLeoGamalho=new ArrayList<Posicao>();
 	atLeoGamalho.setPontuacao(formula.calcularCA(jogadorLeoGamalho));
 	jogadorLeoGamalho.getPosicoes().add(atLeoGamalho);
 	
+ArrayList<Posicao> posicoesCacaRato=new ArrayList<Posicao>();
+	
+	caracteristicas.setResistencia(7);
+	caracteristicas.setDefesas(1);
+	caracteristicas.setBolaParada(4);
+	caracteristicas.setDrible(10);
+	caracteristicas.setVelocidade(8);
+	caracteristicas.setCabeceio(5);
+	caracteristicas.setControleBola(5);
+	caracteristicas.setDesarme(5);
+	caracteristicas.setFinalizacao(5);
+	caracteristicas.setQualidadePasse(5);
+	
+	Jogador jogadorCacaRato = new Jogador("Caça Rato",SantaCruz, 69, (float)1.78, true, posicoesCacaRato, null, caracteristicas);
+	
+	Posicao atCacaRato=new Posicao("Segundo Atacante", jogadorCacaRato, formula, 0, true);
+	//goleiro = new Posicao("goleiro", jogador, formula, 0, true);
+	jogadorCacaRato.setCaracteristicas(caracteristicas);
+	atCacaRato.setPontuacao(formula.calcularSA(jogadorCacaRato));
+	jogadorCacaRato.getPosicoes().add(atCacaRato);
+	
+	
 	jogadoresSantaCruz.add(jogadorThiagoCardoso);
 	jogadoresSantaCruz.add(jogadorNininho);
 	jogadoresSantaCruz.add(jogadorEvertonSena);
@@ -318,14 +340,15 @@ ArrayList<Posicao> posicoesLeoGamalho=new ArrayList<Posicao>();
 	jogadoresSantaCruz.add(jogadorCarlosAlberto);
 	jogadoresSantaCruz.add(jogadorPingo);
 	jogadoresSantaCruz.add(jogadorLeoGamalho);
+	jogadoresSantaCruz.add(jogadorCacaRato);
 	
-	
+	SantaCruz.setJogadores(jogadoresSantaCruz);
 	
 	for(Jogador jogadorSanta: SantaCruz.getJogadores()){
 		System.out.println(jogadorSanta.getNome()+" tem pontuação de "+jogadorSanta.getPosicoes().get(0).getPontuacao()+" jogando de "+jogadorSanta.getPosicoes().get(0).getNome());
 	}
 
-	//TelaInicial tela = new TelaInicial("tela tatica", 600, 300);
+	//TelaInicial tela = new TelaInicial("Tela Inicial", 600, 300);
 	
 	
 	ArrayList<Posicao> posicoesTatica=new ArrayList<Posicao>();
@@ -355,12 +378,29 @@ ArrayList<Posicao> posicoesLeoGamalho=new ArrayList<Posicao>();
 	posicoesTatica.add(centroAvante);
 	
 	AlgoritmoTatica tatica=new AlgoritmoTatica();
-	Tatica taticaNow=new Tatica("4-4-2", posicoesTatica);
-	ArrayList<Posicao> listaGerada=tatica.SugerirJogadores(taticaNow, SantaCruz);
-	
-	for (Posicao xxx: listaGerada ){
+	Tatica tatica1=new Tatica("4-4-2", posicoesTatica);
+	SantaCruz.setTatica(tatica1);
+	tatica.SugerirJogadores(SantaCruz);
+	for (Posicao xxx: SantaCruz.getTatica().getPosicoes() ){
 		System.out.println(xxx.getJogador().getNome()+" joga de "+ xxx.getNome());
 	}
+	Jogador j = new Jogador();
+	j = tatica.substituirJogador(jogadorCacaRato, SantaCruz);
+	
+	System.out.println("--------------------------------------------------------");
+	
+	for(Posicao posicaoSub : SantaCruz.getTatica().getPosicoes()){
+		if(posicaoSub.getJogador().equals(jogadorCacaRato)){
+			posicaoSub.setJogador(j);
+		}
 	}
+	for (Posicao xxx: SantaCruz.getTatica().getPosicoes() ){
+		System.out.println(xxx.getJogador().getNome()+" joga de "+ xxx.getNome());
+	}
+	
+}
+	
+	
+	
 
 }
