@@ -7,7 +7,7 @@ public class Posicao {
 	private Jogador jogador;
 	private String nome;
 	private FormulaPosicao formula;
-	private int pontuacao;
+	private int pontuacao, pontuacaParcial;
 	private boolean posicaoDeOrigem;
 	
 	public Posicao(String nome, Jogador jogador, FormulaPosicao formula, int pontuacao, boolean posicaoDeOrigem){
@@ -18,7 +18,19 @@ public class Posicao {
 		setPosicaoDeOrigem(posicaoDeOrigem);
 		
 		
-	}
+		
+	}	
+	
+	public Posicao(String nome, Jogador jogador, FormulaPosicao formula, int pontuacao, boolean posicaoDeOrigem, int pontuacaoParcial){
+		setJogador(jogador);
+		setNome(nome);
+		setFormula(formula);
+		setPontuacao(pontuacao);
+		setPosicaoDeOrigem(posicaoDeOrigem);
+		setPontuacaParcial(pontuacaoParcial);
+		
+		
+	}	
 	
 	//inicializar sem jogador e pontuacao
 	public Posicao(String nome, FormulaPosicao formula){
@@ -29,6 +41,20 @@ public class Posicao {
 	
 	public Posicao(String nome){
 			setNome(nome);
+	}
+	
+	public Posicao(){
+		
+	}
+	
+	
+
+	public int getPontuacaParcial() {
+		return pontuacaParcial;
+	}
+
+	public void setPontuacaParcial(int pontuacaParcial) {
+		this.pontuacaParcial = pontuacaParcial;
 	}
 
 	public boolean isPosicaoDeOrigem() {

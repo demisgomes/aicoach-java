@@ -8,7 +8,10 @@ import java.util.ArrayList;
 import negocio.AlgoritmoTatica;
 import negocio.FormulaPosicao;
 import dominio.CaracteristicasJogadores;
+import dominio.EstiloDeJogo;
 import dominio.Jogador;
+import dominio.OverallJogador;
+import dominio.OverallTime;
 import dominio.Posicao;
 import dominio.Tatica;
 import dominio.Time;
@@ -226,7 +229,7 @@ ArrayList<Posicao> posicoesMemo=new ArrayList<Posicao>();
 	caracteristicas.setDefesas(1);
 	caracteristicas.setBolaParada(6);
 	caracteristicas.setDrible(5);
-	caracteristicas.setVelocidade(7);
+	caracteristicas.setVelocidade(5);
 	caracteristicas.setCabeceio(5);
 	caracteristicas.setControleBola(6);
 	caracteristicas.setDesarme(8);
@@ -313,7 +316,7 @@ ArrayList<Posicao> posicoesCacaRato=new ArrayList<Posicao>();
 	caracteristicas.setDefesas(1);
 	caracteristicas.setBolaParada(4);
 	caracteristicas.setDrible(10);
-	caracteristicas.setVelocidade(8);
+	caracteristicas.setVelocidade(6);
 	caracteristicas.setCabeceio(5);
 	caracteristicas.setControleBola(5);
 	caracteristicas.setDesarme(5);
@@ -388,6 +391,19 @@ ArrayList<Posicao> posicoesCacaRato=new ArrayList<Posicao>();
 	j = tatica.substituirJogador(jogadorCacaRato, SantaCruz);
 	
 	System.out.println("--------------------------------------------------------");
+	OverallTime overall = new OverallTime();
+	
+	overall = tatica.gerarOverallTime(SantaCruz);
+	
+	OverallJogador overallJogador = new OverallJogador();
+	
+	overallJogador = tatica.gerarOverallJogador(SantaCruz);
+	
+	EstiloDeJogo estilo = new EstiloDeJogo();
+	 estilo = tatica.gerarEstilodeJogoTime(overall, overallJogador);
+	 
+	 int pont;
+	 pont = tatica.SugerirTatica(SantaCruz);
 	
 	for(Posicao posicaoSub : SantaCruz.getTatica().getPosicoes()){
 		if(posicaoSub.getJogador().equals(jogadorCacaRato)){
@@ -398,9 +414,38 @@ ArrayList<Posicao> posicoesCacaRato=new ArrayList<Posicao>();
 		System.out.println(xxx.getJogador().getNome()+" joga de "+ xxx.getNome());
 	}
 	
+
+	
+	
+	System.out.println("----------------------------------------------");
+	
+	System.out.println("média de velocidade santa: "+overall.getVelocidade()+"média de desarme santa: "+overall.getDesarme()+"média de finalização santa: "+overall.getFinalizacao()+"média de passe santa: "+overall.getPasse());
+	
+	System.out.println("----------------------------------------------");
+	
+	System.out.println("média atacantes: "+overallJogador.getAtacantes()+" média meias: "+overallJogador.getMeias()+" média defensores "+overallJogador.getDefensores()+" media time todo: "+overallJogador.getTimeTodo());
+	
+	System.out.println("----------------------------------------------");
+	
+	System.out.println("estilo de jogo: "+estilo.getNome()+" pontuacao "+estilo.getPontuacao());
+	
+	System.out.println("----------------------------------------------");
+	
+	for (int i = 0; i < SantaCruz.getJogadores().size(); i++) {
+		for (int k = 0; k < SantaCruz.getJogadores().get(i).getPosicoes().size(); k++) {
+			if(SantaCruz.getJogadores().get(i).getPosicoes().get(k).isPosicaoDeOrigem()){
+				System.out.println("pontuação parcial de: "+SantaCruz.getJogadores().get(i).getNome()+" "+SantaCruz.getJogadores().get(i).getPosicoes().get(k).getPontuacaParcial());
+			}
+			
+		}
+			
+		}
+	}
+	
 }
+	
 	
 	
 	
 
-}
+
