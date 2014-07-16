@@ -88,12 +88,13 @@ public void SugerirJogadores(Time time){
 				}
 				
 			}
-			posicaoX.getJogador().setEscolhido(true);
-			posicaoX.getJogador().setPosicaoAtual(posicaoX);
+			if(!posicaoX.getJogador().isEscolhido()){
+				posicaoX.getJogador().setEscolhido(true);
+				posicaoX.getJogador().setPosicaoAtual(posicaoX);
 			
-			jogadoresClone.add(posicaoX.getJogador());
-			posicoesRetorno.add(posicaoX);
-				
+				jogadoresClone.add(posicaoX.getJogador());
+				posicoesRetorno.add(posicaoX);
+			}
 			
 		}
 		//todo
@@ -109,6 +110,10 @@ public void SugerirJogadores(Time time){
 		int maiorPontuacaoParcialMedia = 0, pontuacaoParcialMediaAtual = 0;
 		for (int i = 0; i < taticas.size(); i++) {
 			time.setTatica(taticas.get(i));
+			for (int j = 0; j < time.getJogadores().size(); j++) {
+				time.getJogadores().get(j).setEscolhido(false);
+				
+			}
 			this.SugerirJogadores(time);
 			pontuacaoParcialMediaAtual = this.gerarPontuacaoParcial(time);
 			System.out.println("pontuacao media: "+pontuacaoParcialMediaAtual);
@@ -129,10 +134,9 @@ public void SugerirJogadores(Time time){
 		Posicao posicao = new Posicao();
 		EstiloDeJogo estilo = new EstiloDeJogo();
 		estilo = this.gerarEstilodeJogoTime(this.gerarOverallTime(time), this.gerarOverallJogador(time));
-		Tatica tatica = new Tatica();
 		
-		for (int i = 0; i < time.getJogadores().size(); i++) {
-			posicao = time.getJogadores().get(i).getPosicaoAtual();
+		for (int i = 0; i < time.getTatica().getPosicoes().size(); i++) {
+			posicao = time.getTatica().getPosicoes().get(i);
 			if(posicao != null){
 			if(estilo.getNome().toLowerCase().equals("contra ataque")){
 				if(posicao.getNome().toLowerCase().equals("lateral") || posicao.getNome().toLowerCase().equals("meia lateral")
@@ -144,7 +148,7 @@ public void SugerirJogadores(Time time){
 							posicao.getJogador().getCaracteristicas().getFinalizacao()*3+posicao.getJogador().getCaracteristicas().getDesarme()+posicao.getPontuacao();
 					
 					pontuacaoParcial+=pontuacaoParcialAtual;
-					
+					System.out.println(pontuacaoParcialAtual+" "+posicao.getNome()+" "+posicao.getJogador().getNome());
 					posicao.setPontuacaParcial(pontuacaoParcialAtual);
 					qtdJogadores++;
 				}
@@ -159,7 +163,7 @@ public void SugerirJogadores(Time time){
 							posicao.getJogador().getCaracteristicas().getFinalizacao()*3+posicao.getJogador().getCaracteristicas().getDesarme()*4+posicao.getPontuacao();
 					
 					pontuacaoParcial+=pontuacaoParcialAtual;
-					
+					System.out.println(pontuacaoParcialAtual+" "+posicao.getNome()+" "+posicao.getJogador().getNome());
 					posicao.setPontuacaParcial(pontuacaoParcialAtual);
 					qtdJogadores++;
 				}
@@ -173,7 +177,7 @@ public void SugerirJogadores(Time time){
 							posicao.getJogador().getCaracteristicas().getFinalizacao()*2+posicao.getJogador().getCaracteristicas().getDesarme()*1+posicao.getPontuacao();
 					
 					pontuacaoParcial+=pontuacaoParcialAtual;
-					
+					System.out.println(pontuacaoParcialAtual+" "+posicao.getNome()+" "+posicao.getJogador().getNome());
 					posicao.setPontuacaParcial(pontuacaoParcialAtual);
 					qtdJogadores++;
 				}
@@ -188,14 +192,14 @@ public void SugerirJogadores(Time time){
 							posicao.getJogador().getCaracteristicas().getFinalizacao()*2+posicao.getJogador().getCaracteristicas().getDesarme()+posicao.getPontuacao();
 					
 					pontuacaoParcial +=pontuacaoParcialAtual;
-					
+					System.out.println(pontuacaoParcialAtual+" "+posicao.getNome()+" "+posicao.getJogador().getNome());
 					posicao.setPontuacaParcial(pontuacaoParcialAtual);
 					qtdJogadores++;
 				}
 				
 			}
 				
-			}else{
+			/*}else{
 				if(estilo.getNome().toLowerCase().equals("contra ataque")){
 						for (int j = 0; j < time.getJogadores().get(i).getPosicoes().size(); j++) {
 							posicao = time.getJogadores().get(i).getPosicoes().get(j);
@@ -281,7 +285,7 @@ public void SugerirJogadores(Time time){
 						}
 						
 						
-				}
+				}*/
 				
 				
 			}
@@ -301,6 +305,8 @@ public void SugerirJogadores(Time time){
 				jogadorX = time.getJogadores().get(i);
 				if(jogadorX.getPosicoes().get(j).getNome().equals(jogador.getPosicaoAtual().getNome()) && !jogadorX.isEscolhido() && pontuacao < jogadorX.getPosicoes().get(j).getPontuacao()){
 					pontuacao = jogadorX.getPosicoes().get(j).getPontuacao();
+					jogadorX.setEscolhido(true);
+					jogador.setEscolhido(false);
 					jogadorSubstituto = jogadorX;
 					
 				}
