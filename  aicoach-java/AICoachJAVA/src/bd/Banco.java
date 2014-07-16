@@ -4,6 +4,7 @@ package bd;
 	import java.beans.Statement;
 import java.sql.Connection;
 	import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -11,8 +12,8 @@ import javax.naming.spi.DirStateFactory.Result;
 
 	public class Banco {
 		
-		private String nome;
-		private String url, senha, root;
+		private String nome="aicoach";
+		private String url="jdbc:mysql://localhost/aicoach", senha="root", root="root";
 		private Connection conn;
 		
 		public Banco(String url, String senha, String root) {
@@ -22,9 +23,6 @@ import javax.naming.spi.DirStateFactory.Result;
 		}
 
 		public Banco() {
-			setUrl("jdbc:mysql://localhost/aicoach");
-			setSenha("root");
-			setRoot("root");
 		}
 		
 		public String getUrl() {
@@ -60,7 +58,7 @@ import javax.naming.spi.DirStateFactory.Result;
 		}
 		
 		
-		public Connection iniciaBanco(){
+		public Connection iniciarBanco(){
 			
 			try {
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -83,45 +81,51 @@ import javax.naming.spi.DirStateFactory.Result;
 				System.out.println("Erro no driver");
 				e.printStackTrace();
 			}
+			
+			
 			return conn;
 		}
 		
-		public void criaBanco(String nomeBanco){
-			setNome(nomeBanco);
-			String sql = "CREATE DATABASE IF NOT EXISTS '"+getNome()+"'";
-	
+		
+		public void fecharBanco(){
 			try {
-				java.sql.Statement stmt = iniciaBanco().createStatement();
-				
-				try {
-					ResultSet rs;
-					rs = stmt.executeQuery(sql);
-				} catch (Exception er) {
-					System.out.println("erro result set/n");
-					er.printStackTrace();}
-			} catch (SQLException er1) {
-				System.out.println("erro statement/n");
-				er1.printStackTrace();
+				conn.close();
+				System.out.println("desconectado");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+		}
+		public void criarBanco(String nomeBanco){
+			
+			String sql = "CREATE DATABASE IF NOT EXISTS '"+nomeBanco+"'";			
+				executarSQL(sql);
+			
 		}
 		
 		public void excluirBanco(String nomeBanco){
 			setNome(nomeBanco);
 			String sql = "DROP DATABASE '"+getNome()+"'";
 	
-			try {
-				java.sql.Statement stmt = iniciaBanco().createStatement();
+			
+				executarSQL(sql);
 				
-				try {
-					ResultSet rs;
-					rs = stmt.executeQuery(sql);
-				} catch (Exception er2) {
-					System.out.println("erro result set/n");
-					er2.printStackTrace();
-				}
-			} catch (SQLException er3) {
-				System.out.println("erro statement/n");
-				er3.printStackTrace();
+			
+		}
+		
+		public void executarSQL(String sql){
+			try {
+			
+				PreparedStatement st = iniciarBanco().prepareStatement(sql);
+				st.execute(); // executa comando
+				st.close();
+				
+			} catch (Exception er5) {
+				System.out.println("erro result set/n");
+				er5.printStackTrace();
+			}	
+			finally{
+				fecharBanco();
 			}
 		}
 }
