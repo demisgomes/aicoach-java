@@ -45,7 +45,8 @@ public class TelaTime extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnTatica){
-			TelaTatica tela = new TelaTatica("Tela tática", 600, 300);
+			TelaTatica tela = new TelaTatica();
+			tela.setVisible(true);
 			this.dispose();
 		}
 		
