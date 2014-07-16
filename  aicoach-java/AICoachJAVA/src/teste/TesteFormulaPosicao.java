@@ -403,7 +403,9 @@ ArrayList<Posicao> posicoesCacaRato=new ArrayList<Posicao>();
 	 estilo = tatica.gerarEstilodeJogoTime(overall, overallJogador);
 	 
 	 int pont;
-	 pont = tatica.SugerirTatica(SantaCruz);
+	pont = tatica.gerarPontuacaoParcial(SantaCruz);
+	
+	
 	
 	for(Posicao posicaoSub : SantaCruz.getTatica().getPosicoes()){
 		if(posicaoSub.getJogador().equals(jogadorCacaRato)){
@@ -413,6 +415,29 @@ ArrayList<Posicao> posicoesCacaRato=new ArrayList<Posicao>();
 	for (Posicao xxx: SantaCruz.getTatica().getPosicoes() ){
 		System.out.println(xxx.getJogador().getNome()+" joga de "+ xxx.getNome());
 	}
+	
+	
+ArrayList<Posicao> posicoesTatica2=new ArrayList<Posicao>();
+
+Posicao segundoAttacante2 = new Posicao();
+
+	posicoesTatica2.add(goleiro1);
+	posicoesTatica2.add(lateralDireito);
+	posicoesTatica2.add(lateralEsquerdo);
+	posicoesTatica2.add(zagueiro1);
+	posicoesTatica2.add(zagueiro2);
+	posicoesTatica2.add(volante1);
+	posicoesTatica2.add(meiaCentral1);
+	posicoesTatica.add(segundoAttacante2);
+	posicoesTatica2.add(meiaAtacante);
+	posicoesTatica2.add(segundoAtacante);
+	posicoesTatica2.add(centroAvante);
+	
+	Tatica tatica2 = new Tatica("433", posicoesTatica2);
+	
+	ArrayList<Tatica> taticas = new ArrayList<Tatica>();
+	taticas.add(tatica1);
+	taticas.add(tatica2);
 	
 
 	
@@ -440,6 +465,11 @@ ArrayList<Posicao> posicoesCacaRato=new ArrayList<Posicao>();
 		}
 			
 		}
+	
+Tatica tatica3 = new Tatica();
+tatica3 = tatica.sugerirTatica(SantaCruz, taticas);
+System.out.println("tatica selecionada: "+tatica3.getNome());
+	
 	}
 	
 }

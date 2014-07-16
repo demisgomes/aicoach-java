@@ -104,97 +104,192 @@ public void SugerirJogadores(Time time){
 		//return posicoesRetorno;	
 	}
 	
+	public Tatica sugerirTatica(Time time, ArrayList<Tatica> taticas){
+		Tatica tatica = new Tatica();
+		int maiorPontuacaoParcialMedia = 0, pontuacaoParcialMediaAtual = 0;
+		for (int i = 0; i < taticas.size(); i++) {
+			time.setTatica(taticas.get(i));
+			this.SugerirJogadores(time);
+			pontuacaoParcialMediaAtual = this.gerarPontuacaoParcial(time);
+			System.out.println("pontuacao media: "+pontuacaoParcialMediaAtual);
+			if(pontuacaoParcialMediaAtual>=maiorPontuacaoParcialMedia){
+				maiorPontuacaoParcialMedia = pontuacaoParcialMediaAtual;
+				tatica = taticas.get(i);
+				System.out.println("Maior pontuacao media"+maiorPontuacaoParcialMedia);
+			}
+		}
+		time.setTatica(tatica);
+		
+		return tatica;
+	}
 	
-	public int SugerirTatica(Time time){
-		int pontuacaoParcial = 0;
+
+	public int gerarPontuacaoParcial(Time time){
+		int pontuacaoParcialAtual = 0, qtdJogadores = 0, pontuacaoParcialMedia = 0, pontuacaoParcial = 0;
 		Posicao posicao = new Posicao();
 		EstiloDeJogo estilo = new EstiloDeJogo();
 		estilo = this.gerarEstilodeJogoTime(this.gerarOverallTime(time), this.gerarOverallJogador(time));
 		Tatica tatica = new Tatica();
-		if(estilo.getNome().toLowerCase().equals("contra ataque")){
-			for (int i = 0; i < time.getJogadores().size(); i++) {
-				for (int j = 0; j < time.getJogadores().get(i).getPosicoes().size(); j++) {
-					posicao = time.getJogadores().get(i).getPosicoes().get(j);
-					if(posicao.getNome().toLowerCase().equals("lateral") || posicao.getNome().toLowerCase().equals("meia lateral")
-							||  posicao.getNome().toLowerCase().equals("meia atacante") || posicao.getNome().toLowerCase().equals("meia central")
-							|| posicao.getNome().toLowerCase().equals("segundo atacante") || posicao.getNome().toLowerCase().equals("centro avante")
-							|| posicao.getNome().toLowerCase().equals("ponta")){
-						
-						pontuacaoParcial = posicao.getJogador().getCaracteristicas().getVelocidade() * 4 + posicao.getJogador().getCaracteristicas().getQualidadePasse()*2+ 
-								posicao.getJogador().getCaracteristicas().getFinalizacao()*3+posicao.getJogador().getCaracteristicas().getDesarme()+posicao.getPontuacao();
-						
-						posicao.setPontuacaParcial(pontuacaoParcial);
-					}
+		
+		for (int i = 0; i < time.getJogadores().size(); i++) {
+			posicao = time.getJogadores().get(i).getPosicaoAtual();
+			if(posicao != null){
+			if(estilo.getNome().toLowerCase().equals("contra ataque")){
+				if(posicao.getNome().toLowerCase().equals("lateral") || posicao.getNome().toLowerCase().equals("meia lateral")
+						||  posicao.getNome().toLowerCase().equals("meia atacante") || posicao.getNome().toLowerCase().equals("meia central")
+						|| posicao.getNome().toLowerCase().equals("segundo atacante") || posicao.getNome().toLowerCase().equals("centro avante")
+						|| posicao.getNome().toLowerCase().equals("ponta")){
 					
+					pontuacaoParcialAtual = posicao.getJogador().getCaracteristicas().getVelocidade() * 4 + posicao.getJogador().getCaracteristicas().getQualidadePasse()*2+ 
+							posicao.getJogador().getCaracteristicas().getFinalizacao()*3+posicao.getJogador().getCaracteristicas().getDesarme()+posicao.getPontuacao();
 					
+					pontuacaoParcial+=pontuacaoParcialAtual;
+					
+					posicao.setPontuacaParcial(pontuacaoParcialAtual);
+					qtdJogadores++;
+				}
+			}
+			if(estilo.getNome().toLowerCase().equals("retranca")){
+				if(posicao.getNome().toLowerCase().equals("lateral") || posicao.getNome().toLowerCase().equals("meia lateral")
+						 || posicao.getNome().toLowerCase().equals("meia central")
+						|| posicao.getNome().toLowerCase().equals("zagueiro")
+						|| posicao.getNome().toLowerCase().equals("volante")){
+					
+					pontuacaoParcialAtual = posicao.getJogador().getCaracteristicas().getVelocidade() * 1 + posicao.getJogador().getCaracteristicas().getQualidadePasse()*2+ 
+							posicao.getJogador().getCaracteristicas().getFinalizacao()*3+posicao.getJogador().getCaracteristicas().getDesarme()*4+posicao.getPontuacao();
+					
+					pontuacaoParcial+=pontuacaoParcialAtual;
+					
+					posicao.setPontuacaParcial(pontuacaoParcialAtual);
+					qtdJogadores++;
+				}
+			}
+			if(estilo.getNome().toLowerCase().equals("bola longa")){
+				if(posicao.getNome().toLowerCase().equals("lateral") || posicao.getNome().toLowerCase().equals("meia lateral")
+						 || posicao.getNome().toLowerCase().equals("segundo atacante")
+						|| posicao.getNome().toLowerCase().equals("ponta") || posicao.getNome().toLowerCase().equals("meia central")){
+					
+					pontuacaoParcialAtual = posicao.getJogador().getCaracteristicas().getVelocidade() * 4 + posicao.getJogador().getCaracteristicas().getQualidadePasse()*3+ 
+							posicao.getJogador().getCaracteristicas().getFinalizacao()*2+posicao.getJogador().getCaracteristicas().getDesarme()*1+posicao.getPontuacao();
+					
+					pontuacaoParcial+=pontuacaoParcialAtual;
+					
+					posicao.setPontuacaParcial(pontuacaoParcialAtual);
+					qtdJogadores++;
+				}
+			}
+			
+			if(estilo.getNome().toLowerCase().equals("posse de bola")){
+				if(posicao.getNome().toLowerCase().equals("meia atacante") || posicao.getNome().toLowerCase().equals("meia central")
+						|| posicao.getNome().toLowerCase().equals("segundo atacante") || posicao.getNome().toLowerCase().equals("volante")
+						){
+					
+					pontuacaoParcialAtual = posicao.getJogador().getCaracteristicas().getVelocidade() * 3 + posicao.getJogador().getCaracteristicas().getQualidadePasse()*4+ 
+							posicao.getJogador().getCaracteristicas().getFinalizacao()*2+posicao.getJogador().getCaracteristicas().getDesarme()+posicao.getPontuacao();
+					
+					pontuacaoParcial +=pontuacaoParcialAtual;
+					
+					posicao.setPontuacaParcial(pontuacaoParcialAtual);
+					qtdJogadores++;
 				}
 				
 			}
 				
+			}else{
+				if(estilo.getNome().toLowerCase().equals("contra ataque")){
+						for (int j = 0; j < time.getJogadores().get(i).getPosicoes().size(); j++) {
+							posicao = time.getJogadores().get(i).getPosicoes().get(j);
+							if(posicao.getNome().toLowerCase().equals("lateral") || posicao.getNome().toLowerCase().equals("meia lateral")
+									||  posicao.getNome().toLowerCase().equals("meia atacante") || posicao.getNome().toLowerCase().equals("meia central")
+									|| posicao.getNome().toLowerCase().equals("segundo atacante") || posicao.getNome().toLowerCase().equals("centro avante")
+									|| posicao.getNome().toLowerCase().equals("ponta")){
+								
+								pontuacaoParcialAtual = posicao.getJogador().getCaracteristicas().getVelocidade() * 4 + posicao.getJogador().getCaracteristicas().getQualidadePasse()*2+ 
+										posicao.getJogador().getCaracteristicas().getFinalizacao()*3+posicao.getJogador().getCaracteristicas().getDesarme()+posicao.getPontuacao();
+								
+								pontuacaoParcial+=pontuacaoParcialAtual;
+								
+								posicao.setPontuacaParcial(pontuacaoParcialAtual);
+								qtdJogadores++;
+							}
+							
+							
+						}
+						
+					
+						
+				}
+				
+				if(estilo.getNome().toLowerCase().equals("retranca")){
+					
+						for (int j = 0; j < time.getJogadores().get(i).getPosicoes().size(); j++) {
+							posicao = time.getJogadores().get(i).getPosicoes().get(j);
+							if(posicao.getNome().toLowerCase().equals("lateral") || posicao.getNome().toLowerCase().equals("meia lateral")
+									 || posicao.getNome().toLowerCase().equals("meia central")
+									|| posicao.getNome().toLowerCase().equals("zagueiro")
+									|| posicao.getNome().toLowerCase().equals("volante")){
+								
+								pontuacaoParcialAtual = posicao.getJogador().getCaracteristicas().getVelocidade() * 1 + posicao.getJogador().getCaracteristicas().getQualidadePasse()*2+ 
+										posicao.getJogador().getCaracteristicas().getFinalizacao()*3+posicao.getJogador().getCaracteristicas().getDesarme()*4+posicao.getPontuacao();
+								
+								pontuacaoParcial+=pontuacaoParcialAtual;
+								
+								posicao.setPontuacaParcial(pontuacaoParcialAtual);
+								qtdJogadores++;
+							}
+							
+						}
+						
+				}
+				if(estilo.getNome().toLowerCase().equals("bola longa")){
+						for (int j = 0; j < time.getJogadores().get(i).getPosicoes().size(); j++) {
+							posicao = time.getJogadores().get(i).getPosicoes().get(j);
+							if(posicao.getNome().toLowerCase().equals("lateral") || posicao.getNome().toLowerCase().equals("meia lateral")
+									 || posicao.getNome().toLowerCase().equals("segundo atacante")
+									|| posicao.getNome().toLowerCase().equals("ponta") || posicao.getNome().toLowerCase().equals("meia central")){
+								
+								pontuacaoParcialAtual = posicao.getJogador().getCaracteristicas().getVelocidade() * 4 + posicao.getJogador().getCaracteristicas().getQualidadePasse()*3+ 
+										posicao.getJogador().getCaracteristicas().getFinalizacao()*2+posicao.getJogador().getCaracteristicas().getDesarme()*1+posicao.getPontuacao();
+								
+								pontuacaoParcial+=pontuacaoParcialAtual;
+								
+								posicao.setPontuacaParcial(pontuacaoParcialAtual);
+								qtdJogadores++;
+							}
+							
+						}
+						
+						
+				}
+				if(estilo.getNome().toLowerCase().equals("posse de bola")){
+						for (int j = 0; j < time.getJogadores().get(i).getPosicoes().size(); j++) {
+							posicao = time.getJogadores().get(i).getPosicoes().get(j);
+							if(posicao.getNome().toLowerCase().equals("meia atacante") || posicao.getNome().toLowerCase().equals("meia central")
+									|| posicao.getNome().toLowerCase().equals("segundo atacante") || posicao.getNome().toLowerCase().equals("volante")
+									){
+								
+								pontuacaoParcialAtual = posicao.getJogador().getCaracteristicas().getVelocidade() * 3 + posicao.getJogador().getCaracteristicas().getQualidadePasse()*4+ 
+										posicao.getJogador().getCaracteristicas().getFinalizacao()*2+posicao.getJogador().getCaracteristicas().getDesarme()+posicao.getPontuacao();
+								
+								pontuacaoParcial +=pontuacaoParcialAtual;
+								
+								posicao.setPontuacaParcial(pontuacaoParcialAtual);
+								qtdJogadores++;
+							}
+							
+							
+						}
+						
+						
+				}
+				
+				
+			}
 		}
 		
-		if(estilo.getNome().toLowerCase().equals("retranca")){
-			for (int i = 0; i < time.getJogadores().size(); i++) {
-				for (int j = 0; j < time.getJogadores().get(i).getPosicoes().size(); j++) {
-					posicao = time.getJogadores().get(i).getPosicoes().get(j);
-					if(posicao.getNome().toLowerCase().equals("lateral") || posicao.getNome().toLowerCase().equals("meia lateral")
-							 || posicao.getNome().toLowerCase().equals("meia central")
-							|| posicao.getNome().toLowerCase().equals("zagueiro")
-							|| posicao.getNome().toLowerCase().equals("volante")){
-						
-						pontuacaoParcial = posicao.getJogador().getCaracteristicas().getVelocidade() * 1 + posicao.getJogador().getCaracteristicas().getQualidadePasse()*2+ 
-								posicao.getJogador().getCaracteristicas().getFinalizacao()*3+posicao.getJogador().getCaracteristicas().getDesarme()*4+posicao.getPontuacao();
-						
-						posicao.setPontuacaParcial(pontuacaoParcial);
-					}
-					
-				}
-				
-			}
-				
-		}
-		if(estilo.getNome().toLowerCase().equals("bola longa")){
-			for (int i = 0; i < time.getJogadores().size(); i++) {
-				for (int j = 0; j < time.getJogadores().get(i).getPosicoes().size(); j++) {
-					posicao = time.getJogadores().get(i).getPosicoes().get(j);
-					if(posicao.getNome().toLowerCase().equals("lateral") || posicao.getNome().toLowerCase().equals("meia lateral")
-							 || posicao.getNome().toLowerCase().equals("segundo atacante")
-							|| posicao.getNome().toLowerCase().equals("ponta") || posicao.getNome().toLowerCase().equals("meia central")){
-						
-						pontuacaoParcial = posicao.getJogador().getCaracteristicas().getVelocidade() * 4 + posicao.getJogador().getCaracteristicas().getQualidadePasse()*3+ 
-								posicao.getJogador().getCaracteristicas().getFinalizacao()*2+posicao.getJogador().getCaracteristicas().getDesarme()*1+posicao.getPontuacao();
-						
-						posicao.setPontuacaParcial(pontuacaoParcial);
-					}
-					
-				}
-				
-			}
-				
-		}
-		if(estilo.getNome().toLowerCase().equals("posse de bola")){
-			for (int i = 0; i < time.getJogadores().size(); i++) {
-				for (int j = 0; j < time.getJogadores().get(i).getPosicoes().size(); j++) {
-					posicao = time.getJogadores().get(i).getPosicoes().get(j);
-					if(
-							  posicao.getNome().toLowerCase().equals("meia atacante") || posicao.getNome().toLowerCase().equals("meia central")
-							|| posicao.getNome().toLowerCase().equals("segundo atacante") || posicao.getNome().toLowerCase().equals("volante")
-							){
-						
-						pontuacaoParcial = posicao.getJogador().getCaracteristicas().getVelocidade() * 3 + posicao.getJogador().getCaracteristicas().getQualidadePasse()*4+ 
-								posicao.getJogador().getCaracteristicas().getFinalizacao()*2+posicao.getJogador().getCaracteristicas().getDesarme()+posicao.getPontuacao();
-						
-						posicao.setPontuacaParcial(pontuacaoParcial);
-					}
-					
-					
-				}
-				
-			}
-				
-		}
+		pontuacaoParcialMedia = pontuacaoParcial/qtdJogadores;
+		return pontuacaoParcialMedia;
 		
-		return pontuacaoParcial;
 	}
 	
 	public Jogador substituirJogador(Jogador jogador, Time time){
