@@ -29,6 +29,7 @@ public class Jogador {
 		setCaracteristicas(caracteristicas);
 		
 	}
+	
 	public Jogador(String nome, Time time, float peso, float altura,  boolean temCondicao, 
 			ArrayList<Posicao> posicoes, EstatisticasJogador estatisticas, CaracteristicasJogadores caracteristicas, Posicao posicaoAtual){
 		setNome(nome);

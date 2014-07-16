@@ -1,5 +1,7 @@
 package perssistencia;
 
-public class TaticaDAO {
+import bd.Banco;
 
+public class TaticaDAO {
+	Banco banco = new Banco("jdbc:mysql://localhost/aicoach","root","root");
 }

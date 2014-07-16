@@ -30,6 +30,10 @@ public class Estatisticas {
 		this.roubadasBola = roubadasBola;
 		this.jogos = jogos;
 	}
+	
+	public Estatisticas(){
+		
+	}
 
 	public int getFaltasCometidas() {
 		return faltasCometidas;
