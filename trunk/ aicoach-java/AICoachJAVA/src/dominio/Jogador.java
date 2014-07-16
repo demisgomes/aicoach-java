@@ -3,7 +3,7 @@ package dominio;
 import java.util.ArrayList;
 
 public class Jogador {
-	
+	private int id;
 	private String nome;
 	private Time time;
 	private int idade;
@@ -146,6 +146,12 @@ public class Jogador {
 
 	public void setCaracteristicas(CaracteristicasJogadores caracteristicas) {
 		this.caracteristicas = caracteristicas;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 
 
