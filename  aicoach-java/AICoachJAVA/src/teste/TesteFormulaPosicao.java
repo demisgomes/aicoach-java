@@ -5,6 +5,8 @@ import gui.TelaTatica;
 
 import java.util.ArrayList;
 
+import javax.swing.text.Segment;
+
 import negocio.AlgoritmoTatica;
 import negocio.FormulaPosicao;
 import dominio.CaracteristicasJogadores;
@@ -409,29 +411,41 @@ ArrayList<Posicao> posicoesCacaRato=new ArrayList<Posicao>();
 	
 	for(Posicao posicaoSub : SantaCruz.getTatica().getPosicoes()){
 		if(posicaoSub.getJogador().equals(jogadorCacaRato)){
-			posicaoSub.setJogador(j);
+			//posicaoSub.setJogador(j);
 		}
 	}
 	for (Posicao xxx: SantaCruz.getTatica().getPosicoes() ){
 		System.out.println(xxx.getJogador().getNome()+" joga de "+ xxx.getNome());
 	}
 	
+
+Posicao goleiro2=new Posicao("Goleiro");
+Posicao lateralDireito1=new Posicao("Lateral");
+Posicao lateralEsquerdo1=new Posicao("Lateral");
+Posicao zagueiro3=new Posicao("Zagueiro");
+Posicao zagueiro4=new Posicao("Zagueiro");
+Posicao volante2=new Posicao("Volante");
+Posicao meiaCentral3=new Posicao("Meia Central");
+Posicao meiaAtacante1=new Posicao("Meia Atacante");
+Posicao segundoAtacante1=new Posicao("Segundo Atacante");
+Posicao segundoAtacante2=new Posicao("Segundo Atacante");
+Posicao centroAvante1=new Posicao("Centro Avante");
 	
 ArrayList<Posicao> posicoesTatica2=new ArrayList<Posicao>();
 
-Posicao segundoAttacante2 = new Posicao();
 
-	posicoesTatica2.add(goleiro1);
-	posicoesTatica2.add(lateralDireito);
-	posicoesTatica2.add(lateralEsquerdo);
-	posicoesTatica2.add(zagueiro1);
-	posicoesTatica2.add(zagueiro2);
-	posicoesTatica2.add(volante1);
-	posicoesTatica2.add(meiaCentral1);
-	posicoesTatica.add(segundoAttacante2);
-	posicoesTatica2.add(meiaAtacante);
-	posicoesTatica2.add(segundoAtacante);
-	posicoesTatica2.add(centroAvante);
+	posicoesTatica2.add(goleiro2);
+	posicoesTatica2.add(lateralDireito1);
+	posicoesTatica2.add(lateralEsquerdo1);
+	posicoesTatica2.add(zagueiro3);
+	posicoesTatica2.add(zagueiro4);
+	posicoesTatica2.add(volante2);
+	posicoesTatica2.add(segundoAtacante2);
+	posicoesTatica2.add(meiaCentral3);
+	posicoesTatica2.add(meiaAtacante1);
+	posicoesTatica2.add(segundoAtacante1);
+	posicoesTatica2.add(centroAvante1);
+	
 	
 	Tatica tatica2 = new Tatica("433", posicoesTatica2);
 	
@@ -469,6 +483,11 @@ Posicao segundoAttacante2 = new Posicao();
 Tatica tatica3 = new Tatica();
 tatica3 = tatica.sugerirTatica(SantaCruz, taticas);
 System.out.println("tatica selecionada: "+tatica3.getNome());
+
+
+
+
+
 	
 	}
 	
