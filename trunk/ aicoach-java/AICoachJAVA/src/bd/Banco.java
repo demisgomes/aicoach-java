@@ -12,9 +12,9 @@ import javax.naming.spi.DirStateFactory.Result;
 
 	public class Banco {
 		
-		private String nome="aicoach";
-		private String url="jdbc:mysql://localhost/aicoach", senha="root", root="root";
-		private Connection conn;
+		private static String nome="aicoach";
+		private static String url="jdbc:mysql://localhost/aicoach", senha="root", root="root";
+		private  Connection conn;
 		
 		public Banco(String url, String senha, String root) {
 			setUrl(url);
@@ -23,42 +23,43 @@ import javax.naming.spi.DirStateFactory.Result;
 		}
 
 		public Banco() {
-		}
+			
+		}	
 		
-		public String getUrl() {
-			return url;
-		}
-
-		public void setUrl(String url) {
-			this.url = url;
-		}
-
-		public String getSenha() {
-			return senha;
-		}
-
-		public void setSenha(String senha) {
-			this.senha = senha;
-		}
-
-		public String getRoot() {
-			return root;
-		}
-
-		public void setRoot(String root) {
-			this.root = root;
-		}
 		
-		public String getNome() {
+		public static String getNome() {
 			return nome;
 		}
 
-		public void setNome(String nome) {
-			this.nome = nome;
+		public static void setNome(String nome) {
+			Banco.nome = nome;
 		}
-		
-		
-		public Connection iniciarBanco(){
+
+		public static String getUrl() {
+			return url;
+		}
+
+		public static void setUrl(String url) {
+			Banco.url = url;
+		}
+
+		public static String getSenha() {
+			return senha;
+		}
+
+		public static void setSenha(String senha) {
+			Banco.senha = senha;
+		}
+
+		public static String getRoot() {
+			return root;
+		}
+
+		public static void setRoot(String root) {
+			Banco.root = root;
+		}
+
+		private Connection iniciarBanco(){
 			
 			try {
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -87,7 +88,7 @@ import javax.naming.spi.DirStateFactory.Result;
 		}
 		
 		
-		public void fecharBanco(){
+		private void fecharBanco(){
 			try {
 				conn.close();
 				System.out.println("desconectado");
@@ -116,9 +117,9 @@ import javax.naming.spi.DirStateFactory.Result;
 		public void executarSQL(String sql){
 			try {
 			
-				PreparedStatement st = iniciarBanco().prepareStatement(sql);
-				st.execute(); // executa comando
-				st.close();
+				PreparedStatement pst = iniciarBanco().prepareStatement(sql);
+				pst.execute(); // executa comando
+				pst.close();
 				
 			} catch (Exception er5) {
 				System.out.println("erro result set/n");
@@ -127,6 +128,23 @@ import javax.naming.spi.DirStateFactory.Result;
 			finally{
 				fecharBanco();
 			}
+		}
+		
+		public ResultSet executarSelect(String sql){
+			ResultSet rs = null;
+			try {
+			
+				java.sql.Statement st = iniciarBanco().createStatement();
+				rs = st.executeQuery(sql); 
+				
+			} catch (Exception er5) {
+				System.out.println("erro result set/n");
+				er5.printStackTrace();
+			}	
+			finally{
+				fecharBanco();
+			}
+			return rs;
 		}
 }
 

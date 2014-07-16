@@ -6,6 +6,7 @@ public class EstatisticasJogador extends Estatisticas {
 	private int assistencias;
 	
 	
+	
 	public EstatisticasJogador(int faltasCometidas, int faltasSofridas,
 			int passesCertos, int passesErrados, int cartoesAmarelos,
 			int cartoesVermelhos, int finalizacoesErradas, int impedimentos,
@@ -19,6 +20,9 @@ public class EstatisticasJogador extends Estatisticas {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public EstatisticasJogador(){
+		
+	}
 	public int getDefesasDificeis() {
 		return defesasDificeis;
 	}

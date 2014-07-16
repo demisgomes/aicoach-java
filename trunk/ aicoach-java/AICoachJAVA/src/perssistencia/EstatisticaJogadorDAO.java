@@ -1,5 +1,7 @@
 package perssistencia;
 
-public class EstatisticaJogadorDAO {
+import bd.Banco;
 
+public class EstatisticaJogadorDAO {
+	Banco banco = new Banco("jdbc:mysql://localhost/aicoach","root","root");
 }
