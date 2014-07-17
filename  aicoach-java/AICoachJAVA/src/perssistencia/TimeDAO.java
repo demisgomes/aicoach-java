@@ -60,4 +60,27 @@ public class TimeDAO {
 		//time.setTatica(tatica);
 		return time;
 	}
+	
+	public Time retornarTime(String nomeTime){
+		String sql = "SELECT * FROM time WHERE nometime = '"+nomeTime+"'" ;
+		ResultSet rs = banco.executarSelect(sql);
+		
+		String nome=null;
+		ArrayList<Jogador> jogadores = new ArrayList<>();
+		
+		int idTime=0;
+		try {
+			if(rs.next()){
+				nome = rs.getString("nometime");
+				idTime=rs.getInt("idtime");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		Time time = new Time();
+		time.setNome(nome);
+		time.setJogadores(jogadores);
+		time.setIdTime(idTime);//time.setTatica(tatica);
+		return time;
+	}
 }
