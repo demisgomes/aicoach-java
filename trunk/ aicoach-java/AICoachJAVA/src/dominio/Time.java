@@ -8,6 +8,7 @@ public class Time {
 	private String nome;
 	private ArrayList<Jogador> jogadores;
 	private Tatica tatica;
+	private int idTime;
 	
 	public Time(){
 		
@@ -19,11 +20,14 @@ public class Time {
 		
 	}
 	
-	
 
+	public int getIdTime() {
+		return idTime;
+	}
 
-	
-
+	public void setIdTime(int idTime) {
+		this.idTime = idTime;
+	}
 
 	public Tatica getTatica() {
 		return tatica;

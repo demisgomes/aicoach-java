@@ -7,6 +7,9 @@ import java.util.ArrayList;
 
 import javax.swing.text.Segment;
 
+import perssistencia.JogadorDAO;
+import perssistencia.TaticaDAO;
+
 import negocio.AlgoritmoTatica;
 import negocio.FormulaPosicao;
 import dominio.CaracteristicasJogadores;
@@ -78,7 +81,7 @@ public class TesteFormulaPosicao {
 	
 	
 	
-	Jogador jogadorThiagoCardoso = new Jogador("Thiago Cardoso",SantaCruz, 90, (float)1.86, true, posicoesThiago, null, caracteristicasThiago);
+	Jogador jogadorThiagoCardoso = new Jogador("Thiago Cardoso",SantaCruz, 90, (float)1.86, 1, posicoesThiago, null, caracteristicasThiago);
 	jogadorThiagoCardoso.setCaracteristicas(caracteristicasThiago);
 	
 
@@ -93,7 +96,7 @@ public class TesteFormulaPosicao {
 	//Jogador jogadorThiagoCardoso = new Jogador();
 	//CaracteristicasJogadores caracteristicasThiago = new CaracteristicasJogadores();
 	ArrayList<Posicao> posicoesNininho=new ArrayList<Posicao>();
-	Jogador jogadorNininho = new Jogador("Nininho",SantaCruz, 65, (float)1.73, true, posicoesNininho, null, caracteristicas);
+	Jogador jogadorNininho = new Jogador("Nininho",SantaCruz, 65, (float)1.73, 1, posicoesNininho, null, caracteristicas);
 	
 	caracteristicas.setResistencia(8);
 	caracteristicas.setDefesas(1);
@@ -126,7 +129,7 @@ public class TesteFormulaPosicao {
 	caracteristicas.setFinalizacao(5);
 	caracteristicas.setQualidadePasse(5);
 	
-	Jogador jogadorEvertonSena = new Jogador("Everton Sena",SantaCruz, 75, (float)1.81, true, posicoesEvertonSena, null, caracteristicas);
+	Jogador jogadorEvertonSena = new Jogador("Everton Sena",SantaCruz, 75, (float)1.81, 1, posicoesEvertonSena, null, caracteristicas);
 	
 	Posicao zagueiro=new Posicao("Zagueiro", jogadorEvertonSena, formula, 0, true);
 	//goleiro = new Posicao("goleiro", jogador, formula, 0, true);
@@ -149,7 +152,7 @@ ArrayList<Posicao> posicoesRenanFonseca=new ArrayList<Posicao>();
 	caracteristicas.setFinalizacao(5);
 	caracteristicas.setQualidadePasse(5);
 	
-	Jogador jogadorRenanFonseca = new Jogador("Renan Fonseca",SantaCruz, 75, (float)1.85, true, posicoesRenanFonseca, null, caracteristicas);
+	Jogador jogadorRenanFonseca = new Jogador("Renan Fonseca",SantaCruz, 75, (float)1.85, 1, posicoesRenanFonseca, null, caracteristicas);
 	
 	Posicao zagueiroRenan=new Posicao("Zagueiro", jogadorRenanFonseca, formula, 0, true);
 	//goleiro = new Posicao("goleiro", jogador, formula, 0, true);
@@ -172,7 +175,7 @@ ArrayList<Posicao> posicoesRenatinho=new ArrayList<Posicao>();
 	caracteristicas.setFinalizacao(6);
 	caracteristicas.setQualidadePasse(6);
 	
-	Jogador jogadorRenatinho = new Jogador("Renatinho",SantaCruz, 75, (float)1.85, true, posicoesRenatinho, null, caracteristicas);
+	Jogador jogadorRenatinho = new Jogador("Renatinho",SantaCruz, 75, (float)1.85, 1, posicoesRenatinho, null, caracteristicas);
 	
 	Posicao latRenatinho=new Posicao("Lateral", jogadorRenatinho, formula, 0, true);
 	//goleiro = new Posicao("goleiro", jogador, formula, 0, true);
@@ -194,7 +197,7 @@ ArrayList<Posicao> posicoesSandroManoel=new ArrayList<Posicao>();
 	caracteristicas.setFinalizacao(4);
 	caracteristicas.setQualidadePasse(6);
 	
-	Jogador jogadorSandroManoel = new Jogador("Sandro Manoel",SantaCruz, 69, (float)1.78, true, posicoesSandroManoel, null, caracteristicas);
+	Jogador jogadorSandroManoel = new Jogador("Sandro Manoel",SantaCruz, 69, (float)1.78, 1, posicoesSandroManoel, null, caracteristicas);
 	
 	Posicao volSandroManoel=new Posicao("Volante", jogadorSandroManoel, formula, 0, true);
 	//goleiro = new Posicao("goleiro", jogador, formula, 0, true);
@@ -216,7 +219,7 @@ ArrayList<Posicao> posicoesDaniloPires=new ArrayList<Posicao>();
 	caracteristicas.setFinalizacao(6);
 	caracteristicas.setQualidadePasse(6);
 	
-	Jogador jogadorDaniloPires = new Jogador("Danilo Pires",SantaCruz, 72, (float)1.73, true, posicoesDaniloPires, null, caracteristicas);
+	Jogador jogadorDaniloPires = new Jogador("Danilo Pires",SantaCruz, 72, (float)1.73, 1, posicoesDaniloPires, null, caracteristicas);
 	
 	Posicao mcDaniloPires=new Posicao("Meia Central", jogadorDaniloPires, formula, 0, true);
 	//goleiro = new Posicao("goleiro", jogador, formula, 0, true);
@@ -238,7 +241,7 @@ ArrayList<Posicao> posicoesMemo=new ArrayList<Posicao>();
 	caracteristicas.setFinalizacao(5);
 	caracteristicas.setQualidadePasse(6);
 	
-	Jogador jogadorMemo = new Jogador("Memo",SantaCruz, 69, (float)1.78, true, posicoesMemo, null, caracteristicas);
+	Jogador jogadorMemo = new Jogador("Memo",SantaCruz, 69, (float)1.78, 1, posicoesMemo, null, caracteristicas);
 	
 	Posicao mcMemo=new Posicao("Meia Central", jogadorMemo, formula, 0, true);
 	//goleiro = new Posicao("goleiro", jogador, formula, 0, true);
@@ -260,7 +263,7 @@ ArrayList<Posicao> posicoesCarlosAlberto=new ArrayList<Posicao>();
 	caracteristicas.setFinalizacao(7);
 	caracteristicas.setQualidadePasse(7);
 	
-	Jogador jogadorCarlosAlberto = new Jogador("Carlos Alberto",SantaCruz, 69, (float)1.78, true, posicoesCarlosAlberto, null, caracteristicas);
+	Jogador jogadorCarlosAlberto = new Jogador("Carlos Alberto",SantaCruz, 69, (float)1.78, 1, posicoesCarlosAlberto, null, caracteristicas);
 	
 	Posicao maCarlosAlberto=new Posicao("Meia Atacante", jogadorCarlosAlberto, formula, 0, true);
 	//goleiro = new Posicao("goleiro", jogador, formula, 0, true);
@@ -282,7 +285,7 @@ ArrayList<Posicao> posicoesPingo=new ArrayList<Posicao>();
 	caracteristicas.setFinalizacao(5);
 	caracteristicas.setQualidadePasse(5);
 	
-	Jogador jogadorPingo = new Jogador("Pingo",SantaCruz, 69, (float)1.78, true, posicoesPingo, null, caracteristicas);
+	Jogador jogadorPingo = new Jogador("Pingo",SantaCruz, 69, (float)1.78, 1, posicoesPingo, null, caracteristicas);
 	
 	Posicao atPingo=new Posicao("Segundo Atacante", jogadorPingo, formula, 0, true);
 	//goleiro = new Posicao("goleiro", jogador, formula, 0, true);
@@ -304,7 +307,7 @@ ArrayList<Posicao> posicoesLeoGamalho=new ArrayList<Posicao>();
 	caracteristicas.setFinalizacao(7);
 	caracteristicas.setQualidadePasse(6);
 	
-	Jogador jogadorLeoGamalho = new Jogador("Léo Gamalho",SantaCruz, 69, (float)1.78, true, posicoesLeoGamalho, null, caracteristicas);
+	Jogador jogadorLeoGamalho = new Jogador("Léo Gamalho",SantaCruz, 69, (float)1.78, 1, posicoesLeoGamalho, null, caracteristicas);
 	
 	Posicao atLeoGamalho=new Posicao("Centro Avante", jogadorLeoGamalho, formula, 0, true);
 	//goleiro = new Posicao("goleiro", jogador, formula, 0, true);
@@ -325,7 +328,7 @@ ArrayList<Posicao> posicoesCacaRato=new ArrayList<Posicao>();
 	caracteristicas.setFinalizacao(5);
 	caracteristicas.setQualidadePasse(5);
 	
-	Jogador jogadorCacaRato = new Jogador("Caça Rato",SantaCruz, 69, (float)1.78, true, posicoesCacaRato, null, caracteristicas);
+	Jogador jogadorCacaRato = new Jogador("Caça Rato",SantaCruz, 69, (float)1.78, 1, posicoesCacaRato, null, caracteristicas);
 	
 	Posicao atCacaRato=new Posicao("Segundo Atacante", jogadorCacaRato, formula, 0, true);
 	//goleiro = new Posicao("goleiro", jogador, formula, 0, true);
@@ -488,6 +491,16 @@ System.out.println("tatica selecionada: "+tatica3.getNome());
 	
 	TelaInicial tela = new TelaInicial("Tela Inicial", 300, 300);
 	tela.setVisible(true);
+	
+	tatica1.setTime(SantaCruz);
+	
+	TaticaDAO taticaDAO = new TaticaDAO();
+	taticaDAO.inserirTatica(tatica1);
+	
+	Tatica taticaNova = new Tatica();
+	
+	taticaNova = taticaDAO.retornarTatica(tatica1);
+	System.out.println(taticaNova.getNome());
 
 
 	

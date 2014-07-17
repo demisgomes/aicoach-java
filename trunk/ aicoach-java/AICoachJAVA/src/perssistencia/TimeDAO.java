@@ -6,10 +6,40 @@ import java.util.ArrayList;
 
 import bd.Banco;
 import dominio.Jogador;
+import dominio.Tatica;
 import dominio.Time;
 
 public class TimeDAO {
-	Banco banco = new Banco("jdbc:mysql://localhost/aicoach","root","root");
+	Banco banco = new Banco("jdbc:mysql://localhost/aicoach","1234","root");
+	
+	public void inserirTime(Time time){
+		String sql = "Insert into time (nometime,jogadores) VALUES('"
+				+time.getNome()+ "')";
+		
+		banco.executarSQL(sql);
+		time.setIdTime(retornarIdTime());
+	}
+	
+	public int retornarIdTime(){
+		String sql = "SELECT idtime from time";
+		ResultSet rs = banco.executarSelect(sql);
+		int idTime = 0;
+		try {
+			while(rs.next()){
+				idTime = rs.getInt("idtime");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally{
+			banco.fecharBanco();
+		}
+		
+		return idTime;
+		
+	}
+	
 	public Time retornarTime(int idTime){
 		String sql = "SELECT * FROM time WHERE idTime = '"+idTime+"'" ;
 		ResultSet rs = banco.executarSelect(sql);
@@ -18,8 +48,9 @@ public class TimeDAO {
 		ArrayList<Jogador> jogadores = new ArrayList<>();
 		
 		try {
-			nome = rs.getString("nometime");
-			
+			if(rs.next()){
+				nome = rs.getString("nometime");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

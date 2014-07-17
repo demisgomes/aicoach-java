@@ -88,7 +88,7 @@ import javax.naming.spi.DirStateFactory.Result;
 		}
 		
 		
-		private void fecharBanco(){
+		public void fecharBanco(){
 			try {
 				conn.close();
 				System.out.println("desconectado");
@@ -142,7 +142,7 @@ import javax.naming.spi.DirStateFactory.Result;
 				er5.printStackTrace();
 			}	
 			finally{
-				fecharBanco();
+				//fecharBanco();
 			}
 			return rs;
 		}

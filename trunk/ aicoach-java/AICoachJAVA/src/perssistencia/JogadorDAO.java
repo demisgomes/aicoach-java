@@ -13,7 +13,7 @@ import dominio.Posicao;
 import dominio.Time;
 
 public class JogadorDAO {
-	Banco banco = new Banco("jdbc:mysql://localhost/aicoach","root","root");
+	Banco banco = new Banco("jdbc:mysql://localhost/aicoach","1234","root");
 	
 	public JogadorDAO () {
 		
@@ -30,7 +30,7 @@ public class JogadorDAO {
 				+ "','"
 				+ jogador.getIdade()
 				+ "','"
-				+ jogador.isTemCondicao()
+				+ jogador.getEscolhido()
 				+ "','"
 				+ jogador.getTime() + "')";
 		
@@ -50,13 +50,13 @@ public class JogadorDAO {
 		Time time = null ;
 		Float peso = null;
 		Float altura =null;
-		Boolean temCondicao = null;
+		int temCondicao = 0;
 		try {
 			timeId=rs.getInt("time");
 			nome = rs.getString("nome");			
 			peso = rs.getFloat("peso");
 			altura =rs.getFloat("altura");
-			temCondicao=rs.getBoolean("temCondicao");
+			temCondicao=rs.getInt("temCondicao");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} 
@@ -98,7 +98,7 @@ public class JogadorDAO {
 				Time time = null ;
 				Float peso = null;
 				Float altura =null;
-				Boolean temCondicao = null;
+				int temCondicao = 0;
 				int idJogador =0;
 				try {
 					idJogador = rs.getInt("idjogador");
@@ -106,7 +106,7 @@ public class JogadorDAO {
 					nome = rs.getString("nome");			
 					peso = rs.getFloat("peso");
 					altura =rs.getFloat("altura");
-					temCondicao=rs.getBoolean("temCondicao");
+					temCondicao=rs.getInt("temCondicao");
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

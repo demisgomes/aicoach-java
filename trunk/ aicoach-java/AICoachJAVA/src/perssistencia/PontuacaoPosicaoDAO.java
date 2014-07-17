@@ -11,7 +11,7 @@ import dominio.PontuacaoPosicao;
 
 public class PontuacaoPosicaoDAO {
 
-	Banco banco = new Banco("jdbc:mysql://localhost/aicoach","root","root");
+	Banco banco = new Banco("jdbc:mysql://localhost/aicoach","1234","root");
 	
 	
 	
