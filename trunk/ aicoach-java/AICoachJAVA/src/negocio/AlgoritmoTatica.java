@@ -31,6 +31,7 @@ public class AlgoritmoTatica {
 							ptMaior=posicaoComparada.getPontuacao();
 							
 							posicaoX=posicaoComparada;
+							posicaoX.setIdPosicaoTela(posicao.getIdPosicaoTela());
 							
 			
 							
@@ -77,7 +78,7 @@ public void SugerirJogadores(Time time){
 							ptMaior=posicaoComparada.getPontuacao();
 							
 							posicaoX=posicaoComparada;
-							
+							posicaoX.setIdPosicaoTela(posicao.getIdPosicaoTela());
 			
 							
 						}

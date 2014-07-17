@@ -9,7 +9,7 @@ import javax.swing.text.Segment;
 
 import perssistencia.JogadorDAO;
 import perssistencia.TaticaDAO;
-
+import perssistencia.TimeDAO;
 import negocio.AlgoritmoTatica;
 import negocio.FormulaPosicao;
 import dominio.CaracteristicasJogadores;
@@ -361,7 +361,19 @@ ArrayList<Posicao> posicoesCacaRato=new ArrayList<Posicao>();
 	
 	ArrayList<Posicao> posicoesTatica=new ArrayList<Posicao>();
 	
-	Posicao goleiro1=new Posicao("Goleiro");
+	posicoesTatica.add(new Posicao(1));
+	posicoesTatica.add(new Posicao(2));
+	posicoesTatica.add(new Posicao(3));
+	posicoesTatica.add(new Posicao(5));
+	posicoesTatica.add(new Posicao(6));
+	posicoesTatica.add(new Posicao(9));
+	posicoesTatica.add(new Posicao(13));
+	posicoesTatica.add(new Posicao(15));
+	posicoesTatica.add(new Posicao(19));
+	posicoesTatica.add(new Posicao(25));
+	posicoesTatica.add(new Posicao(24));
+	
+	/*Posicao goleiro1=new Posicao("Goleiro");
 	Posicao lateralDireito=new Posicao("Lateral");
 	Posicao lateralEsquerdo=new Posicao("Lateral");
 	Posicao zagueiro1=new Posicao("Zagueiro");
@@ -383,15 +395,15 @@ ArrayList<Posicao> posicoesCacaRato=new ArrayList<Posicao>();
 	posicoesTatica.add(meiaCentral2);
 	posicoesTatica.add(meiaAtacante);
 	posicoesTatica.add(segundoAtacante);
-	posicoesTatica.add(centroAvante);
+	posicoesTatica.add(centroAvante);*/
 	
 	AlgoritmoTatica tatica=new AlgoritmoTatica();
 	Tatica tatica1=new Tatica("4-4-2", posicoesTatica);
+	
+	
 	SantaCruz.setTatica(tatica1);
 	tatica.SugerirJogadores(SantaCruz);
-	for (Posicao xxx: SantaCruz.getTatica().getPosicoes() ){
-		System.out.println(xxx.getJogador().getNome()+" joga de "+ xxx.getNome());
-	}
+	
 	Jogador j = new Jogador();
 	j = tatica.substituirJogador(jogadorCacaRato, SantaCruz);
 	
@@ -418,11 +430,11 @@ ArrayList<Posicao> posicoesCacaRato=new ArrayList<Posicao>();
 		}
 	}
 	for (Posicao xxx: SantaCruz.getTatica().getPosicoes() ){
-		System.out.println(xxx.getJogador().getNome()+" joga de "+ xxx.getNome());
+		System.out.println(xxx.getJogador().getNome()+" joga de "+ xxx.getNome() +" e posicao tela" +xxx.getIdPosicaoTela());
 	}
 	
 
-Posicao goleiro2=new Posicao("Goleiro");
+/*Posicao goleiro2=new Posicao("Goleiro");
 Posicao lateralDireito1=new Posicao("Lateral");
 Posicao lateralEsquerdo1=new Posicao("Lateral");
 Posicao zagueiro3=new Posicao("Zagueiro");
@@ -432,22 +444,22 @@ Posicao meiaCentral3=new Posicao("Meia Central");
 Posicao meiaAtacante1=new Posicao("Meia Atacante");
 Posicao segundoAtacante1=new Posicao("Segundo Atacante");
 Posicao segundoAtacante2=new Posicao("Segundo Atacante");
-Posicao centroAvante1=new Posicao("Centro Avante");
+Posicao centroAvante1=new Posicao("Centro Avante");*/
 	
 ArrayList<Posicao> posicoesTatica2=new ArrayList<Posicao>();
 
 
-	posicoesTatica2.add(goleiro2);
-	posicoesTatica2.add(lateralDireito1);
-	posicoesTatica2.add(lateralEsquerdo1);
-	posicoesTatica2.add(zagueiro3);
-	posicoesTatica2.add(zagueiro4);
-	posicoesTatica2.add(volante2);
-	posicoesTatica2.add(segundoAtacante2);
-	posicoesTatica2.add(meiaCentral3);
-	posicoesTatica2.add(meiaAtacante1);
-	posicoesTatica2.add(segundoAtacante1);
-	posicoesTatica2.add(centroAvante1);
+posicoesTatica2.add(new Posicao(1));
+posicoesTatica2.add(new Posicao(2));
+posicoesTatica2.add(new Posicao(3));
+posicoesTatica2.add(new Posicao(5));
+posicoesTatica2.add(new Posicao(6));
+posicoesTatica2.add(new Posicao(9));
+posicoesTatica2.add(new Posicao(13));
+posicoesTatica2.add(new Posicao(19));
+posicoesTatica2.add(new Posicao(23));
+posicoesTatica2.add(new Posicao(25));
+posicoesTatica2.add(new Posicao(24));
 	
 	
 	Tatica tatica2 = new Tatica("433", posicoesTatica2);
@@ -476,7 +488,7 @@ ArrayList<Posicao> posicoesTatica2=new ArrayList<Posicao>();
 	for (int i = 0; i < SantaCruz.getJogadores().size(); i++) {
 		for (int k = 0; k < SantaCruz.getJogadores().get(i).getPosicoes().size(); k++) {
 			if(SantaCruz.getJogadores().get(i).getPosicoes().get(k).isPosicaoDeOrigem()){
-				System.out.println("pontuação parcial de: "+SantaCruz.getJogadores().get(i).getNome()+" "+SantaCruz.getJogadores().get(i).getPosicoes().get(k).getPontuacaParcial());
+				System.out.println("pontuação parcial de: "+SantaCruz.getJogadores().get(i).getNome()+" "+SantaCruz.getJogadores().get(i).getPosicoes().get(k).getPontuacaParcial()+" id posicao tela"+ SantaCruz.getJogadores().get(i).getPosicoes().get(k).getIdPosicaoTela());
 			}
 			
 		}
@@ -487,20 +499,43 @@ Tatica tatica3 = new Tatica();
 tatica3 = tatica.sugerirTatica(SantaCruz, taticas);
 System.out.println("tatica selecionada: "+tatica3.getNome());
 
-
+for (Posicao xxx: SantaCruz.getTatica().getPosicoes() ){
+	System.out.println(xxx.getJogador().getNome()+" joga de "+ xxx.getNome() +" e posicao tela" +xxx.getIdPosicaoTela());
+}
 	
-	TelaInicial tela = new TelaInicial("Tela Inicial", 300, 300);
-	tela.setVisible(true);
+	//TelaInicial tela = new TelaInicial("Tela Inicial", 300, 300);
+	//tela.setVisible(true);
 	
-	tatica1.setTime(SantaCruz);
+	
 	
 	TaticaDAO taticaDAO = new TaticaDAO();
+	
+	TimeDAO tDAO= new TimeDAO();
+	
+	Time time = tDAO.retornarTime("Brasil");
+	
+	tatica1.setTime(time);
+	
+	
+	
+	tatica1.setIdTatica(7);
+	System.out.println("ID do time: "+tatica1.getTime().getIdTime());
+	
+	for(int i=0;i<tatica1.getPosicoes().size();i++){
+		System.out.println(tatica1.getPosicoes().get(i).getIdPosicaoTela());
+	}
+	
 	taticaDAO.inserirTatica(tatica1);
 	System.out.println(tatica1.getIdTatica());
 	Tatica taticaNova = new Tatica();
 	
 	taticaNova = taticaDAO.retornarTatica(tatica1);
+	
+	System.out.println(taticaNova.getNome());
 	System.out.println(taticaNova.getNome()+" "+ taticaNova.getIdTatica());
+	for(Posicao posicoesNovas : taticaNova.getPosicoes()){
+		System.out.println(posicoesNovas.getNome());
+	}
 
 
 	
