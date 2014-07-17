@@ -30,7 +30,9 @@ public class ButtonAiCoach extends Button {
 		super(nomeBotao);
 	}
 	
-
+	public ButtonAiCoach(){
+		
+	}
 	
 	
 	
