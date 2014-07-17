@@ -8,7 +8,7 @@ public class Jogador {
 	private Time time;
 	private int idade;
 	private float peso, altura;
-	private boolean temCondicao, ehDestro, escolhido;
+	private int temCondicao, ehDestro, escolhido;
 	private ArrayList<Posicao> posicoes;
 	private EstatisticasJogador estatisticas;
 	private CaracteristicasJogadores caracteristicas;
@@ -16,7 +16,7 @@ public class Jogador {
 	
 	
 	
-	public Jogador(String nome, Time time, float peso, float altura,  boolean temCondicao, 
+	public Jogador(String nome, Time time, float peso, float altura,  int temCondicao, 
 			ArrayList<Posicao> posicoes, EstatisticasJogador estatisticas, CaracteristicasJogadores caracteristicas){
 		setNome(nome);
 		setTime(time);
@@ -30,7 +30,7 @@ public class Jogador {
 		
 	}
 	
-	public Jogador(String nome, Time time, float peso, float altura,  boolean temCondicao, 
+	public Jogador(String nome, Time time, float peso, float altura,  int temCondicao, 
 			ArrayList<Posicao> posicoes, EstatisticasJogador estatisticas, CaracteristicasJogadores caracteristicas, Posicao posicaoAtual){
 		setNome(nome);
 		setTime(time);
@@ -52,27 +52,37 @@ public class Jogador {
 	
 	
 	
+	public int getTemCondicao() {
+		return temCondicao;
+	}
+
+	public void setTemCondicao(int temCondicao) {
+		this.temCondicao = temCondicao;
+	}
+
+	public int getEhDestro() {
+		return ehDestro;
+	}
+
+	public void setEhDestro(int ehDestro) {
+		this.ehDestro = ehDestro;
+	}
+
+	public int getEscolhido() {
+		return escolhido;
+	}
+
+	public void setEscolhido(int escolhido) {
+		this.escolhido = escolhido;
+	}
+
 	public Posicao getPosicaoAtual() {
 		return posicaoAtual;
 	}
 	public void setPosicaoAtual(Posicao posicaoAtual) {
 		this.posicaoAtual = posicaoAtual;
 	}
-	public boolean isEscolhido() {
-		return escolhido;
-	}
-
-	public void setEscolhido(boolean escolhido) {
-		this.escolhido = escolhido;
-	}
-
-	public boolean isEhDestro() {
-		return ehDestro;
-	}
-
-	public void setEhDestro(boolean ehDestro) {
-		this.ehDestro = ehDestro;
-	}
+	
 
 	public String getNome() {
 		return nome;
@@ -117,13 +127,7 @@ public class Jogador {
 		this.altura = altura;
 	}
 
-	public boolean isTemCondicao() {
-		return temCondicao;
-	}
-
-	public void setTemCondicao(boolean temCondicao) {
-		this.temCondicao = temCondicao;
-	}
+	
 
 	public ArrayList<Posicao> getPosicoes() {
 		return posicoes;

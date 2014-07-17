@@ -42,7 +42,7 @@ public class AlgoritmoTatica {
 				}
 				
 			}
-			posicaoX.getJogador().setEscolhido(true);
+			posicaoX.getJogador().setEscolhido(1);
 			posicaoX.getJogador().setPosicaoAtual(posicaoX);
 			
 			jogadoresClone.add(posicaoX.getJogador());
@@ -88,8 +88,8 @@ public void SugerirJogadores(Time time){
 				}
 				
 			}
-			if(!posicaoX.getJogador().isEscolhido()){
-				posicaoX.getJogador().setEscolhido(true);
+			if(posicaoX.getJogador().getEscolhido() == 0){
+				posicaoX.getJogador().setEscolhido(1);
 				posicaoX.getJogador().setPosicaoAtual(posicaoX);
 			
 				jogadoresClone.add(posicaoX.getJogador());
@@ -111,7 +111,7 @@ public void SugerirJogadores(Time time){
 		for (int i = 0; i < taticas.size(); i++) {
 			time.setTatica(taticas.get(i));
 			for (int j = 0; j < time.getJogadores().size(); j++) {
-				time.getJogadores().get(j).setEscolhido(false);
+				time.getJogadores().get(j).setEscolhido(0);
 				
 			}
 			this.SugerirJogadores(time);
@@ -303,10 +303,10 @@ public void SugerirJogadores(Time time){
 		for (int i = 0; i < time.getJogadores().size(); i++) {
 			for (int j = 0; j < time.getJogadores().get(i).getPosicoes().size(); j++) {
 				jogadorX = time.getJogadores().get(i);
-				if(jogadorX.getPosicoes().get(j).getNome().equals(jogador.getPosicaoAtual().getNome()) && !jogadorX.isEscolhido() && pontuacao < jogadorX.getPosicoes().get(j).getPontuacao()){
+				if(jogadorX.getPosicoes().get(j).getNome().equals(jogador.getPosicaoAtual().getNome()) && jogadorX.getEscolhido()==0 && pontuacao < jogadorX.getPosicoes().get(j).getPontuacao()){
 					pontuacao = jogadorX.getPosicoes().get(j).getPontuacao();
-					jogadorX.setEscolhido(true);
-					jogador.setEscolhido(false);
+					jogadorX.setEscolhido(1);
+					jogador.setEscolhido(0);
 					jogadorSubstituto = jogadorX;
 					
 				}

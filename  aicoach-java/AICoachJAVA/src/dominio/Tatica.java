@@ -11,10 +11,18 @@ public class Tatica {
 	private String nome;
 	private ArrayList<Posicao> posicoes;
 	private Time time;
+	private int idTatica;
 	
 	public Tatica(String nome, ArrayList<Posicao> posicoes){
 		setNome(nome);
 		setPosicoes(posicoes);
+	}
+	
+	public Tatica(int idTatica,String nome, ArrayList<Posicao> posicoes, Time time){
+		setNome(nome);
+		setPosicoes(posicoes);
+		setIdTatica(idTatica);
+		setTime(time);
 	}
 	
 	public Tatica(){
@@ -23,6 +31,14 @@ public class Tatica {
 	
 	
 	
+	public int getIdTatica() {
+		return idTatica;
+	}
+
+	public void setIdTatica(int idTatica) {
+		this.idTatica = idTatica;
+	}
+
 	public Time getTime() {
 		return time;
 	}

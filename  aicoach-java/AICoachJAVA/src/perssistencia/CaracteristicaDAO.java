@@ -8,7 +8,7 @@ import bd.Banco;
 import dominio.CaracteristicasJogadores;
 
 public class CaracteristicaDAO {
-	Banco banco = new Banco();
+	Banco banco = new Banco(Banco.getUrl(),Banco.getSenha(), Banco.getRoot());
 	
 	
 	
