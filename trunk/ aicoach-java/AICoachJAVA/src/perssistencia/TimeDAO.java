@@ -10,7 +10,7 @@ import dominio.Tatica;
 import dominio.Time;
 
 public class TimeDAO {
-	Banco banco = new Banco("jdbc:mysql://localhost/aicoach","1234","root");
+	Banco banco = new Banco(Banco.getUrl(),Banco.getSenha(),Banco.getRoot());
 	
 	public void inserirTime(Time time){
 		String sql = "Insert into time (nometime,jogadores) VALUES('"

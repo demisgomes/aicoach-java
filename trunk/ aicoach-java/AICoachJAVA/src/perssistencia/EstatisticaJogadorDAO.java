@@ -3,5 +3,5 @@ package perssistencia;
 import bd.Banco;
 
 public class EstatisticaJogadorDAO {
-	Banco banco = new Banco("jdbc:mysql://localhost/aicoach","1234","root");
+	Banco banco = new Banco(Banco.getUrl(),Banco.getSenha(),Banco.getRoot());
 }

@@ -1,7 +1,12 @@
 package perssistencia;
 
+import java.sql.Array;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+
+import org.omg.CORBA.OBJ_ADAPTER;
+
+import com.mysql.fabric.xmlrpc.base.Value;
 
 import dominio.Posicao;
 import dominio.Tatica;
@@ -9,13 +14,13 @@ import dominio.Time;
 import bd.Banco;
 
 public class TaticaDAO {
-	Banco banco = new Banco("jdbc:mysql://localhost/aicoach","1234","root");
+	Banco banco = new Banco(Banco.getUrl(),Banco.getSenha(),Banco.getRoot());
 	
 	public void inserirTatica(Tatica tatica){
 		String sql = "Insert into taticas (nome,posicoes,time) VALUES('"
 				+tatica.getNome()
 				+"','"
-				+tatica.getPosicoes()
+				+tatica.getNome()
 				+"','"
 				+tatica.getTime().getIdTime() + "')";
 		
@@ -27,15 +32,12 @@ public class TaticaDAO {
 		String sql = "SELECT * from taticas WHERE idtatica LIKE'"+tatica.getIdTatica()+"'";
 		ResultSet rs = banco.executarSelect(sql);
 		int idTatica = 0, idTime = 0;
-		String nome = null, posicoes = null;
-		//ArrayList<Posicao> posicoes = new ArrayList<Posicao>();
-		
-		
+		String nome = null;
+		ArrayList<Posicao> posicao = new ArrayList<Posicao>();
 		try {
 			if(rs.next()){
 				idTatica = rs.getInt("idtatica");
 				nome = rs.getString("nome");
-				posicoes = rs.getString("posicoes");
 				idTime = rs.getInt("time");
 			}
 		} catch (Exception e) {
@@ -46,7 +48,8 @@ public class TaticaDAO {
 		TimeDAO timeDAO = new TimeDAO();
 		time = timeDAO.retornarTime(idTime);
 		
-		 tatica = new Tatica(idTatica, nome, null, time);
+		
+		 tatica = new Tatica(idTatica, nome, posicao, time);
 
 		return tatica;
 	}

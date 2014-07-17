@@ -13,7 +13,7 @@ import javax.naming.spi.DirStateFactory.Result;
 	public class Banco {
 		
 		private static String nome="aicoach";
-		private static String url="jdbc:mysql://localhost/aicoach", senha="root", root="root";
+		private static String url="jdbc:mysql://localhost/aicoach", senha="1234", root="root";
 		private  Connection conn;
 		
 		public Banco(String url, String senha, String root) {
