@@ -496,11 +496,11 @@ System.out.println("tatica selecionada: "+tatica3.getNome());
 	
 	TaticaDAO taticaDAO = new TaticaDAO();
 	taticaDAO.inserirTatica(tatica1);
-	
+	System.out.println(tatica1.getIdTatica());
 	Tatica taticaNova = new Tatica();
 	
 	taticaNova = taticaDAO.retornarTatica(tatica1);
-	System.out.println(taticaNova.getNome());
+	System.out.println(taticaNova.getNome()+" "+ taticaNova.getIdTatica());
 
 
 	

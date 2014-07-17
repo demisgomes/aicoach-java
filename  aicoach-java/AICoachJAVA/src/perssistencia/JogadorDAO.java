@@ -13,7 +13,7 @@ import dominio.Posicao;
 import dominio.Time;
 
 public class JogadorDAO {
-	Banco banco = new Banco("jdbc:mysql://localhost/aicoach","1234","root");
+	Banco banco = new Banco(Banco.getUrl(),Banco.getSenha(),Banco.getRoot());
 	
 	public JogadorDAO () {
 		
