@@ -59,7 +59,7 @@ import javax.naming.spi.DirStateFactory.Result;
 			Banco.root = root;
 		}
 
-		private Connection iniciarBanco(){
+		public Connection iniciarBanco(){
 			
 			try {
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
