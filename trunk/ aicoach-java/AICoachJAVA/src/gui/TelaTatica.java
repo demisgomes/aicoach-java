@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 
 import dominio.ButtonAiCoach;
+import dominio.Posicao;
 
 import javax.swing.JButton;
 
@@ -25,7 +26,8 @@ import java.util.ArrayList;
 public class TelaTatica extends JFrame {
 
 	private JPanel contentPane;
-	private ArrayList<Integer> listaIdPosicoes=new ArrayList<Integer>();
+	private ArrayList<Posicao> listaIdPosicoes=new ArrayList<Posicao>();
+	//private ArrayList<Posicao> listaPosicoes=new ArrayList<Posicao>();
 
 	ArrayList<ButtonAiCoach> listaBotoes = new ArrayList<ButtonAiCoach>();
 	/**
@@ -97,7 +99,7 @@ public class TelaTatica extends JFrame {
 				
 			}
 		});
-		btnGL.setBounds(50, 277, 45, 43);
+		btnGL.setBounds(42, 277, 64, 54);
 		btnGL.setId(1);
 		listaBotoes.add(btnGL);
 		contentPane.add(btnGL);
@@ -105,7 +107,7 @@ public class TelaTatica extends JFrame {
 		
 		ButtonAiCoach btnZc_2 = new ButtonAiCoach("ZC");
 		btnZc_2.setBackground(Color.GRAY);
-		btnZc_2.setBounds(130, 203, 45, 43);
+		btnZc_2.setBounds(128, 192, 58, 54);
 		btnZc_2.setId(5);
 		listaBotoes.add(btnZc_2);
 		contentPane.add(btnZc_2);
@@ -118,21 +120,21 @@ public class TelaTatica extends JFrame {
 		});
 		btnZc.setId(3);
 		listaBotoes.add(btnZc);
-		btnZc.setBounds(130, 361, 45, 43);
+		btnZc.setBounds(128, 361, 58, 55);
 		contentPane.add(btnZc);
 		
 		
 		
 		ButtonAiCoach btnLd = new ButtonAiCoach("LD");
 		btnLd.setBackground(Color.GRAY);
-		btnLd.setBounds(130, 463, 45, 43);
+		btnLd.setBounds(130, 452, 56, 54);
 		btnLd.setId(2);
 		listaBotoes.add(btnLd);
 		contentPane.add(btnLd);
 		
 		ButtonAiCoach btnZc_1 = new ButtonAiCoach("ZC");
 		btnZc_1.setBackground(Color.GRAY);
-		btnZc_1.setBounds(130, 277, 45, 43);
+		btnZc_1.setBounds(128, 277, 58, 54);
 		btnZc_1.setId(4);
 		listaBotoes.add(btnZc_1);
 		contentPane.add(btnZc_1);
@@ -144,7 +146,7 @@ public class TelaTatica extends JFrame {
 			}
 		});
 		btnLe.setBackground(Color.GRAY);
-		btnLe.setBounds(130, 113, 45, 43);
+		btnLe.setBounds(130, 113, 56, 54);
 		listaBotoes.add(btnLe);
 		contentPane.add(btnLe);
 		
@@ -154,7 +156,7 @@ public class TelaTatica extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnVol.setBounds(225, 373, 51, 43);
+		btnVol.setBounds(225, 373, 58, 54);
 		btnVol.setId(8);
 		listaBotoes.add(btnVol);
 		contentPane.add(btnVol);
@@ -166,21 +168,21 @@ public class TelaTatica extends JFrame {
 			}
 		});
 		btnVol_1.setBackground(Color.GRAY);
-		btnVol_1.setBounds(225, 277, 51, 43);
+		btnVol_1.setBounds(225, 277, 58, 54);
 		btnVol_1.setId(9);
 		listaBotoes.add(btnVol_1);
 		contentPane.add(btnVol_1);
 		
 		ButtonAiCoach btnVol_2 = new ButtonAiCoach("VOL");
 		btnVol_2.setBackground(Color.GRAY);
-		btnVol_2.setBounds(225, 203, 51, 43);
+		btnVol_2.setBounds(225, 192, 58, 54);
 		btnVol_2.setId(10);
 		listaBotoes.add(btnVol_2);
 		contentPane.add(btnVol_2);
 		
 		ButtonAiCoach btnLd_1 = new ButtonAiCoach("LD");
 		btnLd_1.setBackground(Color.GRAY);
-		btnLd_1.setBounds(225, 463, 45, 43);
+		btnLd_1.setBounds(225, 452, 58, 54);
 		btnLd_1.setId(7);
 		listaBotoes.add(btnLd_1);
 		contentPane.add(btnLd_1);
@@ -192,7 +194,7 @@ public class TelaTatica extends JFrame {
 			}
 		});
 		btnLe_1.setBackground(Color.GRAY);
-		btnLe_1.setBounds(225, 113, 45, 43);
+		btnLe_1.setBounds(225, 113, 58, 54);
 		listaBotoes.add(btnLe_1);
 		contentPane.add(btnLe_1);
 		
@@ -204,7 +206,7 @@ public class TelaTatica extends JFrame {
 		btnMld.setBackground(Color.GRAY);
 		btnMld.setId(12);
 		listaBotoes.add(btnMld);
-		btnMld.setBounds(322, 463, 58, 43);
+		btnMld.setBounds(322, 452, 58, 54);
 		
 		contentPane.add(btnMld);
 		
@@ -215,27 +217,27 @@ public class TelaTatica extends JFrame {
 			}
 		});
 		btnMc.setId(13);
-		btnMc.setBounds(322, 373, 51, 43);
+		btnMc.setBounds(322, 373, 58, 54);
 		listaBotoes.add(btnMc);
 		contentPane.add(btnMc);
 		
 		ButtonAiCoach btnMc_1 = new ButtonAiCoach("MC");
 		btnMc_1.setBackground(Color.GRAY);
-		btnMc_1.setBounds(322, 277, 51, 43);
+		btnMc_1.setBounds(322, 277, 58, 54);
 		btnMc_1.setId(14);
 		listaBotoes.add(btnMc_1);
 		contentPane.add(btnMc_1);
 		
 		ButtonAiCoach btnMc_2 = new ButtonAiCoach("MC");
 		btnMc_2.setBackground(Color.GRAY);
-		btnMc_2.setBounds(322, 203, 51, 43);
+		btnMc_2.setBounds(322, 192, 58, 54);
 		btnMc_2.setId(15);
 		listaBotoes.add(btnMc_2);
 		contentPane.add(btnMc_2);
 		
 		ButtonAiCoach btnMle = new ButtonAiCoach("MLE");
 		btnMle.setBackground(Color.GRAY);
-		btnMle.setBounds(322, 113, 58, 43);
+		btnMle.setBounds(322, 113, 58, 54);
 		btnMle.setId(16);
 		listaBotoes.add(btnMle);
 		contentPane.add(btnMle);
@@ -246,55 +248,55 @@ public class TelaTatica extends JFrame {
 			}
 		});
 		btnMle_1.setBackground(Color.GRAY);
-		btnMle_1.setBounds(423, 113, 58, 43);
+		btnMle_1.setBounds(423, 113, 58, 54);
 		btnMle_1.setId(21);
 		listaBotoes.add(btnMle_1);
 		contentPane.add(btnMle_1);
 		
 		ButtonAiCoach btnMat_2 = new ButtonAiCoach("MAT");
 		btnMat_2.setBackground(Color.GRAY);
-		btnMat_2.setBounds(423, 203, 58, 43);
+		btnMat_2.setBounds(423, 192, 58, 54);
 		btnMat_2.setId(20);
 		listaBotoes.add(btnMat_2);
 		contentPane.add(btnMat_2);
 		
 		ButtonAiCoach btnMat_1 = new ButtonAiCoach("MAT");
 		btnMat_1.setBackground(Color.GRAY);
-		btnMat_1.setBounds(423, 277, 58, 43);
+		btnMat_1.setBounds(423, 277, 58, 54);
 		btnMat_1.setId(19);
 		listaBotoes.add(btnMat_1);
 		contentPane.add(btnMat_1);
 		
 		ButtonAiCoach btnMat = new ButtonAiCoach("MAT");
 		btnMat.setBackground(Color.GRAY);
-		btnMat.setBounds(423, 373, 58, 43);
+		btnMat.setBounds(423, 373, 58, 54);
 		btnMat.setId(18);
 		listaBotoes.add(btnMat);
 		contentPane.add(btnMat);
 		
 		ButtonAiCoach btnMld_1 = new ButtonAiCoach("MLD");
 		btnMld_1.setBackground(Color.GRAY);
-		btnMld_1.setBounds(423, 463, 58, 43);
+		btnMld_1.setBounds(423, 452, 58, 54);
 		btnMld_1.setId(17);
 		listaBotoes.add(btnMld_1);
 		contentPane.add(btnMld_1);
 		
 		ButtonAiCoach btnPte = new ButtonAiCoach("PTE");
 		btnPte.setBackground(Color.GRAY);
-		btnPte.setBounds(534, 113, 59, 43);
+		btnPte.setBounds(534, 113, 59, 54);
 		btnPte.setId(26);
 		listaBotoes.add(btnPte);
 		contentPane.add(btnPte);
 		
 		ButtonAiCoach btnSa_1 = new ButtonAiCoach("SA");
 		btnSa_1.setBackground(Color.GRAY);
-		btnSa_1.setBounds(534, 203, 45, 43);
+		btnSa_1.setBounds(534, 203, 59, 54);
 		btnSa_1.setId(25);
 		listaBotoes.add(btnSa_1);
 		contentPane.add(btnSa_1);
 		
 		ButtonAiCoach btnCa = new ButtonAiCoach("CA");
-		btnCa.setBounds(548, 277, 51, 43);
+		btnCa.setBounds(548, 277, 64, 63);
 		btnCa.setBackground(Color.GRAY);
 		btnCa.setId(24);
 		listaBotoes.add(btnCa);
@@ -302,27 +304,30 @@ public class TelaTatica extends JFrame {
 		
 		ButtonAiCoach btnSa = new ButtonAiCoach("SA");
 		btnSa.setBackground(Color.GRAY);
-		btnSa.setBounds(534, 361, 45, 43);
+		btnSa.setBounds(534, 361, 59, 55);
 		btnSa.setId(23);
 		listaBotoes.add(btnSa);
 		contentPane.add(btnSa);
 		
 		ButtonAiCoach btnPtd = new ButtonAiCoach("PTD");
 		btnPtd.setBackground(Color.GRAY);
-		btnPtd.setBounds(534, 463, 59, 43);
+		btnPtd.setBounds(534, 452, 59, 54);
 		btnPtd.setId(22);
 		listaBotoes.add(btnPtd);
 		contentPane.add(btnPtd);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(TelaTatica.class.getResource("/imagens/campo.png")));
-		lblNewLabel.setBounds(37, 81, 688, 438);
+		lblNewLabel.setBounds(10, 81, 688, 438);
 		contentPane.add(lblNewLabel);
 		
 JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores");
 		
 		btnEscolherMelhoresJogadores.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				
 				
 				for(int j=0;j<listaBotoes.size();j++){
 					listaBotoes.get(j).setVisible(false);
@@ -331,106 +336,107 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 				
 				if(formacoes[comboBox.getSelectedIndex()].equals("4-4-2")){
 					listaIdPosicoes.clear();
-					listaIdPosicoes.add(1);
-					listaIdPosicoes.add(2);
-					listaIdPosicoes.add(3);
-					listaIdPosicoes.add(5);
-					listaIdPosicoes.add(6);
-					listaIdPosicoes.add(9);
-					listaIdPosicoes.add(13);
-					listaIdPosicoes.add(15);
-					listaIdPosicoes.add(19);
-					listaIdPosicoes.add(25);
-					listaIdPosicoes.add(24);
+					listaIdPosicoes.add(new Posicao(1));
+					listaIdPosicoes.add(new Posicao(2));
+					listaIdPosicoes.add(new Posicao(3));
+					listaIdPosicoes.add(new Posicao(5));
+					listaIdPosicoes.add(new Posicao(6));
+					listaIdPosicoes.add(new Posicao(9));
+					listaIdPosicoes.add(new Posicao(13));
+					listaIdPosicoes.add(new Posicao(15));
+					listaIdPosicoes.add(new Posicao(19));
+					listaIdPosicoes.add(new Posicao(25));
+					listaIdPosicoes.add(new Posicao(24));
 					
 				}
 				
 				if(formacoes[comboBox.getSelectedIndex()].equals("3-5-2")){
 					
 					listaIdPosicoes.clear();
-					listaIdPosicoes.add(1);
-					listaIdPosicoes.add(4);
-					listaIdPosicoes.add(3);
-					listaIdPosicoes.add(5);
-					listaIdPosicoes.add(12);
-					listaIdPosicoes.add(9);
-					listaIdPosicoes.add(13);
-					listaIdPosicoes.add(16);
-					listaIdPosicoes.add(19);
-					listaIdPosicoes.add(25);
-					listaIdPosicoes.add(24);
+					listaIdPosicoes.add(new Posicao(1));
+					listaIdPosicoes.add(new Posicao(4));
+					listaIdPosicoes.add(new Posicao(3));
+					listaIdPosicoes.add(new Posicao(5));
+					listaIdPosicoes.add(new Posicao(12));
+					listaIdPosicoes.add(new Posicao(9));
+					listaIdPosicoes.add(new Posicao(13));
+					listaIdPosicoes.add(new Posicao(16));
+					listaIdPosicoes.add(new Posicao(19));
+					listaIdPosicoes.add(new Posicao(25));
+					listaIdPosicoes.add(new Posicao(24));
 				}
 				
 				if(formacoes[comboBox.getSelectedIndex()].equals("4-3-3")){
 					listaIdPosicoes.clear();
-					listaIdPosicoes.add(1);
-					listaIdPosicoes.add(2);
-					listaIdPosicoes.add(3);
-					listaIdPosicoes.add(5);
-					listaIdPosicoes.add(6);
-					listaIdPosicoes.add(9);
-					listaIdPosicoes.add(13);
-					listaIdPosicoes.add(19);
-					listaIdPosicoes.add(22);
-					listaIdPosicoes.add(26);
-					listaIdPosicoes.add(24);
+					listaIdPosicoes.add(new Posicao(1));
+					listaIdPosicoes.add(new Posicao(2));
+					listaIdPosicoes.add(new Posicao(3));
+					listaIdPosicoes.add(new Posicao(5));
+					listaIdPosicoes.add(new Posicao(6));
+					listaIdPosicoes.add(new Posicao(9));
+					listaIdPosicoes.add(new Posicao(13));
+					listaIdPosicoes.add(new Posicao(19));
+					listaIdPosicoes.add(new Posicao(22));
+					listaIdPosicoes.add(new Posicao(26));
+					listaIdPosicoes.add(new Posicao(24));
 					
 				}
 
 				if(formacoes[comboBox.getSelectedIndex()].equals("5-3-2")){
 					
 					listaIdPosicoes.clear();
-					listaIdPosicoes.add(1);
-					listaIdPosicoes.add(7);
-					listaIdPosicoes.add(3);
-					listaIdPosicoes.add(5);
-					listaIdPosicoes.add(4);
-					listaIdPosicoes.add(11);
-					listaIdPosicoes.add(9);
-					listaIdPosicoes.add(15);
-					listaIdPosicoes.add(19);
-					listaIdPosicoes.add(25);
-					listaIdPosicoes.add(24);
+					listaIdPosicoes.add(new Posicao(1));
+					listaIdPosicoes.add(new Posicao(7));
+					listaIdPosicoes.add(new Posicao(3));
+					listaIdPosicoes.add(new Posicao(5));
+					listaIdPosicoes.add(new Posicao(4));
+					listaIdPosicoes.add(new Posicao(11));
+					listaIdPosicoes.add(new Posicao(9));
+					listaIdPosicoes.add(new Posicao(15));
+					listaIdPosicoes.add(new Posicao(19));
+					listaIdPosicoes.add(new Posicao(25));
+					listaIdPosicoes.add(new Posicao(24));
 				}
 
 				if(formacoes[comboBox.getSelectedIndex()].equals("4-5-1")){
 					
 					listaIdPosicoes.clear();
-					listaIdPosicoes.add(1);
-					listaIdPosicoes.add(2);
-					listaIdPosicoes.add(3);
-					listaIdPosicoes.add(5);
-					listaIdPosicoes.add(6);
-					listaIdPosicoes.add(9);
-					listaIdPosicoes.add(13);
-					listaIdPosicoes.add(17);
-					listaIdPosicoes.add(21);
-					listaIdPosicoes.add(19);
-					listaIdPosicoes.add(24);
+					listaIdPosicoes.add(new Posicao(1));
+					listaIdPosicoes.add(new Posicao(2));
+					listaIdPosicoes.add(new Posicao(3));
+					listaIdPosicoes.add(new Posicao(5));
+					listaIdPosicoes.add(new Posicao(6));
+					listaIdPosicoes.add(new Posicao(9));
+					listaIdPosicoes.add(new Posicao(13));
+					listaIdPosicoes.add(new Posicao(17));
+					listaIdPosicoes.add(new Posicao(21));
+					listaIdPosicoes.add(new Posicao(19));
+					listaIdPosicoes.add(new Posicao(24));
 				}
 
 				if(formacoes[comboBox.getSelectedIndex()].equals("3-6-1")){
 					
 					listaIdPosicoes.clear();
-					listaIdPosicoes.add(1);
-					listaIdPosicoes.add(4);
-					listaIdPosicoes.add(3);
-					listaIdPosicoes.add(5);
-					listaIdPosicoes.add(10);
-					listaIdPosicoes.add(8);
-					listaIdPosicoes.add(14);
-					listaIdPosicoes.add(19);
-					listaIdPosicoes.add(17);
-					listaIdPosicoes.add(21);
-					listaIdPosicoes.add(24);
+					listaIdPosicoes.add(new Posicao(1));
+					listaIdPosicoes.add(new Posicao(4));
+					listaIdPosicoes.add(new Posicao(3));
+					listaIdPosicoes.add(new Posicao(5));
+					listaIdPosicoes.add(new Posicao(10));
+					listaIdPosicoes.add(new Posicao(8));
+					listaIdPosicoes.add(new Posicao(14));
+					listaIdPosicoes.add(new Posicao(19));
+					listaIdPosicoes.add(new Posicao(17));
+					listaIdPosicoes.add(new Posicao(21));
+					listaIdPosicoes.add(new Posicao(24));
 				}
 				
 				
 				for(int i=0;i<11;i++){
 					for(int j=0;j<listaBotoes.size();j++){
 						System.out.println(listaIdPosicoes.get(i)+ " "+ listaBotoes.get(j).getId());
-						if(listaIdPosicoes.get(i)==listaBotoes.get(j).getId()){
+						if(listaIdPosicoes.get(i).getIdPosicaoTela()==listaBotoes.get(j).getId()){
 							listaBotoes.get(j).setBackground(Color.GREEN);
+							//listaBotoes.get(j).setLabel(listaIdPosicoes.get(i).getNome());
 							break;
 						}
 					}
