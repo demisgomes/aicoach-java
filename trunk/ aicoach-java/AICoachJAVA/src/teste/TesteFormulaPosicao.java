@@ -485,7 +485,9 @@ tatica3 = tatica.sugerirTatica(SantaCruz, taticas);
 System.out.println("tatica selecionada: "+tatica3.getNome());
 
 
-
+	
+	TelaInicial tela = new TelaInicial("Tela Inicial", 300, 300);
+	tela.setVisible(true);
 
 
 	
