@@ -70,7 +70,7 @@ public class TesteJogadores {
 		System.out.println("Tática usada será: "+taticaUsada.getNome());
 		
 		for (Posicao p : time.getTatica().getPosicoes()) {
-			System.out.println(p.getNome()+" será "+ p.getJogador().getNome());
+			System.out.println(p.getNome()+" será "+ p.getJogador().getNome()+ " "+ p.getJogador().getPosicaoAtual().getPontuacao());
 		}
 		System.out.println(time.getEstiloDeJogo().getNome());
 		
