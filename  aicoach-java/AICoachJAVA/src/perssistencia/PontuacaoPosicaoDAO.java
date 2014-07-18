@@ -16,25 +16,25 @@ public class PontuacaoPosicaoDAO {
 	
 	
 	public ArrayList<PontuacaoPosicao> retornaPosicao(int idJogador){
-		String sql = "SELECT * FROM pontuacaoposicoes WHRE jogador = '"+idJogador+"'";
+		String sql = "SELECT * FROM pontuacaoposicoes WHERE jogador = '"+idJogador+"'";
 		ResultSet rs = banco.executarSelect(sql);
 		
-		ArrayList<String> posicoes = null;
+		ArrayList<String> posicoes = new ArrayList<>();
 		posicoes.add("zagueiro");
-		posicoes.add("lateral esquerdo");
-		posicoes.add("lateral direito");
+		posicoes.add("lateral_esquerdo");
+		posicoes.add("lateral_direito");
 		posicoes.add("volante");
 		posicoes.add("ala");
-		posicoes.add("meia lateral direito");
-		posicoes.add("meia lateral esquerdo");
-		posicoes.add("meio campo central");
-		posicoes.add("meia atacante");
-		posicoes.add("segundo atacante");
-		posicoes.add("centro avante");
-		posicoes.add("ponta esquerda");
-		posicoes.add("ponta direita");
+		posicoes.add("meia_lateral_direito");
+		posicoes.add("meia_lateral_esquerdo");
+		posicoes.add("meio_campo_central");
+		posicoes.add("meia_atacante");
+		posicoes.add("segundo_atacante");
+		posicoes.add("centro_avante");
+		posicoes.add("ponta_esquerda");
+		posicoes.add("ponta_direita");
 		
-		ArrayList<PontuacaoPosicao> listaPontuacaoPosicoes = null;
+		ArrayList<PontuacaoPosicao> listaPontuacaoPosicoes = new ArrayList<>();
 		for (int i = 0; i < posicoes.size(); i++) {
 			
 			PontuacaoPosicao obj = new PontuacaoPosicao();
@@ -52,7 +52,11 @@ public class PontuacaoPosicaoDAO {
 			listaPontuacaoPosicoes.add(obj);
 		}
 			
-		
+		try {
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return listaPontuacaoPosicoes;
 	}
 }
