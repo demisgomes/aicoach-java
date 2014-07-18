@@ -68,10 +68,11 @@ public class TelaTatica extends JFrame {
 		
 		
 		this.time=time;
+		TaticaDAO taticaDAO=new TaticaDAO();
+		final ArrayList<Tatica> listaTaticas= taticaDAO.retornarListaTaticas();
 		
-		JButton btnSugerirTtica = new JButton("Sugerir T\u00E1tica");
-		btnSugerirTtica.setBounds(27, 23, 135, 23);
-		contentPane.add(btnSugerirTtica);
+		
+		
 		
 		JButton btnNewButtonAiCoach = new JButton("Alterar Esquema");
 		btnNewButtonAiCoach.addActionListener(new ActionListener() {
@@ -82,8 +83,7 @@ public class TelaTatica extends JFrame {
 		contentPane.add(btnNewButtonAiCoach);
 		
 		
-		TaticaDAO taticaDAO=new TaticaDAO();
-		ArrayList<Tatica> listaTaticas= taticaDAO.retornarListaTaticas();
+		
 		final String[] formacoes= new String[listaTaticas.size()];
 		
 		for (int i = 0; i < formacoes.length; i++) {
@@ -330,6 +330,68 @@ public class TelaTatica extends JFrame {
 		lblNewLabel.setBounds(10, 81, 688, 438);
 		contentPane.add(lblNewLabel);
 		
+		
+		//------------------------------------
+		//SUGERIR TÀTICA
+		//------------------------------------
+		JButton btnSugerirTtica = new JButton("Sugerir T\u00E1tica");
+		btnSugerirTtica.setBounds(27, 23, 135, 23);
+		
+		
+		btnSugerirTtica.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						
+						for (int j = 0; j < time.getJogadores().size(); j++) {
+							time.getJogadores().get(j).setEscolhido(0);
+							
+						}
+						
+						AlgoritmoTatica aTatica=new AlgoritmoTatica();
+						aTatica.sugerirTatica(time, listaTaticas);
+						
+						for(int j=0;j<listaBotoes.size();j++){
+							listaBotoes.get(j).setVisible(false);
+							listaBotoes.get(j).setBackground(Color.GRAY);
+						}
+						
+						listaIdPosicoes.clear();				
+						for(Posicao p: time.getTatica().getPosicoes()){
+							listaIdPosicoes.add(p);
+						}
+						for(Posicao p: time.getTatica().getPosicoes()){
+							System.out.println(p.getNome()+ " "+p.getJogador().getNome()+ " "+p.getIdPosicaoTela());
+						}
+						for(int i=0;i<11;i++){
+							for(int j=0;j<listaBotoes.size();j++){
+								if(listaIdPosicoes.get(i).getIdPosicaoTela()==listaBotoes.get(j).getId()){
+									listaBotoes.get(j).setBackground(Color.GREEN);
+									break;
+								}
+							}
+							
+						}
+						
+						for(int j=0;j<listaBotoes.size();j++){
+							if(listaBotoes.get(j).getBackground()==Color.green){
+								listaBotoes.get(j).setVisible(true);
+								for(int k=0;k<time.getTatica().getPosicoes().size();k++){
+									if(listaBotoes.get(j).getId()==time.getTatica().getPosicoes().get(k).getIdPosicaoTela()){
+										listaBotoes.get(j).setJogador(time.getTatica().getPosicoes().get(k).getJogador());
+										listaBotoes.get(j).setLabel("<html><p style='margin-left: -15pt;'>"+time.getTatica().getPosicoes().get(k).getJogador().getNome()+"<br> ("+time.getTatica().getPosicoes().get(k).getPontuacao()+")</p><html>");
+										//listaBotoes.get(j).setLabel(time.getTatica().getPosicoes().get(k).getJogador().getNome()+" ("+time.getTatica().getPosicoes().get(k).getPontuacao()+")");
+										
+										listaBotoes.get(j).setSize(62, 62);
+										//listaBotoes.get(j).setBorder(new RoundedBorder(20));
+										//listaBotoes.get(j).setLabel("<html>FINALIZAR<br>COMPRA</html>");
+										break;
+									}
+								}
+							}
+						}
+			}
+		});
+		
+		contentPane.add(btnSugerirTtica);
 JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores");
 		
 		btnEscolherMelhoresJogadores.addActionListener(new ActionListener() {
@@ -371,14 +433,6 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 					}
 					
 				}
-				
-				/*for(int k=0;k<time.getTatica().getPosicoes().size();k++){
-					if(listaIdPosicoes.get(i).getIdPosicaoTela()==time.getTatica().getPosicoes().get(k).getIdPosicaoTela()){
-						listaBotoes.get(k).setJogador(time.getTatica().getPosicoes().get(k).getJogador());
-						listaBotoes.get(k).setLabel(time.getTatica().getPosicoes().get(k).getJogador().getNome());
-						break;
-					}
-				}*/
 				
 				for(int j=0;j<listaBotoes.size();j++){
 					if(listaBotoes.get(j).getBackground()==Color.green){
