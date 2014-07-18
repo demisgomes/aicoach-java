@@ -21,20 +21,19 @@ public class TaticaDAO {
 		for(int i=0;i<tatica.getPosicoes().size();i++){
 			idPosicoes.add(tatica.getPosicoes().get(i).getIdPosicaoTela());
 		}
-		String sql = "Insert into taticas (nome,posicoes,time) VALUES('"
+		String sql = "Insert into taticas (nome,posicoes) VALUES('"
 				+tatica.getNome()
 				+"','"
-				+idPosicoes	+"','"
-				+tatica.getTime().getIdTime() + "')";
+				+idPosicoes	+"')";
 		
 		banco.executarSQL(sql);
 		tatica.setIdTatica(retornarIdTatica());
 	}
 	
 	public Tatica retornarTatica(Tatica tatica){
-		String sql = "SELECT * from taticas WHERE idtatica LIKE'"+tatica.getIdTatica()+"'";
+		String sql = "SELECT * from taticas WHERE nome LIKE'"+tatica.getNome()+"'";
 		ResultSet rs = banco.executarSelect(sql);
-		int idTatica = 0, idTime = 0;
+		int idTatica = 0;
 		String nome = null, posicoes = null;
 		ArrayList<Posicao> posicoesTatica = new ArrayList<Posicao>();
 		
@@ -43,15 +42,11 @@ public class TaticaDAO {
 				idTatica = rs.getInt("idtatica");
 				nome = rs.getString("nome");
 				posicoes=rs.getString("posicoes");
-				idTime = rs.getInt("time");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		Time time = new Time();
-		TimeDAO timeDAO = new TimeDAO();
-		time = timeDAO.retornarTime(idTime);
 		String [] posicoesSeparadas=posicoes.split(",");
 		for (int i = 0; i < posicoesSeparadas.length; i++) {
 			posicoesSeparadas[i]=posicoesSeparadas[i].substring(1);
@@ -62,7 +57,41 @@ public class TaticaDAO {
 			Posicao p= new Posicao(int1);
 			posicoesTatica.add(p);
 		}
-		 tatica = new Tatica(idTatica, nome, posicoesTatica, time);
+		 tatica = new Tatica(idTatica, nome, posicoesTatica);
+		
+
+
+		return tatica;
+	}
+	
+	public Tatica retornarTatica(int idDaTatica){
+		String sql = "SELECT * from taticas WHERE idtatica LIKE'"+idDaTatica+"'";
+		ResultSet rs = banco.executarSelect(sql);
+		int idTatica = 0;
+		String nome = null, posicoes = null;
+		ArrayList<Posicao> posicoesTatica = new ArrayList<Posicao>();
+		
+		try {
+			if(rs.next()){
+				idTatica = rs.getInt("idtatica");
+				nome = rs.getString("nome");
+				posicoes=rs.getString("posicoes");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		String [] posicoesSeparadas=posicoes.split(",");
+		for (int i = 0; i < posicoesSeparadas.length; i++) {
+			posicoesSeparadas[i]=posicoesSeparadas[i].substring(1);
+			if(i==posicoesSeparadas.length-1){
+				posicoesSeparadas[i]=posicoesSeparadas[i].substring(0, posicoesSeparadas[i].length()-1);
+			}
+			int int1 = Integer.parseInt(posicoesSeparadas[i]);
+			Posicao p= new Posicao(int1);
+			posicoesTatica.add(p);
+		}
+		 Tatica tatica = new Tatica(idTatica, nome, posicoesTatica);
 		
 
 

@@ -525,11 +525,13 @@ for (Posicao xxx: SantaCruz.getTatica().getPosicoes() ){
 		System.out.println(tatica1.getPosicoes().get(i).getIdPosicaoTela());
 	}
 	
-	taticaDAO.inserirTatica(tatica1);
+	//taticaDAO.inserirTatica(tatica1);
 	System.out.println(tatica1.getIdTatica());
 	Tatica taticaNova = new Tatica();
 	
-	taticaNova = taticaDAO.retornarTatica(tatica1);
+	taticaNova = taticaDAO.retornarTatica(new Tatica("4-4-2", null));
+
+	taticaNova = taticaDAO.retornarTatica(new Tatica ("3-5-2", null));
 	
 	System.out.println(taticaNova.getNome());
 	System.out.println(taticaNova.getNome()+" "+ taticaNova.getIdTatica());

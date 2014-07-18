@@ -25,6 +25,12 @@ public class Tatica {
 		setTime(time);
 	}
 	
+	public Tatica(int idTatica,String nome, ArrayList<Posicao> posicoes){
+		setNome(nome);
+		setPosicoes(posicoes);
+		setIdTatica(idTatica);
+	}
+	
 	public Tatica(){
 		
 	}
