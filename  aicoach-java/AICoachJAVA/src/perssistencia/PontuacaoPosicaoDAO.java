@@ -13,8 +13,6 @@ public class PontuacaoPosicaoDAO {
 
 	Banco banco = new Banco(Banco.getUrl(),Banco.getSenha(),Banco.getRoot());
 	
-	
-	
 	public ArrayList<PontuacaoPosicao> retornaPosicao(int idJogador){
 		String sql = "SELECT * FROM pontuacaoposicoes WHERE jogador = '"+idJogador+"'";
 		ResultSet rs = banco.executarSelect(sql);
@@ -33,6 +31,7 @@ public class PontuacaoPosicaoDAO {
 		posicoes.add("centro_avante");
 		posicoes.add("ponta_esquerda");
 		posicoes.add("ponta_direita");
+		posicoes.add("goleiro");
 		
 		ArrayList<PontuacaoPosicao> listaPontuacaoPosicoes = new ArrayList<>();
 		for (int i = 0; i < posicoes.size(); i++) {
