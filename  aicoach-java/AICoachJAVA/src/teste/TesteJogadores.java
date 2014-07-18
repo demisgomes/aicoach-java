@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import negocio.FormulaPosicao;
 import dominio.Jogador;
 import dominio.PontuacaoPosicao;
+import dominio.Time;
 import perssistencia.JogadorDAO;
 import perssistencia.PontuacaoPosicaoDAO;
+import perssistencia.TimeDAO;
 
 public class TesteJogadores {
 	
@@ -27,12 +29,24 @@ public class TesteJogadores {
 		//ppDAO.inserirPontuacaoPosicoesJogador(jogador);
 		
 		listaJogador=jDAO.retornarJogadores(3);
-		for(Jogador j : listaJogador){
+		/*for(Jogador j : listaJogador){
 			form.calculeTudo(j);
 			for(int i=0;i<j.getPosicoes().size();i++){
 				System.out.println(j.getNome()+" "+ j.getPosicoes().get(i).getNome()+ " "+j.getPosicoes().get(i).getPontuacao()+ " "+ j.getPosicoes().get(i).isPosicaoDeOrigem());
 				//ppDAO.inserirPontuacaoPosicoesJogador(j);
 			}
+		}*/
+		
+		TimeDAO tDAO= new TimeDAO();
+		Time time= tDAO.retornarTime(3);
+		time.setJogadores(listaJogador);
+		
+		System.out.println(time.getNome());
+		System.out.println(time.getJogadores().size()+" jogadores");
+		
+		for(Jogador j : time.getJogadores()){
+			System.out.println(j.getNome());
+		
 		}
 		
 	}
