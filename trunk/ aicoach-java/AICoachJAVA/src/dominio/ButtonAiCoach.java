@@ -1,9 +1,10 @@
 package dominio;
 
-import java.awt.Button;
 import java.awt.HeadlessException;
 
-public class ButtonAiCoach extends Button {
+import javax.swing.JButton;
+
+public class ButtonAiCoach extends JButton {
 
 	/**
 	 * 
@@ -16,6 +17,7 @@ public class ButtonAiCoach extends Button {
 	/**
 	 * @return the id
 	 */
+	
 	public int getId() {
 		return id;
 	}
@@ -29,6 +31,8 @@ public class ButtonAiCoach extends Button {
 
 	public ButtonAiCoach(String nomeBotao) throws HeadlessException {
 		super(nomeBotao);
+		super.setContentAreaFilled(false);
+		setOpaque(true);
 	}
 	
 	public ButtonAiCoach(){
