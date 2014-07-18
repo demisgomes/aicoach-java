@@ -2,6 +2,7 @@ package perssistencia;
 
 import java.sql.Array;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.omg.CORBA.OBJ_ADAPTER;
@@ -151,5 +152,26 @@ public class TaticaDAO {
 		
 		return idTatica;
 		
+	}
+	
+	public ArrayList <Tatica> retornarListaTaticas(){
+		String sql = "SELECT * FROM taticas";
+		ResultSet rs = banco.executarSelect(sql);
+		ArrayList<Tatica> lista=new ArrayList<Tatica>();
+		
+		try {
+			while(rs.next()){
+				Tatica t=retornarTatica(rs.getInt("idtatica"));
+				lista.add(t);
+			}
+			return lista;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		finally{
+			banco.fecharBanco();
+		}
 	}
 }

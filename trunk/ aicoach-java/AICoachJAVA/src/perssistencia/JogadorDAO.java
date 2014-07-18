@@ -88,6 +88,9 @@ public class JogadorDAO {
 		
 		Jogador jogador = new Jogador(nome, time, peso, altura, temCondicao, posicoes, estatisticas, caracteristicas);
 		jogador.setId(idJogador);
+		for (int i = 0; i < jogador.getPosicoes().size(); i++) {
+			jogador.getPosicoes().get(i).setJogador(jogador);;
+		}
 		insiraPosicaoOrigem(jogador);
 		return jogador;
 	}
@@ -139,6 +142,9 @@ public class JogadorDAO {
 				Jogador jogador = new Jogador(nome, time, peso, altura, temCondicao, posicoes, estatisticas, caracteristicas);
 				jogador.setId(idJogador);
 				insiraPosicaoOrigem(jogador);
+				for (int i = 0; i < jogador.getPosicoes().size(); i++) {
+					jogador.getPosicoes().get(i).setJogador(jogador);;
+				}
 				listaJogadores.add(jogador);
 				}
 		} catch (SQLException e) {

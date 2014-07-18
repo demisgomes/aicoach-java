@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 
 import dominio.ButtonAiCoach;
 import dominio.Posicao;
+import dominio.Tatica;
 import dominio.Time;
 
 import javax.swing.JButton;
@@ -20,6 +21,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JComboBox;
+
+import perssistencia.TaticaDAO;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -76,13 +79,14 @@ public class TelaTatica extends JFrame {
 		btnNewButtonAiCoach.setBounds(27, 57, 135, 23);
 		contentPane.add(btnNewButtonAiCoach);
 		
-		final String[] formacoes= new String[6];
-		formacoes[0]="4-4-2";
-		formacoes[1]="3-5-2";
-		formacoes[2]="4-3-3";
-		formacoes[3]="4-5-1";
-		formacoes[4]="3-6-1";
-		formacoes[5]="5-3-2";
+		
+		TaticaDAO taticaDAO=new TaticaDAO();
+		ArrayList<Tatica> listaTaticas= taticaDAO.retornarListaTaticas();
+		final String[] formacoes= new String[listaTaticas.size()];
+		
+		for (int i = 0; i < formacoes.length; i++) {
+			formacoes[i]=listaTaticas.get(i).getNome();
+		}
 		
 		
 
@@ -335,101 +339,12 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 					listaBotoes.get(j).setVisible(false);
 					listaBotoes.get(j).setBackground(Color.GRAY);
 				}
+				listaIdPosicoes.clear();
+				TaticaDAO taticaDAO=new TaticaDAO();
+				Tatica taticaEscolhida=taticaDAO.retornarTatica(comboBox.getSelectedItem().toString());
 				
-				if(formacoes[comboBox.getSelectedIndex()].equals("4-4-2")){
-					listaIdPosicoes.clear();
-					listaIdPosicoes.add(new Posicao(1));
-					listaIdPosicoes.add(new Posicao(2));
-					listaIdPosicoes.add(new Posicao(3));
-					listaIdPosicoes.add(new Posicao(5));
-					listaIdPosicoes.add(new Posicao(6));
-					listaIdPosicoes.add(new Posicao(9));
-					listaIdPosicoes.add(new Posicao(13));
-					listaIdPosicoes.add(new Posicao(15));
-					listaIdPosicoes.add(new Posicao(19));
-					listaIdPosicoes.add(new Posicao(25));
-					listaIdPosicoes.add(new Posicao(24));
-					
-				}
-				
-				if(formacoes[comboBox.getSelectedIndex()].equals("3-5-2")){
-					
-					listaIdPosicoes.clear();
-					listaIdPosicoes.add(new Posicao(1));
-					listaIdPosicoes.add(new Posicao(4));
-					listaIdPosicoes.add(new Posicao(3));
-					listaIdPosicoes.add(new Posicao(5));
-					listaIdPosicoes.add(new Posicao(12));
-					listaIdPosicoes.add(new Posicao(9));
-					listaIdPosicoes.add(new Posicao(13));
-					listaIdPosicoes.add(new Posicao(16));
-					listaIdPosicoes.add(new Posicao(19));
-					listaIdPosicoes.add(new Posicao(25));
-					listaIdPosicoes.add(new Posicao(24));
-				}
-				
-				if(formacoes[comboBox.getSelectedIndex()].equals("4-3-3")){
-					listaIdPosicoes.clear();
-					listaIdPosicoes.add(new Posicao(1));
-					listaIdPosicoes.add(new Posicao(2));
-					listaIdPosicoes.add(new Posicao(3));
-					listaIdPosicoes.add(new Posicao(5));
-					listaIdPosicoes.add(new Posicao(6));
-					listaIdPosicoes.add(new Posicao(9));
-					listaIdPosicoes.add(new Posicao(13));
-					listaIdPosicoes.add(new Posicao(19));
-					listaIdPosicoes.add(new Posicao(22));
-					listaIdPosicoes.add(new Posicao(26));
-					listaIdPosicoes.add(new Posicao(24));
-					
-				}
-
-				if(formacoes[comboBox.getSelectedIndex()].equals("5-3-2")){
-					
-					listaIdPosicoes.clear();
-					listaIdPosicoes.add(new Posicao(1));
-					listaIdPosicoes.add(new Posicao(7));
-					listaIdPosicoes.add(new Posicao(3));
-					listaIdPosicoes.add(new Posicao(5));
-					listaIdPosicoes.add(new Posicao(4));
-					listaIdPosicoes.add(new Posicao(11));
-					listaIdPosicoes.add(new Posicao(9));
-					listaIdPosicoes.add(new Posicao(15));
-					listaIdPosicoes.add(new Posicao(19));
-					listaIdPosicoes.add(new Posicao(25));
-					listaIdPosicoes.add(new Posicao(24));
-				}
-
-				if(formacoes[comboBox.getSelectedIndex()].equals("4-5-1")){
-					
-					listaIdPosicoes.clear();
-					listaIdPosicoes.add(new Posicao(1));
-					listaIdPosicoes.add(new Posicao(2));
-					listaIdPosicoes.add(new Posicao(3));
-					listaIdPosicoes.add(new Posicao(5));
-					listaIdPosicoes.add(new Posicao(6));
-					listaIdPosicoes.add(new Posicao(9));
-					listaIdPosicoes.add(new Posicao(13));
-					listaIdPosicoes.add(new Posicao(17));
-					listaIdPosicoes.add(new Posicao(21));
-					listaIdPosicoes.add(new Posicao(19));
-					listaIdPosicoes.add(new Posicao(24));
-				}
-
-				if(formacoes[comboBox.getSelectedIndex()].equals("3-6-1")){
-					
-					listaIdPosicoes.clear();
-					listaIdPosicoes.add(new Posicao(1));
-					listaIdPosicoes.add(new Posicao(4));
-					listaIdPosicoes.add(new Posicao(3));
-					listaIdPosicoes.add(new Posicao(5));
-					listaIdPosicoes.add(new Posicao(10));
-					listaIdPosicoes.add(new Posicao(8));
-					listaIdPosicoes.add(new Posicao(14));
-					listaIdPosicoes.add(new Posicao(19));
-					listaIdPosicoes.add(new Posicao(17));
-					listaIdPosicoes.add(new Posicao(21));
-					listaIdPosicoes.add(new Posicao(24));
+				for(Posicao p: taticaEscolhida.getPosicoes()){
+					listaIdPosicoes.add(p);
 				}
 				
 				

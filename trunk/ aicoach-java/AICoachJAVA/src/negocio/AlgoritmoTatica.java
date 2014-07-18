@@ -72,8 +72,9 @@ public void SugerirJogadores(Time time){
 
 				
 				for(Posicao posicaoComparada: jogador.getPosicoes()){
-					//System.out.println(jogador.getNome()+ " "+posicaoComparada.isPosicaoDeOrigem()+" "+posicao.getPontuacao());
-					if(posicao.getNome().equals(posicaoComparada.getNome()) && posicaoComparada.isPosicaoDeOrigem() && !jogadoresClone.contains(jogador)){
+					//System.out.println(jogador.getNome()+ " "+posicaoComparada.isPosicaoDeOrigem()+" "+posicaoComparada.getPontuacao());
+					
+					if(posicao.getNome().toLowerCase().equals(posicaoComparada.getNome().toLowerCase()) && posicaoComparada.isPosicaoDeOrigem() && !jogadoresClone.contains(jogador)){
 						if(ptMaior<posicaoComparada.getPontuacao()){
 							
 							ptMaior=posicaoComparada.getPontuacao();
@@ -90,7 +91,6 @@ public void SugerirJogadores(Time time){
 				}
 				
 			}
-			System.out.println(posicaoX.getNome());
 			if(posicaoX.getJogador().getEscolhido() == 0){
 				posicaoX.getJogador().setEscolhido(1);
 				posicaoX.getJogador().setPosicaoAtual(posicaoX);
@@ -137,7 +137,7 @@ public void SugerirJogadores(Time time){
 		Posicao posicao = new Posicao();
 		EstiloDeJogo estilo = new EstiloDeJogo();
 		estilo = this.gerarEstilodeJogoTime(this.gerarOverallTime(time), this.gerarOverallJogador(time));
-		
+		time.setEstiloDeJogo(estilo);
 		for (int i = 0; i < time.getTatica().getPosicoes().size(); i++) {
 			posicao = time.getTatica().getPosicoes().get(i);
 			if(posicao != null){
