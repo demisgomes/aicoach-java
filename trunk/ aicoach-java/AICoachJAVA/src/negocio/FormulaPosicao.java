@@ -10,6 +10,51 @@ public class FormulaPosicao {
 	private static final int jogadorIdeal = 7;
 	private static final int somaPesos = 55;
 	
+	public void calculeTudo(Jogador jogador){
+		for(Posicao p: jogador.getPosicoes()){
+			if(p.getNome().equals("goleiro")){
+				
+				p.setPontuacao(calcularGL(jogador));
+			}
+			
+			if(p.getNome().equals("lateral")){
+				p.setPontuacao(calcularLT(jogador));
+			}
+
+			if(p.getNome().equals("zagueiro")){
+				p.setPontuacao(calcularZG(jogador));
+			}
+
+			if(p.getNome().equals("volante")){
+				p.setPontuacao(calcularVol(jogador));
+			}
+
+			if(p.getNome().equals("meia central")){
+				p.setPontuacao(calcularMC(jogador));
+			}
+
+			if(p.getNome().equals("meia lateral")){
+				p.setPontuacao(calcularML(jogador));
+			}
+
+			if(p.getNome().equals("meia atacante")){
+				p.setPontuacao(calcularMA(jogador));
+			}
+
+			if(p.getNome().equals("ponta")){
+				p.setPontuacao(calcularPT(jogador));
+			}
+			if(p.getNome().equals("segundo atacante")){
+				p.setPontuacao(calcularSA(jogador));
+			}
+
+			if(p.getNome().equals("centro avante")){
+				p.setPontuacao(calcularCA(jogador));
+			}
+		}
+	}
+	
+	
 	public int calcularGL(Jogador jogador){
 		int ressistencia = jogador.getCaracteristicas().getResistencia();
 		int cabeceio = jogador.getCaracteristicas().getCabeceio();
@@ -29,7 +74,7 @@ public class FormulaPosicao {
 		float pontuacaoFinal = (resultadoJogador/jogadorIdeal)*100;
 		ArrayList<Posicao> posicoes = jogador.getPosicoes();
 		for (int i = 0; i < posicoes.size(); i++) {
-			if(posicoes.get(i).getNome().toLowerCase() == "goleiro" && posicoes.get(i).isPosicaoDeOrigem()){
+			if(posicoes.get(i).getNome().toLowerCase().equals("goleiro") && posicoes.get(i).isPosicaoDeOrigem()){
 				pontuacaoFinal =  (pontuacaoFinal * 1.1f);
 				break;
 			}else if(posicoes.size()-1 == i){
@@ -62,7 +107,7 @@ public class FormulaPosicao {
 		float pontuacaoFinal = (resultadoJogador/jogadorIdeal)*100;
 		ArrayList<Posicao> posicoes = jogador.getPosicoes();
 		for (int i = 0; i < posicoes.size(); i++) {
-			if(posicoes.get(i).getNome().toLowerCase() == "zagueiro" && posicoes.get(i).isPosicaoDeOrigem()){
+			if(posicoes.get(i).getNome().toLowerCase().equals("zagueiro")  && posicoes.get(i).isPosicaoDeOrigem()){
 				pontuacaoFinal =  (pontuacaoFinal * 1.1f);
 				break;
 			}else if(posicoes.size()-1 == i){
@@ -94,7 +139,7 @@ public class FormulaPosicao {
 		float pontuacaoFinal = (resultadoJogador/jogadorIdeal)*100;
 		ArrayList<Posicao> posicoes = jogador.getPosicoes();
 		for (int i = 0; i < posicoes.size(); i++) {
-			if(posicoes.get(i).getNome().toLowerCase() == "lateral" && posicoes.get(i).isPosicaoDeOrigem()){
+			if(posicoes.get(i).getNome().toLowerCase().equals("lateral") && posicoes.get(i).isPosicaoDeOrigem()){
 				pontuacaoFinal =  (pontuacaoFinal * 1.1f);
 				break;
 			}else if(posicoes.size()-1 == i){
@@ -125,7 +170,7 @@ public class FormulaPosicao {
 		float pontuacaoFinal = (resultadoJogador/jogadorIdeal)*100;
 		ArrayList<Posicao> posicoes = jogador.getPosicoes();
 		for (int i = 0; i < posicoes.size(); i++) {
-			if(posicoes.get(i).getNome().toLowerCase() == "meia atacante" && posicoes.get(i).isPosicaoDeOrigem()){
+			if(posicoes.get(i).getNome().toLowerCase().equals("meia atacante")  && posicoes.get(i).isPosicaoDeOrigem()){
 				pontuacaoFinal =  (pontuacaoFinal * 1.1f);
 				break;
 			}else if(posicoes.size()-1 == i){
@@ -156,7 +201,7 @@ public class FormulaPosicao {
 		float pontuacaoFinal = (resultadoJogador/jogadorIdeal)*100;
 		ArrayList<Posicao> posicoes = jogador.getPosicoes();
 		for (int i = 0; i < posicoes.size(); i++) {
-			if(posicoes.get(i).getNome().toLowerCase() == "meia central" && posicoes.get(i).isPosicaoDeOrigem()){
+			if(posicoes.get(i).getNome().toLowerCase().equals("meia central")  && posicoes.get(i).isPosicaoDeOrigem()){
 				pontuacaoFinal =  (pontuacaoFinal * 1.1f);
 				break;
 			}else if(posicoes.size()-1 == i){
@@ -188,7 +233,7 @@ public class FormulaPosicao {
 		float pontuacaoFinal = (resultadoJogador/jogadorIdeal)*100;
 		ArrayList<Posicao> posicoes = jogador.getPosicoes();
 		for (int i = 0; i < posicoes.size(); i++) {
-			if(posicoes.get(i).getNome().toLowerCase() == "meia lateral" && posicoes.get(i).isPosicaoDeOrigem()){
+			if(posicoes.get(i).getNome().toLowerCase().equals("meia lateral")  && posicoes.get(i).isPosicaoDeOrigem()){
 				pontuacaoFinal =  (pontuacaoFinal * 1.1f);
 				break;
 			}else if(posicoes.size()-1 == i){
@@ -219,7 +264,7 @@ public class FormulaPosicao {
 		float pontuacaoFinal = (resultadoJogador/jogadorIdeal)*100;
 		ArrayList<Posicao> posicoes = jogador.getPosicoes();
 		for (int i = 0; i < posicoes.size(); i++) {
-			if(posicoes.get(i).getNome().toLowerCase() == "volante" && posicoes.get(i).isPosicaoDeOrigem()){
+			if(posicoes.get(i).getNome().toLowerCase().equals("volante") && posicoes.get(i).isPosicaoDeOrigem()){
 				pontuacaoFinal =  (pontuacaoFinal * 1.1f);
 				break;
 			}else if(posicoes.size()-1 == i){
@@ -249,7 +294,7 @@ public class FormulaPosicao {
 		float pontuacaoFinal = (resultadoJogador/jogadorIdeal)*100;
 		ArrayList<Posicao> posicoes = jogador.getPosicoes();
 		for (int i = 0; i < posicoes.size(); i++) {
-			if(posicoes.get(i).getNome().toLowerCase() == "ponta" && posicoes.get(i).isPosicaoDeOrigem()){
+			if(posicoes.get(i).getNome().toLowerCase().equals("ponta") && posicoes.get(i).isPosicaoDeOrigem()){
 				pontuacaoFinal =  (pontuacaoFinal * 1.1f);
 				break;
 			}else if(posicoes.size()-1 == i){
@@ -278,7 +323,7 @@ public class FormulaPosicao {
 		float pontuacaoFinal = (resultadoJogador/jogadorIdeal)*100;
 		ArrayList<Posicao> posicoes = jogador.getPosicoes();
 		for (int i = 0; i < posicoes.size(); i++) {
-			if(posicoes.get(i).getNome().toLowerCase() == "segundo atacante" && posicoes.get(i).isPosicaoDeOrigem()){
+			if(posicoes.get(i).getNome().toLowerCase().equals("segundo atacante") && posicoes.get(i).isPosicaoDeOrigem()){
 				pontuacaoFinal =  (pontuacaoFinal * 1.1f);
 				break;
 			}else if(posicoes.size()-1 == i){
@@ -309,7 +354,7 @@ public class FormulaPosicao {
 		float pontuacaoFinal = (resultadoJogador/jogadorIdeal)*100;
 		ArrayList<Posicao> posicoes = jogador.getPosicoes();
 		for (int i = 0; i < posicoes.size(); i++) {
-			if(posicoes.get(i).getNome().toLowerCase() == "centro avante" && posicoes.get(i).isPosicaoDeOrigem()){
+			if(posicoes.get(i).getNome().toLowerCase().equals("centro avante") && posicoes.get(i).isPosicaoDeOrigem()){
 				pontuacaoFinal =  (pontuacaoFinal * 1.1f);
 				break;
 				

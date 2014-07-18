@@ -153,7 +153,6 @@ public class JogadorDAO {
 		for (int i = 0; i < jogador.getPosicoes().size(); i++) {
 			try {
 				if(rs.last()){
-					System.out.println("entrei");
 					if(jogador.getPosicoes().get(i).getNome().equals("lateral") || jogador.getPosicoes().get(i).getNome().equals("meia lateral") || jogador.getPosicoes().get(i).getNome().equals("ponta")){
 						if(jogador.getPosicoes().get(i).getNome().equals("lateral")){
 							

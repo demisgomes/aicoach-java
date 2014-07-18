@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bd.Banco;
-
+import dominio.Jogador;
 import dominio.PontuacaoPosicao;
 
 
@@ -33,6 +33,7 @@ public class PontuacaoPosicaoDAO {
 		posicoes.add("meia atacante");
 		posicoes.add("segundo atacante");
 		posicoes.add("centro avante");
+		posicoes.add("ponta");
 		//posicoes.add("ponta_esquerda");
 		//posicoes.add("ponta_direita");
 		posicoes.add("goleiro");
@@ -84,5 +85,58 @@ public class PontuacaoPosicaoDAO {
 			e.printStackTrace();
 		}
 		return listaPontuacaoPosicoes;
+	}
+	
+	public void inserirPontuacaoPosicoesJogador(Jogador jogador){
+		int ptGol=0, ptLat=0, ptZag=0, ptVol=0, ptMC=0, ptML=0, ptMAT=0, ptSA=0, ptPT=0, ptCA=0;
+		for (int i = 0; i < jogador.getPosicoes().size(); i++) {
+			if(jogador.getPosicoes().get(i).getNome().equals("goleiro")){
+				ptGol=jogador.getPosicoes().get(i).getPontuacao();
+			}
+			if(jogador.getPosicoes().get(i).getNome().equals("zagueiro")){
+				ptZag=jogador.getPosicoes().get(i).getPontuacao();
+			}
+			if(jogador.getPosicoes().get(i).getNome().equals("lateral")){
+				ptLat=jogador.getPosicoes().get(i).getPontuacao();
+			}
+			if(jogador.getPosicoes().get(i).getNome().equals("volante")){
+				ptVol=jogador.getPosicoes().get(i).getPontuacao();
+			}
+			if(jogador.getPosicoes().get(i).getNome().equals("meia central")){
+				ptMC=jogador.getPosicoes().get(i).getPontuacao();
+			}
+			if(jogador.getPosicoes().get(i).getNome().equals("meia lateral")){
+				ptML=jogador.getPosicoes().get(i).getPontuacao();
+			}
+			if(jogador.getPosicoes().get(i).getNome().equals("meia atacante")){
+				ptMAT=jogador.getPosicoes().get(i).getPontuacao();
+			}
+			if(jogador.getPosicoes().get(i).getNome().equals("segundo atacante")){
+				ptSA=jogador.getPosicoes().get(i).getPontuacao();
+			}
+			if(jogador.getPosicoes().get(i).getNome().equals("ponta")){
+				ptPT=jogador.getPosicoes().get(i).getPontuacao();
+			}
+			if(jogador.getPosicoes().get(i).getNome().equals("centro avante")){
+				ptCA=jogador.getPosicoes().get(i).getPontuacao();
+			}
+		}
+		String sql = "Insert into pontuacaoposicoes (`zagueiro`, `lateral esquerdo`, `lateral direito`, `volante`, `meia lateral direito`, `meia lateral esquerdo`, `meia central`, `meia atacante`, `segundo atacante`, `centro avante`, `ponta esquerda`, `ponta direita`, `jogador`, `goleiro`) VALUES ("
+				+ "'"+ptZag+"',"
+				+ "'"+ptLat+"',"
+				+ "'"+ptLat+"',"
+				+ "'"+ptVol+"',"
+				+ "'"+ptML+"',"
+				+ "'"+ptML+"',"
+				+ "'"+ptMC+"',"
+				+ "'"+ptMAT+"',"
+				+ "'"+ptSA+"',"
+				+ "'"+ptCA+"',"
+				+ "'"+ptPT+"',"
+				+ "'"+ptPT+"',"
+				+ "'"+jogador.getId()+"',"
+				+ "'"+ptGol+"')";
+		
+		banco.executarSQL(sql);
 	}
 }
