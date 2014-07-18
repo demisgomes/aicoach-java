@@ -17,23 +17,28 @@ public class PontuacaoPosicaoDAO {
 		String sql = "SELECT * FROM pontuacaoposicoes WHERE jogador = '"+idJogador+"'";
 		ResultSet rs = banco.executarSelect(sql);
 		
-		ArrayList<String> posicoes = new ArrayList<>();
-		posicoes.add("zagueiro");
-		posicoes.add("lateral_esquerdo");
-		posicoes.add("lateral_direito");
-		posicoes.add("volante");
-		posicoes.add("ala");
-		posicoes.add("meia_lateral_direito");
-		posicoes.add("meia_lateral_esquerdo");
-		posicoes.add("meio_campo_central");
-		posicoes.add("meia_atacante");
-		posicoes.add("segundo_atacante");
-		posicoes.add("centro_avante");
-		posicoes.add("ponta_esquerda");
-		posicoes.add("ponta_direita");
-		posicoes.add("goleiro");
+		ArrayList<String> posicoes = new ArrayList<String>();
 		
-		ArrayList<PontuacaoPosicao> listaPontuacaoPosicoes = new ArrayList<>();
+
+		posicoes.add("zagueiro");
+		//posicoes.add("lateral_esquerdo");
+		//posicoes.add("lateral_direito");
+		posicoes.add("lateral");
+		posicoes.add("volante");
+		//posicoes.add("meia_lateral_direito");
+		//posicoes.add("meia_lateral_esquerdo");
+		posicoes.add("meia lateral");
+		//posicoes.add("meio_campo_central");
+		posicoes.add("meia central");
+		posicoes.add("meia atacante");
+		posicoes.add("segundo atacante");
+		posicoes.add("centro avante");
+		//posicoes.add("ponta_esquerda");
+		//posicoes.add("ponta_direita");
+		posicoes.add("goleiro");
+
+		ArrayList<PontuacaoPosicao> listaPontuacaoPosicoes = new ArrayList<PontuacaoPosicao>();
+
 		for (int i = 0; i < posicoes.size(); i++) {
 			
 			PontuacaoPosicao obj = new PontuacaoPosicao();
@@ -42,7 +47,29 @@ public class PontuacaoPosicaoDAO {
 			int pontuacao = 0;
 			
 			try {
-				pontuacao = rs.getInt(posicoes.get(i));
+				if(rs.last()){
+					
+					if(posicoes.get(i).equals("lateral") || posicoes.get(i).equals("meia lateral") || posicoes.get(i).equals("ponta")){
+						if(posicoes.get(i).equals("lateral")){
+							pontuacao=rs.getInt("lateral direito");
+						}
+						if(posicoes.get(i).equals("meia lateral")){
+							pontuacao=rs.getInt("meia lateral esquerdo");
+							
+						}
+						if(posicoes.get(i).equals("ponta")){
+							pontuacao=rs.getInt("ponta direita");
+						}
+					}
+					
+					else{
+						pontuacao = rs.getInt(posicoes.get(i));
+						
+					}
+					
+					
+				}
+				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
