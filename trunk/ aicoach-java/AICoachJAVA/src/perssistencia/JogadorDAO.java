@@ -95,7 +95,7 @@ public class JogadorDAO {
 	public ArrayList<Jogador> retornarJogadores(int idTime){
 		String sql = "SELECT * FROM jogador WHERE time = '"+idTime+"'";
 		ResultSet rs = banco.executarSelect(sql);
-		ArrayList<Jogador> listaJogadores = new ArrayList<>();
+		ArrayList<Jogador> listaJogadores = new ArrayList<Jogador>();
 		
 		try {
 			while(rs.next()){
@@ -137,7 +137,8 @@ public class JogadorDAO {
 				
 				EstatisticasJogador estatisticas = new EstatisticasJogador();
 				Jogador jogador = new Jogador(nome, time, peso, altura, temCondicao, posicoes, estatisticas, caracteristicas);
-
+				jogador.setId(idJogador);
+				insiraPosicaoOrigem(jogador);
 				listaJogadores.add(jogador);
 				}
 		} catch (SQLException e) {
@@ -150,6 +151,7 @@ public class JogadorDAO {
 		
 		String sql = "SELECT * FROM jogador WHERE idjogador = "+jogador.getId()+"";
 		ResultSet rs=banco.executarSelect(sql);
+		
 		for (int i = 0; i < jogador.getPosicoes().size(); i++) {
 			try {
 				if(rs.last()){
