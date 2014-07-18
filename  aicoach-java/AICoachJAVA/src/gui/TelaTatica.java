@@ -321,6 +321,7 @@ public class TelaTatica extends JFrame {
 		btnPtd.setBackground(Color.GRAY);
 		btnPtd.setBounds(534, 452, 59, 54);
 		btnPtd.setId(22);
+		
 		listaBotoes.add(btnPtd);
 		contentPane.add(btnPtd);
 		
@@ -385,8 +386,12 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 						for(int k=0;k<time.getTatica().getPosicoes().size();k++){
 							if(listaBotoes.get(j).getId()==time.getTatica().getPosicoes().get(k).getIdPosicaoTela()){
 								listaBotoes.get(j).setJogador(time.getTatica().getPosicoes().get(k).getJogador());
-								listaBotoes.get(j).setLabel(time.getTatica().getPosicoes().get(k).getJogador().getNome()+" ("+time.getTatica().getPosicoes().get(k).getPontuacao()+")");
-								listaBotoes.get(j).setSize(70, 60);
+								listaBotoes.get(j).setLabel("<html><p style='margin-left: -15pt;'>"+time.getTatica().getPosicoes().get(k).getJogador().getNome()+"<br> ("+time.getTatica().getPosicoes().get(k).getPontuacao()+")</p><html>");
+								//listaBotoes.get(j).setLabel(time.getTatica().getPosicoes().get(k).getJogador().getNome()+" ("+time.getTatica().getPosicoes().get(k).getPontuacao()+")");
+								
+								listaBotoes.get(j).setSize(62, 62);
+								//listaBotoes.get(j).setBorder(new RoundedBorder(20));
+								//listaBotoes.get(j).setLabel("<html>FINALIZAR<br>COMPRA</html>");
 								break;
 							}
 						}
@@ -405,4 +410,7 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 		
 		
 	}
+	
 }
+
+
