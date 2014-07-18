@@ -2,8 +2,11 @@ package teste;
 
 import java.util.ArrayList;
 
+import negocio.FormulaPosicao;
 import dominio.Jogador;
+import dominio.PontuacaoPosicao;
 import perssistencia.JogadorDAO;
+import perssistencia.PontuacaoPosicaoDAO;
 
 public class TesteJogadores {
 	
@@ -11,17 +14,17 @@ public class TesteJogadores {
 		ArrayList <Jogador> listaJogador=new ArrayList<Jogador>();
 		JogadorDAO jDAO=new JogadorDAO();
 		
-		Jogador jogador= jDAO.retornarJogador(25);
+		Jogador jogador= jDAO.retornarJogador(17);
 		System.out.println(jogador.getNome());
-		System.out.println(jogador.getCaracteristicas().getVelocidade());
-		System.out.println(jogador.getCaracteristicas().getBolaParada());
-		System.out.println(jogador.getCaracteristicas().getCabeceio());
-		System.out.println(jogador.getCaracteristicas().getControleBola());
-		System.out.println(jogador.getCaracteristicas().getDrible());
+		FormulaPosicao form=new FormulaPosicao();
+		form.calculeTudo(jogador);
 		for(int i=0;i<jogador.getPosicoes().size();i++){
 			System.out.println(jogador.getPosicoes().get(i).getNome()+ " "+jogador.getPosicoes().get(i).getPontuacao()+ " "+ jogador.getPosicoes().get(i).isPosicaoDeOrigem());
 			
 		}
+		
+		PontuacaoPosicaoDAO ppDAO=new PontuacaoPosicaoDAO();
+		ppDAO.inserirPontuacaoPosicoesJogador(jogador);
 		
 	}
 
