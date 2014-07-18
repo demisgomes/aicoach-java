@@ -6,6 +6,7 @@ import negocio.AlgoritmoTatica;
 import negocio.FormulaPosicao;
 import dominio.Jogador;
 import dominio.PontuacaoPosicao;
+import dominio.Posicao;
 import dominio.Tatica;
 import dominio.Time;
 import perssistencia.JogadorDAO;
@@ -46,17 +47,59 @@ public class TesteJogadores {
 		System.out.println(time.getNome());
 		System.out.println(time.getJogadores().size()+" jogadores");
 		
-		for(Jogador j : time.getJogadores()){
+		/*for(Jogador j : time.getJogadores()){
 			System.out.println(j.getNome()+" escolhido? "+j.getEscolhido()+ " "+j.getPosicoes().get(0).getPontuacao());
 		
 		}
-		
+		*/
 		TaticaDAO taticaDAO=new TaticaDAO();
 		Tatica tatica = taticaDAO.retornarTatica("4-4-2");
 		
+		Tatica tatica433=taticaDAO.retornarTatica("4-3-3");
+		
+		Tatica tatica451=taticaDAO.retornarTatica("4-5-1");
+		
 		AlgoritmoTatica ATatica=new AlgoritmoTatica();
-		time.setTatica(tatica);
+		
+		ArrayList<Tatica> listaTaticas=taticaDAO.retornarListaTaticas();
+		//listaTaticas.add(tatica);
+		//listaTaticas.add(tatica433);
+		//listaTaticas.add(tatica451);
+		
+		Tatica taticaUsada=ATatica.sugerirTatica(time, listaTaticas);
+		System.out.println("Tática usada será: "+taticaUsada.getNome());
+		
+		for (Posicao p : time.getTatica().getPosicoes()) {
+			System.out.println(p.getNome()+" será "+ p.getJogador().getNome());
+		}
+		System.out.println(time.getEstiloDeJogo().getNome());
+		
+		/*time.setTatica(tatica);
 		ATatica.SugerirJogadores(time);
+		
+		for(int j=0; j<time.getTatica().getPosicoes().size();j++){
+			System.out.println(time.getTatica().getPosicoes().get(j).getNome()+" é "+time.getTatica().getPosicoes().get(j).getJogador().getNome());
+		}
+		
+		time.setTatica(tatica433);
+		System.out.println(tatica433.getPosicoes().size());
+		System.out.println(time.getTatica().getPosicoes().size());
+		ATatica.SugerirJogadores(time);
+		
+		System.out.println("4-3-3");
+		System.out.println("------------------------------------------");
+		System.out.println(time.getTatica().getPosicoes().size());
+		for(int k=0; k<time.getTatica().getPosicoes().size();k++){
+			System.out.println(time.getTatica().getPosicoes().get(k).getNome()+" é "+time.getTatica().getPosicoes().get(k).getJogador().getNome());
+		}
+		
+		time.setTatica(tatica451);
+		ATatica.SugerirJogadores(time);
+		System.out.println("4-5-1");
+		System.out.println("------------------------------------------");
+		for(int l=0; l<time.getTatica().getPosicoes().size();l++){
+			System.out.println(time.getTatica().getPosicoes().get(l).getNome()+" é "+time.getTatica().getPosicoes().get(l).getJogador().getNome());
+		}*/
 		
 	}
 

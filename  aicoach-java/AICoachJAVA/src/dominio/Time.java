@@ -9,6 +9,7 @@ public class Time {
 	private ArrayList<Jogador> jogadores;
 	private Tatica tatica;
 	private int idTime;
+	private EstiloDeJogo estiloDeJogo;
 	
 	private static ArrayList<Time> listaTimes;
 	
@@ -95,6 +96,20 @@ public class Time {
 	 */
 	public static void setListaTimes(ArrayList<Time> listaTimes) {
 		Time.listaTimes = listaTimes;
+	}
+
+	/**
+	 * @return the estiloDeJogo
+	 */
+	public EstiloDeJogo getEstiloDeJogo() {
+		return estiloDeJogo;
+	}
+
+	/**
+	 * @param estiloDeJogo the estiloDeJogo to set
+	 */
+	public void setEstiloDeJogo(EstiloDeJogo estiloDeJogo) {
+		this.estiloDeJogo = estiloDeJogo;
 	}
 	
 }
