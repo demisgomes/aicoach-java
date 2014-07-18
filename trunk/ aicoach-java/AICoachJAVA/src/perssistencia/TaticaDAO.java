@@ -98,6 +98,41 @@ public class TaticaDAO {
 		return tatica;
 	}
 	
+	public Tatica retornarTatica(String nomeTatica){
+		String sql = "SELECT * from taticas WHERE nome LIKE'"+nomeTatica+"'";
+		ResultSet rs = banco.executarSelect(sql);
+		int idTatica = 0;
+		String nome = null, posicoes = null;
+		ArrayList<Posicao> posicoesTatica = new ArrayList<Posicao>();
+		
+		try {
+			if(rs.next()){
+				idTatica = rs.getInt("idtatica");
+				nome = rs.getString("nome");
+				posicoes=rs.getString("posicoes");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		String [] posicoesSeparadas=posicoes.split(",");
+		for (int i = 0; i < posicoesSeparadas.length; i++) {
+			posicoesSeparadas[i]=posicoesSeparadas[i].substring(1);
+			if(i==posicoesSeparadas.length-1){
+				posicoesSeparadas[i]=posicoesSeparadas[i].substring(0, posicoesSeparadas[i].length()-1);
+			}
+			int int1 = Integer.parseInt(posicoesSeparadas[i]);
+			Posicao p= new Posicao(int1);
+			posicoesTatica.add(p);
+		}
+		Tatica  tatica = new Tatica(idTatica, nome, posicoesTatica);
+		
+
+
+		return tatica;
+	}
+	
+	
 	public int retornarIdTatica(){
 		String sql = "SELECT idtatica from taticas";
 		ResultSet rs = banco.executarSelect(sql);

@@ -47,21 +47,23 @@ public class TelaListaTimes extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		TimeDAO tDAO=new TimeDAO();
+		final TimeDAO tDAO=new TimeDAO();
 		
 		ArrayList <Time> listaTime=tDAO.retornarListaTimes();
+		Time.setListaTimes(listaTime);
 		String [] listaTimes=new String[listaTime.size()];
 		for (int i = 0; i < listaTimes.length; i++) {
 			listaTimes[i]=listaTime.get(i).getNome();
 		}
-		JComboBox<String> comboBox = new JComboBox<String>(listaTimes);
+		final JComboBox<String> comboBox = new JComboBox<String>(listaTimes);
 		comboBox.setBounds(10, 26, 190, 29);
 		contentPane.add(comboBox);
 		
 		JButton btnNewButton = new JButton("Confirmar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ac) {
-					TelaTime tela = new TelaTime("Tela time", 600, 300);
+					Time time=tDAO.retornarTime(comboBox.getSelectedItem().toString());
+					TelaTime tela = new TelaTime("Tela time", 600, 300, time);
 					tela.setVisible(true);
 					dispose();
 			}

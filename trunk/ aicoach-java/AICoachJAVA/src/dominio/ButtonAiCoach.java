@@ -11,6 +11,7 @@ public class ButtonAiCoach extends Button {
 	private static final long serialVersionUID = 1L;
 	
 	private int id;
+	private Jogador jogador;
 
 	/**
 	 * @return the id
@@ -32,6 +33,20 @@ public class ButtonAiCoach extends Button {
 	
 	public ButtonAiCoach(){
 		
+	}
+
+	/**
+	 * @return the jogador
+	 */
+	public Jogador getJogador() {
+		return jogador;
+	}
+
+	/**
+	 * @param jogador the jogador to set
+	 */
+	public void setJogador(Jogador jogador) {
+		this.jogador = jogador;
 	}
 	
 	

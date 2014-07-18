@@ -65,13 +65,14 @@ public void SugerirJogadores(Time time){
 		ArrayList<Jogador> jogadoresClone = new ArrayList<Jogador>();
 		ArrayList<Posicao> posicoesRetorno = new ArrayList<Posicao>();
 		
-		
-		
 		for (Posicao posicao : posicoes) {
 			int ptMaior=0;
 			Posicao posicaoX = null;
 			for(Jogador jogador : time.getJogadores()){
+
+				
 				for(Posicao posicaoComparada: jogador.getPosicoes()){
+					//System.out.println(jogador.getNome()+ " "+posicaoComparada.isPosicaoDeOrigem()+" "+posicao.getPontuacao());
 					if(posicao.getNome().equals(posicaoComparada.getNome()) && posicaoComparada.isPosicaoDeOrigem() && !jogadoresClone.contains(jogador)){
 						if(ptMaior<posicaoComparada.getPontuacao()){
 							
@@ -89,6 +90,7 @@ public void SugerirJogadores(Time time){
 				}
 				
 			}
+			System.out.println(posicaoX.getNome());
 			if(posicaoX.getJogador().getEscolhido() == 0){
 				posicaoX.getJogador().setEscolhido(1);
 				posicaoX.getJogador().setPosicaoAtual(posicaoX);
