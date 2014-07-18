@@ -85,7 +85,7 @@ public class TelaTatica extends JFrame {
 		
 
 		
-		final JComboBox comboBox = new JComboBox<String>(formacoes);
+		final JComboBox<String> comboBox = new JComboBox<String>(formacoes);
 		comboBox.setBounds(239, 24, 93, 20);
 		contentPane.add(comboBox);
 		

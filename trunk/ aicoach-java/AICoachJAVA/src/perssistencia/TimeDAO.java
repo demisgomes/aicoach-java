@@ -54,8 +54,11 @@ public class TimeDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		JogadorDAO jDAO=new JogadorDAO();
+		jogadores=jDAO.retornarJogadores(idTime);
 		Time time = new Time();
 		time.setNome(nome);
+		time.setIdTime(idTime);
 		time.setJogadores(jogadores);
 		//time.setTatica(tatica);
 		return time;
@@ -74,6 +77,8 @@ public class TimeDAO {
 				nome = rs.getString("nometime");
 				idTime=rs.getInt("idtime");
 			}
+			JogadorDAO jDAO=new JogadorDAO();
+			jogadores=jDAO.retornarJogadores(idTime);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -82,5 +87,27 @@ public class TimeDAO {
 		time.setJogadores(jogadores);
 		time.setIdTime(idTime);//time.setTatica(tatica);
 		return time;
+	}
+	
+	public ArrayList<Time> retornarListaTimes(){
+		String sql="SELECT * FROM time";
+		ResultSet rs=banco.executarSelect(sql);
+		ArrayList<Time> lista=new ArrayList<Time>();
+		
+		try {
+			while(rs.next()){
+				Time t= retornarTime(rs.getInt("idtime"));
+				lista.add(t);
+			}
+			return lista;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		finally{
+			banco.fecharBanco();
+		}
+		
 	}
 }

@@ -43,7 +43,8 @@ public class TelaInicial extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnTime){
-			TelaTime tela = new TelaTime("Tela time", 600, 300);
+			TelaListaTimes tela = new TelaListaTimes();
+			tela.setVisible(true);
 			this.dispose();
 		}
 		
