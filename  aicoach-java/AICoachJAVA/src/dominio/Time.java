@@ -10,6 +10,8 @@ public class Time {
 	private Tatica tatica;
 	private int idTime;
 	
+	private static ArrayList<Time> listaTimes;
+	
 	public Time(){
 		
 	}
@@ -79,6 +81,20 @@ public class Time {
 			this.jogadores.remove(n);
 		}
 		}
+	}
+
+	/**
+	 * @return the listaTimes
+	 */
+	public static ArrayList<Time> getListaTimes() {
+		return listaTimes;
+	}
+
+	/**
+	 * @param listaTimes the listaTimes to set
+	 */
+	public static void setListaTimes(ArrayList<Time> listaTimes) {
+		Time.listaTimes = listaTimes;
 	}
 	
 }

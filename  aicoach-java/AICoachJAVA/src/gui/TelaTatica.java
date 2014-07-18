@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 
 import dominio.ButtonAiCoach;
 import dominio.Posicao;
+import dominio.Time;
 
 import javax.swing.JButton;
 
@@ -50,7 +51,8 @@ public class TelaTatica extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaTatica() {
+	public TelaTatica(){}
+	public TelaTatica(Time time) {
 		setTitle("Tela T\u00E1tica");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 714, 568);

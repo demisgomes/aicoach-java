@@ -7,13 +7,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import dominio.Time;
+
 public class TelaTime extends JFrame implements ActionListener {
 	
 	private JButton btnJogadores, btnCadastrarJogadores, btnTatica;
+	Time time;
 	
-	public TelaTime(String nome, int largura, int altura){
+	public TelaTime(String nome, int largura, int altura, Time time){
 		super(nome);
 		setSize(largura, altura);
+		this.time=time;
+		setTitle(time.getNome());
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		criarTela();
 		setVisible(true);
@@ -45,7 +50,7 @@ public class TelaTime extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnTatica){
-			TelaTatica tela = new TelaTatica();
+			TelaTatica tela = new TelaTatica(time);
 			tela.setVisible(true);
 			this.dispose();
 		}

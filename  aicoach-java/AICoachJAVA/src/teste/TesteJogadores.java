@@ -2,33 +2,35 @@ package teste;
 
 import java.util.ArrayList;
 
+import negocio.AlgoritmoTatica;
 import negocio.FormulaPosicao;
 import dominio.Jogador;
 import dominio.PontuacaoPosicao;
+import dominio.Tatica;
 import dominio.Time;
 import perssistencia.JogadorDAO;
 import perssistencia.PontuacaoPosicaoDAO;
+import perssistencia.TaticaDAO;
 import perssistencia.TimeDAO;
 
 public class TesteJogadores {
 	
 	public static void main(String[] args){
-		ArrayList <Jogador> listaJogador=new ArrayList<Jogador>();
-		JogadorDAO jDAO=new JogadorDAO();
+		/*
+		
 		
 		Jogador jogador= jDAO.retornarJogador(17);
 		System.out.println(jogador.getNome());
-		FormulaPosicao form=new FormulaPosicao();
-		form.calculeTudo(jogador);
 		for(int i=0;i<jogador.getPosicoes().size();i++){
 			System.out.println(jogador.getPosicoes().get(i).getNome()+ " "+jogador.getPosicoes().get(i).getPontuacao()+ " "+ jogador.getPosicoes().get(i).isPosicaoDeOrigem());
 			
-		}
+		}*/
 		
 		PontuacaoPosicaoDAO ppDAO=new PontuacaoPosicaoDAO();
 		//ppDAO.inserirPontuacaoPosicoesJogador(jogador);
-		
-		listaJogador=jDAO.retornarJogadores(3);
+		ArrayList <Jogador> listaJogador=new ArrayList<Jogador>();
+		JogadorDAO jDAO=new JogadorDAO();
+		//listaJogador=jDAO.retornarJogadores(3);
 		/*for(Jogador j : listaJogador){
 			form.calculeTudo(j);
 			for(int i=0;i<j.getPosicoes().size();i++){
@@ -39,15 +41,22 @@ public class TesteJogadores {
 		
 		TimeDAO tDAO= new TimeDAO();
 		Time time= tDAO.retornarTime(3);
-		time.setJogadores(listaJogador);
+		//time.setJogadores(listaJogador);
 		
 		System.out.println(time.getNome());
 		System.out.println(time.getJogadores().size()+" jogadores");
 		
 		for(Jogador j : time.getJogadores()){
-			System.out.println(j.getNome());
+			System.out.println(j.getNome()+" escolhido? "+j.getEscolhido()+ " "+j.getPosicoes().get(0).getPontuacao());
 		
 		}
+		
+		TaticaDAO taticaDAO=new TaticaDAO();
+		Tatica tatica = taticaDAO.retornarTatica("4-4-2");
+		
+		AlgoritmoTatica ATatica=new AlgoritmoTatica();
+		time.setTatica(tatica);
+		ATatica.SugerirJogadores(time);
 		
 	}
 
