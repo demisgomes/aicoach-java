@@ -51,12 +51,17 @@ public class JogadorDAO {
 		Float peso = null;
 		Float altura =null;
 		int temCondicao = 0;
+		
 		try {
-			timeId=rs.getInt("time");
-			nome = rs.getString("nome");			
-			peso = rs.getFloat("peso");
-			altura =rs.getFloat("altura");
-			temCondicao=rs.getInt("temCondicao");
+			if(rs.next()){
+				
+				timeId=rs.getInt("time");
+				nome = rs.getString("nome");			
+				peso = rs.getFloat("peso");
+				altura =rs.getFloat("altura");
+				temCondicao=rs.getInt("temCondicao");
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} 
@@ -82,7 +87,8 @@ public class JogadorDAO {
 		
 		
 		Jogador jogador = new Jogador(nome, time, peso, altura, temCondicao, posicoes, estatisticas, caracteristicas);
-		
+		jogador.setId(idJogador);
+		insiraPosicaoOrigem(jogador);
 		return jogador;
 	}
 	
@@ -131,12 +137,57 @@ public class JogadorDAO {
 				
 				EstatisticasJogador estatisticas = new EstatisticasJogador();
 				Jogador jogador = new Jogador(nome, time, peso, altura, temCondicao, posicoes, estatisticas, caracteristicas);
+
 				listaJogadores.add(jogador);
 				}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return listaJogadores;
+	}
+	
+	public void insiraPosicaoOrigem(Jogador jogador){
+		
+		String sql = "SELECT * FROM jogador WHERE idjogador = "+jogador.getId()+"";
+		ResultSet rs=banco.executarSelect(sql);
+		for (int i = 0; i < jogador.getPosicoes().size(); i++) {
+			try {
+				if(rs.last()){
+					System.out.println("entrei");
+					if(jogador.getPosicoes().get(i).getNome().equals("lateral") || jogador.getPosicoes().get(i).getNome().equals("meia lateral") || jogador.getPosicoes().get(i).getNome().equals("ponta")){
+						if(jogador.getPosicoes().get(i).getNome().equals("lateral")){
+							
+							
+							if(rs.getInt("lateral direito")==1 || rs.getInt("lateral esquerdo")==1){
+								jogador.getPosicoes().get(i).setPosicaoDeOrigem(true);
+							}
+						}
+						if(jogador.getPosicoes().get(i).getNome().equals("meia lateral")){
+							if(rs.getInt("meia lateral direito")==1 || rs.getInt("meia lateral esquerdo")==1){
+								jogador.getPosicoes().get(i).setPosicaoDeOrigem(true);
+							}
+							
+						}
+						if(jogador.getPosicoes().get(i).getNome().equals("ponta")){
+							if(rs.getInt("ponta direita")==1 || rs.getInt("ponta esquerda")==1){
+								jogador.getPosicoes().get(i).setPosicaoDeOrigem(true);
+							}
+						}
+					}
+					
+					else{
+						if (rs.getInt(jogador.getPosicoes().get(i).getNome())==1){
+							jogador.getPosicoes().get(i).setPosicaoDeOrigem(true);
+						}
+						
+					}
+					
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 	
 }
