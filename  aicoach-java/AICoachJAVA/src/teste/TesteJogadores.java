@@ -24,7 +24,16 @@ public class TesteJogadores {
 		}
 		
 		PontuacaoPosicaoDAO ppDAO=new PontuacaoPosicaoDAO();
-		ppDAO.inserirPontuacaoPosicoesJogador(jogador);
+		//ppDAO.inserirPontuacaoPosicoesJogador(jogador);
+		
+		listaJogador=jDAO.retornarJogadores(3);
+		for(Jogador j : listaJogador){
+			form.calculeTudo(j);
+			for(int i=0;i<j.getPosicoes().size();i++){
+				System.out.println(j.getNome()+" "+ j.getPosicoes().get(i).getNome()+ " "+j.getPosicoes().get(i).getPontuacao()+ " "+ j.getPosicoes().get(i).isPosicaoDeOrigem());
+				//ppDAO.inserirPontuacaoPosicoesJogador(j);
+			}
+		}
 		
 	}
 
