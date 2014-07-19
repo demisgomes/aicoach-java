@@ -69,6 +69,7 @@ public void SugerirJogadores(Time time){
 		for (Posicao posicao : posicoes) {
 			int ptMaior=0;
 			Posicao posicaoX = null;
+			System.out.println(posicao.getIdPosicaoTela()+" "+posicao.getNome());
 			for(Jogador jogador : time.getJogadores()){
 
 				
@@ -588,7 +589,7 @@ public void SugerirJogadores(Time time){
 		System.out.println("Antes da confusão");
 		System.out.println("-----------------------");
 		for (Posicao p : time.getTatica().getPosicoes()) {
-			System.out.println(p.getNome()+" será "+ p.getJogador().getNome()+ " "+ p.getJogador().getPosicaoAtual().getPontuacao());
+			System.out.println(p.getNome()+" será "+ p.getJogador().getNome()+ " "+ p.getJogador().getPosicaoAtual().getPontuacao()+" "+p.getIdPosicaoTela());
 		}
 		int qtdSubstituicoes=substituicoes;
 		for (int i = 0; i < time.getTatica().getPosicoes().size(); i++) {
