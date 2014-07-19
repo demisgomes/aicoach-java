@@ -386,6 +386,17 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 		btnEscolherMelhoresJogadores.setBounds(354, 23, 185, 23);
 		contentPane.add(btnEscolherMelhoresJogadores);
 		
+		JButton btnCriarNovaTtica = new JButton("Criar Nova T\u00E1tica");
+		btnCriarNovaTtica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaCriarTatica tela=new TelaCriarTatica();
+				tela.setVisible(true);
+				dispose();
+			}
+		});
+		btnCriarNovaTtica.setBounds(354, 57, 192, 23);
+		contentPane.add(btnCriarNovaTtica);
+		
 		if(daTelaInserir){
 			mostrarBotoes();
 			daTelaInserir=false;
