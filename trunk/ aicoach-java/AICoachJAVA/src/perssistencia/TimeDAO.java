@@ -164,13 +164,14 @@ public class TimeDAO {
 						p.setJogador(j);
 						p.getJogador().setEscolhido(1);
 						p.getJogador().setPosicaoAtual(tatica.getPosicoes().get(i));
+						p.setPontuacao(j.getPontuacaoPosicaoAtual());
 					}
 				}
 				
 			}
 			
 			return tatica;
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
