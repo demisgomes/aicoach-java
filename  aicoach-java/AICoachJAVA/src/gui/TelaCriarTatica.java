@@ -67,7 +67,7 @@ public class TelaCriarTatica extends JFrame {
 		TimeDAO timeDAO=new TimeDAO();
 		timeDAO.retornarTime(time.getIdTime());
 		
-		
+		listaPosicaoTaticaNova.clear();
 		final 
 		ButtonAiCoach btnGL = new ButtonAiCoach("GL");
 		btnGL.setBackground(Color.GREEN);

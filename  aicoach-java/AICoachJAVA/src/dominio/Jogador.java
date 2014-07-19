@@ -14,7 +14,7 @@ public class Jogador {
 	private CaracteristicasJogadores caracteristicas;
 	private Posicao posicaoAtual;
 	private int idPosicaoTela;
-	
+	private int pontuacaoPosicaoAtual;
 	
 	
 	public Jogador(String nome, Time time, float peso, float altura,  int temCondicao, 
@@ -172,6 +172,20 @@ public class Jogador {
 	 */
 	public void setIdPosicaoTela(int idPosicaoTela) {
 		this.idPosicaoTela = idPosicaoTela;
+	}
+
+	/**
+	 * @return the pontuacaoPosicaoAtual
+	 */
+	public int getPontuacaoPosicaoAtual() {
+		return pontuacaoPosicaoAtual;
+	}
+
+	/**
+	 * @param pontuacaoPosicaoAtual the pontuacaoPosicaoAtual to set
+	 */
+	public void setPontuacaoPosicaoAtual(int pontuacaoPosicaoAtual) {
+		this.pontuacaoPosicaoAtual = pontuacaoPosicaoAtual;
 	}
 
 

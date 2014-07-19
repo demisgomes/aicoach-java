@@ -51,6 +51,7 @@ public class JogadorDAO {
 		Time time = null ;
 		Float peso = null;
 		Float altura =null;
+		int pontuacaoPosicaoAtual=0;
 		int temCondicao = 0;
 		
 		try {
@@ -62,6 +63,7 @@ public class JogadorDAO {
 				altura =rs.getFloat("altura");
 				temCondicao=rs.getInt("temCondicao");
 				posicaoTela=rs.getInt("posicaoTela");
+				pontuacaoPosicaoAtual=rs.getInt("pontuacao_posicao_atual");
 			}
 			
 			CaracteristicaDAO caracDAO = new CaracteristicaDAO();
@@ -89,6 +91,7 @@ public class JogadorDAO {
 				jogador.getPosicoes().get(i).setJogador(jogador);;
 			}
 			jogador.setIdPosicaoTela(posicaoTela);
+			jogador.setPontuacaoPosicaoAtual(pontuacaoPosicaoAtual);
 			insiraPosicaoOrigem(jogador);
 			return jogador;
 			
@@ -208,12 +211,12 @@ public class JogadorDAO {
 	}
 	
 	public void inserirIdPosicaoJogador(Jogador jogador, int id){
-		String sql="UPDATE jogador SET posicaotela = '"+id+"' WHERE idjogador = '"+jogador.getId()+"'";
+		String sql="UPDATE jogador SET posicaotela = '"+id+"', pontuacao_posicao_atual = '"+jogador.getPosicaoAtual().getPontuacao()+"' WHERE idjogador = '"+jogador.getId()+"'";
 		banco.executarSQL(sql);
 	}
 	
 	public void tirarIdPosicaoJogador(){
-		String sql="UPDATE jogador SET posicaotela = '0'";
+		String sql="UPDATE jogador SET posicaotela = '0', pontuacao_posicao_atual= '0'";
 		banco.executarSQL(sql);
 	}
 	
