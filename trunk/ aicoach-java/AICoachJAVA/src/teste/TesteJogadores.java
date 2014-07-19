@@ -101,6 +101,30 @@ public class TesteJogadores {
 			System.out.println(time.getTatica().getPosicoes().get(l).getNome()+" é "+time.getTatica().getPosicoes().get(l).getJogador().getNome());
 		}*/
 		
+		/*System.out.println("Depois da substituição");
+		System.out.println("-----------------------------------------------");
+		Jogador substituto=ATatica.substituirJogador(time.getTatica().getPosicoes().get(9).getJogador(), time);
+		System.out.println("O substituto é: "+substituto.getNome());
+		time.getTatica().getPosicoes().get(9).setJogador(substituto);
+		
+		Jogador substituto2=ATatica.substituirJogador(time.getTatica().getPosicoes().get(10).getJogador(), time);
+		time.getTatica().getPosicoes().get(10).setJogador(substituto2);
+		//System.out.println(time.getTatica().getPosicoes().get(10).getJogador().getNome());
+		
+		for (Posicao p : time.getTatica().getPosicoes()) {
+			System.out.println(p.getNome()+" será "+ p.getJogador().getNome()+ " "+ p.getJogador().getPosicaoAtual().getPontuacao());
+		}*/
+		
+		ATatica.alterarEsquema(time, 3, taticaDAO.retornarTatica("3-6-1"));
+		System.out.println("depois da confusão");
+		System.out.println("-----------------------");
+		for (Posicao p : time.getTatica().getPosicoes()) {
+			System.out.println(p.getNome()+" será "+ p.getJogador().getNome()+ " "+ p.getJogador().getPosicaoAtual().getPontuacao());
+		}
+		
+		
+		System.out.println();
+		
 	}
 
 }
