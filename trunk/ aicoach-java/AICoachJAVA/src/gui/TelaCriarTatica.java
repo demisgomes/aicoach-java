@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 import dominio.ButtonAiCoach;
 import dominio.Posicao;
 import dominio.Tatica;
+import dominio.Time;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -34,7 +35,7 @@ public class TelaCriarTatica extends JFrame {
 	static ArrayList<Posicao> listaPosicaoTaticaNova=new ArrayList<Posicao>();
 	
 	ButtonAiCoach btnSa;
-
+	Time time;
 	ArrayList<ButtonAiCoach> listaBotoes = new ArrayList<ButtonAiCoach>();
 	private JTextField textField;
 	public static void main(String[] args) {
@@ -53,14 +54,15 @@ public class TelaCriarTatica extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaCriarTatica() {
+	public TelaCriarTatica(){}
+	public TelaCriarTatica(final Time time) {
 		setTitle("Criar T\u00E1tica");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 714, 568);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
+		this.time=time;
 		final 
 		ButtonAiCoach btnGL = new ButtonAiCoach("GL");
 		btnGL.setBackground(Color.GREEN);
@@ -416,10 +418,23 @@ public class TelaCriarTatica extends JFrame {
 		lblNome.setBounds(88, 20, 46, 14);
 		contentPane.add(lblNome);
 		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaTatica tela=new TelaTatica(time);
+				tela.setVisible(true);
+				dispose();
+			}
+		});
+		btnVoltar.setBounds(471, 16, 89, 23);
+		contentPane.add(btnVoltar);
+		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(TelaTatica.class.getResource("/imagens/campo.png")));
 		lblNewLabel.setBounds(10, 45, 688, 520);
 		contentPane.add(lblNewLabel);
+		
+		
 		
 		
 		
