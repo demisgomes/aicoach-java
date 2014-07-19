@@ -124,13 +124,12 @@ public class TelaTatica extends JFrame {
 		listaBotoes.add(btnGL);
 		contentPane.add(btnGL);
 		
-		
-		ButtonAiCoach btnZc_2 = new ButtonAiCoach("ZC");
-		btnZc_2.setBackground(Color.GRAY);
-		btnZc_2.setBounds(128, 192, 58, 54);
-		btnZc_2.setId(5);
-		listaBotoes.add(btnZc_2);
-		contentPane.add(btnZc_2);
+		ButtonAiCoach btnLd = new ButtonAiCoach("LD");
+		btnLd.setBackground(Color.GRAY);
+		btnLd.setBounds(130, 452, 56, 54);
+		btnLd.setId(2);
+		listaBotoes.add(btnLd);
+		contentPane.add(btnLd);
 		
 		ButtonAiCoach btnZc = new ButtonAiCoach("ZC");
 		btnZc.setBackground(Color.GRAY);
@@ -143,21 +142,22 @@ public class TelaTatica extends JFrame {
 		btnZc.setBounds(128, 361, 58, 55);
 		contentPane.add(btnZc);
 		
-		
-		
-		ButtonAiCoach btnLd = new ButtonAiCoach("LD");
-		btnLd.setBackground(Color.GRAY);
-		btnLd.setBounds(130, 452, 56, 54);
-		btnLd.setId(2);
-		listaBotoes.add(btnLd);
-		contentPane.add(btnLd);
-		
+
 		ButtonAiCoach btnZc_1 = new ButtonAiCoach("ZC");
 		btnZc_1.setBackground(Color.GRAY);
 		btnZc_1.setBounds(128, 277, 58, 54);
 		btnZc_1.setId(4);
 		listaBotoes.add(btnZc_1);
 		contentPane.add(btnZc_1);
+		
+		ButtonAiCoach btnZc_2 = new ButtonAiCoach("ZC");
+		btnZc_2.setBackground(Color.GRAY);
+		btnZc_2.setBounds(128, 192, 58, 54);
+		btnZc_2.setId(5);
+		listaBotoes.add(btnZc_2);
+		contentPane.add(btnZc_2);
+		
+		
 		
 		ButtonAiCoach btnLe = new ButtonAiCoach("LE");
 		btnLe.setId(6);
@@ -169,6 +169,13 @@ public class TelaTatica extends JFrame {
 		btnLe.setBounds(130, 113, 56, 54);
 		listaBotoes.add(btnLe);
 		contentPane.add(btnLe);
+		
+		ButtonAiCoach btnLd_1 = new ButtonAiCoach("LD");
+		btnLd_1.setBackground(Color.GRAY);
+		btnLd_1.setBounds(225, 452, 58, 54);
+		btnLd_1.setId(7);
+		listaBotoes.add(btnLd_1);
+		contentPane.add(btnLd_1);
 		
 		ButtonAiCoach btnVol = new ButtonAiCoach("VOL");
 		btnVol.setBackground(Color.GRAY);
@@ -200,12 +207,6 @@ public class TelaTatica extends JFrame {
 		listaBotoes.add(btnVol_2);
 		contentPane.add(btnVol_2);
 		
-		ButtonAiCoach btnLd_1 = new ButtonAiCoach("LD");
-		btnLd_1.setBackground(Color.GRAY);
-		btnLd_1.setBounds(225, 452, 58, 54);
-		btnLd_1.setId(7);
-		listaBotoes.add(btnLd_1);
-		contentPane.add(btnLd_1);
 		
 		ButtonAiCoach btnLe_1 = new ButtonAiCoach("LE");
 		btnLe_1.setId(11);
@@ -262,6 +263,34 @@ public class TelaTatica extends JFrame {
 		listaBotoes.add(btnMle);
 		contentPane.add(btnMle);
 		
+		ButtonAiCoach btnMld_1 = new ButtonAiCoach("MLD");
+		btnMld_1.setBackground(Color.GRAY);
+		btnMld_1.setBounds(423, 452, 58, 54);
+		btnMld_1.setId(17);
+		listaBotoes.add(btnMld_1);
+		contentPane.add(btnMld_1);
+		
+		ButtonAiCoach btnMat = new ButtonAiCoach("MAT");
+		btnMat.setBackground(Color.GRAY);
+		btnMat.setBounds(423, 373, 58, 54);
+		btnMat.setId(18);
+		listaBotoes.add(btnMat);
+		contentPane.add(btnMat);
+		
+		ButtonAiCoach btnMat_1 = new ButtonAiCoach("MAT");
+		btnMat_1.setBackground(Color.GRAY);
+		btnMat_1.setBounds(423, 277, 58, 54);
+		btnMat_1.setId(19);
+		listaBotoes.add(btnMat_1);
+		contentPane.add(btnMat_1);
+		
+		ButtonAiCoach btnMat_2 = new ButtonAiCoach("MAT");
+		btnMat_2.setBackground(Color.GRAY);
+		btnMat_2.setBounds(423, 192, 58, 54);
+		btnMat_2.setId(20);
+		listaBotoes.add(btnMat_2);
+		contentPane.add(btnMat_2);
+		
 		ButtonAiCoach btnMle_1 = new ButtonAiCoach("MLE");
 		btnMle_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -273,54 +302,15 @@ public class TelaTatica extends JFrame {
 		listaBotoes.add(btnMle_1);
 		contentPane.add(btnMle_1);
 		
-		ButtonAiCoach btnMat_2 = new ButtonAiCoach("MAT");
-		btnMat_2.setBackground(Color.GRAY);
-		btnMat_2.setBounds(423, 192, 58, 54);
-		btnMat_2.setId(20);
-		listaBotoes.add(btnMat_2);
-		contentPane.add(btnMat_2);
+	
+		ButtonAiCoach btnPtd = new ButtonAiCoach("PTD");
+		btnPtd.setBackground(Color.GRAY);
+		btnPtd.setBounds(534, 452, 59, 54);
+		btnPtd.setId(22);
 		
-		ButtonAiCoach btnMat_1 = new ButtonAiCoach("MAT");
-		btnMat_1.setBackground(Color.GRAY);
-		btnMat_1.setBounds(423, 277, 58, 54);
-		btnMat_1.setId(19);
-		listaBotoes.add(btnMat_1);
-		contentPane.add(btnMat_1);
+		listaBotoes.add(btnPtd);
+		contentPane.add(btnPtd);
 		
-		ButtonAiCoach btnMat = new ButtonAiCoach("MAT");
-		btnMat.setBackground(Color.GRAY);
-		btnMat.setBounds(423, 373, 58, 54);
-		btnMat.setId(18);
-		listaBotoes.add(btnMat);
-		contentPane.add(btnMat);
-		
-		ButtonAiCoach btnMld_1 = new ButtonAiCoach("MLD");
-		btnMld_1.setBackground(Color.GRAY);
-		btnMld_1.setBounds(423, 452, 58, 54);
-		btnMld_1.setId(17);
-		listaBotoes.add(btnMld_1);
-		contentPane.add(btnMld_1);
-		
-		ButtonAiCoach btnPte = new ButtonAiCoach("PTE");
-		btnPte.setBackground(Color.GRAY);
-		btnPte.setBounds(534, 113, 59, 54);
-		btnPte.setId(26);
-		listaBotoes.add(btnPte);
-		contentPane.add(btnPte);
-		
-		ButtonAiCoach btnSa_1 = new ButtonAiCoach("SA");
-		btnSa_1.setBackground(Color.GRAY);
-		btnSa_1.setBounds(534, 203, 59, 54);
-		btnSa_1.setId(25);
-		listaBotoes.add(btnSa_1);
-		contentPane.add(btnSa_1);
-		
-		ButtonAiCoach btnCa = new ButtonAiCoach("CA");
-		btnCa.setBounds(548, 277, 64, 63);
-		btnCa.setBackground(Color.GRAY);
-		btnCa.setId(24);
-		listaBotoes.add(btnCa);
-		contentPane.add(btnCa);
 		
 		ButtonAiCoach btnSa = new ButtonAiCoach("SA");
 		btnSa.setBackground(Color.GRAY);
@@ -329,13 +319,29 @@ public class TelaTatica extends JFrame {
 		listaBotoes.add(btnSa);
 		contentPane.add(btnSa);
 		
-		ButtonAiCoach btnPtd = new ButtonAiCoach("PTD");
-		btnPtd.setBackground(Color.GRAY);
-		btnPtd.setBounds(534, 452, 59, 54);
-		btnPtd.setId(22);
+		ButtonAiCoach btnSa_1 = new ButtonAiCoach("SA");
+		btnSa_1.setBackground(Color.GRAY);
+		btnSa_1.setBounds(534, 203, 59, 54);
+		btnSa_1.setId(25);
+		listaBotoes.add(btnSa_1);
+		contentPane.add(btnSa_1);
 		
-		listaBotoes.add(btnPtd);
-		contentPane.add(btnPtd);
+		
+		ButtonAiCoach btnPte = new ButtonAiCoach("PTE");
+		btnPte.setBackground(Color.GRAY);
+		btnPte.setBounds(534, 113, 59, 54);
+		btnPte.setId(26);
+		listaBotoes.add(btnPte);
+		contentPane.add(btnPte);
+		
+
+		ButtonAiCoach btnCa = new ButtonAiCoach("CA");
+		btnCa.setBounds(548, 277, 64, 63);
+		btnCa.setBackground(Color.GRAY);
+		btnCa.setId(24);
+		listaBotoes.add(btnCa);
+		contentPane.add(btnCa);
+		
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(TelaTatica.class.getResource("/imagens/campo.png")));
