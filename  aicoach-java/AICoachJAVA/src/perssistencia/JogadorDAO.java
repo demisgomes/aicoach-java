@@ -46,6 +46,7 @@ public class JogadorDAO {
 		String sql = "SELECT * FROM jogador WHERE idjogador = '"+idJogador+"'";
 		ResultSet rs = banco.executarSelect(sql);
 		int timeId=0;
+		int posicaoTela=0;
 		String nome=null;
 		Time time = null ;
 		Float peso = null;
@@ -60,6 +61,7 @@ public class JogadorDAO {
 				peso = rs.getFloat("peso");
 				altura =rs.getFloat("altura");
 				temCondicao=rs.getInt("temCondicao");
+				posicaoTela=rs.getInt("posicaoTela");
 			}
 			
 			CaracteristicaDAO caracDAO = new CaracteristicaDAO();
@@ -86,6 +88,7 @@ public class JogadorDAO {
 			for (int i = 0; i < jogador.getPosicoes().size(); i++) {
 				jogador.getPosicoes().get(i).setJogador(jogador);;
 			}
+			jogador.setIdPosicaoTela(posicaoTela);
 			insiraPosicaoOrigem(jogador);
 			return jogador;
 			
@@ -202,6 +205,36 @@ public class JogadorDAO {
 			}
 		}
 		
+	}
+	
+	public void inserirIdPosicaoJogador(Jogador jogador, int id){
+		String sql="UPDATE jogador SET posicaotela = '"+id+"' WHERE idjogador = '"+jogador.getId()+"'";
+		banco.executarSQL(sql);
+	}
+	
+	public void tirarIdPosicaoJogador(){
+		String sql="UPDATE jogador SET posicaotela = '0'";
+		banco.executarSQL(sql);
+	}
+	
+	
+	public int retornarIdPosicaoJogador(Jogador jogador){
+		String sql="SELECT posicaotela FROM jogador WHERE idjogador = '"+jogador.getId()+"'";
+		ResultSet rs=banco.executarSelect(sql);
+		int id=0;
+		try {
+			if(rs.next()){
+				id=rs.getInt("posicaotela");
+			}
+			return id;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 0;
+		}
+		finally{
+			banco.fecharBanco();
+		}
 	}
 	
 }

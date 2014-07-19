@@ -13,6 +13,7 @@ public class Jogador {
 	private EstatisticasJogador estatisticas;
 	private CaracteristicasJogadores caracteristicas;
 	private Posicao posicaoAtual;
+	private int idPosicaoTela;
 	
 	
 	
@@ -157,6 +158,20 @@ public class Jogador {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the idPosicaoTela
+	 */
+	public int getIdPosicaoTela() {
+		return idPosicaoTela;
+	}
+
+	/**
+	 * @param idPosicaoTela the idPosicaoTela to set
+	 */
+	public void setIdPosicaoTela(int idPosicaoTela) {
+		this.idPosicaoTela = idPosicaoTela;
 	}
 
 

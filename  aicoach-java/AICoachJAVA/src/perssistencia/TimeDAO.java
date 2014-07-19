@@ -153,14 +153,20 @@ public class TimeDAO {
 				int int1 = Integer.parseInt(posicoesSeparadas[i]);
 				JogadorDAO jDAO=new JogadorDAO();
 				Jogador j = jDAO.retornarJogador(int1);
-				tatica.getPosicoes().get(i).setJogador(j);
-				tatica.getPosicoes().get(i).getJogador().setEscolhido(1);
+				
 				for(Jogador x : time.getJogadores()){
 					if (x.getId()==j.getId()){
 						x.setEscolhido(1);
 					}
 				}
-				tatica.getPosicoes().get(i).getJogador().setPosicaoAtual(tatica.getPosicoes().get(i));
+				for(Posicao p :tatica.getPosicoes()){
+					if (j.getIdPosicaoTela()==p.getIdPosicaoTela()){
+						p.setJogador(j);
+						p.getJogador().setEscolhido(1);
+						p.getJogador().setPosicaoAtual(tatica.getPosicoes().get(i));
+					}
+				}
+				
 			}
 			
 			return tatica;
