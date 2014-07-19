@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import dominio.ButtonAiCoach;
@@ -24,6 +25,7 @@ import javax.swing.JComboBox;
 
 import negocio.AlgoritmoTatica;
 import perssistencia.TaticaDAO;
+import perssistencia.TimeDAO;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -69,6 +71,9 @@ public class TelaTatica extends JFrame {
 		
 		
 		this.time=time;
+		
+		
+		
 		TaticaDAO taticaDAO=new TaticaDAO();
 		final ArrayList<Tatica> listaTaticas= taticaDAO.retornarListaTaticas();
 		
@@ -396,6 +401,28 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 		});
 		btnCriarNovaTtica.setBounds(354, 57, 192, 23);
 		contentPane.add(btnCriarNovaTtica);
+		
+		JButton btnSalvarTtica = new JButton("Salvar T\u00E1tica");
+		btnSalvarTtica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TimeDAO timeDAO=new TimeDAO();
+				timeDAO.inserirTimeTatica(time);
+				JOptionPane.showMessageDialog(null, "Inserido com sucesso!");
+			}
+		});
+		btnSalvarTtica.setBounds(599, 23, 99, 35);
+		contentPane.add(btnSalvarTtica);
+		
+		TimeDAO timeDAO = new TimeDAO();
+		Tatica taticaTime=timeDAO.retornarTaticaTime(time);
+		
+		if(taticaTime!=null && !daTelaInserir){
+			time.setTatica(taticaTime);
+			AlgoritmoTatica aTatica=new AlgoritmoTatica();
+			aTatica.SugerirJogadores(time);
+			
+			mostrarBotoes();
+		}
 		
 		if(daTelaInserir){
 			mostrarBotoes();

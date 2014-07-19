@@ -23,6 +23,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 import perssistencia.TaticaDAO;
+import perssistencia.TimeDAO;
 
 public class TelaCriarTatica extends JFrame {
 
@@ -63,6 +64,10 @@ public class TelaCriarTatica extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		this.time=time;
+		TimeDAO timeDAO=new TimeDAO();
+		timeDAO.retornarTime(time.getIdTime());
+		
+		
 		final 
 		ButtonAiCoach btnGL = new ButtonAiCoach("GL");
 		btnGL.setBackground(Color.GREEN);

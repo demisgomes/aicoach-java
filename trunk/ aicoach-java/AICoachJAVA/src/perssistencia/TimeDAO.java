@@ -13,11 +13,21 @@ public class TimeDAO {
 	Banco banco = new Banco(Banco.getUrl(),Banco.getSenha(),Banco.getRoot());
 	
 	public void inserirTime(Time time){
-		String sql = "Insert into time (nometime,jogadores) VALUES('"
+		String sql = "Insert into time (nometime) VALUES('"
 				+time.getNome()+ "')";
 		
 		banco.executarSQL(sql);
 		time.setIdTime(retornarIdTime());
+	}
+	
+	public void inserirTimeTatica(Time time){
+		/*ArrayList <Integer> idJogadores=new ArrayList<Integer>();
+		for(int i=0;i<time.getTatica().getPosicoes().size();i++){
+			idJogadores.add(time.getTatica().getPosicoes().get(i).getJogador().getId());
+		}*/
+		String sql = "update time SET idtatica =  '"+time.getTatica().getIdTatica()+"' WHERE idtime = '"+time.getIdTime()+"'";
+		
+		banco.executarSQL(sql);
 	}
 	
 	public int retornarIdTime(){
@@ -88,6 +98,58 @@ public class TimeDAO {
 		time.setIdTime(idTime);//time.setTatica(tatica);
 		return time;
 	}
+	
+	/*public Time retornarTimeTatica(String nomeTime){
+		String sql = "SELECT * FROM time WHERE nometime = '"+nomeTime+"'" ;
+		ResultSet rs = banco.executarSelect(sql);
+		
+		String nome=null;int idTatica=0;
+		ArrayList<Jogador> jogadores = new ArrayList<>();
+		
+		int idTime=0;
+		try {
+			if(rs.next()){
+				nome = rs.getString("nometime");
+				idTime=rs.getInt("idtime");
+				idTatica=rs.getInt("idtatica");
+			}
+			JogadorDAO jDAO=new JogadorDAO();
+			jogadores=jDAO.retornarJogadores(idTime);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		Time time = new Time();
+		time.setNome(nome);
+		time.setJogadores(jogadores);
+		time.setIdTime(idTime);//time.setTatica(tatica);
+		return time;
+	}*/
+	
+	public Tatica retornarTaticaTime(Time  time){
+		String sql="SELECT idtatica FROM time";
+		ResultSet rs=banco.executarSelect(sql);
+		
+		try {
+			int idTatica=0;
+			if(rs.last()){
+				idTatica=rs.getInt("idtatica");		
+			}
+			Tatica tatica=null;
+			if(idTatica!=0){
+				TaticaDAO tDAO=new TaticaDAO();
+				tatica=tDAO.retornarTatica(idTatica);
+			}
+			return tatica;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		finally{
+			banco.fecharBanco();
+		}
+	}
+	
 	
 	public ArrayList<Time> retornarListaTimes(){
 		String sql="SELECT * FROM time";
