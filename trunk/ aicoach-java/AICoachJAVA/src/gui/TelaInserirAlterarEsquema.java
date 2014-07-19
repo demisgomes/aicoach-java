@@ -62,10 +62,11 @@ public class TelaInserirAlterarEsquema extends JFrame {
 		comboBoxFormacoes.setBounds(34, 42, 120, 20);
 		getContentPane().add(comboBoxFormacoes);
 		
-		Integer[] arraySub=new Integer[3];
-		arraySub[0]=1;
-		arraySub[1]=2;
-		arraySub[2]=3;
+		Integer[] arraySub=new Integer[4];
+		arraySub[0]=0;
+		arraySub[1]=1;
+		arraySub[2]=2;
+		arraySub[3]=3;
 		
 		final JComboBox<Integer> comboBoxSubstituicoes = new JComboBox<Integer>(arraySub);
 		comboBoxSubstituicoes.setBounds(34, 97, 120, 20);
@@ -76,7 +77,7 @@ public class TelaInserirAlterarEsquema extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				Tatica taticaNova=tDAO.retornarTatica(comboBoxFormacoes.getSelectedItem().toString());
-				int substituicoes=comboBoxSubstituicoes.getSelectedIndex()+1;
+				int substituicoes=comboBoxSubstituicoes.getSelectedIndex();
 				AlgoritmoTatica aTatica=new AlgoritmoTatica();
 				aTatica.alterarEsquema(time, substituicoes, taticaNova);
 				

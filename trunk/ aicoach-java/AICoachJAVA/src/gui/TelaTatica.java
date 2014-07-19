@@ -353,46 +353,7 @@ public class TelaTatica extends JFrame {
 						
 						AlgoritmoTatica aTatica=new AlgoritmoTatica();
 						aTatica.sugerirTatica(time, listaTaticas);
-						
-						for(int j=0;j<listaBotoes.size();j++){
-							listaBotoes.get(j).setVisible(false);
-							listaBotoes.get(j).setBackground(Color.GRAY);
-						}
-						
-						listaIdPosicoes.clear();				
-						for(Posicao p: time.getTatica().getPosicoes()){
-							listaIdPosicoes.add(p);
-						}
-						for(Posicao p: time.getTatica().getPosicoes()){
-							System.out.println(p.getNome()+ " "+p.getJogador().getNome()+ " "+p.getIdPosicaoTela());
-						}
-						for(int i=0;i<11;i++){
-							for(int j=0;j<listaBotoes.size();j++){
-								if(listaIdPosicoes.get(i).getIdPosicaoTela()==listaBotoes.get(j).getId()){
-									listaBotoes.get(j).setBackground(Color.GREEN);
-									break;
-								}
-							}
-							
-						}
-						
-						for(int j=0;j<listaBotoes.size();j++){
-							if(listaBotoes.get(j).getBackground()==Color.green){
-								listaBotoes.get(j).setVisible(true);
-								for(int k=0;k<time.getTatica().getPosicoes().size();k++){
-									if(listaBotoes.get(j).getId()==time.getTatica().getPosicoes().get(k).getIdPosicaoTela()){
-										listaBotoes.get(j).setJogador(time.getTatica().getPosicoes().get(k).getJogador());
-										listaBotoes.get(j).setLabel("<html><p style='margin-left: -15pt;'>"+time.getTatica().getPosicoes().get(k).getJogador().getNome()+"<br> ("+time.getTatica().getPosicoes().get(k).getPontuacao()+")</p><html>");
-										//listaBotoes.get(j).setLabel(time.getTatica().getPosicoes().get(k).getJogador().getNome()+" ("+time.getTatica().getPosicoes().get(k).getPontuacao()+")");
-										
-										listaBotoes.get(j).setSize(62, 62);
-										//listaBotoes.get(j).setBorder(new RoundedBorder(20));
-										//listaBotoes.get(j).setLabel("<html>FINALIZAR<br>COMPRA</html>");
-										break;
-									}
-								}
-							}
-						}
+						mostrarBotoes();
 			}
 		});
 		
@@ -407,56 +368,15 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 					
 				}
 				
-				
-				for(int j=0;j<listaBotoes.size();j++){
-					listaBotoes.get(j).setVisible(false);
-					listaBotoes.get(j).setBackground(Color.GRAY);
-				}
-				listaIdPosicoes.clear();
 				TaticaDAO taticaDAO=new TaticaDAO();
 				Tatica taticaEscolhida=taticaDAO.retornarTatica(comboBox.getSelectedItem().toString());
 				
-				for(Posicao p: taticaEscolhida.getPosicoes()){
-					listaIdPosicoes.add(p);
-					System.out.println(p.getIdPosicaoTela());
-				}
+				
 				
 				time.setTatica(taticaEscolhida);
 				AlgoritmoTatica aTatica= new AlgoritmoTatica();
 				aTatica.SugerirJogadores(time);
-				for(Posicao p: time.getTatica().getPosicoes()){
-					System.out.println(p.getNome()+ " "+p.getJogador().getNome()+ " "+p.getIdPosicaoTela());
-				}
-				for(int i=0;i<11;i++){
-					for(int j=0;j<listaBotoes.size();j++){
-						if(listaIdPosicoes.get(i).getIdPosicaoTela()==listaBotoes.get(j).getId()){
-							listaBotoes.get(j).setBackground(Color.GREEN);
-							
-							//listaBotoes.get(j).setLabel(listaIdPosicoes.get(i).getNome());
-							break;
-						}
-					}
-					
-				}
-				
-				for(int j=0;j<listaBotoes.size();j++){
-					if(listaBotoes.get(j).getBackground()==Color.green){
-						listaBotoes.get(j).setVisible(true);
-						for(int k=0;k<time.getTatica().getPosicoes().size();k++){
-							if(listaBotoes.get(j).getId()==time.getTatica().getPosicoes().get(k).getIdPosicaoTela()){
-								listaBotoes.get(j).setJogador(time.getTatica().getPosicoes().get(k).getJogador());
-								listaBotoes.get(j).setLabel("<html><p style='margin-left: -15pt;'>"+time.getTatica().getPosicoes().get(k).getJogador().getNome()+"<br> ("+time.getTatica().getPosicoes().get(k).getPontuacao()+")</p><html>");
-								//listaBotoes.get(j).setLabel(time.getTatica().getPosicoes().get(k).getJogador().getNome()+" ("+time.getTatica().getPosicoes().get(k).getPontuacao()+")");
-								
-								listaBotoes.get(j).setSize(62, 62);
-								//listaBotoes.get(j).setBorder(new RoundedBorder(20));
-								//listaBotoes.get(j).setLabel("<html>FINALIZAR<br>COMPRA</html>");
-								break;
-							}
-						}
-					}
-				}
-						
+				mostrarBotoes();
 			}
 		});
 		
@@ -466,46 +386,57 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 		btnEscolherMelhoresJogadores.setBounds(354, 23, 185, 23);
 		contentPane.add(btnEscolherMelhoresJogadores);
 		
-if(daTelaInserir){
+		if(daTelaInserir){
+			mostrarBotoes();
+			daTelaInserir=false;
 			
-			listaIdPosicoes.clear();				
-			for(Posicao p: time.getTatica().getPosicoes()){
-				listaIdPosicoes.add(p);
-			}
-			for(int i=0;i<11;i++){
-				for(int j=0;j<listaBotoes.size();j++){
+		}
+		
+}
+	public void mostrarBotoes(){
+		
+		for(int j=0;j<listaBotoes.size();j++){
+			listaBotoes.get(j).setVisible(false);
+			listaBotoes.get(j).setBackground(Color.GRAY);
+		}
+		listaIdPosicoes.clear();				
+		for(Posicao p: time.getTatica().getPosicoes()){
+			listaIdPosicoes.add(p);
+		}
+		for(int i=0;i<11;i++){
+			for(int j=0;j<listaBotoes.size();j++){
+				
+				if(listaIdPosicoes.get(i).getIdPosicaoTela()==listaBotoes.get(j).getId()){
+					listaBotoes.get(j).setBackground(Color.GREEN);
 					
-					if(listaIdPosicoes.get(i).getIdPosicaoTela()==listaBotoes.get(j).getId()){
-						listaBotoes.get(j).setBackground(Color.GREEN);
+					//listaBotoes.get(j).setLabel(listaIdPosicoes.get(i).getNome());
+					break;
+				}
+			}
+			
+		}
+		
+		for(int j=0;j<listaBotoes.size();j++){
+			if(listaBotoes.get(j).getBackground()==Color.green){
+				listaBotoes.get(j).setVisible(true);
+				for(int k=0;k<time.getTatica().getPosicoes().size();k++){
+					if(listaBotoes.get(j).getId()==time.getTatica().getPosicoes().get(k).getIdPosicaoTela()){
+						listaBotoes.get(j).setJogador(time.getTatica().getPosicoes().get(k).getJogador());
+						listaBotoes.get(j).setLabel("<html><p style='margin-left: -15pt;'>"+time.getTatica().getPosicoes().get(k).getJogador().getNome()+"<br> ("+time.getTatica().getPosicoes().get(k).getPontuacao()+")</p><html>");
+						//listaBotoes.get(j).setLabel(time.getTatica().getPosicoes().get(k).getJogador().getNome()+" ("+time.getTatica().getPosicoes().get(k).getPontuacao()+")");
 						
-						//listaBotoes.get(j).setLabel(listaIdPosicoes.get(i).getNome());
+						listaBotoes.get(j).setSize(62, 62);
+						//listaBotoes.get(j).setBorder(new RoundedBorder(20));
+						//listaBotoes.get(j).setLabel("<html>FINALIZAR<br>COMPRA</html>");
 						break;
 					}
 				}
-				
 			}
-			
-			for(int j=0;j<listaBotoes.size();j++){
-				if(listaBotoes.get(j).getBackground()==Color.green){
-					listaBotoes.get(j).setVisible(true);
-					for(int k=0;k<time.getTatica().getPosicoes().size();k++){
-						if(listaBotoes.get(j).getId()==time.getTatica().getPosicoes().get(k).getIdPosicaoTela()){
-							listaBotoes.get(j).setJogador(time.getTatica().getPosicoes().get(k).getJogador());
-							listaBotoes.get(j).setLabel("<html><p style='margin-left: -15pt;'>"+time.getTatica().getPosicoes().get(k).getJogador().getNome()+"<br> ("+time.getTatica().getPosicoes().get(k).getPontuacao()+")</p><html>");
-							//listaBotoes.get(j).setLabel(time.getTatica().getPosicoes().get(k).getJogador().getNome()+" ("+time.getTatica().getPosicoes().get(k).getPontuacao()+")");
-							
-							listaBotoes.get(j).setSize(62, 62);
-							//listaBotoes.get(j).setBorder(new RoundedBorder(20));
-							//listaBotoes.get(j).setLabel("<html>FINALIZAR<br>COMPRA</html>");
-							break;
-						}
-					}
-				}
-			}
-			daTelaInserir=false;
 		}
 		
+	
 	}
+	
 	
 }
 
