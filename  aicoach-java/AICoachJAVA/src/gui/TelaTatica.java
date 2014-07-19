@@ -62,7 +62,7 @@ public class TelaTatica extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaTatica(){}
+    public TelaTatica(){}
 	public TelaTatica(final Time time) {
 		setTitle("Tela T\u00E1tica");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -449,6 +449,17 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 		btnSalvarTtica.setBounds(599, 23, 99, 35);
 		contentPane.add(btnSalvarTtica);
 		
+		JButton btnSubstituir = new JButton("Substituir");
+		btnSubstituir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				AlgoritmoTatica tatica= new AlgoritmoTatica();
+				tatica.alterarEsquema(time, 1, time.getTatica());
+				mostrarBotoes();
+			}
+		});
+		btnSubstituir.setBounds(213, 57, 89, 23);
+		contentPane.add(btnSubstituir);
+		
 		TimeDAO timeDAO = new TimeDAO();
 		Tatica taticaTime=timeDAO.retornarTaticaTime(time);
 		
@@ -522,8 +533,6 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 		
 	
 	}
-	
-	
 }
 
 
