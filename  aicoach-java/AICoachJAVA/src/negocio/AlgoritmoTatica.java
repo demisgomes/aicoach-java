@@ -129,7 +129,7 @@ public void SugerirJogadores(Time time){
 			}
 		}
 		time.setTatica(tatica);
-		
+		System.out.println(time.getEstiloDeJogo().getNome());
 		return tatica;
 	}
 	
