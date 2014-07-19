@@ -38,6 +38,7 @@ public class TelaTatica extends JFrame {
 	private ArrayList<Posicao> listaIdPosicoes=new ArrayList<Posicao>();
 	public Time time;
 	public static boolean daTelaInserir;
+	private boolean substituir = false;
 	//private ArrayList<Posicao> listaPosicoes=new ArrayList<Posicao>();
 
 	ArrayList<ButtonAiCoach> listaBotoes = new ArrayList<ButtonAiCoach>();
@@ -452,9 +453,17 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 		JButton btnSubstituir = new JButton("Substituir");
 		btnSubstituir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				TaticaDAO taDAO=new TaticaDAO();
+				
 				AlgoritmoTatica tatica= new AlgoritmoTatica();
-				tatica.alterarEsquema(time, 1, time.getTatica());
+				tatica.alterarEsquema(time, 1, taDAO.retornarTatica(time.getTatica().getNome()));
+				substituir=true;
 				mostrarBotoes();
+				System.out.println("depois da confusão");
+				System.out.println("-----------------------");
+				for (Posicao p : time.getTatica().getPosicoes()) {
+					System.out.println(p.getNome()+" será "+ p.getJogador().getNome()+ " "+ p.getJogador().getPosicaoAtual().getPontuacao()+" "+p.getIdPosicaoTela());
+				}
 			}
 		});
 		btnSubstituir.setBounds(213, 57, 89, 23);
@@ -488,11 +497,13 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 			listaBotoes.get(j).setJogador(null);
 		}
 		
-		listaJogador.clear();
+			listaJogador.clear();
+			
 		
 		listaIdPosicoes.clear();				
 		for(Posicao p: time.getTatica().getPosicoes()){
 			listaIdPosicoes.add(p);
+			System.out.println("da lista : "+p.getIdPosicaoTela());
 		}
 		for(int i=0;i<11;i++){
 			for(int j=0;j<listaBotoes.size();j++){
