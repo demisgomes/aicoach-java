@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import bd.Banco;
 import dominio.Jogador;
+import dominio.Posicao;
 import dominio.Tatica;
 import dominio.Time;
 
@@ -20,12 +21,12 @@ public class TimeDAO {
 		time.setIdTime(retornarIdTime());
 	}
 	
-	public void inserirTimeTatica(Time time){
+	public void inserirTimeTatica(Time time, ArrayList<Integer> listaIdIitulares){
 		/*ArrayList <Integer> idJogadores=new ArrayList<Integer>();
 		for(int i=0;i<time.getTatica().getPosicoes().size();i++){
 			idJogadores.add(time.getTatica().getPosicoes().get(i).getJogador().getId());
 		}*/
-		String sql = "update time SET idtatica =  '"+time.getTatica().getIdTatica()+"' WHERE idtime = '"+time.getIdTime()+"'";
+		String sql = "update time SET idtatica =  '"+time.getTatica().getIdTatica()+"', jogadorestitulares='"+listaIdIitulares+"'  WHERE idtime = '"+time.getIdTime()+"'";
 		
 		banco.executarSQL(sql);
 	}
@@ -126,19 +127,42 @@ public class TimeDAO {
 	}*/
 	
 	public Tatica retornarTaticaTime(Time  time){
-		String sql="SELECT idtatica FROM time";
+		ArrayList <Integer> idJogadores=new ArrayList<Integer>();
+		String sql="SELECT * FROM time";
 		ResultSet rs=banco.executarSelect(sql);
+		String idFakeJogadores=null;
 		
 		try {
 			int idTatica=0;
 			if(rs.last()){
-				idTatica=rs.getInt("idtatica");		
+				idTatica=rs.getInt("idtatica");	
+				idFakeJogadores=rs.getString("jogadorestitulares");
 			}
 			Tatica tatica=null;
+			
 			if(idTatica!=0){
 				TaticaDAO tDAO=new TaticaDAO();
 				tatica=tDAO.retornarTatica(idTatica);
 			}
+			String [] posicoesSeparadas=idFakeJogadores.split(",");
+			for (int i = 0; i < posicoesSeparadas.length; i++) {
+				posicoesSeparadas[i]=posicoesSeparadas[i].substring(1);
+				if(i==posicoesSeparadas.length-1){
+					posicoesSeparadas[i]=posicoesSeparadas[i].substring(0, posicoesSeparadas[i].length()-1);
+				}
+				int int1 = Integer.parseInt(posicoesSeparadas[i]);
+				JogadorDAO jDAO=new JogadorDAO();
+				Jogador j = jDAO.retornarJogador(int1);
+				tatica.getPosicoes().get(i).setJogador(j);
+				tatica.getPosicoes().get(i).getJogador().setEscolhido(1);
+				for(Jogador x : time.getJogadores()){
+					if (x.getId()==j.getId()){
+						x.setEscolhido(1);
+					}
+				}
+				tatica.getPosicoes().get(i).getJogador().setPosicaoAtual(tatica.getPosicoes().get(i));
+			}
+			
 			return tatica;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
