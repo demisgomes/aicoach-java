@@ -128,7 +128,7 @@ public class TimeDAO {
 	
 	public Tatica retornarTaticaTime(Time  time){
 		ArrayList <Integer> idJogadores=new ArrayList<Integer>();
-		String sql="SELECT * FROM time";
+		String sql="SELECT * FROM time where idtime = '"+time.getIdTime()+"'";
 		ResultSet rs=banco.executarSelect(sql);
 		String idFakeJogadores=null;
 		

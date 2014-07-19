@@ -10,7 +10,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
+import negocio.FormulaPosicao;
+import dominio.Jogador;
+import dominio.PontuacaoPosicao;
 import dominio.Time;
+import perssistencia.PontuacaoPosicaoDAO;
 import perssistencia.TimeDAO;
 
 import java.awt.event.ActionListener;
@@ -63,6 +67,17 @@ public class TelaListaTimes extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ac) {
 					Time time=tDAO.retornarTime(comboBox.getSelectedItem().toString());
+					FormulaPosicao form=new FormulaPosicao();
+					PontuacaoPosicaoDAO ppDAO=new PontuacaoPosicaoDAO();
+					//int breaktudo=0;
+					for(Jogador j :time.getJogadores()){
+						form.calculeTudo(j);
+						for(int i=0;i<j.getPosicoes().size();i++){
+							//System.out.println(j.getNome()+" "+ j.getPosicoes().get(i).getNome()+ " "+j.getPosicoes().get(i).getPontuacao()+ " "+ j.getPosicoes().get(i).isPosicaoDeOrigem());
+							ppDAO.inserirPontuacaoPosicoesJogador(j);
+						}
+					}
+					
 					TelaTime tela = new TelaTime("Tela time", 600, 300, time);
 					tela.setVisible(true);
 					dispose();
