@@ -25,6 +25,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 
 import negocio.AlgoritmoTatica;
+import perssistencia.JogadorDAO;
 import perssistencia.TaticaDAO;
 import perssistencia.TimeDAO;
 
@@ -432,11 +433,14 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 		JButton btnSalvarTtica = new JButton("Salvar T\u00E1tica");
 		btnSalvarTtica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				/*for(int i=0;i<listaBotoes.size();i++){
+				JogadorDAO jdao=new JogadorDAO();
+				jdao.tirarIdPosicaoJogador();
+				for(int i=0;i<listaBotoes.size();i++){
 					if(listaBotoes.get(i).getJogador()!=null){
-						listaJogador.add(listaBotoes.get(i).getJogador().getId());
+						jdao.inserirIdPosicaoJogador(listaBotoes.get(i).getJogador(), listaBotoes.get(i).getId());
+						//listaJogador.add(listaBotoes.get(i).getJogador().getId());
 					}
-				}*/
+				}
 				TimeDAO timeDAO=new TimeDAO();
 				timeDAO.inserirTimeTatica(time, listaJogador);
 				JOptionPane.showMessageDialog(null, "Inserido com sucesso!");
