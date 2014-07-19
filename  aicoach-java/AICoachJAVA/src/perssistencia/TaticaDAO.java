@@ -111,26 +111,31 @@ public class TaticaDAO {
 				idTatica = rs.getInt("idtatica");
 				nome = rs.getString("nome");
 				posicoes=rs.getString("posicoes");
+				
 			}
+			
+			String [] posicoesSeparadas=posicoes.split(",");
+			for (int i = 0; i < posicoesSeparadas.length; i++) {
+				posicoesSeparadas[i]=posicoesSeparadas[i].substring(1);
+				if(i==posicoesSeparadas.length-1){
+					posicoesSeparadas[i]=posicoesSeparadas[i].substring(0, posicoesSeparadas[i].length()-1);
+				}
+				int int1 = Integer.parseInt(posicoesSeparadas[i]);
+				Posicao p= new Posicao(int1);
+				posicoesTatica.add(p);
+			}
+			Tatica  tatica = new Tatica(idTatica, nome, posicoesTatica);
+			return tatica;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return null;
 		}
 		
-		String [] posicoesSeparadas=posicoes.split(",");
-		for (int i = 0; i < posicoesSeparadas.length; i++) {
-			posicoesSeparadas[i]=posicoesSeparadas[i].substring(1);
-			if(i==posicoesSeparadas.length-1){
-				posicoesSeparadas[i]=posicoesSeparadas[i].substring(0, posicoesSeparadas[i].length()-1);
-			}
-			int int1 = Integer.parseInt(posicoesSeparadas[i]);
-			Posicao p= new Posicao(int1);
-			posicoesTatica.add(p);
-		}
-		Tatica  tatica = new Tatica(idTatica, nome, posicoesTatica);
+		
 		
 
 
-		return tatica;
+		
 	}
 	
 	

@@ -389,7 +389,7 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 		JButton btnCriarNovaTtica = new JButton("Criar Nova T\u00E1tica");
 		btnCriarNovaTtica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaCriarTatica tela=new TelaCriarTatica();
+				TelaCriarTatica tela=new TelaCriarTatica(time);
 				tela.setVisible(true);
 				dispose();
 			}
