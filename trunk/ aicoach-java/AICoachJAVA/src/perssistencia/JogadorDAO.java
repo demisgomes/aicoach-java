@@ -62,37 +62,44 @@ public class JogadorDAO {
 				temCondicao=rs.getInt("temCondicao");
 			}
 			
+			CaracteristicaDAO caracDAO = new CaracteristicaDAO();
+			CaracteristicasJogadores caracteristicas = caracDAO.retornarCaracteristicas(idJogador);
+			
+			ArrayList<Posicao> posicoes= new ArrayList<>();
+			PontuacaoPosicaoDAO pontuacaoPosicaoDAO = new PontuacaoPosicaoDAO();
+			ArrayList<PontuacaoPosicao> listapontuacao = pontuacaoPosicaoDAO.retornaPosicao(idJogador);
+			
+			for (int i = 0; i < listapontuacao.size(); i++) {
+				Posicao posicao = new Posicao();
+				PontuacaoPosicao pontuacaoPosicao  = listapontuacao.get(i);
+				
+				posicao.setNome(pontuacaoPosicao.getNomePosicao());
+				posicao.setPontuacao(pontuacaoPosicao.getPontuacao());
+				posicoes.add(posicao);
+			}
+			
+			EstatisticasJogador estatisticas = new EstatisticasJogador();
+			
+			
+			Jogador jogador = new Jogador(nome, time, peso, altura, temCondicao, posicoes, estatisticas, caracteristicas);
+			jogador.setId(idJogador);
+			for (int i = 0; i < jogador.getPosicoes().size(); i++) {
+				jogador.getPosicoes().get(i).setJogador(jogador);;
+			}
+			insiraPosicaoOrigem(jogador);
+			return jogador;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return null;
 		} 
 		
 		
-		CaracteristicaDAO caracDAO = new CaracteristicaDAO();
-		CaracteristicasJogadores caracteristicas = caracDAO.retornarCaracteristicas(idJogador);
 		
-		ArrayList<Posicao> posicoes= new ArrayList<>();
-		PontuacaoPosicaoDAO pontuacaoPosicaoDAO = new PontuacaoPosicaoDAO();
-		ArrayList<PontuacaoPosicao> listapontuacao = pontuacaoPosicaoDAO.retornaPosicao(idJogador);
 		
-		for (int i = 0; i < listapontuacao.size(); i++) {
-			Posicao posicao = new Posicao();
-			PontuacaoPosicao pontuacaoPosicao  = listapontuacao.get(i);
-			
-			posicao.setNome(pontuacaoPosicao.getNomePosicao());
-			posicao.setPontuacao(pontuacaoPosicao.getPontuacao());
-			posicoes.add(posicao);
+		finally{
+			banco.fecharBanco();
 		}
-		
-		EstatisticasJogador estatisticas = new EstatisticasJogador();
-		
-		
-		Jogador jogador = new Jogador(nome, time, peso, altura, temCondicao, posicoes, estatisticas, caracteristicas);
-		jogador.setId(idJogador);
-		for (int i = 0; i < jogador.getPosicoes().size(); i++) {
-			jogador.getPosicoes().get(i).setJogador(jogador);;
-		}
-		insiraPosicaoOrigem(jogador);
-		return jogador;
 	}
 	
 	public ArrayList<Jogador> retornarJogadores(int idTime){

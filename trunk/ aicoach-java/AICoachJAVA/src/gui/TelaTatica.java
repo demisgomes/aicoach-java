@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import dominio.ButtonAiCoach;
+import dominio.Jogador;
 import dominio.Posicao;
 import dominio.Tatica;
 import dominio.Time;
@@ -39,6 +40,7 @@ public class TelaTatica extends JFrame {
 	//private ArrayList<Posicao> listaPosicoes=new ArrayList<Posicao>();
 
 	ArrayList<ButtonAiCoach> listaBotoes = new ArrayList<ButtonAiCoach>();
+	ArrayList<Integer> listaJogador=new ArrayList<Integer>();
 	/**
 	 * Launch the application.
 	 */
@@ -355,6 +357,11 @@ public class TelaTatica extends JFrame {
 							time.getJogadores().get(j).setEscolhido(0);
 							
 						}
+						/*for(int j=0;j<listaBotoes.size();j++){
+							listaBotoes.get(j).setVisible(false);
+							listaBotoes.get(j).setBackground(Color.GRAY);
+							listaBotoes.get(j).setJogador(null);
+						}*/
 						
 						AlgoritmoTatica aTatica=new AlgoritmoTatica();
 						aTatica.sugerirTatica(time, listaTaticas);
@@ -372,7 +379,11 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 					time.getJogadores().get(j).setEscolhido(0);
 					
 				}
-				
+				/*for(int j=0;j<listaBotoes.size();j++){
+					listaBotoes.get(j).setVisible(false);
+					listaBotoes.get(j).setBackground(Color.GRAY);
+					listaBotoes.get(j).setJogador(null);
+				}*/
 				TaticaDAO taticaDAO=new TaticaDAO();
 				Tatica taticaEscolhida=taticaDAO.retornarTatica(comboBox.getSelectedItem().toString());
 				
@@ -405,8 +416,13 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 		JButton btnSalvarTtica = new JButton("Salvar T\u00E1tica");
 		btnSalvarTtica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				/*for(int i=0;i<listaBotoes.size();i++){
+					if(listaBotoes.get(i).getJogador()!=null){
+						listaJogador.add(listaBotoes.get(i).getJogador().getId());
+					}
+				}*/
 				TimeDAO timeDAO=new TimeDAO();
-				timeDAO.inserirTimeTatica(time);
+				timeDAO.inserirTimeTatica(time, listaJogador);
 				JOptionPane.showMessageDialog(null, "Inserido com sucesso!");
 			}
 		});
@@ -418,13 +434,14 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 		
 		if(taticaTime!=null && !daTelaInserir){
 			time.setTatica(taticaTime);
-			AlgoritmoTatica aTatica=new AlgoritmoTatica();
-			aTatica.SugerirJogadores(time);
 			
 			mostrarBotoes();
+			
+			
 		}
 		
 		if(daTelaInserir){
+			
 			mostrarBotoes();
 			daTelaInserir=false;
 			
@@ -432,11 +449,16 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 		
 }
 	public void mostrarBotoes(){
+
 		
 		for(int j=0;j<listaBotoes.size();j++){
 			listaBotoes.get(j).setVisible(false);
 			listaBotoes.get(j).setBackground(Color.GRAY);
+			listaBotoes.get(j).setJogador(null);
 		}
+		
+		listaJogador.clear();
+		
 		listaIdPosicoes.clear();				
 		for(Posicao p: time.getTatica().getPosicoes()){
 			listaIdPosicoes.add(p);
@@ -469,6 +491,12 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 						break;
 					}
 				}
+			}
+		}
+		
+		for(int i=0;i<listaBotoes.size();i++){
+			if(listaBotoes.get(i).getJogador()!=null){
+				listaJogador.add(listaBotoes.get(i).getJogador().getId());
 			}
 		}
 		
