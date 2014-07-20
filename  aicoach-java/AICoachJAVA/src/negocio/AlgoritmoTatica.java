@@ -3,6 +3,7 @@ package negocio;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import dominio.DiferencaTime;
 import dominio.EstiloDeJogo;
 import dominio.Jogador;
 import dominio.OverallJogador;
@@ -121,6 +122,29 @@ public void SugerirJogadores(Time time){
 			}
 			this.SugerirJogadores(time);
 			pontuacaoParcialMediaAtual = this.gerarPontuacaoParcial(time);
+			System.out.println("pontuacao media: "+pontuacaoParcialMediaAtual);
+			if(pontuacaoParcialMediaAtual>=maiorPontuacaoParcialMedia){
+				maiorPontuacaoParcialMedia = pontuacaoParcialMediaAtual;
+				tatica = taticas.get(i);
+				System.out.println("Maior pontuacao media"+maiorPontuacaoParcialMedia);
+			}
+		}
+		time.setTatica(tatica);
+		System.out.println(time.getEstiloDeJogo().getNome());
+		return tatica;
+	}
+	
+	public Tatica sugerirTatica(Time time, ArrayList<Tatica> taticas, EstiloDeJogo ej){
+		Tatica tatica = new Tatica();
+		int maiorPontuacaoParcialMedia = 0, pontuacaoParcialMediaAtual = 0;
+		for (int i = 0; i < taticas.size(); i++) {
+			time.setTatica(taticas.get(i));
+			for (int j = 0; j < time.getJogadores().size(); j++) {
+				time.getJogadores().get(j).setEscolhido(0);
+				
+			}
+			this.SugerirJogadores(time);
+			pontuacaoParcialMediaAtual = this.gerarPontuacaoParcial(time, ej);
 			System.out.println("pontuacao media: "+pontuacaoParcialMediaAtual);
 			if(pontuacaoParcialMediaAtual>=maiorPontuacaoParcialMedia){
 				maiorPontuacaoParcialMedia = pontuacaoParcialMediaAtual;
@@ -439,6 +463,8 @@ public void SugerirJogadores(Time time){
 			
 		}
 		
+		estilo.setOverallJogador(overallJogador);
+		estilo.setOverallTime(overallTime);
 		return estilo;
 	}
 	
@@ -586,11 +612,11 @@ public void SugerirJogadores(Time time){
 		
 		time.setTatica(novaTatica);
 		SugerirJogadores(time);
-		System.out.println("Antes da confusão");
+		/*System.out.println("Antes da confusão");
 		System.out.println("-----------------------");
 		for (Posicao p : time.getTatica().getPosicoes()) {
 			System.out.println(p.getNome()+" será "+ p.getJogador().getNome()+ " "+ p.getJogador().getPosicaoAtual().getPontuacao()+" "+p.getIdPosicaoTela());
-		}
+		}*/
 		int qtdSubstituicoes=substituicoes;
 		for (int i = 0; i < time.getTatica().getPosicoes().size(); i++) {
 			listaPontos.add(time.getTatica().getPosicoes().get(i).getPontuacao());
@@ -622,6 +648,193 @@ public void SugerirJogadores(Time time){
 				time.getJogadores().get(j).setEscolhido(0);
 			}
 		}
+		
+	}
+	
+	public void combaterTatica(Time meuTime, Time timeAdversario, ArrayList <Tatica> taticas){
+		sugerirTatica(timeAdversario, taticas);
+		EstiloDeJogo estiloAdversario=timeAdversario.getEstiloDeJogo();
+		OverallTime overallTime =estiloAdversario.getOverallTime();
+		OverallJogador overallJogador= estiloAdversario.getOverallJogador();
+		
+		Time timeTemporario=new Time();
+		timeTemporario.setJogadores(meuTime.getJogadores());
+		sugerirTatica(timeTemporario, taticas);
+		OverallTime overallMeuTime =timeTemporario.getEstiloDeJogo().getOverallTime();
+		OverallJogador overallMeuJogador= timeTemporario.getEstiloDeJogo().getOverallJogador();
+		System.out.println(overallTime.getDesarme()+" "+overallTime.getFinalizacao()+" "+overallTime.getPasse()+" "+overallTime.getVelocidade());
+		System.out.println(overallMeuTime.getDesarme()+" "+overallMeuTime.getFinalizacao()+" "+overallMeuTime.getPasse()+" "+overallMeuTime.getVelocidade());
+		
+		System.out.println(overallJogador.getDefensores()+" "+overallJogador.getMeias()+" "+overallJogador.getAtacantes()+" "+overallJogador.getTimeTodo());
+
+		System.out.println(overallMeuJogador.getDefensores()+" "+overallMeuJogador.getMeias()+" "+overallMeuJogador.getAtacantes()+" "+overallMeuJogador.getTimeTodo());
+		
+		DiferencaTime dT=retorneDiferenca(overallMeuJogador.getTimeTodo(), overallJogador.getTimeTodo());
+		
+		EstiloDeJogo eJMeuTime=retorneEstiloComBaseNoAdversario(dT, overallJogador);
+		sugerirTatica(meuTime, taticas, eJMeuTime);
+		//System.out.println(dT.getTipoDiferenca()+" "+dT.isMeuTimeFavorito());
+		
+		//System.out.println("Time temporário "+timeTemporario.getEstiloDeJogo().getNome());
+		//System.out.println("Meu time "+meuTime.getEstiloDeJogo().getNome());
+		
+	}
+	
+	private DiferencaTime retorneDiferenca(int overallMeuTime, int overallAdversario){
+		int diferenca=overallMeuTime-overallAdversario;
+		String estiloDiferenca="equilíbrio";
+		DiferencaTime d=null;
+		if(diferenca>=-3 && diferenca <=3){
+			estiloDiferenca="equilíbrio";
+			d= new DiferencaTime(estiloDiferenca, false);
+		}
+		else{
+			if(diferenca>0){
+				if(diferenca>=3 && diferenca <=5){
+					estiloDiferenca="leve vantagem";
+				}
+				
+				if(diferenca>5 && diferenca <=10){
+					estiloDiferenca="favoritismo";
+				}
+
+				if(diferenca>10){
+					estiloDiferenca="muito favoritismo";
+				}
+				
+				d= new DiferencaTime(estiloDiferenca, true);
+			}
+			
+			if(diferenca<0){
+				diferenca=diferenca*(-1);
+				if(diferenca>=3 && diferenca <=5){
+					estiloDiferenca="leve vantagem";
+				}
+				
+				if(diferenca>5 && diferenca <=10){
+					estiloDiferenca="favoritismo";
+				}
+
+				if(diferenca>10){
+					estiloDiferenca="muito favoritismo";
+				}
+				d= new DiferencaTime(estiloDiferenca, false);
+			}
+		}
+		
+		return d;
+		
+	}
+	
+	private EstiloDeJogo retorneEstiloComBaseNoAdversario(DiferencaTime dT, OverallJogador overallTimeAdversario){
+		EstiloDeJogo eJ=null;
+		OverallJogador ov=overallTimeAdversario;
+		ArrayList <Integer> listaOverall=new ArrayList<Integer>();
+		listaOverall.add(ov.getDefensores());
+		listaOverall.add(ov.getMeias());
+		listaOverall.add(ov.getAtacantes());
+		
+		String ovMaior="", ovMenor="", tipoEstilo="contra ataque";
+		int maior=0;
+		int menor=2345;
+		
+		for (int i = 0; i < 3; i++) {
+			if(listaOverall.get(i) > maior){
+				maior = listaOverall.get(i);
+				if(i==0){
+					ovMaior="defensores";
+				}
+				if(i==1){
+					ovMaior="meias";
+				}
+				if(i==2){
+					ovMaior="atacantes";
+				}	
+			}
+			if(listaOverall.get(i) < menor){
+				menor = listaOverall.get(i);
+				if(i==0){
+					ovMenor="defensores";
+				}
+				if(i==1){
+					ovMenor="meias";
+				}
+				if(i==2){
+					ovMenor="atacantes";
+				}	
+			}
+			
+			
+		}
+		
+		if(dT.isMeuTimeFavorito()){
+			if(dT.getTipoDiferenca().equals("leve vantagem")){
+				if(ovMenor.equals("defensores")){
+					tipoEstilo="posse de bola";					
+				}
+				if(ovMenor.equals("meias")){
+					tipoEstilo="posse de bola";					
+				}
+				if(ovMenor.equals("atacantes")){
+					tipoEstilo="bola longa";					
+				}
+			}
+			
+			if(dT.getTipoDiferenca().equals("favoritismo")){
+				if(ovMenor.equals("defensores")){
+					tipoEstilo="bola longa";					
+				}
+				if(ovMenor.equals("atacantes")||ovMaior.equals("meias")){
+					tipoEstilo="posse de bola";					
+				}
+			}
+			
+			if(dT.getTipoDiferenca().equals("muito favoritismo")){
+				tipoEstilo="posse de bola";
+			}
+		}
+		else{
+			if(dT.getTipoDiferenca().equals("equilíbrio")){
+				if(ovMenor.equals("defensores")){
+					tipoEstilo="contra ataque";					
+				}
+				if(ovMenor.equals("meias")){
+					tipoEstilo="posse de bola";					
+				}
+				if(ovMenor.equals("atacantes")){
+					tipoEstilo="bola longa";					
+				}
+			}
+			
+			if(dT.getTipoDiferenca().equals("leve vantagem")){
+				if(ovMaior.equals("defensores")){
+					tipoEstilo="posse de bola";					
+				}
+				if(ovMaior.equals("meias")){
+					tipoEstilo="bola longa";					
+				}
+				if(ovMaior.equals("atacantes")){
+					tipoEstilo="posse bola";					
+				}
+			}
+			
+			if(dT.getTipoDiferenca().equals("favoritismo")){
+				if(ovMaior.equals("defensores")){
+					tipoEstilo="bola longa";					
+				}
+				if(ovMaior.equals("atacantes")||ovMaior.equals("meias")){
+					tipoEstilo="contra ataque";					
+				}
+			}
+			
+			if(dT.getTipoDiferenca().equals("muito favoritismo")){
+				tipoEstilo="retranca";
+			}
+		}
+		
+		eJ=new EstiloDeJogo(tipoEstilo, 0);
+		return eJ;
+		
 		
 	}
 
