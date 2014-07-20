@@ -435,7 +435,7 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 		btnSalvarTtica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JogadorDAO jdao=new JogadorDAO();
-				jdao.tirarIdPosicaoJogador();
+				jdao.tirarIdPosicaoJogador(time);
 				for(int i=0;i<listaBotoes.size();i++){
 					if(listaBotoes.get(i).getJogador()!=null){
 						jdao.inserirIdPosicaoJogador(listaBotoes.get(i).getJogador(), listaBotoes.get(i).getId());
@@ -474,7 +474,10 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 		
 		if(taticaTime!=null && !daTelaInserir){
 			time.setTatica(taticaTime);
-			
+			System.out.println(taticaTime.getNome());
+			for (Posicao p : time.getTatica().getPosicoes()) {
+			System.out.println(p.getNome()+" será "+ p.getJogador().getNome());//+ " "+ p.getJogador().getPosicaoAtual().getPontuacao());
+			}
 			mostrarBotoes();
 			
 			
@@ -503,7 +506,6 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 		listaIdPosicoes.clear();				
 		for(Posicao p: time.getTatica().getPosicoes()){
 			listaIdPosicoes.add(p);
-			System.out.println("da lista : "+p.getIdPosicaoTela());
 		}
 		for(int i=0;i<11;i++){
 			for(int j=0;j<listaBotoes.size();j++){
@@ -524,6 +526,7 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 				for(int k=0;k<time.getTatica().getPosicoes().size();k++){
 					if(listaBotoes.get(j).getId()==time.getTatica().getPosicoes().get(k).getIdPosicaoTela()){
 						listaBotoes.get(j).setJogador(time.getTatica().getPosicoes().get(k).getJogador());
+						//System.out.println("Botão "+time.getTatica().getPosicoes().get(k).getJogador().getNome());
 						listaBotoes.get(j).setLabel("<html><p style='margin-left: -15pt;'>"+time.getTatica().getPosicoes().get(k).getJogador().getNome()+"<br> ("+time.getTatica().getPosicoes().get(k).getPontuacao()+")</p><html>");
 						//listaBotoes.get(j).setLabel(time.getTatica().getPosicoes().get(k).getJogador().getNome()+" ("+time.getTatica().getPosicoes().get(k).getPontuacao()+")");
 						

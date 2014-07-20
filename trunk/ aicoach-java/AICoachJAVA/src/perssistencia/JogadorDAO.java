@@ -163,6 +163,11 @@ public class JogadorDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		
+		finally{
+			banco.fecharBanco();
+		}
 		return listaJogadores;
 	}
 	
@@ -215,8 +220,8 @@ public class JogadorDAO {
 		banco.executarSQL(sql);
 	}
 	
-	public void tirarIdPosicaoJogador(){
-		String sql="UPDATE jogador SET posicaotela = '0', pontuacao_posicao_atual= '0'";
+	public void tirarIdPosicaoJogador(Time time){
+		String sql="UPDATE jogador SET posicaotela = '0', pontuacao_posicao_atual= '0' WHERE time = '"+time.getIdTime()+"'";
 		banco.executarSQL(sql);
 	}
 	
