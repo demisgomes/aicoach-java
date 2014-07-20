@@ -125,6 +125,16 @@ public class TesteJogadores {
 		
 		System.out.println();
 		
+		Time timeBrasil=tDAO.retornarTime("Brasil");
+		Time timeEspanha=tDAO.retornarTime("Espanha");
+		
+		ATatica.combaterTatica(timeBrasil, timeEspanha, listaTaticas);
+		System.out.println(timeBrasil.getEstiloDeJogo().getNome()+" "+timeBrasil.getTatica().getNome());
+		
+		for (Posicao p : timeBrasil.getTatica().getPosicoes()) {
+			System.out.println(p.getNome()+" será "+ p.getJogador().getNome()+ " "+ p.getJogador().getPosicaoAtual().getPontuacao());
+		}
+		
 	}
 
 }
