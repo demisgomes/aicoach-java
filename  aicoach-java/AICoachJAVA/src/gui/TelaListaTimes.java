@@ -67,7 +67,7 @@ public class TelaListaTimes extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ac) {
 					Time time=tDAO.retornarTime(comboBox.getSelectedItem().toString());
-					FormulaPosicao form=new FormulaPosicao();
+					/*FormulaPosicao form=new FormulaPosicao();
 					PontuacaoPosicaoDAO ppDAO=new PontuacaoPosicaoDAO();
 					//int breaktudo=0;
 					for(Jogador j :time.getJogadores()){
@@ -76,7 +76,7 @@ public class TelaListaTimes extends JFrame {
 							//System.out.println(j.getNome()+" "+ j.getPosicoes().get(i).getNome()+ " "+j.getPosicoes().get(i).getPontuacao()+ " "+ j.getPosicoes().get(i).isPosicaoDeOrigem());
 							ppDAO.inserirPontuacaoPosicoesJogador(j);
 						}
-					}
+					}*/
 					
 					TelaTime tela = new TelaTime("Tela time", 600, 300, time);
 					tela.setVisible(true);

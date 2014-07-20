@@ -128,10 +128,17 @@ public class TesteJogadores {
 		Time timeBrasil=tDAO.retornarTime("Brasil");
 		Time timeEspanha=tDAO.retornarTime("Espanha");
 		
-		ATatica.combaterTatica(timeBrasil, timeEspanha, listaTaticas);
+		/*ATatica.combaterTatica(timeBrasil, timeEspanha, listaTaticas);
 		System.out.println(timeBrasil.getEstiloDeJogo().getNome()+" "+timeBrasil.getTatica().getNome());
 		
 		for (Posicao p : timeBrasil.getTatica().getPosicoes()) {
+			System.out.println(p.getNome()+" será "+ p.getJogador().getNome()+ " "+ p.getJogador().getPosicaoAtual().getPontuacao());
+		}*/
+		
+		ATatica.combaterTatica(timeEspanha, timeBrasil, listaTaticas);
+		System.out.println(timeEspanha.getEstiloDeJogo().getNome()+" "+timeEspanha.getTatica().getNome());
+		
+		for (Posicao p : timeEspanha.getTatica().getPosicoes()) {
 			System.out.println(p.getNome()+" será "+ p.getJogador().getNome()+ " "+ p.getJogador().getPosicaoAtual().getPontuacao());
 		}
 		

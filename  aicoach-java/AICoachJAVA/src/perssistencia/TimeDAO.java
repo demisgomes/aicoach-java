@@ -62,17 +62,23 @@ public class TimeDAO {
 			if(rs.next()){
 				nome = rs.getString("nometime");
 			}
-		} catch (SQLException e) {
+			JogadorDAO jDAO=new JogadorDAO();
+			jogadores=jDAO.retornarJogadores(idTime);
+			Time time = new Time();
+			time.setNome(nome);
+			time.setIdTime(idTime);
+			time.setJogadores(jogadores);
+			return time;
+		} catch (Exception e) {
 			e.printStackTrace();
+			return null;
 		}
-		JogadorDAO jDAO=new JogadorDAO();
-		jogadores=jDAO.retornarJogadores(idTime);
-		Time time = new Time();
-		time.setNome(nome);
-		time.setIdTime(idTime);
-		time.setJogadores(jogadores);
+		
 		//time.setTatica(tatica);
-		return time;
+		finally{
+			banco.fecharBanco();
+		}
+		
 	}
 	
 	public Time retornarTime(String nomeTime){
