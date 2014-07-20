@@ -67,7 +67,7 @@ public class TelaTatica extends JFrame {
 	public TelaTatica(final Time time) {
 		setTitle("Tela T\u00E1tica");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 714, 568);
+		setBounds(100, 100, 745, 620);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -93,7 +93,7 @@ public class TelaTatica extends JFrame {
 				//dispose();
 			}
 		});
-		btnNewButtonAiCoach.setBounds(27, 57, 135, 23);
+		btnNewButtonAiCoach.setBounds(27, 23, 135, 23);
 		contentPane.add(btnNewButtonAiCoach);
 		
 		
@@ -108,7 +108,7 @@ public class TelaTatica extends JFrame {
 
 		
 		final JComboBox<String> comboBox = new JComboBox<String>(formacoes);
-		comboBox.setBounds(239, 24, 93, 20);
+		comboBox.setBounds(200, 24, 130, 20);
 		contentPane.add(comboBox);
 		
 		
@@ -365,7 +365,7 @@ public class TelaTatica extends JFrame {
 		//SUGERIR TÀTICA
 		//------------------------------------
 		JButton btnSugerirTtica = new JButton("Sugerir T\u00E1tica");
-		btnSugerirTtica.setBounds(27, 23, 135, 23);
+		btnSugerirTtica.setBounds(27, 553, 135, 23);
 		
 		
 		btnSugerirTtica.addActionListener(new ActionListener() {
@@ -388,7 +388,7 @@ public class TelaTatica extends JFrame {
 		});
 		
 		contentPane.add(btnSugerirTtica);
-JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores");
+JButton btnEscolherMelhoresJogadores = new JButton("Sugerir Jogadores");
 		
 		btnEscolherMelhoresJogadores.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -417,7 +417,7 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 		for(int j=0;j<listaBotoes.size();j++){
 			listaBotoes.get(j).setVisible(false);
 		}
-		btnEscolherMelhoresJogadores.setBounds(354, 23, 185, 23);
+		btnEscolherMelhoresJogadores.setBounds(354, 23, 167, 23);
 		contentPane.add(btnEscolherMelhoresJogadores);
 		
 		JButton btnCriarNovaTtica = new JButton("Criar Nova T\u00E1tica");
@@ -428,7 +428,7 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 				dispose();
 			}
 		});
-		btnCriarNovaTtica.setBounds(354, 57, 192, 23);
+		btnCriarNovaTtica.setBounds(534, 23, 167, 23);
 		contentPane.add(btnCriarNovaTtica);
 		
 		JButton btnSalvarTtica = new JButton("Salvar T\u00E1tica");
@@ -447,7 +447,7 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 				JOptionPane.showMessageDialog(null, "Inserido com sucesso!");
 			}
 		});
-		btnSalvarTtica.setBounds(599, 23, 99, 35);
+		btnSalvarTtica.setBounds(569, 547, 99, 35);
 		contentPane.add(btnSalvarTtica);
 		
 		JButton btnSubstituir = new JButton("Substituir");
@@ -466,8 +466,20 @@ JButton btnEscolherMelhoresJogadores = new JButton("Escolher Melhores Jogadores"
 				}
 			}
 		});
-		btnSubstituir.setBounds(213, 57, 89, 23);
+		btnSubstituir.setBounds(376, 553, 135, 23);
 		contentPane.add(btnSubstituir);
+		
+		JButton btnCombaterTtica = new JButton("Combater t\u00E1tica");
+		btnCombaterTtica.setBounds(203, 553, 129, 23);
+		btnCombaterTtica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaInserirCombaterTatica tela=new TelaInserirCombaterTatica(time);
+				tela.setVisible(true);
+				dispose();
+				
+			}
+		});
+		contentPane.add(btnCombaterTtica);
 		
 		TimeDAO timeDAO = new TimeDAO();
 		Tatica taticaTime=timeDAO.retornarTaticaTime(time);
