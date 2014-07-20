@@ -3,6 +3,8 @@ package negocio;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import perssistencia.TaticaDAO;
+import perssistencia.TimeDAO;
 import dominio.DiferencaTime;
 import dominio.EstiloDeJogo;
 import dominio.Jogador;
@@ -113,19 +115,26 @@ public void SugerirJogadores(Time time){
 	
 	public Tatica sugerirTatica(Time time, ArrayList<Tatica> taticas){
 		Tatica tatica = new Tatica();
+		//TimeDAO timeDAO=new TimeDAO();
+		//Time timeTemporario= timeDAO.retornarTime(time.getIdTime());
+		TaticaDAO taticaDAO=new TaticaDAO();
+		
 		int maiorPontuacaoParcialMedia = 0, pontuacaoParcialMediaAtual = 0;
 		for (int i = 0; i < taticas.size(); i++) {
 			time.setTatica(taticas.get(i));
+			//time.setTatica(taticaDAO.retornarTatica(taticas.get(i).getIdTatica()));
 			for (int j = 0; j < time.getJogadores().size(); j++) {
 				time.getJogadores().get(j).setEscolhido(0);
 				
 			}
+			//time.setJogadores(timeTemporario.getJogadores());
 			this.SugerirJogadores(time);
 			pontuacaoParcialMediaAtual = this.gerarPontuacaoParcial(time);
 			System.out.println("pontuacao media: "+pontuacaoParcialMediaAtual);
 			if(pontuacaoParcialMediaAtual>=maiorPontuacaoParcialMedia){
 				maiorPontuacaoParcialMedia = pontuacaoParcialMediaAtual;
-				tatica = taticas.get(i);
+				tatica= taticas.get(i);
+				//tatica = taticaDAO.retornarTatica(taticas.get(i).getIdTatica());
 				System.out.println("Maior pontuacao media"+maiorPontuacaoParcialMedia);
 			}
 		}
@@ -612,11 +621,6 @@ public void SugerirJogadores(Time time){
 		
 		time.setTatica(novaTatica);
 		SugerirJogadores(time);
-		/*System.out.println("Antes da confusão");
-		System.out.println("-----------------------");
-		for (Posicao p : time.getTatica().getPosicoes()) {
-			System.out.println(p.getNome()+" será "+ p.getJogador().getNome()+ " "+ p.getJogador().getPosicaoAtual().getPontuacao()+" "+p.getIdPosicaoTela());
-		}*/
 		int qtdSubstituicoes=substituicoes;
 		for (int i = 0; i < time.getTatica().getPosicoes().size(); i++) {
 			listaPontos.add(time.getTatica().getPosicoes().get(i).getPontuacao());
@@ -660,19 +664,23 @@ public void SugerirJogadores(Time time){
 		Time timeTemporario=new Time();
 		timeTemporario.setJogadores(meuTime.getJogadores());
 		sugerirTatica(timeTemporario, taticas);
+		
 		OverallTime overallMeuTime =timeTemporario.getEstiloDeJogo().getOverallTime();
 		OverallJogador overallMeuJogador= timeTemporario.getEstiloDeJogo().getOverallJogador();
-		System.out.println(overallTime.getDesarme()+" "+overallTime.getFinalizacao()+" "+overallTime.getPasse()+" "+overallTime.getVelocidade());
+		/*System.out.println(overallTime.getDesarme()+" "+overallTime.getFinalizacao()+" "+overallTime.getPasse()+" "+overallTime.getVelocidade());
 		System.out.println(overallMeuTime.getDesarme()+" "+overallMeuTime.getFinalizacao()+" "+overallMeuTime.getPasse()+" "+overallMeuTime.getVelocidade());
 		
 		System.out.println(overallJogador.getDefensores()+" "+overallJogador.getMeias()+" "+overallJogador.getAtacantes()+" "+overallJogador.getTimeTodo());
 
 		System.out.println(overallMeuJogador.getDefensores()+" "+overallMeuJogador.getMeias()+" "+overallMeuJogador.getAtacantes()+" "+overallMeuJogador.getTimeTodo());
-		
+		*/
 		DiferencaTime dT=retorneDiferenca(overallMeuJogador.getTimeTodo(), overallJogador.getTimeTodo());
 		
 		EstiloDeJogo eJMeuTime=retorneEstiloComBaseNoAdversario(dT, overallJogador);
-		sugerirTatica(meuTime, taticas, eJMeuTime);
+		TaticaDAO tDAO=new TaticaDAO();
+		
+		sugerirTatica(meuTime, tDAO.retornarListaTaticas(), eJMeuTime);
+		//alterarEsquema(meuTime, 0, tDAO.retornarTatica(tatica.getNome()));
 		//System.out.println(dT.getTipoDiferenca()+" "+dT.isMeuTimeFavorito());
 		
 		//System.out.println("Time temporário "+timeTemporario.getEstiloDeJogo().getNome());

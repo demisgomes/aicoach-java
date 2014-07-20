@@ -39,6 +39,8 @@ public class TelaTatica extends JFrame {
 	public Time time;
 	public static boolean daTelaInserir;
 	private boolean substituir = false;
+	public static boolean daTelaCombater;
+	public static  boolean naoSalvar;
 	//private ArrayList<Posicao> listaPosicoes=new ArrayList<Posicao>();
 
 	ArrayList<ButtonAiCoach> listaBotoes = new ArrayList<ButtonAiCoach>();
@@ -375,15 +377,11 @@ public class TelaTatica extends JFrame {
 							time.getJogadores().get(j).setEscolhido(0);
 							
 						}
-						/*for(int j=0;j<listaBotoes.size();j++){
-							listaBotoes.get(j).setVisible(false);
-							listaBotoes.get(j).setBackground(Color.GRAY);
-							listaBotoes.get(j).setJogador(null);
-						}*/
 						
 						AlgoritmoTatica aTatica=new AlgoritmoTatica();
 						aTatica.sugerirTatica(time, listaTaticas);
 						mostrarBotoes();
+						TelaTatica.naoSalvar=false;
 			}
 		});
 		
@@ -411,6 +409,7 @@ JButton btnEscolherMelhoresJogadores = new JButton("Sugerir Jogadores");
 				AlgoritmoTatica aTatica= new AlgoritmoTatica();
 				aTatica.SugerirJogadores(time);
 				mostrarBotoes();
+				TelaTatica.naoSalvar=false;
 			}
 		});
 		
@@ -434,18 +433,26 @@ JButton btnEscolherMelhoresJogadores = new JButton("Sugerir Jogadores");
 		JButton btnSalvarTtica = new JButton("Salvar T\u00E1tica");
 		btnSalvarTtica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JogadorDAO jdao=new JogadorDAO();
-				jdao.tirarIdPosicaoJogador(time);
-				for(int i=0;i<listaBotoes.size();i++){
-					if(listaBotoes.get(i).getJogador()!=null){
-						jdao.inserirIdPosicaoJogador(listaBotoes.get(i).getJogador(), listaBotoes.get(i).getId());
-						//listaJogador.add(listaBotoes.get(i).getJogador().getId());
-					}
+				if(TelaTatica.naoSalvar){
+					JOptionPane.showMessageDialog(null, "Por enquanto, o Combater Tática não pode ser salvo.");
 				}
-				TimeDAO timeDAO=new TimeDAO();
-				timeDAO.inserirTimeTatica(time, listaJogador);
-				JOptionPane.showMessageDialog(null, "Inserido com sucesso!");
+				
+				else{
+					
+					JogadorDAO jdao=new JogadorDAO();
+					jdao.tirarIdPosicaoJogador(time);
+					for(int i=0;i<listaBotoes.size();i++){
+						if(listaBotoes.get(i).getJogador()!=null){
+							jdao.inserirIdPosicaoJogador(listaBotoes.get(i).getJogador(), listaBotoes.get(i).getId());
+							//listaJogador.add(listaBotoes.get(i).getJogador().getId());
+						}
+					}
+					TimeDAO timeDAO=new TimeDAO();
+					timeDAO.inserirTimeTatica(time, listaJogador);
+					JOptionPane.showMessageDialog(null, "Inserido com sucesso!");
+				}
 			}
+				
 		});
 		btnSalvarTtica.setBounds(569, 547, 99, 35);
 		contentPane.add(btnSalvarTtica);
@@ -464,6 +471,7 @@ JButton btnEscolherMelhoresJogadores = new JButton("Sugerir Jogadores");
 				for (Posicao p : time.getTatica().getPosicoes()) {
 					System.out.println(p.getNome()+" será "+ p.getJogador().getNome()+ " "+ p.getJogador().getPosicaoAtual().getPontuacao()+" "+p.getIdPosicaoTela());
 				}
+				TelaTatica.naoSalvar=false;
 			}
 		});
 		btnSubstituir.setBounds(376, 553, 135, 23);
@@ -491,7 +499,7 @@ JButton btnEscolherMelhoresJogadores = new JButton("Sugerir Jogadores");
 			System.out.println(p.getNome()+" será "+ p.getJogador().getNome());//+ " "+ p.getJogador().getPosicaoAtual().getPontuacao());
 			}
 			mostrarBotoes();
-			
+			daTelaInserir=false;
 			
 		}
 		
@@ -519,6 +527,9 @@ JButton btnEscolherMelhoresJogadores = new JButton("Sugerir Jogadores");
 		for(Posicao p: time.getTatica().getPosicoes()){
 			listaIdPosicoes.add(p);
 		}
+		//for (Posicao p : time.getTatica().getPosicoes()) {
+			//System.out.println(p.getNome()+" será "+ p.getJogador().getNome()+ " "+ p.getIdPosicaoTela());
+			//}
 		for(int i=0;i<11;i++){
 			for(int j=0;j<listaBotoes.size();j++){
 				
@@ -554,6 +565,7 @@ JButton btnEscolherMelhoresJogadores = new JButton("Sugerir Jogadores");
 		for(int i=0;i<listaBotoes.size();i++){
 			if(listaBotoes.get(i).getJogador()!=null){
 				listaJogador.add(listaBotoes.get(i).getJogador().getId());
+				//System.out.println(listaBotoes.get(i).getJogador().getId()+" "+listaBotoes.get(i).getJogador()+" Botões"+" "+listaBotoes.get(i).getId());
 			}
 		}
 		

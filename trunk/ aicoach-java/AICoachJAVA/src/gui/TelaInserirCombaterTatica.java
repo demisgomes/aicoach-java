@@ -53,9 +53,9 @@ public class TelaInserirCombaterTatica extends JFrame {
 		contentPane.setLayout(null);
 		TimeDAO timeDAO=new TimeDAO();
 		TelaInserirCombaterTatica.time=timeDAO.retornarTime(time.getIdTime());
-		String [] listaTimes=new String[Time.getListaTimes().size()];
+		String [] listaTimes=new String[Time.getListaTimes().size()-1];
 		int countlista=0;
-		for (int i = 0; i < listaTimes.length; i++) {
+		for (int i = 0; i < Time.getListaTimes().size(); i++) {
 			if(Time.getListaTimes().get(i).getIdTime()!=time.getIdTime()){
 				listaTimes[countlista]=Time.getListaTimes().get(i).getNome();
 				countlista++;
@@ -74,7 +74,9 @@ public class TelaInserirCombaterTatica extends JFrame {
 				aTatica.combaterTatica(TelaInserirCombaterTatica.time, timeEscolhido, tDAO.retornarListaTaticas());
 				
 				TelaTatica.daTelaInserir=true;
-				TelaTatica tela=new TelaTatica(TelaInserirCombaterTatica.time);
+				TelaTatica.naoSalvar=true;
+				Time time=TelaInserirCombaterTatica.time;
+				TelaTatica tela=new TelaTatica(time);
 				tela.setVisible(true);
 				dispose();
 			}
