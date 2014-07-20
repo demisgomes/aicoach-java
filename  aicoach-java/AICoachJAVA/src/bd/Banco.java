@@ -65,21 +65,21 @@ import javax.naming.spi.DirStateFactory.Result;
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				try {
 					 conn = DriverManager.getConnection(getUrl(),getRoot(),getSenha());
-					 System.out.println("conectou(1)");
+					 //System.out.println("conectou(1)");
 				} catch (Exception e1) {
-					System.out.println("Erro na coneccao(1)");
+					//System.out.println("Erro na coneccao(1)");
 					e1.printStackTrace();
 					try {
 						setUrl("jdbc:mysql://localhost"); 
 						conn = DriverManager.getConnection(getUrl(),getRoot(),getSenha());
-						System.out.println("conectou(2)");
+						//System.out.println("conectou(2)");
 					} catch (Exception e2) {
-						System.out.println("Erro na coneccao(2)");
+						//System.out.println("Erro na coneccao(2)");
 						e2.printStackTrace();
 					}
 				}
 			} catch (Exception e) {
-				System.out.println("Erro no driver");
+				//System.out.println("Erro no driver");
 				e.printStackTrace();
 			}
 			
@@ -91,7 +91,7 @@ import javax.naming.spi.DirStateFactory.Result;
 		public void fecharBanco(){
 			try {
 				conn.close();
-				System.out.println("desconectado");
+				//System.out.println("desconectado");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -122,7 +122,7 @@ import javax.naming.spi.DirStateFactory.Result;
 				pst.close();
 				
 			} catch (Exception er5) {
-				System.out.println("erro result set/n");
+				//System.out.println("erro result set/n");
 				er5.printStackTrace();
 			}	
 			finally{
@@ -138,7 +138,7 @@ import javax.naming.spi.DirStateFactory.Result;
 				rs = st.executeQuery(sql); 
 				
 			} catch (Exception er5) {
-				System.out.println("erro result set/n");
+				//System.out.println("erro result set/n");
 				er5.printStackTrace();
 			}	
 			finally{
