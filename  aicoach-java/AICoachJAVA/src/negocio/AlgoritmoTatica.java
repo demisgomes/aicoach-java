@@ -154,11 +154,9 @@ public void SugerirJogadores(Time time){
 			}
 			this.SugerirJogadores(time);
 			pontuacaoParcialMediaAtual = this.gerarPontuacaoParcial(time, ej);
-			System.out.println("pontuacao media: "+pontuacaoParcialMediaAtual);
 			if(pontuacaoParcialMediaAtual>=maiorPontuacaoParcialMedia){
 				maiorPontuacaoParcialMedia = pontuacaoParcialMediaAtual;
 				tatica = taticas.get(i);
-				System.out.println("Maior pontuacao media"+maiorPontuacaoParcialMedia);
 			}
 		}
 		time.setTatica(tatica);

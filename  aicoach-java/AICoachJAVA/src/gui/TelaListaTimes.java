@@ -19,6 +19,7 @@ import perssistencia.TimeDAO;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class TelaListaTimes extends JFrame {
 
@@ -44,9 +45,9 @@ public class TelaListaTimes extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaListaTimes() {
-		setTitle("Tela Times");
+		setTitle("Ai Coach");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 482, 174);
+		setBounds(100, 100, 432, 198);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -78,12 +79,16 @@ public class TelaListaTimes extends JFrame {
 						}
 					}*/
 					
-					TelaTime tela = new TelaTime("Tela time", 600, 300, time);
+					TelaTatica tela = new TelaTatica(time);
 					tela.setVisible(true);
 					dispose();
 			}
 		});
 		btnNewButton.setBounds(257, 29, 89, 26);
 		contentPane.add(btnNewButton);
+		
+		JLabel lblEscolhaUmTime = new JLabel("Escolha um time ");
+		lblEscolhaUmTime.setBounds(42, 11, 96, 14);
+		contentPane.add(lblEscolhaUmTime);
 	}
 }

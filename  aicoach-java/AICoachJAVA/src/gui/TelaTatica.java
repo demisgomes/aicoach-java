@@ -395,11 +395,7 @@ JButton btnEscolherMelhoresJogadores = new JButton("Sugerir Jogadores");
 					time.getJogadores().get(j).setEscolhido(0);
 					
 				}
-				/*for(int j=0;j<listaBotoes.size();j++){
-					listaBotoes.get(j).setVisible(false);
-					listaBotoes.get(j).setBackground(Color.GRAY);
-					listaBotoes.get(j).setJogador(null);
-				}*/
+
 				TaticaDAO taticaDAO=new TaticaDAO();
 				Tatica taticaEscolhida=taticaDAO.retornarTatica(comboBox.getSelectedItem().toString());
 				
@@ -488,6 +484,17 @@ JButton btnEscolherMelhoresJogadores = new JButton("Sugerir Jogadores");
 			}
 		});
 		contentPane.add(btnCombaterTtica);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaListaTimes t=new TelaListaTimes();
+				t.setVisible(true);
+				dispose();
+			}
+		});
+		btnVoltar.setBounds(37, 47, 89, 23);
+		contentPane.add(btnVoltar);
 		
 		TimeDAO timeDAO = new TimeDAO();
 		Tatica taticaTime=timeDAO.retornarTaticaTime(time);

@@ -1,6 +1,5 @@
 package teste;
 
-import gui.TelaInicial;
 import gui.TelaTatica;
 
 import java.util.ArrayList;
