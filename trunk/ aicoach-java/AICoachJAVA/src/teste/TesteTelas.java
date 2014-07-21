@@ -1,12 +1,12 @@
 package teste;
 
-import gui.TelaInicial;
+import gui.TelaListaTimes;
 
 public class TesteTelas {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		TelaInicial tela= new TelaInicial("AiCoach", 300, 300);
+		TelaListaTimes tela= new TelaListaTimes();
 		tela.setVisible(true);
 
 	}
