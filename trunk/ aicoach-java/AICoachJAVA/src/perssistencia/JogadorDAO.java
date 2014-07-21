@@ -211,6 +211,9 @@ public class JogadorDAO {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			finally{
+				banco.fecharBanco();
+			}
 		}
 		
 	}

@@ -84,6 +84,9 @@ public class PontuacaoPosicaoDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		finally{
+			banco.fecharBanco();
+		}
 		return listaPontuacaoPosicoes;
 	}
 	
@@ -147,7 +150,9 @@ public class PontuacaoPosicaoDAO {
 			//e.printStackTrace();
 			System.out.println("Já cadastrado");
 		}
-		
+		finally{
+			banco.fecharBanco();
+		}
 		
 		
 	}

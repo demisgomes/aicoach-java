@@ -96,14 +96,18 @@ public class TimeDAO {
 			}
 			JogadorDAO jDAO=new JogadorDAO();
 			jogadores=jDAO.retornarJogadores(idTime);
+			Time time = new Time();
+			time.setNome(nome);
+			time.setJogadores(jogadores);
+			time.setIdTime(idTime);//time.setTatica(tatica);
+			return time;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return null;
 		}
-		Time time = new Time();
-		time.setNome(nome);
-		time.setJogadores(jogadores);
-		time.setIdTime(idTime);//time.setTatica(tatica);
-		return time;
+		finally{
+			banco.fecharBanco();
+		}
 	}
 	
 	/*public Time retornarTimeTatica(String nomeTime){

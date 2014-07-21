@@ -60,20 +60,24 @@ public class CaracteristicaDAO {
 				drible= rs.getInt("drible");
 			}
 			
+
+			caracteristicas.setBolaParada(bolaParada);
+			caracteristicas.setCabeceio(cabeceio);
+			caracteristicas.setControleBola(controleBola);
+			caracteristicas.setDefesas(defesas);
+			caracteristicas.setDesarme(desarme);
+			caracteristicas.setDrible(drible);
+			caracteristicas.setFinalizacao(finalizacao);
+			caracteristicas.setQualidadePasse(qualidadePasse);
+			caracteristicas.setResistencia(resistencia);
+			caracteristicas.setVelocidade(velocidade);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		caracteristicas.setBolaParada(bolaParada);
-		caracteristicas.setCabeceio(cabeceio);
-		caracteristicas.setControleBola(controleBola);
-		caracteristicas.setDefesas(defesas);
-		caracteristicas.setDesarme(desarme);
-		caracteristicas.setDrible(drible);
-		caracteristicas.setFinalizacao(finalizacao);
-		caracteristicas.setQualidadePasse(qualidadePasse);
-		caracteristicas.setResistencia(resistencia);
-		caracteristicas.setVelocidade(velocidade);
+		finally{
+			banco.fecharBanco();
+		}
 		
 		return caracteristicas;
 	}
