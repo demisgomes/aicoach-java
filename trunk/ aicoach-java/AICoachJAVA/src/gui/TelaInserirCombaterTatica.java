@@ -72,7 +72,7 @@ public class TelaInserirCombaterTatica extends JFrame {
 				TaticaDAO tDAO=new TaticaDAO();
 				AlgoritmoTatica aTatica=new AlgoritmoTatica();
 				aTatica.combaterTatica(TelaInserirCombaterTatica.time, timeEscolhido, tDAO.retornarListaTaticas());
-				
+				//aTatica.alterarEsquema(TelaInserirCombaterTatica.time, 0, tDAO.retornarTatica(time.getTatica().getNome()));
 				TelaTatica.daTelaInserir=true;
 				TelaTatica.naoSalvar=true;
 				Time time=TelaInserirCombaterTatica.time;

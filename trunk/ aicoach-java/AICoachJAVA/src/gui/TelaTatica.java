@@ -450,7 +450,7 @@ JButton btnEscolherMelhoresJogadores = new JButton("Sugerir Jogadores");
 			}
 				
 		});
-		btnSalvarTtica.setBounds(569, 547, 99, 35);
+		btnSalvarTtica.setBounds(569, 547, 129, 35);
 		contentPane.add(btnSalvarTtica);
 		
 		JButton btnSubstituir = new JButton("Substituir");
