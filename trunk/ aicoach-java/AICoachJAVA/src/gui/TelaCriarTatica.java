@@ -426,7 +426,7 @@ public class TelaCriarTatica extends JFrame {
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaTatica tela=new TelaTatica(time);
+				TelaTatica tela=new TelaTatica();
 				tela.setVisible(true);
 				dispose();
 			}

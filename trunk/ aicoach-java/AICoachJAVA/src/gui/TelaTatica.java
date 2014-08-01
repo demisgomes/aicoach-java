@@ -65,8 +65,8 @@ public class TelaTatica extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-    public TelaTatica(){}
-	public TelaTatica(final Time time) {
+   
+	public TelaTatica() {
 		setTitle("Tela T\u00E1tica");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 745, 620);
@@ -76,7 +76,7 @@ public class TelaTatica extends JFrame {
 		contentPane.setLayout(null);
 		
 		
-		this.time=time;
+		this.time=Time.getTime();
 		
 		
 		

@@ -21,14 +21,23 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
-public class TelaListaTimes extends JFrame {
+import controle.ControladorTelaListaTimes;
 
+public class TelaListaTimes extends JFrame {
+	
+	private static ControladorTelaListaTimes controlador = new ControladorTelaListaTimes();
 	private JPanel contentPane;
+	private static JButton btnNewButton;
+	private static final JComboBox<String> comboBox = new JComboBox<String>(controlador.retornarListaTime());;
+	
+	
+	
+	
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -39,7 +48,35 @@ public class TelaListaTimes extends JFrame {
 				}
 			}
 		});
+	}*/
+
+	public static JButton getBtnNewButton() {
+		return btnNewButton;
 	}
+
+
+
+
+
+	public static void setBtnNewButton(JButton btnNewButton) {
+		TelaListaTimes.btnNewButton = btnNewButton;
+	}
+
+
+
+
+
+	public static JComboBox<String> getComboBox() {
+		return comboBox;
+	}
+
+
+
+
+
+
+
+
 
 	/**
 	 * Create the frame.
@@ -52,23 +89,14 @@ public class TelaListaTimes extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		final TimeDAO tDAO=new TimeDAO();
-		
-		ArrayList <Time> listaTime=tDAO.retornarListaTimes();
-		Time.setListaTimes(listaTime);
-		String [] listaTimes=new String[listaTime.size()];
-		for (int i = 0; i < listaTimes.length; i++) {
-			listaTimes[i]=listaTime.get(i).getNome();
-		}
-		final JComboBox<String> comboBox = new JComboBox<String>(listaTimes);
 		comboBox.setBounds(10, 26, 190, 29);
 		contentPane.add(comboBox);
 		
-		JButton btnNewButton = new JButton("Confirmar");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnNewButton = new JButton("Confirmar");
+		controlador.acaoNew(this);
+		/*btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ac) {
-					Time time=tDAO.retornarTime(comboBox.getSelectedItem().toString());
-					/*FormulaPosicao form=new FormulaPosicao();
+					FormulaPosicao form=new FormulaPosicao();
 					PontuacaoPosicaoDAO ppDAO=new PontuacaoPosicaoDAO();
 					//int breaktudo=0;
 					for(Jogador j :time.getJogadores()){
@@ -77,13 +105,13 @@ public class TelaListaTimes extends JFrame {
 							//System.out.println(j.getNome()+" "+ j.getPosicoes().get(i).getNome()+ " "+j.getPosicoes().get(i).getPontuacao()+ " "+ j.getPosicoes().get(i).isPosicaoDeOrigem());
 							ppDAO.inserirPontuacaoPosicoesJogador(j);
 						}
-					}*/
+					}
 					
-					TelaTatica tela = new TelaTatica(time);
+					TelaTime tela = new TelaTime();
 					tela.setVisible(true);
 					dispose();
 			}
-		});
+		});*/
 		btnNewButton.setBounds(257, 29, 89, 26);
 		contentPane.add(btnNewButton);
 		

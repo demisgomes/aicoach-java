@@ -86,7 +86,7 @@ public class TelaInserirAlterarEsquema extends JFrame {
 				}
 				
 				TelaTatica.daTelaInserir=true;
-				TelaTatica tela=new TelaTatica(time);
+				TelaTatica tela=new TelaTatica();
 				tela.setVisible(true);
 				dispose();
 			}

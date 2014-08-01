@@ -53,6 +53,7 @@ public class JogadorDAO {
 		Float altura =null;
 		int pontuacaoPosicaoAtual=0;
 		int temCondicao = 0;
+		int idade = 0;
 		
 		try {
 			if(rs.next()){
@@ -64,6 +65,7 @@ public class JogadorDAO {
 				temCondicao=rs.getInt("temCondicao");
 				posicaoTela=rs.getInt("posicaoTela");
 				pontuacaoPosicaoAtual=rs.getInt("pontuacao_posicao_atual");
+				idade = rs.getInt("idade");
 			}
 			
 			CaracteristicaDAO caracDAO = new CaracteristicaDAO();
@@ -85,7 +87,7 @@ public class JogadorDAO {
 			EstatisticasJogador estatisticas = new EstatisticasJogador();
 			
 			
-			Jogador jogador = new Jogador(nome, time, peso, altura, temCondicao, posicoes, estatisticas, caracteristicas);
+			Jogador jogador = new Jogador(nome, time, peso, altura, temCondicao, posicoes, estatisticas, caracteristicas, idade);
 			jogador.setId(idJogador);
 			for (int i = 0; i < jogador.getPosicoes().size(); i++) {
 				jogador.getPosicoes().get(i).setJogador(jogador);;
@@ -122,6 +124,7 @@ public class JogadorDAO {
 				Float altura =null;
 				int temCondicao = 0;
 				int idJogador =0;
+				int idade = 0;
 				try {
 					idJogador = rs.getInt("idjogador");
 					timeId=rs.getInt("time");
@@ -129,6 +132,7 @@ public class JogadorDAO {
 					peso = rs.getFloat("peso");
 					altura =rs.getFloat("altura");
 					temCondicao=rs.getInt("temCondicao");
+					idade = rs.getInt("idade");
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -152,7 +156,7 @@ public class JogadorDAO {
 				}
 				
 				EstatisticasJogador estatisticas = new EstatisticasJogador();
-				Jogador jogador = new Jogador(nome, time, peso, altura, temCondicao, posicoes, estatisticas, caracteristicas);
+				Jogador jogador = new Jogador(nome, time, peso, altura, temCondicao, posicoes, estatisticas, caracteristicas, idade);
 				jogador.setId(idJogador);
 				insiraPosicaoOrigem(jogador);
 				for (int i = 0; i < jogador.getPosicoes().size(); i++) {
