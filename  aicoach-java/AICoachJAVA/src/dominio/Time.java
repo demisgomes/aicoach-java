@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Time {
 	
+	private static Time time;
 	private String nome;
 	private ArrayList<Jogador> jogadores;
 	private Tatica tatica;
@@ -23,6 +24,15 @@ public class Time {
 		
 	}
 	
+	
+
+	public static Time getTime() {
+		return time;
+	}
+
+	public static void setTime(Time time) {
+		Time.time = time;
+	}
 
 	public int getIdTime() {
 		return idTime;

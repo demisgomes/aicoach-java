@@ -76,7 +76,7 @@ public class TelaInserirCombaterTatica extends JFrame {
 				TelaTatica.daTelaInserir=true;
 				TelaTatica.naoSalvar=true;
 				Time time=TelaInserirCombaterTatica.time;
-				TelaTatica tela=new TelaTatica(time);
+				TelaTatica tela=new TelaTatica();
 				tela.setVisible(true);
 				dispose();
 			}

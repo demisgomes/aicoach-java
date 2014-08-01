@@ -18,7 +18,7 @@ public class Jogador {
 	
 	
 	public Jogador(String nome, Time time, float peso, float altura,  int temCondicao, 
-			ArrayList<Posicao> posicoes, EstatisticasJogador estatisticas, CaracteristicasJogadores caracteristicas){
+			ArrayList<Posicao> posicoes, EstatisticasJogador estatisticas, CaracteristicasJogadores caracteristicas, int idade){
 		setNome(nome);
 		setTime(time);
 		setIdade(idade);
@@ -31,8 +31,17 @@ public class Jogador {
 		
 	}
 	
+	public Jogador(String nome, float peso, float altura,  int idade){
+		setNome(nome);
+		setIdade(idade);
+		setPeso(peso);
+		setAltura(altura);
+		
+		
+	}
+	
 	public Jogador(String nome, Time time, float peso, float altura,  int temCondicao, 
-			ArrayList<Posicao> posicoes, EstatisticasJogador estatisticas, CaracteristicasJogadores caracteristicas, Posicao posicaoAtual){
+			ArrayList<Posicao> posicoes, EstatisticasJogador estatisticas, CaracteristicasJogadores caracteristicas, Posicao posicaoAtual, int idade){
 		setNome(nome);
 		setTime(time);
 		setIdade(idade);
