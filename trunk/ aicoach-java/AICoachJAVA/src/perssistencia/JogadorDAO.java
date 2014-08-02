@@ -21,6 +21,7 @@ public class JogadorDAO {
 	}
 	
 	public void inserirJogador(Jogador jogador){
+		jogador.setId(retorneUltimoId()+1);
 		String sql = "Insert into jogador (nome, peso, altura, idade, temcondicao, time) VALUES('"
 				+ jogador.getNome()
 				+ "','"
@@ -36,7 +37,7 @@ public class JogadorDAO {
 		
 		banco.executarSQL(sql);
 		
-		jogador.setId(retorneUltimoId());
+		
 		for(Posicao p: jogador.getPosicoes()){
 			if(p.isPosicaoDeOrigem()){
 				String sql2="";
@@ -51,7 +52,7 @@ public class JogadorDAO {
 				}
 
 				if(p.getNome().toLowerCase().equals("lateral direito") || p.getNome().toLowerCase().equals("lateral esquerdo")){
-					sql2="UPDATE jogador SET 'lateral direito' =1, 'lateral esquerdo' =1 WHERE idjogador = '"+jogador.getId()+"'";
+					sql2="UPDATE jogador SET `lateral direito` =1,`lateral esquerdo` =1 WHERE idjogador = '"+jogador.getId()+"'";
 					
 				}
 
@@ -61,32 +62,32 @@ public class JogadorDAO {
 				}
 
 				if(p.getNome().toLowerCase().equals("meia central")){
-					sql2="UPDATE jogador SET 'meia central' =1 WHERE idjogador = '"+jogador.getId()+"'";
+					sql2="UPDATE jogador SET `meia central` =1 WHERE idjogador = '"+jogador.getId()+"'";
 					
 				}
 
 				if(p.getNome().toLowerCase().equals("meia lateral")){
-					sql2="UPDATE jogador SET 'meia lateral direito' =1, meia lateral esquerdo=1 WHERE idjogador = '"+jogador.getId()+"'";
+					sql2="UPDATE jogador SET `meia lateral direito` =1,`meia lateral esquerdo`=1 WHERE idjogador = '"+jogador.getId()+"'";
 					
 				}
 
 				if(p.getNome().toLowerCase().equals("meia atacante")){
-					sql2="UPDATE jogador SET 'meia atacante' =1 WHERE idjogador = '"+jogador.getId()+"'";
+					sql2="UPDATE jogador SET `meia atacante` =1 WHERE idjogador = '"+jogador.getId()+"'";
 					
 				}
 
 				if(p.getNome().toLowerCase().equals("ponta")){
-					sql2="UPDATE jogador SET 'ponta direita' =1, ponta esquerda=1 WHERE idjogador = '"+jogador.getId()+"'";
+					sql2="UPDATE jogador SET `ponta direita` =1,`ponta esquerda`=1 WHERE idjogador = '"+jogador.getId()+"'";
 					
 				}	
 
 				if(p.getNome().toLowerCase().equals("segundo atacante")){
-					sql2="UPDATE jogador SET 'segundo atacante' =1 WHERE idjogador = '"+jogador.getId()+"'";
+					sql2="UPDATE jogador SET `segundo atacante` =1 WHERE idjogador = '"+jogador.getId()+"'";
 					
 				}
 
 				if(p.getNome().toLowerCase().equals("centro avante")){
-					sql2="UPDATE jogador SET 'centro avante' =1 WHERE idjogador = '"+jogador.getId()+"'";
+					sql2="UPDATE jogador SET `centro avante` =1 WHERE idjogador = '"+jogador.getId()+"'";
 					
 				}
 				
