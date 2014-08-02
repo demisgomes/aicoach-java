@@ -14,6 +14,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
+import dominio.Jogador;
+import dominio.Posicao;
+
 public class TelaJogador extends JFrame {
 
 	private JPanel contentPane;
@@ -102,6 +105,22 @@ public class TelaJogador extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon(TelaJogador.class.getResource("/imagens/campo.png")));
 		lblNewLabel.setBounds(0, 0, 434, 262);
 		contentPane.add(lblNewLabel);
+		
+		
+		
+		//PARA O CONTROLADOR
+		Jogador j=Jogador.getJogadorEscolhido();
+		lblNome.setText(j.getNome());
+		lblAltura.setText(Float.toString(j.getAltura()));
+		lblPeso.setText(Float.toString(j.getPeso()));
+		lblIdade.setText(Integer.toString(j.getIdade()));
+		String posicoes=" ";
+		for(Posicao p : j.getPosicoes()){
+			if(p.isPosicaoDeOrigem()){
+				posicoes=posicoes+" "+p.getNome()+",";
+			}
+		}
+		lblPosies.setText(posicoes.substring(0, posicoes.length()-1));
 		
 		
 	}

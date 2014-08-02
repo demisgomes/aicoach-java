@@ -16,12 +16,29 @@ public class Jogador {
 	private int idPosicaoTela;
 	private int pontuacaoPosicaoAtual;
 	
+	private static Jogador jogadorEscolhido;
+	
 	
 	public Jogador(String nome, Time time, float peso, float altura,  int temCondicao, 
 			ArrayList<Posicao> posicoes, EstatisticasJogador estatisticas, CaracteristicasJogadores caracteristicas, int idade){
 		setNome(nome);
 		setTime(time);
 		setIdade(idade);
+		setPeso(peso);
+		setAltura(altura);
+		setTemCondicao(temCondicao);
+		setPosicoes(posicoes);
+		setEstatisticas(estatisticas);
+		setCaracteristicas(caracteristicas);
+		
+	}
+	
+	//SEM IDADE
+	
+	public Jogador(String nome, Time time, float peso, float altura,  int temCondicao, 
+			ArrayList<Posicao> posicoes, EstatisticasJogador estatisticas, CaracteristicasJogadores caracteristicas){
+		setNome(nome);
+		setTime(time);
 		setPeso(peso);
 		setAltura(altura);
 		setTemCondicao(temCondicao);
@@ -195,6 +212,20 @@ public class Jogador {
 	 */
 	public void setPontuacaoPosicaoAtual(int pontuacaoPosicaoAtual) {
 		this.pontuacaoPosicaoAtual = pontuacaoPosicaoAtual;
+	}
+
+	/**
+	 * @return the jogadorEscolhido
+	 */
+	public static Jogador getJogadorEscolhido() {
+		return jogadorEscolhido;
+	}
+
+	/**
+	 * @param jogadorEscolhido the jogadorEscolhido to set
+	 */
+	public static void setJogadorEscolhido(Jogador jogadorEscolhido) {
+		Jogador.jogadorEscolhido = jogadorEscolhido;
 	}
 
 
