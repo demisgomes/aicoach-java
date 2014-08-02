@@ -76,7 +76,6 @@ public class TelaJogadores extends JFrame {
 			public void mouseClicked(MouseEvent e){
 				if(e.getClickCount()==1){
 					String selectedItem = (String) list.getSelectedValue();
-					System.out.println(selectedItem);
 					   Jogador.setJogadorEscolhido(Time.getTime().getJogadores().get(list.getSelectedIndex()));
 			           TelaJogador t = new TelaJogador();
 			           t.setVisible(true);

@@ -216,7 +216,7 @@ public class JogadorDAO {
 				e.printStackTrace();
 			}
 			finally{
-				banco.fecharBanco();
+				//banco.fecharBanco();
 			}
 		}
 		
