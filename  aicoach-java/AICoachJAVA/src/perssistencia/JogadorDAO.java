@@ -32,7 +32,7 @@ public class JogadorDAO {
 				+ "','"
 				+ jogador.getEscolhido()
 				+ "','"
-				+ jogador.getTime() + "')";
+				+ jogador.getTime().getIdTime() + "')";
 		
 		banco.executarSQL(sql);
 		

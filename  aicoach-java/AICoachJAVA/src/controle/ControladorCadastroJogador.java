@@ -47,7 +47,8 @@ public class ControladorCadastroJogador {
 		peso = Float.parseFloat(TelaCadastrarJogador.getTxtPeso().getText());
 		
 		Jogador jogador = new Jogador(nome, peso, altura, idade);
-		
+		ArrayList<Posicao> l=new ArrayList<Posicao>();
+		jogador.setPosicoes(l);
 		for (int i = 0; i < checkBoxList.size(); i++) {
 			if(checkBoxList.get(i).isSelected()){
 				Posicao posicao = new Posicao(checkBoxList.get(i).getText());
@@ -62,6 +63,8 @@ public class ControladorCadastroJogador {
 	}
 	
 	private void inserirJogador(Jogador jogador){	
+		jogador.setTime(Time.getTime());
+		jogadorDAO=new JogadorDAO();
 		jogadorDAO.inserirJogador(jogador);
 		jogador.getTime().getJogadores().add(jogador);
 	
