@@ -75,6 +75,17 @@ public class TelaJogador extends JFrame {
 		btnEstatsticas.setBounds(293, 228, 131, 23);
 		contentPane.add(btnEstatsticas);
 		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaTime t=new TelaTime();
+				t.setVisible(true);
+				dispose();
+			}
+		});
+		btnVoltar.setBounds(335, 13, 89, 23);
+		contentPane.add(btnVoltar);
+		
 		JLabel lblNome = new JLabel("Nome: ");
 		lblNome.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblNome.setBounds(67, 11, 357, 23);
@@ -100,6 +111,8 @@ public class TelaJogador extends JFrame {
 		lblPosies.setBounds(67, 147, 357, 23);
 		contentPane.add(lblPosies);
 		
+		
+		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNewLabel.setIcon(new ImageIcon(TelaJogador.class.getResource("/imagens/campo.png")));
@@ -111,9 +124,9 @@ public class TelaJogador extends JFrame {
 		//PARA O CONTROLADOR
 		Jogador j=Jogador.getJogadorEscolhido();
 		lblNome.setText(j.getNome());
-		lblAltura.setText(Float.toString(j.getAltura()));
-		lblPeso.setText(Float.toString(j.getPeso()));
-		lblIdade.setText(Integer.toString(j.getIdade()));
+		lblAltura.setText(Float.toString(j.getAltura())+" m");
+		lblPeso.setText(Float.toString(j.getPeso())+ "kg");
+		lblIdade.setText(Integer.toString(j.getIdade())+" anos");
 		String posicoes=" ";
 		for(Posicao p : j.getPosicoes()){
 			if(p.isPosicaoDeOrigem()){
@@ -123,10 +136,7 @@ public class TelaJogador extends JFrame {
 		lblPosies.setText(posicoes.substring(0, posicoes.length()-1));
 		
 		
+		
+		
 	}
-
-	
-
-	
-	
 }
