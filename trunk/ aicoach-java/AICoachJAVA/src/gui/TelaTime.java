@@ -78,7 +78,9 @@ public class TelaTime extends JFrame {
 		JButton btnNewButton_2 = new JButton("Jogadores");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			
+			TelaJogadores t=new TelaJogadores();
+			t.setVisible(true);
+			dispose();
 			}
 		});
 		btnNewButton_2.setBounds(156, 98, 123, 23);
