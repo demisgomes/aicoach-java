@@ -52,6 +52,7 @@ public class ControladorCadastroJogador {
 		for (int i = 0; i < checkBoxList.size(); i++) {
 			if(checkBoxList.get(i).isSelected()){
 				Posicao posicao = new Posicao(checkBoxList.get(i).getText());
+				posicao.setPosicaoDeOrigem(true);
 				jogador.getPosicoes().add(posicao);
 			}
 			
@@ -64,6 +65,9 @@ public class ControladorCadastroJogador {
 	
 	private void inserirJogador(Jogador jogador){	
 		jogador.setTime(Time.getTime());
+		for(Posicao p: jogador.getPosicoes()){
+			System.out.println(p.getNome());
+		}
 		jogadorDAO=new JogadorDAO();
 		jogadorDAO.inserirJogador(jogador);
 		jogador.getTime().getJogadores().add(jogador);
