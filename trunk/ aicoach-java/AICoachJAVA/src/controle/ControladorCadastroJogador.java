@@ -65,9 +65,9 @@ public class ControladorCadastroJogador {
 	
 	private void inserirJogador(Jogador jogador){	
 		jogador.setTime(Time.getTime());
-		for(Posicao p: jogador.getPosicoes()){
+		/*for(Posicao p: jogador.getPosicoes()){
 			System.out.println(p.getNome());
-		}
+		}*/
 		jogadorDAO=new JogadorDAO();
 		jogadorDAO.inserirJogador(jogador);
 		jogador.getTime().getJogadores().add(jogador);
