@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,6 +12,14 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+
+import negocio.FormulaPosicao;
+
+import perssistencia.CaracteristicaDAO;
+import perssistencia.PontuacaoPosicaoDAO;
+
+import dominio.CaracteristicasJogadores;
+import dominio.Jogador;
 
 public class TelaCaracteristicas extends JFrame {
 
@@ -82,48 +92,104 @@ public class TelaCaracteristicas extends JFrame {
 		lblDefesa.setBounds(224, 176, 66, 14);
 		contentPane.add(lblDefesa);
 		
-		JButton btnConfirmar = new JButton("Confirmar");
-		btnConfirmar.setBounds(160, 228, 89, 23);
-		contentPane.add(btnConfirmar);
 		
-		JComboBox cBRessistencia = new JComboBox();
+		
+		Integer [] lista=new Integer[10];
+		for (int i = 0; i < lista.length; i++) {
+			lista[i]=i+1;
+		}
+		
+		final JComboBox cBRessistencia = new JComboBox(lista);
 		cBRessistencia.setBounds(103, 8, 80, 20);
 		contentPane.add(cBRessistencia);
 		
-		JComboBox cBVelocidade = new JComboBox();
+		final JComboBox cBVelocidade = new JComboBox(lista);
 		cBVelocidade.setBounds(103, 50, 80, 20);
 		contentPane.add(cBVelocidade);
 		
-		JComboBox cBFinalizacao = new JComboBox();
+		final JComboBox cBFinalizacao = new JComboBox(lista);
 		cBFinalizacao.setBounds(103, 93, 80, 20);
 		contentPane.add(cBFinalizacao);
 		
-		JComboBox cBControleBola = new JComboBox();
+		final JComboBox cBControleBola = new JComboBox(lista);
 		cBControleBola.setBounds(103, 131, 80, 20);
 		contentPane.add(cBControleBola);
 		
-		JComboBox cBDesarme = new JComboBox();
+		final JComboBox cBDesarme = new JComboBox(lista);
 		cBDesarme.setBounds(103, 173, 80, 20);
 		contentPane.add(cBDesarme);
 		
-		JComboBox cBQualidadePasse = new JComboBox();
+		final JComboBox cBQualidadePasse = new JComboBox(lista);
 		cBQualidadePasse.setBounds(338, 8, 80, 20);
 		contentPane.add(cBQualidadePasse);
 		
-		JComboBox cBCabeceio = new JComboBox();
+		final JComboBox cBCabeceio = new JComboBox(lista);
 		cBCabeceio.setBounds(338, 50, 80, 20);
 		contentPane.add(cBCabeceio);
 		
-		JComboBox cBBolaParada = new JComboBox();
+		final JComboBox cBBolaParada = new JComboBox(lista);
 		cBBolaParada.setBounds(338, 93, 80, 20);
 		contentPane.add(cBBolaParada);
 		
-		JComboBox cBDrible = new JComboBox();
+		final JComboBox cBDrible = new JComboBox(lista);
 		cBDrible.setBounds(338, 134, 80, 20);
 		contentPane.add(cBDrible);
 		
-		JComboBox cBDefesa = new JComboBox();
+		final JComboBox cBDefesa = new JComboBox(lista);
 		cBDefesa.setBounds(338, 173, 80, 20);
 		contentPane.add(cBDefesa);
+		
+		
+		//LÓGICA A SER IMPLEMENTADA NO CONTROLADOR
+		JButton btnConfirmar = new JButton("Confirmar");
+		btnConfirmar.setBounds(160, 228, 89, 23);
+		btnConfirmar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				int res, cab, bp, cb, def, des, dri, fin, qp, vel;
+				
+				res=cBRessistencia.getSelectedIndex()+1;
+				cab= cBCabeceio.getSelectedIndex()+1;
+				bp=cBBolaParada.getSelectedIndex()+1;
+				cb= cBControleBola.getSelectedIndex()+1;
+				def= cBDefesa.getSelectedIndex()+1;
+				des= cBDesarme.getSelectedIndex()+1;
+				dri= cBDrible.getSelectedIndex()+1;
+				fin= cBFinalizacao.getSelectedIndex()+1;
+				qp= cBQualidadePasse.getSelectedIndex()+1;
+				vel =cBVelocidade.getSelectedIndex()+1;
+				
+				CaracteristicasJogadores c = new CaracteristicasJogadores();
+				c.setBolaParada(bp);
+				c.setCabeceio(cab);
+				c.setControleBola(cb);
+				c.setDefesas(def);
+				c.setDesarme(des);
+				c.setDrible(dri);
+				c.setFinalizacao(fin);
+				c.setQualidadePasse(qp);
+				c.setResistencia(res);
+				c.setVelocidade(vel);
+				
+				CaracteristicaDAO cDAO=new CaracteristicaDAO();
+				PontuacaoPosicaoDAO pDAO=new PontuacaoPosicaoDAO();
+				
+				//Insere em caracteristicas
+				cDAO.inserirCaracteristicas(c, Jogador.getJogadorEscolhido());
+				Jogador.getJogadorEscolhido().setCaracteristicas(c);
+				FormulaPosicao f=new FormulaPosicao();
+				//calcula a pontuação das posições
+				f.calculeTudo(Jogador.getJogadorEscolhido());
+				//Insere na tabelaPontuacaoPosicoes
+				pDAO.inserirPontuacaoPosicoesJogador(Jogador.getJogadorEscolhido());
+				
+				TelaJogadores t=new TelaJogadores();
+				t.setVisible(true);
+				dispose();
+			}
+		});
+		contentPane.add(btnConfirmar);
+		
 	}
 }

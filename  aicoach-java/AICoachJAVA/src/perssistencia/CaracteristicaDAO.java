@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import bd.Banco;
 
 import dominio.CaracteristicasJogadores;
+import dominio.Jogador;
 
 public class CaracteristicaDAO {
 	Banco banco = new Banco(Banco.getUrl(),Banco.getSenha(), Banco.getRoot());
@@ -34,6 +35,33 @@ public class CaracteristicaDAO {
 				+ caracteristicas.getDesarme()
 				+ "','"
 				+ caracteristicas.getDefesas()+ "')";
+				
+		
+		banco.executarSQL(sql);
+	}
+	
+	public void inserirCaracteristicas(CaracteristicasJogadores caracteristicas, Jogador jogador){
+		String sql = "Insert into caracteristicas (resistencia, cabeceio, qualidadepasse, velocidade, finalizacao, bolaparada, " +
+				"controlebola, drible, " + "desarme, defesas, jogador) VALUES('"
+				+ caracteristicas.getResistencia()
+				+ "','"
+				+ caracteristicas.getCabeceio()
+				+ "','"
+				+ caracteristicas.getQualidadePasse()
+				+ "','"
+				+ caracteristicas.getVelocidade()
+				+ "','"
+				+ caracteristicas.getFinalizacao()
+				+ "','"
+				+ caracteristicas.getBolaParada()
+				+ "','"
+				+ caracteristicas.getControleBola()
+				+ "','"
+				+ caracteristicas.getDrible()
+				+ "','"
+				+ caracteristicas.getDesarme()
+				+ "','"
+				+ caracteristicas.getDefesas()+ "', '"+jogador.getId()+"')";
 				
 		
 		banco.executarSQL(sql);
