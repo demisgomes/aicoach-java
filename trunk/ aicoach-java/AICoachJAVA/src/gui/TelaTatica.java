@@ -482,8 +482,6 @@ JButton btnEscolherMelhoresJogadores = new JButton("Sugerir Jogadores");
 			public void actionPerformed(ActionEvent arg0) {
 				TelaInserirCombaterTatica tela=new TelaInserirCombaterTatica(time);
 				tela.setVisible(true);
-				dispose();
-				
 			}
 		});
 		contentPane.add(btnCombaterTtica);

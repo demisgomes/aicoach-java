@@ -14,4 +14,6 @@ public	class ObservadorTime implements Observer{
 			AlterarEsquema aE=(AlterarEsquema)obs;	
 			TelaTatica.mostrarBotoes();
 		}
+		
+		
 	}

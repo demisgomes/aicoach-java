@@ -1,5 +1,8 @@
 package negocio.model;
 
+import gui.TelaInserirCombaterTatica;
+import gui.TelaTatica;
+
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -15,6 +18,7 @@ public class CombateTatica extends Observable {
 		AlgoritmoTatica a=new AlgoritmoTatica();
 		//a.alterarEsquema(time, substituicoes, novaTatica);
 		a.combaterTatica(meuTime, timeAdversario, taticas);
+		TelaTatica.time=TelaInserirCombaterTatica.time;
 		setChanged();
 		notifyObservers();
 	}

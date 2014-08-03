@@ -79,7 +79,6 @@ public class TelaInserirAlterarEsquema extends JFrame {
 		JButton btnNewButton = new JButton("Confirmar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TelaTatica obs=new TelaTatica();
 				ControladorAlterarEsquema c=new ControladorAlterarEsquema();
 				//c.getAlterarEsquema().addObserver(obs);
 				c.controlar(time);
