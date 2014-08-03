@@ -22,6 +22,7 @@ public class JogadorDAO {
 	
 	public void inserirJogador(Jogador jogador){
 		jogador.setId(retorneUltimoId()+1);
+		System.out.println(jogador.getId());
 		String sql = "Insert into jogador (nome, peso, altura, idade, temcondicao, time) VALUES('"
 				+ jogador.getNome()
 				+ "','"
@@ -313,7 +314,7 @@ public class JogadorDAO {
 	
 	public int retorneUltimoId(){
 		try{
-			String sql="Select idjogador from jogador";
+			String sql="Select * from jogador";
 			ResultSet rs= banco.executarSelect(sql);
 			int id=0;
 			if(rs.last()){
