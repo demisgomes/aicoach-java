@@ -6,6 +6,7 @@ import gui.TelaInserirAlterarEsquema;
 import gui.TelaTatica;
 import perssistencia.TaticaDAO;
 import negocio.model.AlterarEsquema;
+import negocio.view.ObservadorCombateTatica;
 import negocio.view.ObservadorTime;
 import dominio.Tatica;
 import dominio.Time;
