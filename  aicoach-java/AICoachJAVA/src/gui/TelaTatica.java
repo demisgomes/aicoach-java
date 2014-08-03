@@ -25,26 +25,29 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 
 import negocio.AlgoritmoTatica;
+import negocio.controller.ControladorAlterarEsquema;
+import negocio.model.AlterarEsquema;
 import perssistencia.JogadorDAO;
 import perssistencia.TaticaDAO;
 import perssistencia.TimeDAO;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
-public class TelaTatica extends JFrame {
+public class TelaTatica extends JFrame{
 
 	private JPanel contentPane;
-	private ArrayList<Posicao> listaIdPosicoes=new ArrayList<Posicao>();
-	public Time time;
+	private static ArrayList<Posicao> listaIdPosicoes=new ArrayList<Posicao>();
+	public static Time time;
 	public static boolean daTelaInserir;
 	private boolean substituir = false;
 	public static boolean daTelaCombater;
-	public static  boolean naoSalvar;
-	//private ArrayList<Posicao> listaPosicoes=new ArrayList<Posicao>();
+	public static  boolean naoSalvar; //private ArrayList<Posicao> listaPosicoes=new ArrayList<Posicao>();
 
-	ArrayList<ButtonAiCoach> listaBotoes = new ArrayList<ButtonAiCoach>();
-	ArrayList<Integer> listaJogador=new ArrayList<Integer>();
+	static ArrayList<ButtonAiCoach> listaBotoes = new ArrayList<ButtonAiCoach>();
+	static ArrayList<Integer> listaJogador=new ArrayList<Integer>();
 	/**
 	 * Launch the application.
 	 */
@@ -518,7 +521,7 @@ JButton btnEscolherMelhoresJogadores = new JButton("Sugerir Jogadores");
 		}
 		
 }
-	public void mostrarBotoes(){
+	public static void mostrarBotoes(){
 
 		
 		for(int j=0;j<listaBotoes.size();j++){
@@ -579,5 +582,10 @@ JButton btnEscolherMelhoresJogadores = new JButton("Sugerir Jogadores");
 	
 	}
 }
+
+
+
+
+
 
 
