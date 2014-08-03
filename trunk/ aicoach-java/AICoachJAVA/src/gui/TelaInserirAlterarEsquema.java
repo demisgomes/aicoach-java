@@ -11,6 +11,7 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 
 import negocio.AlgoritmoTatica;
+import negocio.controller.ControladorAlterarEsquema;
 import dominio.Posicao;
 import dominio.Tatica;
 import dominio.Time;
@@ -25,6 +26,9 @@ public class TelaInserirAlterarEsquema extends JFrame {
 	 * Launch the application.
 	 */
 	Time time;
+	public static JComboBox<Integer>comboBoxSubstituicoes;
+	public static JComboBox<String>comboBoxFormacoes;
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -58,7 +62,7 @@ public class TelaInserirAlterarEsquema extends JFrame {
 		
 		
 
-		final JComboBox<String> comboBoxFormacoes = new JComboBox<String>(formacoes);
+	    comboBoxFormacoes = new JComboBox<String>(formacoes);
 		comboBoxFormacoes.setBounds(34, 42, 120, 20);
 		getContentPane().add(comboBoxFormacoes);
 		
@@ -68,17 +72,21 @@ public class TelaInserirAlterarEsquema extends JFrame {
 		arraySub[2]=2;
 		arraySub[3]=3;
 		
-		final JComboBox<Integer> comboBoxSubstituicoes = new JComboBox<Integer>(arraySub);
+	    comboBoxSubstituicoes = new JComboBox<Integer>(arraySub);
 		comboBoxSubstituicoes.setBounds(34, 97, 120, 20);
 		getContentPane().add(comboBoxSubstituicoes);
 		
 		JButton btnNewButton = new JButton("Confirmar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				Tatica taticaNova=tDAO.retornarTatica(comboBoxFormacoes.getSelectedItem().toString());
+				TelaTatica obs=new TelaTatica();
+				ControladorAlterarEsquema c=new ControladorAlterarEsquema();
+				//c.getAlterarEsquema().addObserver(obs);
+				c.controlar(time);
+				/*Tatica taticaNova=tDAO.retornarTatica(comboBoxFormacoes.getSelectedItem().toString());
 				int substituicoes=comboBoxSubstituicoes.getSelectedIndex();
 				AlgoritmoTatica aTatica=new AlgoritmoTatica();
+				
 				aTatica.alterarEsquema(time, substituicoes, taticaNova);
 				
 				for (Posicao p : time.getTatica().getPosicoes()) {
@@ -88,7 +96,7 @@ public class TelaInserirAlterarEsquema extends JFrame {
 				TelaTatica.daTelaInserir=true;
 				TelaTatica tela=new TelaTatica();
 				tela.setVisible(true);
-				dispose();
+				dispose();*/
 			}
 		});
 		btnNewButton.setBounds(34, 179, 109, 41);
