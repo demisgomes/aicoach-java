@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 
+import controle.ControladorJogadores;
+
 import dominio.Jogador;
 import dominio.Time;
 
@@ -25,6 +27,28 @@ import java.awt.event.MouseListener;
 public class TelaJogadores extends JFrame {
 
 	private JPanel contentPane;
+	private static MouseListener mL;
+	private static JList list;
+	
+	
+	
+	
+
+	public static JList getList() {
+		return list;
+	}
+
+	public static void setList(JList list) {
+		TelaJogadores.list = list;
+	}
+
+	public static MouseListener getmL() {
+		return mL;
+	}
+
+	public static void setmL(MouseListener mL) {
+		TelaJogadores.mL = mL;
+	}
 
 	/**
 	 * Launch the application.
@@ -67,24 +91,14 @@ public class TelaJogadores extends JFrame {
 		scrollPane.setBackground(Color.yellow);
 		contentPane.add(scrollPane);
 		//JScrollPane scrollPane = new JScrollPane();
-		final JList list = new JList(lista);
+		list = new JList(lista);
 		scrollPane.setViewportView(list);
 		list.setForeground(Color.BLACK);
 		list.setBackground(SystemColor.menu);
 		
-		MouseListener mL=new MouseAdapter() {
-			public void mouseClicked(MouseEvent e){
-				if(e.getClickCount()==1){
-					String selectedItem = (String) list.getSelectedValue();
-					   Jogador.setJogadorEscolhido(Time.getTime().getJogadores().get(list.getSelectedIndex()));
-			           TelaJogador t = new TelaJogador();
-			           t.setVisible(true);
-			           dispose();
-				}
-			}
-			
-		};
-		list.addMouseListener(mL);
+		ControladorJogadores controlador = new ControladorJogadores();
+		controlador.opcoesJogador(this);
+		
 		/*MouseListener mouseListener = new MouseListener (){
 			
 		    public void mouseClicked(MouseEvent e) {

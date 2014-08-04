@@ -14,12 +14,42 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
+import controle.ControladorJogador;
+
+import negocio.controller.ControladorCombaterTatica;
+
 import dominio.Jogador;
 import dominio.Posicao;
 
 public class TelaJogador extends JFrame {
 
 	private JPanel contentPane;
+	private static JButton btnCaractersticas,btnEstatsticas,btnVoltar;
+	
+	
+	public static JButton getBtnCaractersticas() {
+		return btnCaractersticas;
+	}
+
+	public static void setBtnCaractersticas(JButton btnCaractersticas) {
+		TelaJogador.btnCaractersticas = btnCaractersticas;
+	}
+
+	public static JButton getBtnEstatsticas() {
+		return btnEstatsticas;
+	}
+
+	public static void setBtnEstatsticas(JButton btnEstatsticas) {
+		TelaJogador.btnEstatsticas = btnEstatsticas;
+	}
+
+	public static JButton getBtnVoltar() {
+		return btnVoltar;
+	}
+
+	public static void setBtnVoltar(JButton btnVoltar) {
+		TelaJogador.btnVoltar = btnVoltar;
+	}
 
 	/**
 	 * Launch the application.
@@ -48,41 +78,21 @@ public class TelaJogador extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		final JButton btnCaractersticas = new JButton("Caracter\u00EDsticas");
-		btnCaractersticas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		btnCaractersticas = new JButton("Caracter\u00EDsticas");
+		
 		btnCaractersticas.setBounds(37, 228, 131, 23);
 		contentPane.add(btnCaractersticas);
-		btnCaractersticas.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				TelaCaracteristicas tela = new TelaCaracteristicas();
-				tela.setVisible(true);
-				dispose();
-			
-				
-			}
-		});
 		
-		JButton btnEstatsticas = new JButton("Estat\u00EDsticas");
-		btnEstatsticas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		btnEstatsticas = new JButton("Estat\u00EDsticas");
+		
 		btnEstatsticas.setBounds(293, 228, 131, 23);
 		contentPane.add(btnEstatsticas);
 		
-		JButton btnVoltar = new JButton("Voltar");
-		btnVoltar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				TelaTime t=new TelaTime();
-				t.setVisible(true);
-				dispose();
-			}
-		});
+		btnVoltar = new JButton("Voltar");
+		
+		ControladorJogador controlador = new ControladorJogador();
+		controlador.acaoBotao(this);
+		
 		btnVoltar.setBounds(335, 13, 89, 23);
 		contentPane.add(btnVoltar);
 		

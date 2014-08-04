@@ -1,5 +1,7 @@
 package negocio.controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Observer;
 
 import gui.TelaInserirAlterarEsquema;
@@ -25,6 +27,7 @@ public class ControladorAlterarEsquema {
 		a.addObserver(obs);
 		a.acao(time, substituicoes, taticaNova);
 	}
+	
 
 	/**
 	 * @return the alterarEsquema
@@ -38,5 +41,15 @@ public class ControladorAlterarEsquema {
 	 */
 	public void setAlterarEsquema(AlterarEsquema alterarEsquema) {
 		this.alterarEsquema = alterarEsquema;
+	}
+	
+	public void acaoBotao(final TelaInserirAlterarEsquema tela){
+		TelaInserirAlterarEsquema.getBtnConfirmar().addActionListener(new ActionListener() {	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controlar(TelaInserirAlterarEsquema.getTime());
+			}
+		});
+		
 	}
 }

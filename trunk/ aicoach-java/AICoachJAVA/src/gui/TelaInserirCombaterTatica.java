@@ -25,6 +25,17 @@ public class TelaInserirCombaterTatica extends JFrame {
 	private JPanel contentPane;
 	public static Time time;
 	public static JComboBox<String> comboBox;
+	private static JButton btnCombater;
+	
+	
+	public static JButton getBtnCombater() {
+		return btnCombater;
+	}
+
+	public static void setBtnCombater(JButton btnCombater) {
+		TelaInserirCombaterTatica.btnCombater = btnCombater;
+	}
+
 	/**
 	 * Launch the application.
 	 */
@@ -66,12 +77,14 @@ public class TelaInserirCombaterTatica extends JFrame {
 		comboBox.setBounds(20, 32, 167, 20);
 		contentPane.add(comboBox);
 		
-		JButton btnNewButton = new JButton("Combater");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnCombater = new JButton("Combater");
+		ControladorCombaterTatica controlador = new ControladorCombaterTatica();
+		controlador.acaoBotao();
+		/*btnCombater.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ControladorCombaterTatica c=new ControladorCombaterTatica();
 				c.controlar(TelaInserirCombaterTatica.time);
-				/*Time timeEscolhido=Time.getListaTimes().get(comboBox.getSelectedIndex());
+				Time timeEscolhido=Time.getListaTimes().get(comboBox.getSelectedIndex());
 				TaticaDAO tDAO=new TaticaDAO();
 				AlgoritmoTatica aTatica=new AlgoritmoTatica();
 				aTatica.combaterTatica(TelaInserirCombaterTatica.time, timeEscolhido, tDAO.retornarListaTaticas());
@@ -81,11 +94,11 @@ public class TelaInserirCombaterTatica extends JFrame {
 				Time time=TelaInserirCombaterTatica.time;
 				TelaTatica tela=new TelaTatica();
 				tela.setVisible(true);
-				dispose();*/
+				dispose();
 			}
-		});
-		btnNewButton.setBounds(54, 100, 95, 35);
-		contentPane.add(btnNewButton);
+		});*/
+		btnCombater.setBounds(54, 100, 95, 35);
+		contentPane.add(btnCombater);
 		
 		
 		
