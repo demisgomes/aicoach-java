@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 
+import controle.ControladorCaracteristicas;
+
 import negocio.FormulaPosicao;
 
 import perssistencia.CaracteristicaDAO;
@@ -24,6 +26,101 @@ import dominio.Jogador;
 public class TelaCaracteristicas extends JFrame {
 
 	private JPanel contentPane;
+	private static JButton btnConfirmar;
+	private static JComboBox cBRessistencia,cBVelocidade,cBFinalizacao,cBControleBola,cBDesarme,cBQualidadePasse,cBCabeceio,
+	cBBolaParada,cBDrible,cBDefesa;
+	
+	
+	
+	
+
+	public static JComboBox getcBRessistencia() {
+		return cBRessistencia;
+	}
+
+	public static void setcBRessistencia(JComboBox cBRessistencia) {
+		TelaCaracteristicas.cBRessistencia = cBRessistencia;
+	}
+
+	public static JComboBox getcBVelocidade() {
+		return cBVelocidade;
+	}
+
+	public static void setcBVelocidade(JComboBox cBVelocidade) {
+		TelaCaracteristicas.cBVelocidade = cBVelocidade;
+	}
+
+	public static JComboBox getcBFinalizacao() {
+		return cBFinalizacao;
+	}
+
+	public static void setcBFinalizacao(JComboBox cBFinalizacao) {
+		TelaCaracteristicas.cBFinalizacao = cBFinalizacao;
+	}
+
+	public static JComboBox getcBControleBola() {
+		return cBControleBola;
+	}
+
+	public static void setcBControleBola(JComboBox cBControleBola) {
+		TelaCaracteristicas.cBControleBola = cBControleBola;
+	}
+
+	public static JComboBox getcBDesarme() {
+		return cBDesarme;
+	}
+
+	public static void setcBDesarme(JComboBox cBDesarme) {
+		TelaCaracteristicas.cBDesarme = cBDesarme;
+	}
+
+	public static JComboBox getcBQualidadePasse() {
+		return cBQualidadePasse;
+	}
+
+	public static void setcBQualidadePasse(JComboBox cBQualidadePasse) {
+		TelaCaracteristicas.cBQualidadePasse = cBQualidadePasse;
+	}
+
+	public static JComboBox getcBCabeceio() {
+		return cBCabeceio;
+	}
+
+	public static void setcBCabeceio(JComboBox cBCabeceio) {
+		TelaCaracteristicas.cBCabeceio = cBCabeceio;
+	}
+
+	public static JComboBox getcBBolaParada() {
+		return cBBolaParada;
+	}
+
+	public static void setcBBolaParada(JComboBox cBBolaParada) {
+		TelaCaracteristicas.cBBolaParada = cBBolaParada;
+	}
+
+	public static JComboBox getcBDrible() {
+		return cBDrible;
+	}
+
+	public static void setcBDrible(JComboBox cBDrible) {
+		TelaCaracteristicas.cBDrible = cBDrible;
+	}
+
+	public static JComboBox getcBDefesa() {
+		return cBDefesa;
+	}
+
+	public static void setcBDefesa(JComboBox cBDefesa) {
+		TelaCaracteristicas.cBDefesa = cBDefesa;
+	}
+
+	public static JButton getBtnConfirmar() {
+		return btnConfirmar;
+	}
+
+	public static void setBtnConfirmar(JButton btnConfirmar) {
+		TelaCaracteristicas.btnConfirmar = btnConfirmar;
+	}
 
 	/**
 	 * Launch the application.
@@ -99,96 +196,54 @@ public class TelaCaracteristicas extends JFrame {
 			lista[i]=i+1;
 		}
 		
-		final JComboBox cBRessistencia = new JComboBox(lista);
+		cBRessistencia = new JComboBox(lista);
 		cBRessistencia.setBounds(103, 8, 80, 20);
 		contentPane.add(cBRessistencia);
 		
-		final JComboBox cBVelocidade = new JComboBox(lista);
+		cBVelocidade = new JComboBox(lista);
 		cBVelocidade.setBounds(103, 50, 80, 20);
 		contentPane.add(cBVelocidade);
 		
-		final JComboBox cBFinalizacao = new JComboBox(lista);
+		cBFinalizacao = new JComboBox(lista);
 		cBFinalizacao.setBounds(103, 93, 80, 20);
 		contentPane.add(cBFinalizacao);
 		
-		final JComboBox cBControleBola = new JComboBox(lista);
+		cBControleBola = new JComboBox(lista);
 		cBControleBola.setBounds(103, 131, 80, 20);
 		contentPane.add(cBControleBola);
 		
-		final JComboBox cBDesarme = new JComboBox(lista);
+		cBDesarme = new JComboBox(lista);
 		cBDesarme.setBounds(103, 173, 80, 20);
 		contentPane.add(cBDesarme);
 		
-		final JComboBox cBQualidadePasse = new JComboBox(lista);
+		cBQualidadePasse = new JComboBox(lista);
 		cBQualidadePasse.setBounds(338, 8, 80, 20);
 		contentPane.add(cBQualidadePasse);
 		
-		final JComboBox cBCabeceio = new JComboBox(lista);
+		cBCabeceio = new JComboBox(lista);
 		cBCabeceio.setBounds(338, 50, 80, 20);
 		contentPane.add(cBCabeceio);
 		
-		final JComboBox cBBolaParada = new JComboBox(lista);
+		cBBolaParada = new JComboBox(lista);
 		cBBolaParada.setBounds(338, 93, 80, 20);
 		contentPane.add(cBBolaParada);
 		
-		final JComboBox cBDrible = new JComboBox(lista);
+		cBDrible = new JComboBox(lista);
 		cBDrible.setBounds(338, 134, 80, 20);
 		contentPane.add(cBDrible);
 		
-		final JComboBox cBDefesa = new JComboBox(lista);
+		cBDefesa = new JComboBox(lista);
 		cBDefesa.setBounds(338, 173, 80, 20);
 		contentPane.add(cBDefesa);
 		
 		
 		//LÓGICA A SER IMPLEMENTADA NO CONTROLADOR
-		JButton btnConfirmar = new JButton("Confirmar");
+		btnConfirmar = new JButton("Confirmar");
 		btnConfirmar.setBounds(160, 228, 89, 23);
-		btnConfirmar.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				int res, cab, bp, cb, def, des, dri, fin, qp, vel;
-				
-				res=cBRessistencia.getSelectedIndex()+1;
-				cab= cBCabeceio.getSelectedIndex()+1;
-				bp=cBBolaParada.getSelectedIndex()+1;
-				cb= cBControleBola.getSelectedIndex()+1;
-				def= cBDefesa.getSelectedIndex()+1;
-				des= cBDesarme.getSelectedIndex()+1;
-				dri= cBDrible.getSelectedIndex()+1;
-				fin= cBFinalizacao.getSelectedIndex()+1;
-				qp= cBQualidadePasse.getSelectedIndex()+1;
-				vel =cBVelocidade.getSelectedIndex()+1;
-				
-				CaracteristicasJogadores c = new CaracteristicasJogadores();
-				c.setBolaParada(bp);
-				c.setCabeceio(cab);
-				c.setControleBola(cb);
-				c.setDefesas(def);
-				c.setDesarme(des);
-				c.setDrible(dri);
-				c.setFinalizacao(fin);
-				c.setQualidadePasse(qp);
-				c.setResistencia(res);
-				c.setVelocidade(vel);
-				
-				CaracteristicaDAO cDAO=new CaracteristicaDAO();
-				PontuacaoPosicaoDAO pDAO=new PontuacaoPosicaoDAO();
-				
-				//Insere em caracteristicas
-				cDAO.inserirCaracteristicas(c, Jogador.getJogadorEscolhido());
-				Jogador.getJogadorEscolhido().setCaracteristicas(c);
-				FormulaPosicao f=new FormulaPosicao();
-				//calcula a pontuação das posições
-				f.calculeTudo(Jogador.getJogadorEscolhido());
-				//Insere na tabelaPontuacaoPosicoes
-				pDAO.inserirPontuacaoPosicoesJogador(Jogador.getJogadorEscolhido());
-				
-				TelaJogadores t=new TelaJogadores();
-				t.setVisible(true);
-				dispose();
-			}
-		});
+		
+		ControladorCaracteristicas controlador = new ControladorCaracteristicas();
+		controlador.insereCaracteristicas(this);
+		
 		contentPane.add(btnConfirmar);
 		
 	}

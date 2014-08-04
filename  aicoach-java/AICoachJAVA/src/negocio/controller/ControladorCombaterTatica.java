@@ -1,5 +1,7 @@
 package negocio.controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Observer;
 
 import gui.TelaInserirCombaterTatica;
@@ -20,7 +22,14 @@ public class ControladorCombaterTatica {
 		Observer obs=new ObservadorCombateTatica();
 		c.addObserver(obs);
 		c.acao(TelaInserirCombaterTatica.time, timeEscolhido, tDAO.retornarListaTaticas());
-
-		
+	}
+	
+	public void acaoBotao(){
+		TelaInserirCombaterTatica.getBtnCombater().addActionListener(new ActionListener() {		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controlar(TelaInserirCombaterTatica.time);
+			}
+		});
 	}
 }

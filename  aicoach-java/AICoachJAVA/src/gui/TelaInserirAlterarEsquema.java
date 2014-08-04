@@ -21,14 +21,49 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class TelaInserirAlterarEsquema extends JFrame {
-
-	/**
-	 * Launch the application.
-	 */
-	Time time;
+	
+	private static JButton btnConfirmar;
+	private static Time time;
 	public static JComboBox<Integer>comboBoxSubstituicoes;
 	public static JComboBox<String>comboBoxFormacoes;
 	
+	
+	
+	
+	
+	public static Time getTime() {
+		return time;
+	}
+
+	public static void setTime(Time time) {
+		TelaInserirAlterarEsquema.time = time;
+	}
+
+	public static JButton getBtnConfirmar() {
+		return btnConfirmar;
+	}
+
+	public static void setBtnConfirmar(JButton btnConfirmar) {
+		TelaInserirAlterarEsquema.btnConfirmar = btnConfirmar;
+	}
+
+	public static JComboBox<Integer> getComboBoxSubstituicoes() {
+		return comboBoxSubstituicoes;
+	}
+
+	public static void setComboBoxSubstituicoes(
+			JComboBox<Integer> comboBoxSubstituicoes) {
+		TelaInserirAlterarEsquema.comboBoxSubstituicoes = comboBoxSubstituicoes;
+	}
+
+	public static JComboBox<String> getComboBoxFormacoes() {
+		return comboBoxFormacoes;
+	}
+
+	public static void setComboBoxFormacoes(JComboBox<String> comboBoxFormacoes) {
+		TelaInserirAlterarEsquema.comboBoxFormacoes = comboBoxFormacoes;
+	}
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -76,13 +111,15 @@ public class TelaInserirAlterarEsquema extends JFrame {
 		comboBoxSubstituicoes.setBounds(34, 97, 120, 20);
 		getContentPane().add(comboBoxSubstituicoes);
 		
-		JButton btnNewButton = new JButton("Confirmar");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnConfirmar = new JButton("Confirmar");
+		ControladorAlterarEsquema controlador = new ControladorAlterarEsquema();
+		controlador.acaoBotao(this);
+		/*btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ControladorAlterarEsquema c=new ControladorAlterarEsquema();
 				//c.getAlterarEsquema().addObserver(obs);
 				c.controlar(time);
-				/*Tatica taticaNova=tDAO.retornarTatica(comboBoxFormacoes.getSelectedItem().toString());
+				Tatica taticaNova=tDAO.retornarTatica(comboBoxFormacoes.getSelectedItem().toString());
 				int substituicoes=comboBoxSubstituicoes.getSelectedIndex();
 				AlgoritmoTatica aTatica=new AlgoritmoTatica();
 				
@@ -95,11 +132,11 @@ public class TelaInserirAlterarEsquema extends JFrame {
 				TelaTatica.daTelaInserir=true;
 				TelaTatica tela=new TelaTatica();
 				tela.setVisible(true);
-				dispose();*/
+				dispose();
 			}
-		});
-		btnNewButton.setBounds(34, 179, 109, 41);
+		});*/
+		btnConfirmar.setBounds(34, 179, 109, 41);
 		
-		getContentPane().add(btnNewButton);
+		getContentPane().add(btnConfirmar);
 	}
 }

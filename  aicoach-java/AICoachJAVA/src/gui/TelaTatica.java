@@ -45,9 +45,116 @@ public class TelaTatica extends JFrame{
 	private boolean substituir = false;
 	public static boolean daTelaCombater;
 	public static  boolean naoSalvar; //private ArrayList<Posicao> listaPosicoes=new ArrayList<Posicao>();
+	private static JButton btnAlterarEsquema,btnSugerirTtica,btnEscolherMelhoresJogadores,btnCriarNovaTtica,btnSalvarTtica,btnSubstituir,
+	btnCombaterTtica,btnVoltar;
+	private static ArrayList<ButtonAiCoach> listaBotoes = new ArrayList<ButtonAiCoach>();
+	private static ArrayList<Integer> listaJogador=new ArrayList<Integer>();
+	
+	
+	
+	
+	
+	
 
-	static ArrayList<ButtonAiCoach> listaBotoes = new ArrayList<ButtonAiCoach>();
-	static ArrayList<Integer> listaJogador=new ArrayList<Integer>();
+	public static Time getTime() {
+		return time;
+	}
+
+
+	public static void setTime(Time time) {
+		TelaTatica.time = time;
+	}
+
+
+	public static ArrayList<Posicao> getListaIdPosicoes() {
+		return listaIdPosicoes;
+	}
+
+
+	public static void setListaIdPosicoes(ArrayList<Posicao> listaIdPosicoes) {
+		TelaTatica.listaIdPosicoes = listaIdPosicoes;
+	}
+
+
+	public static ArrayList<Integer> getListaJogador() {
+		return listaJogador;
+	}
+
+
+	public static void setListaJogador(ArrayList<Integer> listaJogador) {
+		TelaTatica.listaJogador = listaJogador;
+	}
+
+
+	public static JButton getBtnAlterarEsquema() {
+		return btnAlterarEsquema;
+	}
+
+
+	public static void setBtnAlterarEsquema(JButton btnAlterarEsquema) {
+		TelaTatica.btnAlterarEsquema = btnAlterarEsquema;
+	}
+
+
+	public static JButton getBtnEscolherMelhoresJogadores() {
+		return btnEscolherMelhoresJogadores;
+	}
+
+
+	public static void setBtnEscolherMelhoresJogadores(
+			JButton btnEscolherMelhoresJogadores) {
+		TelaTatica.btnEscolherMelhoresJogadores = btnEscolherMelhoresJogadores;
+	}
+
+
+	public static JButton getBtnCriarNovaTtica() {
+		return btnCriarNovaTtica;
+	}
+
+
+	public static void setBtnCriarNovaTtica(JButton btnCriarNovaTtica) {
+		TelaTatica.btnCriarNovaTtica = btnCriarNovaTtica;
+	}
+
+
+	public static JButton getBtnSalvarTtica() {
+		return btnSalvarTtica;
+	}
+
+
+	public static void setBtnSalvarTtica(JButton btnSalvarTtica) {
+		TelaTatica.btnSalvarTtica = btnSalvarTtica;
+	}
+
+
+	public static JButton getBtnCombaterTtica() {
+		return btnCombaterTtica;
+	}
+
+
+	public static void setBtnCombaterTtica(JButton btnCombaterTtica) {
+		TelaTatica.btnCombaterTtica = btnCombaterTtica;
+	}
+
+
+	public static JButton getBtnVoltar() {
+		return btnVoltar;
+	}
+
+
+	public static void setBtnVoltar(JButton btnVoltar) {
+		TelaTatica.btnVoltar = btnVoltar;
+	}
+
+
+	public static ArrayList<ButtonAiCoach> getListaBotoes() {
+		return listaBotoes;
+	}
+
+
+	public static void setListaBotoes(ArrayList<ButtonAiCoach> listaBotoes) {
+		TelaTatica.listaBotoes = listaBotoes;
+	}
 	/**
 	 * Launch the application.
 	 */
@@ -89,8 +196,8 @@ public class TelaTatica extends JFrame{
 		
 		
 		
-		JButton btnNewButtonAiCoach = new JButton("Alterar Esquema");
-		btnNewButtonAiCoach.addActionListener(new ActionListener() {
+		btnAlterarEsquema = new JButton("Alterar Esquema");
+		btnAlterarEsquema.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				TelaInserirAlterarEsquema tela=new TelaInserirAlterarEsquema(time);
@@ -98,8 +205,8 @@ public class TelaTatica extends JFrame{
 				//dispose();
 			}
 		});
-		btnNewButtonAiCoach.setBounds(27, 23, 135, 23);
-		contentPane.add(btnNewButtonAiCoach);
+		btnAlterarEsquema.setBounds(27, 23, 135, 23);
+		contentPane.add(btnAlterarEsquema);
 		
 		
 		
@@ -121,11 +228,7 @@ public class TelaTatica extends JFrame{
 		ButtonAiCoach btnGL = new ButtonAiCoach("GL");
 		btnGL.setBackground(Color.GRAY);
 		
-		btnGL.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
+		
 		btnGL.setBounds(42, 277, 64, 54);
 		btnGL.setId(1);
 		listaBotoes.add(btnGL);
@@ -148,10 +251,7 @@ public class TelaTatica extends JFrame{
 		
 		ButtonAiCoach btnZc = new ButtonAiCoach("ZC");
 		btnZc.setBackground(Color.GRAY);
-		btnZc.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		
 		btnZc.setId(3);
 		listaBotoes.add(btnZc);
 		btnZc.setBounds(128, 361, 58, 55);
@@ -176,10 +276,7 @@ public class TelaTatica extends JFrame{
 		
 		ButtonAiCoach btnLe = new ButtonAiCoach("LE");
 		btnLe.setId(6);
-		btnLe.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		
 		btnLe.setBackground(Color.GRAY);
 		btnLe.setBounds(130, 113, 56, 54);
 		listaBotoes.add(btnLe);
@@ -188,10 +285,7 @@ public class TelaTatica extends JFrame{
 
 		ButtonAiCoach btnLe_1 = new ButtonAiCoach("LE");
 		btnLe_1.setId(11);
-		btnLe_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+
 		btnLe_1.setBackground(Color.GRAY);
 		btnLe_1.setBounds(225, 113, 58, 54);
 		listaBotoes.add(btnLe_1);
@@ -206,10 +300,7 @@ public class TelaTatica extends JFrame{
 		contentPane.add(btnMld_1);
 		
 		ButtonAiCoach btnMld = new ButtonAiCoach("MLD");
-		btnMld.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		
 		btnMld.setBackground(Color.GRAY);
 		btnMld.setId(12);
 		listaBotoes.add(btnMld);
@@ -219,10 +310,6 @@ public class TelaTatica extends JFrame{
 		
 		ButtonAiCoach btnVol = new ButtonAiCoach("VOL");
 		btnVol.setBackground(Color.GRAY);
-		btnVol.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		
 		btnVol.setBounds(225, 373, 58, 54);
 		btnVol.setId(8);
@@ -231,10 +318,7 @@ public class TelaTatica extends JFrame{
 		
 		
 		ButtonAiCoach btnVol_1 = new ButtonAiCoach("VOL");
-		btnVol_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		
 		btnVol_1.setBackground(Color.GRAY);
 		btnVol_1.setBounds(225, 277, 58, 54);
 		btnVol_1.setId(9);
@@ -254,10 +338,7 @@ public class TelaTatica extends JFrame{
 		
 		ButtonAiCoach btnMc = new ButtonAiCoach("MC");
 		btnMc.setBackground(Color.GRAY);
-		btnMc.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		
 		btnMc.setId(13);
 		btnMc.setBounds(322, 373, 58, 54);
 		listaBotoes.add(btnMc);
@@ -286,10 +367,7 @@ public class TelaTatica extends JFrame{
 		contentPane.add(btnMle);
 		
 		ButtonAiCoach btnMle_1 = new ButtonAiCoach("MLE");
-		btnMle_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		
 		btnMle_1.setBackground(Color.GRAY);
 		btnMle_1.setBounds(423, 113, 58, 54);
 		btnMle_1.setId(21);
@@ -369,7 +447,7 @@ public class TelaTatica extends JFrame{
 		//------------------------------------
 		//SUGERIR TÀTICA
 		//------------------------------------
-		JButton btnSugerirTtica = new JButton("Sugerir T\u00E1tica");
+		btnSugerirTtica = new JButton("Sugerir T\u00E1tica");
 		btnSugerirTtica.setBounds(27, 553, 135, 23);
 		
 		
@@ -389,7 +467,7 @@ public class TelaTatica extends JFrame{
 		});
 		
 		contentPane.add(btnSugerirTtica);
-JButton btnEscolherMelhoresJogadores = new JButton("Sugerir Jogadores");
+		btnEscolherMelhoresJogadores = new JButton("Sugerir Jogadores");
 		
 		btnEscolherMelhoresJogadores.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -418,7 +496,7 @@ JButton btnEscolherMelhoresJogadores = new JButton("Sugerir Jogadores");
 		btnEscolherMelhoresJogadores.setBounds(354, 23, 167, 23);
 		contentPane.add(btnEscolherMelhoresJogadores);
 		
-		JButton btnCriarNovaTtica = new JButton("Criar Nova T\u00E1tica");
+		btnCriarNovaTtica = new JButton("Criar Nova T\u00E1tica");
 		btnCriarNovaTtica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaCriarTatica tela=new TelaCriarTatica(time);
@@ -429,7 +507,7 @@ JButton btnEscolherMelhoresJogadores = new JButton("Sugerir Jogadores");
 		btnCriarNovaTtica.setBounds(534, 23, 167, 23);
 		contentPane.add(btnCriarNovaTtica);
 		
-		JButton btnSalvarTtica = new JButton("Salvar T\u00E1tica");
+		btnSalvarTtica = new JButton("Salvar T\u00E1tica");
 		btnSalvarTtica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(TelaTatica.naoSalvar){
@@ -456,7 +534,7 @@ JButton btnEscolherMelhoresJogadores = new JButton("Sugerir Jogadores");
 		btnSalvarTtica.setBounds(569, 547, 129, 35);
 		contentPane.add(btnSalvarTtica);
 		
-		JButton btnSubstituir = new JButton("Substituir");
+		btnSubstituir = new JButton("Substituir");
 		btnSubstituir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				TaticaDAO taDAO=new TaticaDAO();
@@ -476,7 +554,7 @@ JButton btnEscolherMelhoresJogadores = new JButton("Sugerir Jogadores");
 		btnSubstituir.setBounds(376, 553, 135, 23);
 		contentPane.add(btnSubstituir);
 		
-		JButton btnCombaterTtica = new JButton("Combater t\u00E1tica");
+		btnCombaterTtica = new JButton("Combater t\u00E1tica");
 		btnCombaterTtica.setBounds(203, 553, 129, 23);
 		btnCombaterTtica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -486,7 +564,7 @@ JButton btnEscolherMelhoresJogadores = new JButton("Sugerir Jogadores");
 		});
 		contentPane.add(btnCombaterTtica);
 		
-		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				TelaListaTimes t=new TelaListaTimes();
