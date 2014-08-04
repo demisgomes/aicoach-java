@@ -83,7 +83,7 @@ public class TelaInserirAlterarEsquema extends JFrame {
 	public TelaInserirAlterarEsquema() {}
 	public TelaInserirAlterarEsquema(final Time time) {
 		setTitle("Alterar Esquema");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 235, 300);
 		getContentPane().setLayout(null);
 		this.time=time;

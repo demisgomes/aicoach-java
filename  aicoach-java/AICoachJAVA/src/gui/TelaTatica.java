@@ -24,6 +24,9 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JComboBox;
 
+import controle.ControladorTatica;
+import controle.ControladorTelaInicial;
+
 import negocio.AlgoritmoTatica;
 import negocio.controller.ControladorAlterarEsquema;
 import negocio.model.AlterarEsquema;
@@ -42,19 +45,69 @@ public class TelaTatica extends JFrame{
 	private static ArrayList<Posicao> listaIdPosicoes=new ArrayList<Posicao>();
 	public static Time time;
 	public static boolean daTelaInserir;
-	private boolean substituir = false;
+	private static boolean substituir = false;
 	public static boolean daTelaCombater;
 	public static  boolean naoSalvar; //private ArrayList<Posicao> listaPosicoes=new ArrayList<Posicao>();
 	private static JButton btnAlterarEsquema,btnSugerirTtica,btnEscolherMelhoresJogadores,btnCriarNovaTtica,btnSalvarTtica,btnSubstituir,
 	btnCombaterTtica,btnVoltar;
 	private static ArrayList<ButtonAiCoach> listaBotoes = new ArrayList<ButtonAiCoach>();
 	private static ArrayList<Integer> listaJogador=new ArrayList<Integer>();
+	private static ArrayList<Tatica> listaTaticas;
+	private static JComboBox<String> comboBox;
 	
 	
 	
 	
-	
-	
+
+	public static boolean isSubstituir() {
+		return substituir;
+	}
+
+
+	public static void setSubstituir(boolean substituir) {
+		TelaTatica.substituir = substituir;
+	}
+
+
+	public static JComboBox<String> getComboBox() {
+		return comboBox;
+	}
+
+
+	public static void setComboBox(JComboBox<String> comboBox) {
+		TelaTatica.comboBox = comboBox;
+	}
+
+
+	public static ArrayList<Tatica> getListaTaticas() {
+		return listaTaticas;
+	}
+
+
+	public static void setListaTaticas(ArrayList<Tatica> listaTaticas) {
+		TelaTatica.listaTaticas = listaTaticas;
+	}
+
+
+	public static JButton getBtnSugerirTtica() {
+		return btnSugerirTtica;
+	}
+
+
+	public static void setBtnSugerirTtica(JButton btnSugerirTtica) {
+		TelaTatica.btnSugerirTtica = btnSugerirTtica;
+	}
+
+
+	public static JButton getBtnSubstituir() {
+		return btnSubstituir;
+	}
+
+
+	public static void setBtnSubstituir(JButton btnSubstituir) {
+		TelaTatica.btnSubstituir = btnSubstituir;
+	}
+
 
 	public static Time getTime() {
 		return time;
@@ -191,20 +244,13 @@ public class TelaTatica extends JFrame{
 		
 		
 		TaticaDAO taticaDAO=new TaticaDAO();
-		final ArrayList<Tatica> listaTaticas= taticaDAO.retornarListaTaticas();
+		listaTaticas= taticaDAO.retornarListaTaticas();
 		
 		
 		
 		
 		btnAlterarEsquema = new JButton("Alterar Esquema");
-		btnAlterarEsquema.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				TelaInserirAlterarEsquema tela=new TelaInserirAlterarEsquema(time);
-				tela.setVisible(true);
-				//dispose();
-			}
-		});
+		
 		btnAlterarEsquema.setBounds(27, 23, 135, 23);
 		contentPane.add(btnAlterarEsquema);
 		
@@ -219,7 +265,7 @@ public class TelaTatica extends JFrame{
 		
 
 		
-		final JComboBox<String> comboBox = new JComboBox<String>(formacoes);
+		comboBox = new JComboBox<String>(formacoes);
 		comboBox.setBounds(200, 24, 130, 20);
 		contentPane.add(comboBox);
 		
@@ -451,129 +497,43 @@ public class TelaTatica extends JFrame{
 		btnSugerirTtica.setBounds(27, 553, 135, 23);
 		
 		
-		btnSugerirTtica.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						
-						for (int j = 0; j < time.getJogadores().size(); j++) {
-							time.getJogadores().get(j).setEscolhido(0);
-							
-						}
-						
-						AlgoritmoTatica aTatica=new AlgoritmoTatica();
-						aTatica.sugerirTatica(time, listaTaticas);
-						mostrarBotoes();
-						TelaTatica.naoSalvar=false;
-			}
-		});
+		
 		
 		contentPane.add(btnSugerirTtica);
 		btnEscolherMelhoresJogadores = new JButton("Sugerir Jogadores");
 		
-		btnEscolherMelhoresJogadores.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				for (int j = 0; j < time.getJogadores().size(); j++) {
-					time.getJogadores().get(j).setEscolhido(0);
-					
-				}
-
-				TaticaDAO taticaDAO=new TaticaDAO();
-				Tatica taticaEscolhida=taticaDAO.retornarTatica(comboBox.getSelectedItem().toString());
-				
-				
-				
-				time.setTatica(taticaEscolhida);
-				AlgoritmoTatica aTatica= new AlgoritmoTatica();
-				aTatica.SugerirJogadores(time);
-				mostrarBotoes();
-				TelaTatica.naoSalvar=false;
-			}
-		});
-		
-		for(int j=0;j<listaBotoes.size();j++){
-			listaBotoes.get(j).setVisible(false);
-		}
+	
 		btnEscolherMelhoresJogadores.setBounds(354, 23, 167, 23);
 		contentPane.add(btnEscolherMelhoresJogadores);
 		
 		btnCriarNovaTtica = new JButton("Criar Nova T\u00E1tica");
-		btnCriarNovaTtica.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TelaCriarTatica tela=new TelaCriarTatica(time);
-				tela.setVisible(true);
-				dispose();
-			}
-		});
+	
 		btnCriarNovaTtica.setBounds(534, 23, 167, 23);
 		contentPane.add(btnCriarNovaTtica);
 		
 		btnSalvarTtica = new JButton("Salvar T\u00E1tica");
-		btnSalvarTtica.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(TelaTatica.naoSalvar){
-					JOptionPane.showMessageDialog(null, "Por enquanto, o Combater Tática não pode ser salvo.");
-				}
-				
-				else{
-					
-					JogadorDAO jdao=new JogadorDAO();
-					jdao.tirarIdPosicaoJogador(time);
-					for(int i=0;i<listaBotoes.size();i++){
-						if(listaBotoes.get(i).getJogador()!=null){
-							jdao.inserirIdPosicaoJogador(listaBotoes.get(i).getJogador(), listaBotoes.get(i).getId());
-							//listaJogador.add(listaBotoes.get(i).getJogador().getId());
-						}
-					}
-					TimeDAO timeDAO=new TimeDAO();
-					timeDAO.inserirTimeTatica(time, listaJogador);
-					JOptionPane.showMessageDialog(null, "Inserido com sucesso!");
-				}
-			}
-				
-		});
+		
 		btnSalvarTtica.setBounds(569, 547, 129, 35);
 		contentPane.add(btnSalvarTtica);
 		
 		btnSubstituir = new JButton("Substituir");
-		btnSubstituir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				TaticaDAO taDAO=new TaticaDAO();
-				
-				AlgoritmoTatica tatica= new AlgoritmoTatica();
-				tatica.alterarEsquema(time, 1, taDAO.retornarTatica(time.getTatica().getNome()));
-				substituir=true;
-				mostrarBotoes();
-				System.out.println("depois da confusão");
-				System.out.println("-----------------------");
-				for (Posicao p : time.getTatica().getPosicoes()) {
-					System.out.println(p.getNome()+" será "+ p.getJogador().getNome()+ " "+ p.getJogador().getPosicaoAtual().getPontuacao()+" "+p.getIdPosicaoTela());
-				}
-				TelaTatica.naoSalvar=false;
-			}
-		});
+		
 		btnSubstituir.setBounds(376, 553, 135, 23);
 		contentPane.add(btnSubstituir);
 		
 		btnCombaterTtica = new JButton("Combater t\u00E1tica");
 		btnCombaterTtica.setBounds(203, 553, 129, 23);
-		btnCombaterTtica.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				TelaInserirCombaterTatica tela=new TelaInserirCombaterTatica(time);
-				tela.setVisible(true);
-			}
-		});
+	
 		contentPane.add(btnCombaterTtica);
 		
 		btnVoltar = new JButton("Voltar");
-		btnVoltar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				TelaListaTimes t=new TelaListaTimes();
-				t.setVisible(true);
-				dispose();
-			}
-		});
+		
 		btnVoltar.setBounds(37, 47, 89, 23);
 		contentPane.add(btnVoltar);
+		
+		ControladorTatica controlador = new ControladorTatica();
+		controlador.acaoBotoes(this);
+		
 		
 		TimeDAO timeDAO = new TimeDAO();
 		Tatica taticaTime=timeDAO.retornarTaticaTime(time);
@@ -584,79 +544,20 @@ public class TelaTatica extends JFrame{
 			for (Posicao p : time.getTatica().getPosicoes()) {
 			System.out.println(p.getNome()+" será "+ p.getJogador().getNome());//+ " "+ p.getJogador().getPosicaoAtual().getPontuacao());
 			}
-			mostrarBotoes();
+			controlador.mostrarBotoes();
 			daTelaInserir=false;
 			
 		}
 		
 		if(daTelaInserir){
 			
-			mostrarBotoes();
+			controlador.mostrarBotoes();
 			daTelaInserir=false;
 			
 		}
 		
 }
-	public static void mostrarBotoes(){
 
-		
-		for(int j=0;j<listaBotoes.size();j++){
-			listaBotoes.get(j).setVisible(false);
-			listaBotoes.get(j).setBackground(Color.GRAY);
-			listaBotoes.get(j).setJogador(null);
-		}
-		
-			listaJogador.clear();
-			
-		
-		listaIdPosicoes.clear();				
-		for(Posicao p: time.getTatica().getPosicoes()){
-			listaIdPosicoes.add(p);
-		}
-		//for (Posicao p : time.getTatica().getPosicoes()) {
-			//System.out.println(p.getNome()+" será "+ p.getJogador().getNome()+ " "+ p.getIdPosicaoTela());
-			//}
-		for(int i=0;i<11;i++){
-			for(int j=0;j<listaBotoes.size();j++){
-				
-				if(listaIdPosicoes.get(i).getIdPosicaoTela()==listaBotoes.get(j).getId()){
-					listaBotoes.get(j).setBackground(Color.GREEN);
-					
-					//listaBotoes.get(j).setLabel(listaIdPosicoes.get(i).getNome());
-					break;
-				}
-			}
-			
-		}
-		
-		for(int j=0;j<listaBotoes.size();j++){
-			if(listaBotoes.get(j).getBackground()==Color.green){
-				listaBotoes.get(j).setVisible(true);
-				for(int k=0;k<time.getTatica().getPosicoes().size();k++){
-					if(listaBotoes.get(j).getId()==time.getTatica().getPosicoes().get(k).getIdPosicaoTela()){
-						listaBotoes.get(j).setJogador(time.getTatica().getPosicoes().get(k).getJogador());
-						//System.out.println("Botão "+time.getTatica().getPosicoes().get(k).getJogador().getNome());
-						listaBotoes.get(j).setLabel("<html><p style='margin-left: -15pt;'>"+time.getTatica().getPosicoes().get(k).getJogador().getNome()+"<br> ("+time.getTatica().getPosicoes().get(k).getPontuacao()+")</p><html>");
-						//listaBotoes.get(j).setLabel(time.getTatica().getPosicoes().get(k).getJogador().getNome()+" ("+time.getTatica().getPosicoes().get(k).getPontuacao()+")");
-						
-						listaBotoes.get(j).setSize(62, 62);
-						//listaBotoes.get(j).setBorder(new RoundedBorder(20));
-						//listaBotoes.get(j).setLabel("<html>FINALIZAR<br>COMPRA</html>");
-						break;
-					}
-				}
-			}
-		}
-		
-		for(int i=0;i<listaBotoes.size();i++){
-			if(listaBotoes.get(i).getJogador()!=null){
-				listaJogador.add(listaBotoes.get(i).getJogador().getId());
-				//System.out.println(listaBotoes.get(i).getJogador().getId()+" "+listaBotoes.get(i).getJogador()+" Botões"+" "+listaBotoes.get(i).getId());
-			}
-		}
-		
-	
-	}
 }
 
 
