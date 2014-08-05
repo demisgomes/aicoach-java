@@ -29,6 +29,7 @@ import controle.ControladorTelaInicial;
 
 import negocio.AlgoritmoTatica;
 import negocio.controller.ControladorAlterarEsquema;
+import negocio.controller.Fachada;
 import negocio.model.AlterarEsquema;
 import perssistencia.JogadorDAO;
 import perssistencia.TaticaDAO;
@@ -531,8 +532,10 @@ public class TelaTatica extends JFrame{
 		btnVoltar.setBounds(37, 47, 89, 23);
 		contentPane.add(btnVoltar);
 		
+		Fachada fachada = new Fachada();
+		fachada.taticas(this);
 		ControladorTatica controlador = new ControladorTatica();
-		controlador.acaoBotoes(this);
+		//controlador.acaoBotao(this);
 		
 		
 		TimeDAO timeDAO = new TimeDAO();

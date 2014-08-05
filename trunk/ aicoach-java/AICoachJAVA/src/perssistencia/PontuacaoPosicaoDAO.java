@@ -9,9 +9,15 @@ import dominio.Jogador;
 import dominio.PontuacaoPosicao;
 
 
-public class PontuacaoPosicaoDAO {
+public class PontuacaoPosicaoDAO extends SingletonBanco {
 
-	Banco banco = new Banco(Banco.getUrl(),Banco.getSenha(),Banco.getRoot());
+	//Banco banco = new Banco(Banco.getUrl(),Banco.getSenha(),Banco.getRoot());
+	private Banco banco;
+	
+	public PontuacaoPosicaoDAO(){
+		banco = getBanco();
+	}
+	
 	
 	public ArrayList<PontuacaoPosicao> retornaPosicao(int idJogador){
 		String sql = "SELECT * FROM pontuacaoposicoes WHERE jogador = '"+idJogador+"'";

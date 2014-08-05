@@ -14,8 +14,13 @@ import dominio.Tatica;
 import dominio.Time;
 import bd.Banco;
 
-public class TaticaDAO {
-	Banco banco = new Banco(Banco.getUrl(),Banco.getSenha(),Banco.getRoot());
+public class TaticaDAO extends SingletonBanco {
+	//Banco banco = new Banco(Banco.getUrl(),Banco.getSenha(),Banco.getRoot());
+	private Banco banco;
+	
+	public TaticaDAO(){
+		banco = getBanco();
+	}
 	
 	public void inserirTatica(Tatica tatica){
 		ArrayList <Integer> idPosicoes=new ArrayList<Integer>();

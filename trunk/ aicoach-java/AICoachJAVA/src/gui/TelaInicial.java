@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+import negocio.controller.Fachada;
+
 import controle.ControladorCadastroTime;
 import controle.ControladorTelaInicial;
 
@@ -61,8 +63,12 @@ public class TelaInicial extends JFrame {
 		contentPane.setLayout(null);
 		btnNewButton = new JButton("");
 		btnNewButton.setIcon(new ImageIcon(TelaInicial.class.getResource("/imagens/campo.png")));
-		ControladorTelaInicial controlador = new ControladorTelaInicial();
-		controlador.acaoInicial(this);
+		
+		Fachada fachada = new Fachada();
+		fachada.iniciarPrograma(this);
+		
+		//ControladorTelaInicial controlador = new ControladorTelaInicial();
+		//controlador.acaoBotao(this);
 		btnNewButton.setBounds(0, 0, 434, 262);
 		//btnNewButton.setBackground(Color.TRANSLUCENT);
 		contentPane.add(btnNewButton);

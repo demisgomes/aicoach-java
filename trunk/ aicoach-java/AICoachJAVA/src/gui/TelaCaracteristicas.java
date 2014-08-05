@@ -16,6 +16,7 @@ import javax.swing.JComboBox;
 import controle.ControladorCaracteristicas;
 
 import negocio.FormulaPosicao;
+import negocio.controller.Fachada;
 
 import perssistencia.CaracteristicaDAO;
 import perssistencia.PontuacaoPosicaoDAO;
@@ -241,8 +242,13 @@ public class TelaCaracteristicas extends JFrame {
 		btnConfirmar = new JButton("Confirmar");
 		btnConfirmar.setBounds(160, 228, 89, 23);
 		
-		ControladorCaracteristicas controlador = new ControladorCaracteristicas();
-		controlador.insereCaracteristicas(this);
+		Fachada fachada = new Fachada();
+		fachada.criarCaracteristicas(this);
+		
+		//ControladorCaracteristicas controlador = new ControladorCaracteristicas();
+		//controlador.setCaracteristicas();
+		//controlador.acaoBotao(this);
+		
 		
 		contentPane.add(btnConfirmar);
 		

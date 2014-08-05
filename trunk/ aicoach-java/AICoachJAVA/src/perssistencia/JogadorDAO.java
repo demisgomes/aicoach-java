@@ -12,11 +12,13 @@ import dominio.PontuacaoPosicao;
 import dominio.Posicao;
 import dominio.Time;
 
-public class JogadorDAO {
-	Banco banco = new Banco(Banco.getUrl(),Banco.getSenha(),Banco.getRoot());
+public class JogadorDAO extends SingletonBanco {
+	
+	//Banco banco = new Banco(Banco.getUrl(),Banco.getSenha(),Banco.getRoot());
+	private Banco banco;
 	
 	public JogadorDAO () {
-		
+		banco = getBanco();
 		
 	}
 	

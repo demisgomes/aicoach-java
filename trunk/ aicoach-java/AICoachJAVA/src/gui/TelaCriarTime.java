@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+import negocio.controller.Fachada;
+
 import controle.ControladorCadastroTime;
 
 import perssistencia.TimeDAO;
@@ -91,10 +93,12 @@ public class TelaCriarTime extends JFrame {
 		contentPane.add(lblP);
 		
 		btnCriar = new JButton("Criar");
-		ControladorCadastroTime controlador = new ControladorCadastroTime();
+		//ControladorCadastroTime controlador = new ControladorCadastroTime();
 		btnCriar.setBounds(176, 214, 89, 23);
 		contentPane.add(btnCriar);
-		controlador.acaoCriar(this);
+		//controlador.acaoBotao(this);
+		Fachada fachada = new Fachada();
+		fachada.criarTime(this);
 		
 		JLabel label = new JLabel("Criar Time");
 		label.setFont(new Font("Tahoma", Font.PLAIN, 19));

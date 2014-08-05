@@ -4,7 +4,10 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
+import negocio.interfaces.InterfaceBotao;
 
 import perssistencia.TaticaDAO;
 
@@ -15,9 +18,33 @@ import dominio.Tatica;
 import gui.TelaCriarTatica;
 import gui.TelaTatica;
 
-public class ControladorCadastroTatica {
+public class ControladorCadastroTatica implements InterfaceBotao {
 	
-	public void acaoBotoes(final TelaCriarTatica tela){
+	public void mudaCorBotao(ButtonAiCoach button){
+		if(button.getBackground()==Color.gray){
+			if(TelaCriarTatica.getListaPosicaoTaticaNova().size()<11){
+				button.setBackground(Color.GREEN);
+				TelaCriarTatica.getListaPosicaoTaticaNova().add(new Posicao(button.getId()));
+			}
+			else{
+				//JOptionPane.showMessageDialog("O Máximo é de 11 jogadores.", null);
+			}
+		}
+		else
+		if(button.getBackground()==Color.GREEN){
+			button.setBackground(Color.GRAY);
+			for(Posicao p:TelaCriarTatica.getListaPosicaoTaticaNova()){
+				if(p.getIdPosicaoTela()==button.getId()){
+					TelaCriarTatica.getListaPosicaoTaticaNova().remove(p);
+				}
+				
+			}
+		}
+	}
+
+
+	@Override
+	public void acaoBotao(final JFrame tela) {
 		TelaCriarTatica.getBtnCa().addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -218,29 +245,7 @@ public class ControladorCadastroTatica {
 				}
 			}
 		});
-	}
-	
-	
-	public void mudaCorBotao(ButtonAiCoach button){
-		if(button.getBackground()==Color.gray){
-			if(TelaCriarTatica.getListaPosicaoTaticaNova().size()<11){
-				button.setBackground(Color.GREEN);
-				TelaCriarTatica.getListaPosicaoTaticaNova().add(new Posicao(button.getId()));
-			}
-			else{
-				//JOptionPane.showMessageDialog("O Máximo é de 11 jogadores.", null);
-			}
-		}
-		else
-		if(button.getBackground()==Color.GREEN){
-			button.setBackground(Color.GRAY);
-			for(Posicao p:TelaCriarTatica.getListaPosicaoTaticaNova()){
-				if(p.getIdPosicaoTela()==button.getId()){
-					TelaCriarTatica.getListaPosicaoTaticaNova().remove(p);
-				}
-				
-			}
-		}
+		
 	}
 	
 	

@@ -11,6 +11,7 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 
 import negocio.FormulaPosicao;
+import negocio.controller.Fachada;
 import dominio.Jogador;
 import dominio.PontuacaoPosicao;
 import dominio.Time;
@@ -22,13 +23,16 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
 import controle.ControladorTelaListaTimes;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.ImageIcon;
 
 public class TelaListaTimes extends JFrame {
 	
 	private static ControladorTelaListaTimes controlador = new ControladorTelaListaTimes();
 	private JPanel contentPane;
 	private static JButton btnNewButton;
-	private static final JComboBox<String> comboBox = new JComboBox<String>(controlador.retornarListaTime());;
+	private static final JComboBox comboBox = new JComboBox(controlador.retornarListaTime());;
 	
 	
 	
@@ -84,16 +88,20 @@ public class TelaListaTimes extends JFrame {
 	public TelaListaTimes() {
 		setTitle("Ai Coach");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 432, 198);
+		setBounds(100, 100, 493, 292);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		comboBox.setBounds(10, 26, 190, 29);
+		comboBox.setBounds(43, 100, 190, 29);
 		contentPane.add(comboBox);
 		
 		btnNewButton = new JButton("Confirmar");
-		controlador.acaoNew(this);
+		
+		Fachada fachada = new Fachada();
+		fachada.escolherJogador(this);
+		
+		//controlador.acaoBotao(this);
 		/*btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ac) {
 					FormulaPosicao form=new FormulaPosicao();
@@ -112,11 +120,18 @@ public class TelaListaTimes extends JFrame {
 					dispose();
 			}
 		});*/
-		btnNewButton.setBounds(257, 29, 89, 26);
+		btnNewButton.setBounds(340, 101, 89, 26);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblEscolhaUmTime = new JLabel("Escolha um time ");
-		lblEscolhaUmTime.setBounds(42, 11, 96, 14);
+		lblEscolhaUmTime.setForeground(Color.WHITE);
+		lblEscolhaUmTime.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblEscolhaUmTime.setBounds(184, 25, 228, 14);
 		contentPane.add(lblEscolhaUmTime);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(TelaListaTimes.class.getResource("/imagens/campo.png")));
+		lblNewLabel.setBounds(0,0, 477, 254);
+		contentPane.add(lblNewLabel);
 	}
 }

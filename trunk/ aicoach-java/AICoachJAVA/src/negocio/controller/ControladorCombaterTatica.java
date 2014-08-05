@@ -4,15 +4,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observer;
 
+import javax.swing.JFrame;
+
 import gui.TelaInserirCombaterTatica;
 import negocio.AlgoritmoTatica;
+import negocio.interfaces.InterfaceBotao;
 import negocio.model.CombateTatica;
 import negocio.view.ObservadorCombateTatica;
 import negocio.view.ObservadorTime;
 import perssistencia.TaticaDAO;
 import dominio.Time;
 
-public class ControladorCombaterTatica {
+public class ControladorCombaterTatica implements InterfaceBotao {
 	public void controlar(Time time){
 		TaticaDAO tDAO=new TaticaDAO();
 		Time timeEscolhido=Time.getListaTimes().get(TelaInserirCombaterTatica.comboBox.getSelectedIndex());
@@ -24,7 +27,8 @@ public class ControladorCombaterTatica {
 		c.acao(TelaInserirCombaterTatica.time, timeEscolhido, tDAO.retornarListaTaticas());
 	}
 	
-	public void acaoBotao(){
+	@Override
+	public void acaoBotao(JFrame tela) {
 		TelaInserirCombaterTatica.getBtnCombater().addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {

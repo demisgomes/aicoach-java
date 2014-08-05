@@ -7,10 +7,14 @@ import gui.TelaPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
+
+import negocio.interfaces.InterfaceBotao;
+
 import perssistencia.TimeDAO;
 import dominio.Time;
 
-public class ControladorCadastroTime {
+public class ControladorCadastroTime implements InterfaceBotao {
 	
 	private TimeDAO timeDAO = new TimeDAO();
 	
@@ -30,21 +34,20 @@ public class ControladorCadastroTime {
 		timeDAO.inserirTime(time);
 		
 	}
-	
-	public void acaoCriar(final TelaCriarTime telaCriar){
-		TelaCriarTime.getBtnCriar().addActionListener(new ActionListener() {
+
+
+	@Override
+	public void acaoBotao(final JFrame tela) {
+	TelaCriarTime.getBtnCriar().addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				inserirTime();
-				TelaPrincipal tela = new TelaPrincipal();
-				tela.setVisible(true);
-				telaCriar.dispose();
-				
-				
-				
+				TelaPrincipal telaPrincipal = new TelaPrincipal();
+				telaPrincipal.setVisible(true);
+				tela.dispose();	
 			}
-		});
+		});		
 	}
 
 }

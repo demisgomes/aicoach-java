@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -17,6 +18,7 @@ import javax.swing.ImageIcon;
 import controle.ControladorJogador;
 
 import negocio.controller.ControladorCombaterTatica;
+import negocio.controller.Fachada;
 
 import dominio.Jogador;
 import dominio.Posicao;
@@ -90,35 +92,41 @@ public class TelaJogador extends JFrame {
 		
 		btnVoltar = new JButton("Voltar");
 		
-		ControladorJogador controlador = new ControladorJogador();
-		controlador.acaoBotao(this);
+		Fachada fachada = new Fachada();
+		fachada.inserirCaracteristicas(this);
+		//ControladorJogador controlador = new ControladorJogador();
+		//controlador.acaoBotao(this);
 		
 		btnVoltar.setBounds(335, 13, 89, 23);
 		contentPane.add(btnVoltar);
 		
 		JLabel lblNome = new JLabel("Nome: ");
 		lblNome.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNome.setForeground(Color.white);
 		lblNome.setBounds(67, 11, 357, 23);
 		contentPane.add(lblNome);
 		
 		JLabel lblIdade = new JLabel("Idade: ");
 		lblIdade.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblIdade.setForeground(Color.white);
 		lblIdade.setBounds(67, 45, 357, 23);
 		contentPane.add(lblIdade);
 		
 		JLabel lblAltura = new JLabel("Altura: ");
 		lblAltura.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblAltura.setBounds(67, 79, 357, 23);
+		lblAltura.setForeground(Color.white);lblAltura.setBounds(67, 79, 357, 23);
 		contentPane.add(lblAltura);
 		
 		JLabel lblPeso = new JLabel("Peso: ");
 		lblPeso.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblPeso.setBounds(67, 113, 357, 23);
+		lblPeso.setForeground(Color.white);
 		contentPane.add(lblPeso);
 		
 		JLabel lblPosies = new JLabel("Posi\u00E7\u00F5es: ");
 		lblPosies.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblPosies.setBounds(67, 147, 357, 23);
+		lblPosies.setForeground(Color.white);
 		contentPane.add(lblPosies);
 		
 		

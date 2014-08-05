@@ -2,6 +2,7 @@ package controle;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.management.GarbageCollectorMXBean;
 import java.util.ArrayList;
 
 import gui.TelaCadastrarJogador;
@@ -9,7 +10,10 @@ import gui.TelaCriarTime;
 import gui.TelaTime;
 
 import javax.swing.JCheckBox;
+import javax.swing.JFrame;
 import javax.swing.JTextField;
+
+import negocio.interfaces.InterfaceBotao;
 
 import dominio.Jogador;
 import dominio.Posicao;
@@ -17,7 +21,7 @@ import dominio.Time;
 import perssistencia.JogadorDAO;
 import perssistencia.TimeDAO;
 
-public class ControladorCadastroJogador {
+public class ControladorCadastroJogador implements InterfaceBotao{
 	
 	private JogadorDAO jogadorDAO;
 	
@@ -74,20 +78,25 @@ public class ControladorCadastroJogador {
 	
 	}
 	
-	
-	public void acaoConfirmar(final TelaCadastrarJogador telaCadastrar){
+
+	@Override
+	public void acaoBotao(final JFrame tela) {
 		TelaCadastrarJogador.getBtnConfirmar().addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				inserirJogador();
-				TelaTime tela = new TelaTime();
-				tela.setVisible(true);
-				telaCadastrar.dispose();
+				TelaTime telaTime = new TelaTime();
+				telaTime.setVisible(true);
+				tela.dispose();
 				
 			}
 		});
+	
+		
 	}
+	
+	
 	
 
 }
