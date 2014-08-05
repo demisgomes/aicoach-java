@@ -15,6 +15,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+
+import negocio.controller.Fachada;
+
 import java.awt.Color;
 import java.awt.Font;
 
@@ -77,7 +80,9 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(btnTimes);
 		
 		btnCriarTime = new JButton("Criar Time");
-		controlador.acaoCriarTime(this);
+		Fachada fachada = new Fachada();
+		fachada.acoesTime(this);
+		//controlador.acaoBotao(this);
 		btnCriarTime.setBounds(176, 91, 89, 23);
 		contentPane.add(btnCriarTime);
 		

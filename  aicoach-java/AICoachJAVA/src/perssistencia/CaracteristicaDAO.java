@@ -8,9 +8,13 @@ import bd.Banco;
 import dominio.CaracteristicasJogadores;
 import dominio.Jogador;
 
-public class CaracteristicaDAO {
-	Banco banco = new Banco(Banco.getUrl(),Banco.getSenha(), Banco.getRoot());
+public class CaracteristicaDAO extends SingletonBanco {
+
+	private Banco banco;
 	
+	public CaracteristicaDAO(){
+		banco = getBanco();
+	}
 	
 	
 	public void inserirCaracteristicas(CaracteristicasJogadores caracteristicas){

@@ -3,7 +3,10 @@ package controle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
+
 import negocio.FormulaPosicao;
+import negocio.interfaces.InterfaceBotao;
 
 import dominio.CaracteristicasJogadores;
 import dominio.Jogador;
@@ -14,9 +17,10 @@ import perssistencia.PontuacaoPosicaoDAO;
 import gui.TelaCaracteristicas;
 import gui.TelaJogadores;
 
-public class ControladorCaracteristicas {
-	
-	public void insereCaracteristicas(final TelaCaracteristicas tela){
+public class ControladorCaracteristicas implements InterfaceBotao {
+
+	@Override
+	public void acaoBotao(final JFrame tela) {
 		TelaCaracteristicas.getBtnConfirmar().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -64,6 +68,23 @@ public class ControladorCaracteristicas {
 			}
 		});
 		
+	}
+	
+	public void setCaracteristicas(){
+		CaracteristicasJogadores c=Jogador.getJogadorEscolhido().getCaracteristicas();
+		if(c!=null){
+			
+			TelaCaracteristicas.getcBBolaParada().setSelectedIndex(c.getBolaParada()-1);
+			TelaCaracteristicas.getcBCabeceio().setSelectedIndex(c.getCabeceio()-1);
+			TelaCaracteristicas.getcBControleBola().setSelectedIndex(c.getControleBola()-1);
+			TelaCaracteristicas.getcBDefesa().setSelectedIndex(c.getDefesas()-1);
+			TelaCaracteristicas.getcBDesarme().setSelectedIndex(c.getDesarme()-1);
+			TelaCaracteristicas.getcBDrible().setSelectedIndex(c.getDrible()-1);
+			TelaCaracteristicas.getcBFinalizacao().setSelectedIndex(c.getFinalizacao()-1);
+			TelaCaracteristicas.getcBQualidadePasse().setSelectedIndex(c.getQualidadePasse()-1);
+			TelaCaracteristicas.getcBRessistencia().setSelectedIndex(c.getResistencia()-1);
+			TelaCaracteristicas.getcBVelocidade().setSelectedIndex(c.getVelocidade()-1);
+		}
 	}
 
 }

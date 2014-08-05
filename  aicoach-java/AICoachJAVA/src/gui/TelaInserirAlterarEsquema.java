@@ -12,6 +12,8 @@ import javax.swing.JButton;
 
 import negocio.AlgoritmoTatica;
 import negocio.controller.ControladorAlterarEsquema;
+import negocio.controller.Fachada;
+import negocio.interfaces.InterfaceBotao;
 import dominio.Posicao;
 import dominio.Tatica;
 import dominio.Time;
@@ -86,7 +88,7 @@ public class TelaInserirAlterarEsquema extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 235, 300);
 		getContentPane().setLayout(null);
-		this.time=time;
+		TelaInserirAlterarEsquema.time=time;
 		final TaticaDAO tDAO=new TaticaDAO();
 		ArrayList<Tatica>listaTaticas=tDAO.retornarListaTaticas();
 		final String[] formacoes= new String[listaTaticas.size()];
@@ -112,8 +114,10 @@ public class TelaInserirAlterarEsquema extends JFrame {
 		getContentPane().add(comboBoxSubstituicoes);
 		
 		btnConfirmar = new JButton("Confirmar");
-		ControladorAlterarEsquema controlador = new ControladorAlterarEsquema();
-		controlador.acaoBotao(this);
+		Fachada fachada = new Fachada();
+		fachada.alterarEsquema(this);
+		//ControladorAlterarEsquema controlador = new ControladorAlterarEsquema();
+		//controlador.acaoBotao(this);
 		/*btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ControladorAlterarEsquema c=new ControladorAlterarEsquema();

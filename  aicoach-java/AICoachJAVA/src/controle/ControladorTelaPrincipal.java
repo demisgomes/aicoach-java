@@ -3,21 +3,28 @@ package controle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
+
+import negocio.interfaces.InterfaceBotao;
+
+
 import gui.TelaCriarTime;
 import gui.TelaListaTimes;
 import gui.TelaPrincipal;
 import gui.TelaTime;
 
-public class ControladorTelaPrincipal {
+public class ControladorTelaPrincipal implements InterfaceBotao {
 	
-	public void acaoCriarTime(final TelaPrincipal telaPrincipal){
+	
+	@Override
+	public void acaoBotao(final JFrame tela) {
 		TelaPrincipal.getBtnCriarTime().addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				TelaCriarTime tela = new TelaCriarTime();
-				tela.setVisible(true);
-				telaPrincipal.dispose();
+				TelaCriarTime telaTime = new TelaCriarTime();
+				telaTime.setVisible(true);
+				tela.dispose();
 			}
 		});
 	}
@@ -33,6 +40,7 @@ public class ControladorTelaPrincipal {
 				
 			}
 		});
+		
 	}
 	
 	

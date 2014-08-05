@@ -3,14 +3,20 @@ package controle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
+
+import negocio.interfaces.InterfaceBotao;
+
+
 import gui.TelaCaracteristicas;
 import gui.TelaJogador;
 import gui.TelaJogadores;
 import gui.TelaTime;
 
-public class ControladorJogador {
-	
-	public void acaoBotao(final TelaJogador tela){
+public class ControladorJogador implements InterfaceBotao {
+
+	@Override
+	public void acaoBotao(final JFrame tela) {
 		TelaJogador.getBtnCaractersticas().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -35,6 +41,7 @@ public class ControladorJogador {
 				// TODO Auto-generated method stub		
 			}
 		});
+		
 	}
 
 }

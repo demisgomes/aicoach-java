@@ -4,16 +4,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observer;
 
+import javax.swing.JFrame;
+
 import gui.TelaInserirAlterarEsquema;
 import gui.TelaTatica;
 import perssistencia.TaticaDAO;
+import negocio.interfaces.InterfaceBotao;
 import negocio.model.AlterarEsquema;
 import negocio.view.ObservadorCombateTatica;
 import negocio.view.ObservadorTime;
 import dominio.Tatica;
 import dominio.Time;
 
-public class ControladorAlterarEsquema {
+public class ControladorAlterarEsquema implements InterfaceBotao {
 	private AlterarEsquema alterarEsquema;
 	
 	public void controlar(Time time){
@@ -42,14 +45,15 @@ public class ControladorAlterarEsquema {
 	public void setAlterarEsquema(AlterarEsquema alterarEsquema) {
 		this.alterarEsquema = alterarEsquema;
 	}
-	
-	public void acaoBotao(final TelaInserirAlterarEsquema tela){
+
+
+	@Override
+	public void acaoBotao(JFrame tela) {
 		TelaInserirAlterarEsquema.getBtnConfirmar().addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controlar(TelaInserirAlterarEsquema.getTime());
 			}
 		});
-		
 	}
 }

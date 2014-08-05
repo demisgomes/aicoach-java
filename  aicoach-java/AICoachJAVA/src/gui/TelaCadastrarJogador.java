@@ -12,6 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
 
+import negocio.controller.Fachada;
+
 
 import controle.ControladorCadastroJogador;
 
@@ -259,8 +261,10 @@ public class TelaCadastrarJogador extends JFrame {
 		btnConfirmar.setBounds(152, 228, 89, 23);
 		contentPane.add(btnConfirmar);
 		
-		ControladorCadastroJogador controlador = new ControladorCadastroJogador();
-		controlador.acaoConfirmar(this);
+		Fachada fachada = new Fachada();
+		fachada.criarJogador(this);
+		//ControladorCadastroJogador controlador = new ControladorCadastroJogador();
+		//controlador.acaoBotao(this);
 		
 	}
 }

@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 
+import negocio.controller.Fachada;
+
 import controle.ControladorJogadores;
 
 import dominio.Jogador;
@@ -96,8 +98,11 @@ public class TelaJogadores extends JFrame {
 		list.setForeground(Color.BLACK);
 		list.setBackground(SystemColor.menu);
 		
-		ControladorJogadores controlador = new ControladorJogadores();
-		controlador.opcoesJogador(this);
+		Fachada fachada = new Fachada();
+		fachada.abrirListaJogadores(this);
+		
+		//ControladorJogadores controlador = new ControladorJogadores();
+		//controlador.acaoBotao(this);
 		
 		/*MouseListener mouseListener = new MouseListener (){
 			

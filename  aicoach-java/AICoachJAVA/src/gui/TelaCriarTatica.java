@@ -22,6 +22,8 @@ import dominio.Time;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+import negocio.controller.Fachada;
+
 import controle.ControladorCadastroTatica;
 
 import perssistencia.TaticaDAO;
@@ -558,8 +560,11 @@ public class TelaCriarTatica extends JFrame {
 		lblNewLabel.setBounds(10, 45, 688, 520);
 		contentPane.add(lblNewLabel);
 		
-		ControladorCadastroTatica controlador = new ControladorCadastroTatica();
-		controlador.acaoBotoes(this);
+		Fachada fachada = new Fachada();
+		fachada.criarTatica(this);
+		
+		//ControladorCadastroTatica controlador = new ControladorCadastroTatica();
+		//controlador.acaoBotao(this);
 		
 	}
 	

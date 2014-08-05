@@ -4,13 +4,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
+import negocio.interfaces.InterfaceBotao;
+
 import perssistencia.TimeDAO;
 
 import gui.TelaListaTimes;
 import gui.TelaTime;
 import dominio.Time;
 
-public class ControladorTelaListaTimes {
+public class ControladorTelaListaTimes implements InterfaceBotao {
 	
 	final private TimeDAO tDAO=new TimeDAO();
 	
@@ -25,19 +29,21 @@ public class ControladorTelaListaTimes {
 		return listaTimes;
 	}
 	
-	public void acaoNew(final TelaListaTimes telaLista){
+	@Override
+	public void acaoBotao(final JFrame tela) {
 		TelaListaTimes.getBtnNewButton().addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				Time time=tDAO.retornarTime(TelaListaTimes.getComboBox().getSelectedItem().toString());
 				Time.setTime(time);
-				TelaTime tela = new TelaTime();
-				tela.setVisible(true);
-				telaLista.dispose();
+				TelaTime telaTime = new TelaTime();
+				telaTime.setVisible(true);
+				tela.dispose();
 				
 			}
 		});
+		
 	}
 
 }
