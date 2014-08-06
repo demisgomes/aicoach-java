@@ -17,6 +17,7 @@ import perssistencia.TimeDAO;
 import negocio.AlgoritmoTatica;
 import negocio.controller.ControladorCombaterTatica;
 import negocio.controller.Fachada;
+import negocio.controller.FachadaCombaterTatica;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -79,7 +80,7 @@ public class TelaInserirCombaterTatica extends JFrame {
 		contentPane.add(comboBox);
 		
 		btnCombater = new JButton("Combater");
-		Fachada fachada = new Fachada();
+		FachadaCombaterTatica fachada = new FachadaCombaterTatica();
 		fachada.combaterTatica(this);
 		//ControladorCombaterTatica controlador = new ControladorCombaterTatica();
 		//controlador.acaoBotao(this);

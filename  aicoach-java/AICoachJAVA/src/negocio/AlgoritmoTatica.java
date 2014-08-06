@@ -414,6 +414,7 @@ public void SugerirJogadores(Time time){
 	public Jogador substituirJogador(Jogador jogador, Time time){
 		Jogador jogadorSubstituto = new Jogador();
 		Jogador jogadorX = new Jogador();
+		Posicao p=null;
 		int pontuacao = 0;
 		for (int i = 0; i < time.getJogadores().size(); i++) {
 			for (int j = 0; j < time.getJogadores().get(i).getPosicoes().size(); j++) {
@@ -424,13 +425,15 @@ public void SugerirJogadores(Time time){
 					pontuacao = jogadorX.getPosicoes().get(j).getPontuacao();
 					jogador.setEscolhido(0);
 					jogadorSubstituto = jogadorX;
-					jogadorSubstituto.setPosicaoAtual(jogadorX.getPosicoes().get(j));
+					p=jogadorX.getPosicoes().get(j);
+					
 					
 				}
 				
 			}
 	
 		}
+		jogadorSubstituto.setPosicaoAtual(p);
 		jogadorSubstituto.setEscolhido(1);
 		return jogadorSubstituto ;
 	}
@@ -683,6 +686,7 @@ public void SugerirJogadores(Time time){
 						Jogador j=p.getJogador();
 						p.setJogador(substituirJogador(j, time));
 						p.setPontuacao(p.getJogador().getPosicaoAtual().getPontuacao());
+						jogador.setPosicaoAtual(null);
 						j.setEscolhido(2);
 						break;
 						
@@ -695,6 +699,17 @@ public void SugerirJogadores(Time time){
 			if(time.getJogadores().get(j).getEscolhido()==2){
 				time.getJogadores().get(j).setEscolhido(0);
 			}
+			System.out.println("Teste");
+			System.out.println();
+			if(time.getJogadores().get(j).getPosicaoAtual()!=null){
+				System.out.println(time.getJogadores().get(j).getNome()+" "+time.getJogadores().get(j).getPosicaoAtual().getPontuacao()+" "+time.getJogadores().get(j).getEscolhido());
+				
+			}
+			else{
+				System.out.println(time.getJogadores().get(j).getNome()+" "+0+" "+time.getJogadores().get(j).getEscolhido());
+				
+			}
+			
 		}
 		
 		

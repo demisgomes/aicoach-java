@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import negocio.AlgoritmoTatica;
 import negocio.controller.ControladorAlterarEsquema;
 import negocio.controller.Fachada;
+import negocio.controller.FachadaAlterarEsquema;
 import negocio.interfaces.InterfaceBotao;
 import dominio.Posicao;
 import dominio.Tatica;
@@ -114,7 +115,7 @@ public class TelaInserirAlterarEsquema extends JFrame {
 		getContentPane().add(comboBoxSubstituicoes);
 		
 		btnConfirmar = new JButton("Confirmar");
-		Fachada fachada = new Fachada();
+		FachadaAlterarEsquema fachada = new FachadaAlterarEsquema();
 		fachada.alterarEsquema(this);
 		//ControladorAlterarEsquema controlador = new ControladorAlterarEsquema();
 		//controlador.acaoBotao(this);

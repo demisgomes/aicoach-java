@@ -10,13 +10,13 @@ import dominio.Posicao;
 import dominio.Tatica;
 import dominio.Time;
 
-public class TimeDAO extends SingletonBanco {
+public class TimeDAO{
 	
 	//Banco banco = new Banco(Banco.getUrl(),Banco.getSenha(),Banco.getRoot());
 	private Banco banco;
 	
 	public TimeDAO(){
-		banco = getBanco();
+		banco = Banco.getInstance();
 	}
 	
 	

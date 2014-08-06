@@ -16,28 +16,8 @@ import dominio.Time;
 import negocio.interfaces.InterfaceControladores;
 import negocio.interfaces.InterfaceTatica;
 
-public class Fachada implements InterfaceTatica, InterfaceControladores {
+public class Fachada implements InterfaceControladores {
 
-	@Override
-	public void alterarEsquema(final JFrame tela) {
-		ControladorAlterarEsquema controlador = new ControladorAlterarEsquema();
-		controlador.acaoBotao(tela);
-		
-	}
-
-	@Override
-	public void combaterTatica(final JFrame tela) {
-		ControladorCombaterTatica controlador = new ControladorCombaterTatica();
-		controlador.acaoBotao(tela);
-		
-	}
-
-	@Override
-	public void taticas(JFrame tela) {
-		ControladorTatica controlador = new ControladorTatica();
-		controlador.acaoBotao(tela);
-		
-	}
 
 	@Override
 	public void criarJogador(JFrame tela) {

@@ -8,12 +8,12 @@ import bd.Banco;
 import dominio.CaracteristicasJogadores;
 import dominio.Jogador;
 
-public class CaracteristicaDAO extends SingletonBanco {
+public class CaracteristicaDAO {
 
 	private Banco banco;
 	
 	public CaracteristicaDAO(){
-		banco = getBanco();
+		banco = Banco.getInstance();
 	}
 	
 	
