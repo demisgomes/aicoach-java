@@ -266,7 +266,7 @@ public class TelaTatica extends JFrame{
 		
 
 		
-		comboBox = new JComboBox<String>(formacoes);
+		comboBox = new JComboBox(formacoes);
 		comboBox.setBounds(200, 24, 130, 20);
 		contentPane.add(comboBox);
 		
@@ -478,6 +478,11 @@ public class TelaTatica extends JFrame{
 		
 
 		ButtonAiCoach btnCa = new ButtonAiCoach("CA");
+		btnCa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		btnCa.setBounds(548, 277, 64, 63);
 		btnCa.setBackground(Color.GRAY);
 		btnCa.setId(24);
