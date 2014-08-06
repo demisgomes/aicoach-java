@@ -9,10 +9,8 @@ import dominio.Time;
 
 public interface InterfaceTatica {
 	
-	
-	public void alterarEsquema(final JFrame tela);
 	public void taticas(final JFrame tela);
-	public void combaterTatica(final JFrame tela);
+	
 	
 
 }

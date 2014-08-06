@@ -9,13 +9,13 @@ import dominio.Jogador;
 import dominio.PontuacaoPosicao;
 
 
-public class PontuacaoPosicaoDAO extends SingletonBanco {
+public class PontuacaoPosicaoDAO{
 
 	//Banco banco = new Banco(Banco.getUrl(),Banco.getSenha(),Banco.getRoot());
 	private Banco banco;
 	
 	public PontuacaoPosicaoDAO(){
-		banco = getBanco();
+		banco = Banco.getInstance();
 	}
 	
 	
