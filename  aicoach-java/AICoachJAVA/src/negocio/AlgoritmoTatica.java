@@ -653,6 +653,53 @@ public void SugerirJogadores(Time time){
 		
 	}
 	
+	public void substituirUmJogador(Time time, Jogador jogador, Tatica novaTatica){
+		for (int j = 0; j < time.getJogadores().size(); j++) {
+			if(time.getJogadores().get(j).getEscolhido()==1){
+				time.getJogadores().get(j).setEscolhido(0);
+			}
+			else{
+				time.getJogadores().get(j).setEscolhido(2);
+			}
+		}
+		
+		ArrayList<Integer>listaPontos=new ArrayList<Integer>();
+		
+		time.setTatica(novaTatica);
+		SugerirJogadores(time);
+		for (int i = 0; i < time.getTatica().getPosicoes().size(); i++) {
+			listaPontos.add(time.getTatica().getPosicoes().get(i).getPontuacao());
+			
+		}
+		for (int j = 0; j < time.getJogadores().size(); j++) {
+			if(time.getJogadores().get(j).getEscolhido()==2){
+				time.getJogadores().get(j).setEscolhido(0);
+			}
+		}
+		Collections.sort(listaPontos);
+			for(Posicao p:time.getTatica().getPosicoes()){
+				if(p.getJogador()!=null){
+					if(p.getJogador().equals(jogador)){
+						Jogador j=p.getJogador();
+						p.setJogador(substituirJogador(j, time));
+						p.setPontuacao(p.getJogador().getPosicaoAtual().getPontuacao());
+						j.setEscolhido(2);
+						break;
+						
+					}
+				}
+			}
+		
+		
+		for (int j = 0; j < time.getJogadores().size(); j++) {
+			if(time.getJogadores().get(j).getEscolhido()==2){
+				time.getJogadores().get(j).setEscolhido(0);
+			}
+		}
+		
+		
+	}
+	
 	public void combaterTatica(Time meuTime, Time timeAdversario, ArrayList <Tatica> taticas){
 		sugerirTatica(timeAdversario, taticas);
 		EstiloDeJogo estiloAdversario=timeAdversario.getEstiloDeJogo();
