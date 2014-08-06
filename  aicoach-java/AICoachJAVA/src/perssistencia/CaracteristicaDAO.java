@@ -71,6 +71,19 @@ public class CaracteristicaDAO extends SingletonBanco {
 		banco.executarSQL(sql);
 	}
 	
+	public void updateCaracteristicas(CaracteristicasJogadores caracteristicas, Jogador jogador){
+		
+		String sql = "update caracteristicas set resistencia='"+caracteristicas.getResistencia()+"'," +
+				" cabeceio='" +caracteristicas.getResistencia()+
+				"', qualidadepasse='"+caracteristicas.getQualidadePasse()+
+				"', velocidade='"+caracteristicas.getVelocidade()+"', finalizacao='"+caracteristicas.getFinalizacao()+"'," +
+				" bolaparada='"+caracteristicas.getBolaParada()+"', " +
+				"controlebola='"+caracteristicas.getControleBola()+"', drible='"+caracteristicas.getDrible()+"', " + "desarme='"+caracteristicas.getDesarme()+"', defesas='"+caracteristicas.getDefesas()+"' WHERE jogador = '"+jogador.getId()+"'";
+				
+		
+		banco.executarSQL(sql);
+	}
+	
 	public CaracteristicasJogadores retornarCaracteristicas(int idJogador){
 		String sql = "SELECT * FROM caracteristicas WHERE jogador = '"+idJogador+"'";
 		ResultSet rs = banco.executarSelect(sql);

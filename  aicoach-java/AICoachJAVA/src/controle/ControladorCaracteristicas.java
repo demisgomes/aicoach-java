@@ -38,6 +38,7 @@ public class ControladorCaracteristicas implements InterfaceBotao {
 				vel =TelaCaracteristicas.getcBVelocidade().getSelectedIndex()+1;
 				
 				CaracteristicasJogadores c = new CaracteristicasJogadores();
+				
 				c.setBolaParada(bp);
 				c.setCabeceio(cab);
 				c.setControleBola(cb);
@@ -52,14 +53,30 @@ public class ControladorCaracteristicas implements InterfaceBotao {
 				CaracteristicaDAO cDAO=new CaracteristicaDAO();
 				PontuacaoPosicaoDAO pDAO=new PontuacaoPosicaoDAO();
 				
-				//Insere em caracteristicas
-				cDAO.inserirCaracteristicas(c, Jogador.getJogadorEscolhido());
-				Jogador.getJogadorEscolhido().setCaracteristicas(c);
-				FormulaPosicao f=new FormulaPosicao();
-				//calcula a pontuação das posições
-				f.calculeTudo(Jogador.getJogadorEscolhido());
-				//Insere na tabelaPontuacaoPosicoes
-				pDAO.inserirPontuacaoPosicoesJogador(Jogador.getJogadorEscolhido());
+				if(Jogador.getJogadorEscolhido().getCaracteristicas()==null){
+				
+					
+					//Insere em caracteristicas
+					cDAO.inserirCaracteristicas(c, Jogador.getJogadorEscolhido());
+					Jogador.getJogadorEscolhido().setCaracteristicas(c);
+					FormulaPosicao f=new FormulaPosicao();
+					//calcula a pontuação das posições
+					f.calculeTudo(Jogador.getJogadorEscolhido());
+					//Insere na tabelaPontuacaoPosicoes
+					pDAO.inserirPontuacaoPosicoesJogador(Jogador.getJogadorEscolhido());
+				}
+				
+				else{
+					System.out.println("entrou no else");
+					cDAO.updateCaracteristicas(c, Jogador.getJogadorEscolhido());
+					Jogador.getJogadorEscolhido().setCaracteristicas(c);
+					System.out.println(Jogador.getJogadorEscolhido().getCaracteristicas().getVelocidade());
+					FormulaPosicao f=new FormulaPosicao();
+					//calcula a pontuação das posições
+					f.calculeTudo(Jogador.getJogadorEscolhido());
+					System.out.println(Jogador.getJogadorEscolhido().getPosicoes().get(0).getPontuacao()+" "+Jogador.getJogadorEscolhido().getPosicoes().get(0).getNome());
+					pDAO.updatePontuacaoPosicoesJogador(Jogador.getJogadorEscolhido());
+				}
 				
 				TelaJogadores t=new TelaJogadores();
 				t.setVisible(true);

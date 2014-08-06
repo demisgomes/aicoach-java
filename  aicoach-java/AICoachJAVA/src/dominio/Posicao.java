@@ -41,6 +41,9 @@ public class Posicao {
 	}
 	
 	public Posicao(String nome){
+			if(nome.toLowerCase().equals("lateral direito") || nome.toLowerCase().equals("lateral esquerdo")){
+				nome="lateral";
+			}
 			setNome(nome);
 			/*int posicaoTela=0;
 			if(nome.toLowerCase().equals("Goleiro")){
