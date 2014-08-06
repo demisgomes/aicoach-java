@@ -162,4 +162,74 @@ public class PontuacaoPosicaoDAO extends SingletonBanco {
 		
 		
 	}
+	
+	public void updatePontuacaoPosicoesJogador(Jogador jogador){
+		System.out.println("Entrou no update");
+		System.out.println(jogador.getId());
+		String sql1="SELECT jogador FROM pontuacaoPosicoes WHERE jogador= '"+jogador.getId()+"'";
+		ResultSet rs=banco.executarSelect(sql1);
+		try {
+			if(rs.next()){
+				int ptGol=0, ptLat=0, ptZag=0, ptVol=0, ptMC=0, ptML=0, ptMAT=0, ptSA=0, ptPT=0, ptCA=0;
+				for (int i = 0; i < jogador.getPosicoes().size(); i++) {
+					if(jogador.getPosicoes().get(i).getNome().equals("goleiro")){
+						ptGol=jogador.getPosicoes().get(i).getPontuacao();
+					}
+					if(jogador.getPosicoes().get(i).getNome().equals("zagueiro")){
+						ptZag=jogador.getPosicoes().get(i).getPontuacao();
+						System.out.println(ptZag);
+					}
+					if(jogador.getPosicoes().get(i).getNome().equals("lateral")){
+						ptLat=jogador.getPosicoes().get(i).getPontuacao();
+					}
+					if(jogador.getPosicoes().get(i).getNome().equals("volante")){
+						ptVol=jogador.getPosicoes().get(i).getPontuacao();
+					}
+					if(jogador.getPosicoes().get(i).getNome().equals("meia central")){
+						ptMC=jogador.getPosicoes().get(i).getPontuacao();
+					}
+					if(jogador.getPosicoes().get(i).getNome().equals("meia lateral")){
+						ptML=jogador.getPosicoes().get(i).getPontuacao();
+					}
+					if(jogador.getPosicoes().get(i).getNome().equals("meia atacante")){
+						ptMAT=jogador.getPosicoes().get(i).getPontuacao();
+					}
+					if(jogador.getPosicoes().get(i).getNome().equals("segundo atacante")){
+						ptSA=jogador.getPosicoes().get(i).getPontuacao();
+					}
+					if(jogador.getPosicoes().get(i).getNome().equals("ponta")){
+						ptPT=jogador.getPosicoes().get(i).getPontuacao();
+					}
+					if(jogador.getPosicoes().get(i).getNome().equals("centro avante")){
+						ptCA=jogador.getPosicoes().get(i).getPontuacao();
+					}
+				}
+				String sql = "Update pontuacaoposicoes" +
+						" set `zagueiro` ="
+						+ "'"+ptZag+"',`lateral esquerdo` ="
+						+ "'"+ptLat+"' ,`lateral direito` = "
+						+ "'"+ptLat+"',`volante` ="
+						+ "'"+ptVol+"',`meia lateral direito` ="
+						+ "'"+ptML+"',`meia lateral esquerdo` ="
+						+ "'"+ptML+"',`meia central` ="
+						+ "'"+ptMC+"',`meia atacante`="
+						+ "'"+ptMAT+"',`segundo atacante` ="
+						+ "'"+ptSA+"',`centro avante` ="
+						+ "'"+ptCA+"',`ponta esquerda`="
+						+ "'"+ptPT+"',`ponta direita`="
+						+ "'"+ptPT+"',`goleiro`="
+						+ "'"+ptGol+"' WHERE jogador = '"+jogador.getId()+"'";
+				
+				banco.executarSQL(sql);
+			}
+		} catch (SQLException e) {
+			//e.printStackTrace();
+			System.out.println("Já cadastrado");
+		}
+		finally{
+			banco.fecharBanco();
+		}
+		
+		
+	}
 }

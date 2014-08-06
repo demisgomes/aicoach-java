@@ -54,12 +54,13 @@ public class ControladorCadastroJogador implements InterfaceBotao{
 		ArrayList<Posicao> l=new ArrayList<Posicao>();
 		jogador.setPosicoes(l);
 		for (int i = 0; i < checkBoxList.size(); i++) {
+			Posicao posicao = new Posicao(checkBoxList.get(i).getText());
 			if(checkBoxList.get(i).isSelected()){
-				Posicao posicao = new Posicao(checkBoxList.get(i).getText());
+				
 				posicao.setPosicaoDeOrigem(true);
-				jogador.getPosicoes().add(posicao);
+				
 			}
-			
+			jogador.getPosicoes().add(posicao);
 		}
 		
 		
