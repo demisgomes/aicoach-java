@@ -229,7 +229,13 @@ public class Jogador {
 	}
 
 
-
+	public void calculeTudo(){
+		for(Posicao p: getPosicoes()){
+			System.out.println(p.getNome());
+			System.out.println(p.getFormula());
+			p.setPontuacao(p.getFormula().calcularPontuacao(this));
+		}
+	}
 
 	
 

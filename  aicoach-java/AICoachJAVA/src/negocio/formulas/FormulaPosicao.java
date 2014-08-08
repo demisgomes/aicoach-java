@@ -1,16 +1,21 @@
 package negocio.formulas;
 
-import java.util.ArrayList;
-
 import dominio.Jogador;
-import dominio.Posicao;
 
-public class FormulaPosicao {
+public abstract class FormulaPosicao {
 	
 	private static final int jogadorIdeal = 7;
 	private static final int somaPesos = 55;
 	
-	public void calculeTudo(Jogador jogador){
+	public static int getJogadorideal() {
+		return jogadorIdeal;
+	}
+
+	public static int getSomapesos() {
+		return somaPesos;
+	}
+	public abstract int calcularPontuacao(Jogador jogador);
+	/*public void calculeTudo(Jogador jogador){
 		for(Posicao p: jogador.getPosicoes()){
 			if(p.getNome().equals("goleiro")){
 				
@@ -55,6 +60,7 @@ public class FormulaPosicao {
 	}
 	
 	
+	
 	public int calcularGL(Jogador jogador){
 		int ressistencia = jogador.getCaracteristicas().getResistencia();
 		int cabeceio = jogador.getCaracteristicas().getCabeceio();
@@ -86,7 +92,8 @@ public class FormulaPosicao {
 		//add no array da pontuacao de posicoes
 		return (int) pontuacaoFinal;
 	}
-	
+
+
 	public int calcularZG(Jogador jogador){
 		int ressistencia = jogador.getCaracteristicas().getResistencia();
 		int cabeceio = jogador.getCaracteristicas().getCabeceio();
@@ -366,6 +373,6 @@ public class FormulaPosicao {
 		
 		return (int) pontuacaoFinal;
 	}
-	
+*/	
 
 }
