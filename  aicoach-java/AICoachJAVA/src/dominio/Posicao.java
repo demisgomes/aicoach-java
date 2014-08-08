@@ -1,6 +1,6 @@
 package dominio;
 
-import negocio.FormulaPosicao;
+import negocio.formulas.FormulaPosicao;
 
 public class Posicao {
 	
@@ -226,6 +226,11 @@ public class Posicao {
 }
 	public Posicao(){
 		
+	}
+	
+	public Posicao(String nome, Jogador jogador){
+		setNome(nome);
+		setJogador(jogador);
 	}
 	
 	

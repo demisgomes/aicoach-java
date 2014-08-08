@@ -3,7 +3,7 @@ package teste;
 import java.util.ArrayList;
 
 import negocio.AlgoritmoTatica;
-import negocio.FormulaPosicao;
+import negocio.formulas.FormulaPosicao;
 import dominio.Jogador;
 import dominio.PontuacaoPosicao;
 import dominio.Posicao;
