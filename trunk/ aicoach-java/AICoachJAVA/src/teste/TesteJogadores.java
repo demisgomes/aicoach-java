@@ -3,6 +3,7 @@ package teste;
 import java.util.ArrayList;
 
 import negocio.AlgoritmoTatica;
+import negocio.formulas.FormulaGoleiro;
 import negocio.formulas.FormulaPosicao;
 import dominio.Jogador;
 import dominio.PontuacaoPosicao;
@@ -17,6 +18,9 @@ import perssistencia.TimeDAO;
 public class TesteJogadores {
 	
 	public static void main(String[] args){
+		Posicao s=new Posicao();
+		s.setFormula(new FormulaGoleiro());
+		System.out.println(s.getFormula());
 		/*
 		
 		

@@ -137,10 +137,9 @@ public class JogadorDAO{
 			ArrayList<PontuacaoPosicao> listapontuacao = pontuacaoPosicaoDAO.retornaPosicao(idJogador);
 			
 			for (int i = 0; i < listapontuacao.size(); i++) {
-				Posicao posicao = new Posicao();
 				PontuacaoPosicao pontuacaoPosicao  = listapontuacao.get(i);
 				
-				posicao.setNome(pontuacaoPosicao.getNomePosicao());
+				Posicao posicao = new Posicao(pontuacaoPosicao.getNomePosicao());
 				posicao.setPontuacao(pontuacaoPosicao.getPontuacao());
 				posicoes.add(posicao);
 			}
@@ -208,10 +207,9 @@ public class JogadorDAO{
 				ArrayList<PontuacaoPosicao> listapontuacao = pontuacaoPosicaoDAO.retornaPosicao(idJogador);
 				
 				for (int i = 0; i < listapontuacao.size(); i++) {
-					Posicao posicao = new Posicao();
-					PontuacaoPosicao pontuacaoPosicao  = listapontuacao.get(i);
 					
-					posicao.setNome(pontuacaoPosicao.getNomePosicao());
+					PontuacaoPosicao pontuacaoPosicao  = listapontuacao.get(i);
+					Posicao posicao = new Posicao(pontuacaoPosicao.getNomePosicao());
 					posicao.setPontuacao(pontuacaoPosicao.getPontuacao());
 					posicoes.add(posicao);
 				}
