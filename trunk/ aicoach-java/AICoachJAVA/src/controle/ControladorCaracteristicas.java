@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import negocio.FormulaPosicao;
+import negocio.formulas.FormulaPosicao;
 import negocio.interfaces.InterfaceBotao;
 
 import dominio.CaracteristicasJogadores;

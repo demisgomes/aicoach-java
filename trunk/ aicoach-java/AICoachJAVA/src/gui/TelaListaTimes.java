@@ -10,8 +10,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
-import negocio.FormulaPosicao;
 import negocio.controller.Fachada;
+import negocio.formulas.FormulaPosicao;
 import dominio.Jogador;
 import dominio.PontuacaoPosicao;
 import dominio.Time;

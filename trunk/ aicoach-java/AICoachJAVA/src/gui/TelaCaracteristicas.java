@@ -15,8 +15,8 @@ import javax.swing.JComboBox;
 
 import controle.ControladorCaracteristicas;
 
-import negocio.FormulaPosicao;
 import negocio.controller.Fachada;
+import negocio.formulas.FormulaPosicao;
 
 import perssistencia.CaracteristicaDAO;
 import perssistencia.PontuacaoPosicaoDAO;

@@ -10,7 +10,7 @@ import perssistencia.JogadorDAO;
 import perssistencia.TaticaDAO;
 import perssistencia.TimeDAO;
 import negocio.AlgoritmoTatica;
-import negocio.FormulaPosicao;
+import negocio.formulas.FormulaPosicao;
 import dominio.CaracteristicasJogadores;
 import dominio.EstiloDeJogo;
 import dominio.Jogador;

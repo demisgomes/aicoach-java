@@ -1,4 +1,4 @@
-package negocio;
+package negocio.formulas;
 
 import java.util.ArrayList;
 
@@ -366,11 +366,6 @@ public class FormulaPosicao {
 		
 		return (int) pontuacaoFinal;
 	}
-	
-	public void calculeTodasPosicoes(Jogador jogador){
-		
-	}
-	
 	
 
 }
