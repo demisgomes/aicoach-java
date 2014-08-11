@@ -4,6 +4,6 @@ import javax.swing.JFrame;
 
 public interface InterfaceAlterarEsquema {
 	
-	public void alterarEsquema(final JFrame tela);
+	public void alterarEsquema(final JFrame tela, String func);
 
 }

@@ -29,7 +29,7 @@ import dominio.Time;
 public class ControladorAlterarEsquema implements InterfaceBotao {
 	private AlterarEsquema alterarEsquema;
 	
-	public void controlar(Time time, String xml){
+	public void controlar(String funcionalidade){
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
 		dbf.setNamespaceAware(false);
@@ -44,19 +44,32 @@ public class ControladorAlterarEsquema implements InterfaceBotao {
 		}
 
 		try {
-			Document doc = docBuilder.parse(new File(xml));
+			Document doc = docBuilder.parse(new File("alteraresquema.xml"));
 			org.w3c.dom.Element xmlTag= doc.getDocumentElement();
-			org.w3c.dom.Element p1Tag = doc.createElement("p");
+			/*org.w3c.dom.Element p1Tag = doc.createElement("p");
 
             //p1Tag.setAttribute("class", "nome");
 
             p1Tag.setTextContent(time.getNome());
             
-            Element bodyTag =(Element) xmlTag.getElementsByTagName("time").item(0);
+*/            Element bodyTag =(Element) xmlTag.getElementsByTagName(funcionalidade).item(0);
             System.out.println(bodyTag.getTagName());
-            Element bod1yTag =(Element) xmlTag.getElementsByTagName("time").item(1);
+            if(bodyTag!=null){
+            	Time time=Time.getTime();
+        		TaticaDAO tDAO=new TaticaDAO();
+        		System.out.println(TelaInserirAlterarEsquema.comboBoxFormacoes.getSelectedItem().toString());
+        		Tatica taticaNova=tDAO.retornarTatica(TelaInserirAlterarEsquema.comboBoxFormacoes.getSelectedItem().toString());
+        		int substituicoes=TelaInserirAlterarEsquema.comboBoxSubstituicoes.getSelectedIndex();
+        		AlterarEsquema a=new AlterarEsquema();
+        		//TelaTatica tela=new TelaTatica();
+        		Observer obs=new ObservadorTime();
+        		a.addObserver(obs);
+        		a.acao(time, substituicoes, taticaNova);
 
-            bodyTag.appendChild(p1Tag);
+            }
+            //Element bod1yTag =(Element) xmlTag.getElementsByTagName("time").item(1);
+
+           // bodyTag.appendChild(p1Tag);
         
 
 		} catch (SAXException e) {
@@ -68,16 +81,6 @@ public class ControladorAlterarEsquema implements InterfaceBotao {
 		}
 
 		
-		
-		TaticaDAO tDAO=new TaticaDAO();
-		System.out.println(TelaInserirAlterarEsquema.comboBoxFormacoes.getSelectedItem().toString());
-		Tatica taticaNova=tDAO.retornarTatica(TelaInserirAlterarEsquema.comboBoxFormacoes.getSelectedItem().toString());
-		int substituicoes=TelaInserirAlterarEsquema.comboBoxSubstituicoes.getSelectedIndex();
-		AlterarEsquema a=new AlterarEsquema();
-		//TelaTatica tela=new TelaTatica();
-		Observer obs=new ObservadorTime();
-		a.addObserver(obs);
-		a.acao(time, substituicoes, taticaNova);
 	}
 	
 
@@ -101,7 +104,7 @@ public class ControladorAlterarEsquema implements InterfaceBotao {
 		TelaInserirAlterarEsquema.getBtnConfirmar().addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controlar(TelaInserirAlterarEsquema.getTime(), "alteraresquema.xml");
+				controlar("alteraresquema");
 			}
 		});
 	}
