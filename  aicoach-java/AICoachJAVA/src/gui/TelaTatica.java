@@ -1,48 +1,34 @@
 package gui;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
+import negocio.controller.FachadaTatica;
+import perssistencia.TaticaDAO;
+import perssistencia.TimeDAO;
+import controle.ControladorTatica;
 import dominio.ButtonAiCoach;
-import dominio.Jogador;
 import dominio.Posicao;
 import dominio.Tatica;
 import dominio.Time;
 
-import javax.swing.JButton;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-import javax.swing.JComboBox;
-
-import controle.ControladorTatica;
-import controle.ControladorTelaInicial;
-
-import negocio.AlgoritmoTatica;
-import negocio.controller.ControladorAlterarEsquema;
-import negocio.controller.Fachada;
-import negocio.controller.FachadaTatica;
-import negocio.model.AlterarEsquema;
-import perssistencia.JogadorDAO;
-import perssistencia.TaticaDAO;
-import perssistencia.TimeDAO;
-
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
-
 public class TelaTatica extends JFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private static ArrayList<Posicao> listaIdPosicoes=new ArrayList<Posicao>();
 	public static Time time;
@@ -566,7 +552,6 @@ public class TelaTatica extends JFrame{
 		}
 		
 }
-
 }
 
 
