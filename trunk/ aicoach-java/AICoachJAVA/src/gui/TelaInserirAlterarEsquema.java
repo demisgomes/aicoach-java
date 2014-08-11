@@ -116,7 +116,7 @@ public class TelaInserirAlterarEsquema extends JFrame {
 		
 		btnConfirmar = new JButton("Confirmar");
 		FachadaAlterarEsquema fachada = new FachadaAlterarEsquema();
-		fachada.alterarEsquema(this);
+		fachada.alterarEsquema(this, "alteraresquema");
 		//ControladorAlterarEsquema controlador = new ControladorAlterarEsquema();
 		//controlador.acaoBotao(this);
 		/*btnConfirmar.addActionListener(new ActionListener() {

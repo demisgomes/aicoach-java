@@ -81,7 +81,7 @@ public class TelaInserirCombaterTatica extends JFrame {
 		
 		btnCombater = new JButton("Combater");
 		FachadaCombaterTatica fachada = new FachadaCombaterTatica();
-		fachada.combaterTatica(this);
+		fachada.combaterTatica(this, "combaterTatica");
 		//ControladorCombaterTatica controlador = new ControladorCombaterTatica();
 		//controlador.acaoBotao(this);
 		/*btnCombater.addActionListener(new ActionListener() {
